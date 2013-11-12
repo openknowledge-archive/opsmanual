@@ -1,0 +1,31 @@
+# This file contains an encrypted GitHub token that allows Travis to push the
+# build results to the `gh-pages` branch. A new token can be retrieved by doing
+# the following:
+#
+#     curl -u okf-ci-bot -d \
+#     '{"scopes":["public_repo"],"note":"okfn/opsmanual CI"}' \
+#     https://api.github.com/authorizations
+# 
+# The response will contain a "token" key. This token can then be used to update
+# the secure environment variable below by installing the `travis` rubygem and
+# running the following:
+#
+#    travis encrypt -r okfn/opsmanual GH_TOKEN=<token>
+#
+# The "secure" entry in the global environment list below contains the output of
+# this command.
+env:
+  global:
+    - GIT_NAME="OKF Continuous Integration Bot"
+    - GIT_EMAIL="ci@okfn.org"
+    - secure: "jiTa6DO7pP6CO4rEFfWnB9aD/UBtd4bxArXpMeJZrw8VifLVYV7/8bEnJTjWJFyxmmWT9t+DTRYxnQ03j+ENtonDYbWBlDZ7o4PJer0MMHG6ummAMbPvEe8aSDMWe9LrmXQLHPo/JhUk5Id60+1gmi1r2c8yBgmwzUKx3xMyaAQ="
+language: python
+python:
+  - "2.7"
+install:
+  - pip install -r requirements.txt
+script:
+  - ./tools/buildpages
+  - ./tools/pushpages-travis
+
+

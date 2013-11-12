@@ -5,7 +5,7 @@ set -eu
 cd "$(dirname "$0")"
 cd ..
 
-if [ "$TRAVIS_PULL_REQUEST" -ne "0" ]; then
+if [ "$TRAVIS_PULL_REQUEST" = "true" ]; then
   echo "Not pushing for branch build." >&2
   exit
 fi

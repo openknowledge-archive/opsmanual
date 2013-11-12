@@ -14,6 +14,7 @@ set -e
 # Build site (generates pages in $BUILDDIR)
 make html
 touch "${BUILDDIR}/.nojekyll"
+cp CNAME "${BUILDDIR}/CNAME"
 
 # Add built content to index, regardless of .gitignore settings
 git add -f "$BUILDDIR"

@@ -1,0 +1,390 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Server hosting &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="List of infrastructure services" href="index.html" />
+    <link rel="next" title="Mailing list hosting" href="mailinglists.html" />
+    <link rel="prev" title="Email aliases and forwarders" href="email.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mailinglists.html" title="Mailing list hosting"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="email.html" title="Email aliases and forwarders"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="server-hosting">
+<h1>Server hosting<a class="headerlink" href="#server-hosting" title="Permalink to this headline">¶</a></h1>
+<p>&#8216;&#8217;&#8217; IMPORTANT NOTE: PLEASE DO *NOT* CREATE A PERMANENT INSTANCE IF YOU
+ARE NOT WILLING/ABLE TO PERFORM ALL THESE STEPS! &#8216;&#8217;&#8216;</p>
+<p><strong>In this case, please ask someone else to create the instance for you,
+or ask for the necessary DNS/bitbucket/... credentials</strong> (see section
+<em>Access credentials</em> below). <strong>If you intent to spin up a temporary
+experimental instance, please mark it clearly as such and notify
+sysadmin-coord.</strong></p>
+<hr class="docutils" />
+<p>Remark: This page has been moved here from
+<a class="reference external" href="http://trac.okfn.org/wiki/HostingService">http://trac.okfn.org/wiki/HostingService</a> as per #992</p>
+<hr class="docutils" />
+<div class="section" id="how-to-spin-up-a-new-cloud-instance">
+<h2>How to spin up a new cloud instance<a class="headerlink" href="#how-to-spin-up-a-new-cloud-instance" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>Preparation:</strong> Decide which hoster &amp; datacenter the new server
+shall live in. Find the next free server number and set the new
+server&#8217;s hostname according to [wiki:ServerNames].</li>
+<li><strong>Deployment (Rackspace):</strong> Spin up a new instance using Rackspace&#8217;s
+management console (see remark below):<ul>
+<li>Go to <a class="reference external" href="https://manage.rackspacecloud.com/">https://manage.rackspacecloud.com/</a></li>
+<li>Depending on whether you want to create a managed or unmanaged
+instance, log in either as user &#8220;okfn&#8221; or as &#8220;okfnmanaged&#8221;
+(request password at Rufus or Nils)</li>
+<li>Go to &#8220;Hosting/Cloud Servers&#8221;, tab &#8220;Server Instances&#8221;. Press &#8220;Add
+Server&#8221;.</li>
+<li>Select &#8220;Ubuntu 12.04 LTS&#8221; and enter hostname and amount of RAM.</li>
+<li>Rackspace will display you the details of the server, in
+particular its IP address.</li>
+<li>Once the system has been built and booted, a mail with a random
+root password will go to <a class="reference external" href="mailto:sysadmin&#37;&#52;&#48;okfn&#46;org">sysadmin<span>&#64;</span>okfn<span>&#46;</span>org</a>.</li>
+</ul>
+</li>
+<li><strong>Deployment (Amazon EC2):</strong> Spin up a new instance using our AWS
+script, add a name tag and enable the &#8220;termination protection&#8221; (yes,
+the latter will evetually be handled by manage.py too). See also
+section <em>Access credentials</em> below.</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;cd&nbsp;sysadmin/aws/&nbsp;&nbsp;&nbsp;&nbsp;./manage.py&nbsp;&nbsp;create_instance&nbsp;--region&nbsp;eu-west-1&nbsp;ubuntu-lucid-64-ebs&nbsp;t1.micro&nbsp;eu17</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;ec2-create-tags&nbsp;--region&nbsp;eu-west-1&nbsp;$INSTANCE&nbsp;--tag&nbsp;Name=eu17&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;ec2-modify-instance-attribute&nbsp;--region&nbsp;eu-west-1&nbsp;--disable-api-termination&nbsp;true&nbsp;$INSTANCE</span></tt></div>
+</div>
+<ul class="simple">
+<li><strong>DNS</strong>: Add an A record for hostname and IP address, see
+<a class="reference external" href="Sysadmin/DomainServices">Sysadmin/DomainServices</a>. You can check
+whether the record was created correctly with &#8220;&#8221; )</li>
+<li><strong>Book keeping</strong>: add the server information into the &#8220;Hosts&#8221; tab of
+our <a class="reference external" href="https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdC1IZ2kwRDMtX2ZaM0ZELWVJQzBrZXc#gid=11">Server/Service
+matrix</a>.</li>
+<li><strong>Customise</strong>: The new cloud server has been deployed. Now customize
+it with our <a class="reference external" href="https://bitbucket.org/okfn/sysadmin/src/default/bin/fabfile.py">fabric
+script</a>
+using its method &#8220;instance_setup()&#8221;. (On Amazon EC2, use user
+<em>ubuntu</em> instead of <em>root</em> in case of a EC2 instance). Set
+&#8220;<tt class="docutils literal"><span class="pre">harden=False</span></tt>&#8221; if you don&#8217;t want to disable the root account
+and password login:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;fab&nbsp;--host&nbsp;root&#64;${HOST}&nbsp;instance_setup:hostname=${HOST},harden=True&nbsp;</span></tt></p>
+<ul class="simple">
+<li>&#8216;&#8217;&#8216;Reverse DNS (not for Amazon) &#8216;&#8217;&#8216;: Set server hostname as reverse
+DNS for the server&#8217;s main IP address.<ul>
+<li>RackSpace: In the Rackspace management interface&#8217;s overview for
+this server, click on the tab &#8220;DNS&#8221;. In section &#8220;Reverse DNS
+Management&#8221;, set the hostname as reverse DNS record for the IP
+address.</li>
+</ul>
+</li>
+<li><strong>Backup:</strong> (optional, Rackspace only) If the new host shall be
+automatically snapshot: Within Rackspace&#8217;s management interface&#8217;s
+overview for this server ...<ul>
+<li>Click on the tab &#8220;Images&#8221; and press &#8220;Enable scheduled Imaging&#8221;</li>
+<li>Select e.g. daily backup 02:00-04:00 and weekly backup on Sundays</li>
+<li>Finish with &#8220;Save Schedule&#8221;.</li>
+</ul>
+</li>
+<li><strong>Monitoring:</strong> Add the server to Nagios. On eu1.okfn.org:<ul>
+<li>Add it to /etc/nagios3/conf.d/hosts.cfg</li>
+<li>In /etc/nagios3/conf.d/services_nagios2.cfg add it to (and maybe
+)</li>
+<li>sudo /etc/init.d/nagios3 reload</li>
+<li>Check on <a class="reference external" href="http://status.okfn.org/cgi-bin/nagios3/status.cgi">http://status.okfn.org/cgi-bin/nagios3/status.cgi</a></li>
+<li>Don&#8217;t forget to commit &amp; push.</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="remarks">
+<h3>Remarks<a class="headerlink" href="#remarks" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>We now have &#8220;AWS Premium Support, Bronze.&#8221; ~~As long as we do not
+subscribe to their &#8220;AWS Premium Support&#8221; our only way to file a
+technical issue report at Amazon is <a class="reference external" href="http://www.amazon.com/gp/html-forms-controller/aws-report-issue1">this
+form</a>~~</li>
+<li>We do not yet have re-written our <a class="reference external" href="https://bitbucket.org/okfn/sysadmin/src/tip/aws/">aws
+scripts</a> to use
+<a class="reference external" href="http://www.rackspace.com/cloud/cloud_hosting_products/servers/api/">Rackspace&#8217;s
+API</a>
+(e.g. using <a class="reference external" href="http://incubator.apache.org/libcloud/">libcloud</a>, see
+#345). Hence we use Rackspace&#8217;s webinterface.</li>
+<li>Rackspace has managed ubuntu servers only in their US cloud. That is
+about to change.</li>
+<li>We can&#8217;t file a set of standard changes to be applied to any new
+server; But we probably can declare one server to be the image master
+for new ones. See
+<a class="reference external" href="https://manage.rackspacecloud.com/Tickets/ViewTicket.do?ticketId=113872">RS#113872</a></li>
+<li>Rackspace does not have a concept similar to Amazon&#8217;s EBS. On the
+other side it doesn&#8217;t need it so badly because the images have
+reasonable size and are always persistant.</li>
+<li>Rackspace does have an equivalent to S3 called
+&#8220;<a class="reference external" href="http://www.rackspace.com/cloud/cloud_hosting_products/files/api/">Cloudfiles</a>&#8221;.
+They seem to be easy to use and would be the way to go if the
+persistent root block device is not large enough. Our Rackspace
+accounts are not yet activated to use Cloudfiles.</li>
+<li>It doesn&#8217;t look like there would be an equivalent to EC&#8217;s &#8220;security
+groups&#8221;, the Could Servers have to do their firewalling themselves.
+Exception: if we happen to use the services from Rackspace&#8217;s
+&#8220;Dedicated Group&#8221;, in which case there was a managed firewall in
+front of our cloud servers.</li>
+<li>These are all virtualized boxes so you can&#8217;t run VMs within them! See
+<a class="reference external" href="http://serverfault.com/questions/128145/linux-virtualization-options-on-ec2">http://serverfault.com/questions/128145/linux-virtualization-options-on-ec2</a>
+(comment from Nils: there should be ways to make OpenVZ/LXC/qemu
+work, but it&#8217;s probably not worth the effort)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="access-credentials">
+<h2>Access credentials<a class="headerlink" href="#access-credentials" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Rackspace: Get username/password for their <a class="reference external" href="https://manage.rackspacecloud.com/">management
+interface</a> from Rufus</li>
+<li>Amazon: There is a master password for the <a class="reference external" href="https://console.aws.amazon.com/ec2/home">AWS
+console</a>. For <a class="reference external" href="http://docs.amazonwebservices.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html">scripting
+AWS</a>,
+you need:<ul>
+<li>For Amazon&#8217;s REST API, e.g. our boto based
+<strong>`aws/manage.py &lt;https://bitbucket.org/okfn/sysadmin/src/default/aws/manage.py&gt;`__</strong>:
+Get the &#8220;AWS access key id&#8221; and the &#8220;AWS secret access key&#8221; from
+Rufus or from our AWS account. Create a ~/.boto file like this:</li>
+</ul>
+</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;[Credentials]aws_access_key_id&nbsp;=&nbsp;...aws_secret_access_key&nbsp;=&nbsp;...</span></tt></p>
+<ul class="simple">
+<li><ul class="first">
+<li>For Amazon&#8217;s SOAP API, e.g. <strong>ec2-tools</strong> and scripts based on
+them: Get our AWS certificate and key PEM files from Rufus (SHA1
+Fingerprint=CC:8A:97:1A:10:BF:76:91:6C:A0:EF:D3:C1:F9:EC:C9:5D:1D:E3:AE).
+Store them on your local machine and export their locations before
+running the scripts:</li>
+</ul>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;export&nbsp;EC2_CERT=${PATH_OF_AWS_CERTIFICATE_PEM_FILE}</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;export&nbsp;EC2_PRIVATE_KEY=${PATH_OF_AWS_KEY_PEM_FILE}</span></tt></div>
+</div>
+</div>
+<div class="section" id="appendix-hosting-costs">
+<h2>Appendix: Hosting costs<a class="headerlink" href="#appendix-hosting-costs" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rackspace-hosting-costs">
+<h3>Rackspace hosting costs<a class="headerlink" href="#rackspace-hosting-costs" title="Permalink to this headline">¶</a></h3>
+<p>Rackspace has several datacenters for cloud servers. At least one dc is
+in UK (London). The US and the UK prices differ.</p>
+<ul class="simple">
+<li>Linux VMs are paid by memory per time: 6ct (4p) per GB*h = $43.83
+(£29.22) per GB*month</li>
+<li>Windows (2008) VMs are : 8ct (5.2p) per GB*h = $58.40 (£37.96) per
+GB*month</li>
+<li>managed VMs cost a premium: 12ct (10p) per h = $87.66 ($73.05) per
+month per VM</li>
+<li>There is a fixed monthly account fee if there is at least one managed
+VM: $100 (£65) per month</li>
+<li>There is no charge for incoming traffic</li>
+<li>There is a charge for ourgoing traffic: 18ct (12p) per GB = $180
+(£120) per TB</li>
+</ul>
+<p>So the formula for the monthly fee is:</p>
+<ul class="simple">
+<li>US cloud servers:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;$43.83/GB&nbsp;&nbsp;*&nbsp;&nbsp;total&nbsp;memory&nbsp;of&nbsp;all&nbsp;Linux&nbsp;VMs&nbsp;+&nbsp;&nbsp;&nbsp;$58.40/GB&nbsp;&nbsp;*&nbsp;&nbsp;total&nbsp;memory&nbsp;of&nbsp;all&nbsp;Windows&nbsp;VMs&nbsp;+&nbsp;&nbsp;&nbsp;$87.66&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;total&nbsp;number&nbsp;of&nbsp;managed&nbsp;VMs&nbsp;&nbsp;+&nbsp;&nbsp;$100.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;1&nbsp;managed&nbsp;VM)&nbsp;+&nbsp;&nbsp;$180.00/TB&nbsp;&nbsp;*&nbsp;&nbsp;total&nbsp;outgoing&nbsp;traffic</span></tt></p>
+<ul class="simple">
+<li>UK cloud servers:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;£29.22/GB&nbsp;&nbsp;*&nbsp;&nbsp;total&nbsp;memory&nbsp;of&nbsp;all&nbsp;Linux&nbsp;VMs&nbsp;+&nbsp;&nbsp;&nbsp;£37.96/GB&nbsp;&nbsp;*&nbsp;&nbsp;total&nbsp;memory&nbsp;of&nbsp;all&nbsp;Windows&nbsp;VMs&nbsp;+&nbsp;&nbsp;&nbsp;£73.05&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;&nbsp;total&nbsp;number&nbsp;of&nbsp;managed&nbsp;VMs&nbsp;+&nbsp;&nbsp;&nbsp;£65.00&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(if&nbsp;there&nbsp;is&nbsp;at&nbsp;least&nbsp;1&nbsp;managed&nbsp;VM)&nbsp;+&nbsp;&nbsp;£120.00/TB&nbsp;&nbsp;*&nbsp;&nbsp;total&nbsp;outgoing&nbsp;traffic</span></tt></p>
+<p>Remarks:</p>
+<ul class="simple">
+<li>New features are first rolled out in the US cloud.</li>
+<li>Managed and unmanaged cloud servers can only be adminstered with
+separate Rackspace accounts. :-(</li>
+<li>For my customers, traffic costs have been neglectable so far.</li>
+</ul>
+</div>
+<div class="section" id="sources">
+<h3>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>RackSpace:<ul>
+<li><a class="reference external" href="http://www.rackspace.com/cloud/cloud_hosting_products/servers/pricing/">US cloud
+prices</a></li>
+<li><a class="reference external" href="http://www.rackspace.co.uk/cloud-hosting/cloud-products/cloud-servers/prices/">UK unmanaged
+cloud</a></li>
+<li><a class="reference external" href="http://www.rackspace.co.uk/cloud-hosting/cloud-products/managed-cloud/prices/">UK managed
+cloud</a></li>
+</ul>
+</li>
+<li>Memset:<ul>
+<li>By the hour (unmanaged only): <a class="reference external" href="http://www.memset.com/cloud/compute/">http://www.memset.com/cloud/compute/</a></li>
+<li>Monthly: <a class="reference external" href="http://www.memset.com/dedicated-servers/vps/">http://www.memset.com/dedicated-servers/vps/</a></li>
+<li>Managed: <a class="reference external" href="http://www.memset.com/support/self-managed.php">http://www.memset.com/support/self-managed.php</a></li>
+</ul>
+</li>
+<li>Linode: <a class="reference external" href="https://manager.linode.com/signup/#plans">https://manager.linode.com/signup/#plans</a></li>
+<li>Amazon EC2:<ul>
+<li>Types: <a class="reference external" href="http://aws.amazon.com/ec2/#instance">http://aws.amazon.com/ec2/#instance</a> * Pricing:
+<a class="reference external" href="http://aws.amazon.com/ec2/pricing/">http://aws.amazon.com/ec2/pricing/</a></li>
+<li>Calculator: <a class="reference external" href="http://calculator.s3.amazonaws.com/calc5.html">http://calculator.s3.amazonaws.com/calc5.html</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="appendix-standard-changes-to-managed-rackspace-servers">
+<h2>Appendix: Standard changes to managed Rackspace servers<a class="headerlink" href="#appendix-standard-changes-to-managed-rackspace-servers" title="Permalink to this headline">¶</a></h2>
+<p>Should go into our Fabric script (see #601):</p>
+<ul class="simple">
+<li>Disable too strict fail2ban rule which blocks ssh login from IPs with
+broken reverse DNS:</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;sudo&nbsp;cp&nbsp;-a&nbsp;/etc/fail2ban/filter.d/sshd.conf&nbsp;/etc/fail2ban/filter.d/sshd.conf.ORIG</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;sudo&nbsp;sed&nbsp;'/POSSIBLE&nbsp;BREAK-IN&nbsp;ATTEMPT/d'&nbsp;-i&nbsp;/etc/fail2ban/filter.d/sshd.conf</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;sudo&nbsp;/etc/init.d/fail2ban&nbsp;restart&nbsp;&nbsp;&nbsp;&nbsp;</span></tt></div>
+</div>
+<ul class="simple">
+<li>If you disabled ssh password login, add an exception for the
+Rackspace management IPs:</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;sudo&nbsp;cp&nbsp;-a&nbsp;/etc/ssh/sshd_config&nbsp;/etc/ssh/sshd_config.1</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;echo&nbsp;-e&nbsp;&quot;\nMatch&nbsp;Host&nbsp;174.143.23.0/25,94.236.100.0/25,89.234.31.0/25,64.39.4.132\n&nbsp;&nbsp;&nbsp;&nbsp;PasswordAuthentication&nbsp;yes&quot;&nbsp;|&nbsp;\</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sudo&nbsp;tee&nbsp;-a&nbsp;/etc/ssh/sshd_config&nbsp;&nbsp;&nbsp;&nbsp;sudo&nbsp;restart&nbsp;ssh</span></tt></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Server hosting</a><ul>
+<li><a class="reference internal" href="#how-to-spin-up-a-new-cloud-instance">How to spin up a new cloud instance</a><ul>
+<li><a class="reference internal" href="#remarks">Remarks</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#access-credentials">Access credentials</a></li>
+<li><a class="reference internal" href="#appendix-hosting-costs">Appendix: Hosting costs</a><ul>
+<li><a class="reference internal" href="#rackspace-hosting-costs">Rackspace hosting costs</a></li>
+<li><a class="reference internal" href="#sources">Sources</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#appendix-standard-changes-to-managed-rackspace-servers">Appendix: Standard changes to managed Rackspace servers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="email.html"
+                        title="previous chapter">Email aliases and forwarders</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mailinglists.html"
+                        title="next chapter">Mailing list hosting</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/sysadmin/services/hosting.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/hosting.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="mailinglists.html" title="Mailing list hosting"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="email.html" title="Email aliases and forwarders"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

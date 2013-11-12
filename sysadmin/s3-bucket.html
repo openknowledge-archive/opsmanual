@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Create S3 bucket and user &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>S3 is a good place for static content. This document is about how to
+create and use a AWS S3 bucket for static content.</p>
+<div class="section" id="create-s3-bucket-and-user">
+<h1>Create S3 bucket and user<a class="headerlink" href="#create-s3-bucket-and-user" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-aws-web-console">
+<h2>... using AWS web console<a class="headerlink" href="#using-aws-web-console" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Log into AWS console as administrative user, e.g. as
+&#8220;<a class="reference external" href="mailto:sysadmin&#37;&#52;&#48;okfn&#46;org">sysadmin<span>&#64;</span>okfn<span>&#46;</span>org</a>&#8220;</li>
+<li><strong>Create a new bucket</strong><ul>
+<li>Go to tab &#8220;<a class="reference external" href="https://console.aws.amazon.com/s3/">S3</a>&#8221; and
+create a new bucket, e.g. &#8220;docs.ckan.org&#8221;</li>
+<li>Right-click on the new bucket, &#8220;Properties&#8221;</li>
+<li>In the &#8220;Properties&#8221; pane, go to sub-tab &#8220;Permissions&#8221; and grant
+&#8220;View permissions&#8221; (and maybe &#8220;List&#8221;) to &#8220;Everyone&#8221;</li>
+<li>In the &#8220;Properties&#8221; pane, go to sub-tab &#8220;Website&#8221;, &#8220;enable&#8221; it
+with &#8220;Index document = index.html&#8221;. Write down the &#8220;Endpoint&#8221;,
+e.g. <a class="reference external" href="http://docs.ckan.org.s3-website-eu-west-1.amazonaws.com/">http://docs.ckan.org.s3-website-eu-west-1.amazonaws.com/</a></li>
+</ul>
+</li>
+<li><strong>Create a group and allow it to access the new bucket</strong><ul>
+<li>Go to the console main tab
+&#8220;<a class="reference external" href="https://console.aws.amazon.com/iam/">IAM</a>&#8221; ==&gt; &#8220;Groups&#8221;</li>
+<li>Create a new group, e.g. &#8220;docs.ckan.org-rw&#8221;</li>
+<li>Click on the new group &#8220;docs.ckan.org-rw&#8221;, and go to the
+group-pane&#8217;s sub-tab &#8220;Permissions&#8221;. Press &#8220;Attach Policy&#8221; ==&gt;
+&#8220;Policy Generator&#8221; and enter and &#8220;apply&#8221; this policy:<ul>
+<li>Effect = Allow</li>
+<li>AWS Service = Amazon S3</li>
+<li>Actions = All actions *</li>
+<li>Amazon Resource Name (ARN) = arn:aws:s3:::docs.ckan.org,
+arn:aws:s3:::docs.ckan.org/*</li>
+</ul>
+</li>
+<li><strong>TODO</strong>: Restrict the policy so the user can do file and
+directory operations only, but e.g. not delete the bucket or
+change access permissions</li>
+</ul>
+</li>
+<li><strong>Create the user</strong>:<ul>
+<li>Go to the console main tab &#8220;IAM&#8221; ==&gt; &#8220;Users&#8221;</li>
+<li>&#8220;Create new user&#8221;, enter the user e.g. &#8220;docs.ckan.org-sync-user&#8221;
+and leave &#8220;Generate an access key for each User&#8221; ticked. When you
+get the dialog box &#8220;Your 1 User has been created successfully&#8221;,
+click either &#8220;Download credentials&#8221;, or &#8220;Show User Security
+Credentials&#8221; and write down the &#8220;Access Key Id&#8221; and the &#8220;Secret
+Access Key&#8221; for the new user.</li>
+<li>Add the new user &#8220;docs.ckan.org-sync-user&#8221; to the group
+&#8220;docs.ckan.org-rw&#8221;</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="using-aws-command-line-tools">
+<h2>... using AWS command line tools<a class="headerlink" href="#using-aws-command-line-tools" title="Permalink to this headline">¶</a></h2>
+<p>(To be done. See e.g. <a class="reference external" href="http://andrewhitchcock.org/?post=325">here</a>)</p>
+</div>
+</div>
+<div class="section" id="set-dns-cname">
+<h1>Set DNS CNAME<a class="headerlink" href="#set-dns-cname" title="Permalink to this headline">¶</a></h1>
+<p>Set a CNAME for the endpoint, e.g. <strong>docs.ckan.org ==&gt;
+docs.ckan.org.s3-website-eu-west-1.amazonaws.com</strong>.</p>
+</div>
+<div class="section" id="how-to-use-the-bucket">
+<h1>How to use the bucket<a class="headerlink" href="#how-to-use-the-bucket" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Have the &#8220;Access Key Id&#8221; and the &#8220;Secret Access Key&#8221; for your user at
+hand</li>
+<li>Install <a class="reference external" href="http://s3tools.org/s3cmd">s3cmd</a>. For Ubuntu it is
+available as package &#8220;s3cmd&#8221;</li>
+<li>Bootstrap a new s3cmd config:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s3cmd&nbsp;&nbsp;&nbsp;-c&nbsp;~/.s3cfg-docs.ckan.org&nbsp;&nbsp;&nbsp;--configure</span></tt></p>
+<ul class="simple">
+<li>Test:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s3cmd&nbsp;&nbsp;&nbsp;-c&nbsp;~/.s3cfg-docs.ckan.org&nbsp;&nbsp;&nbsp;ls&nbsp;&nbsp;&nbsp;s3://docs.ckan.org/</span></tt></p>
+<ul class="simple">
+<li>Now you can do all sorts of thing, e.g. rsync-style</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s3cmd&nbsp;&nbsp;&nbsp;-c&nbsp;~/.s3cfg-docs.ckan.org&nbsp;&nbsp;&nbsp;sync&nbsp;&nbsp;&nbsp;/path/to/local/clone/&nbsp;&nbsp;&nbsp;s3://docs.ckan.org/</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;s3cmd&nbsp;&nbsp;&nbsp;-c&nbsp;~/.s3cfg-docs.ckan.org&nbsp;&nbsp;&nbsp;setacl&nbsp;--acl-public&nbsp;&nbsp;&nbsp;--recursive&nbsp;s3://docs.ckan.org/</span></tt></div>
+</div>
+<ul class="simple">
+<li>TODO: Find out how to sync without having to fix ACLs for public
+access every time</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Create S3 bucket and user</a><ul>
+<li><a class="reference internal" href="#using-aws-web-console">... using AWS web console</a></li>
+<li><a class="reference internal" href="#using-aws-command-line-tools">... using AWS command line tools</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#set-dns-cname">Set DNS CNAME</a></li>
+<li><a class="reference internal" href="#how-to-use-the-bucket">How to use the bucket</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/s3-bucket.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/s3-bucket.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

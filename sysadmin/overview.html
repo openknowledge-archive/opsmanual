@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Infrastructure overview &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" />
+    <link rel="up" title="Sysadmin Wiki" href="index.html" />
+    <link rel="next" title="List of infrastructure services" href="services/index.html" />
+    <link rel="prev" title="Sysadmin Wiki" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="services/index.html" title="List of infrastructure services"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Sysadmin Wiki"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Sysadmin Wiki</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="infrastructure-overview">
+<h1>Infrastructure overview<a class="headerlink" href="#infrastructure-overview" title="Permalink to this headline">¶</a></h1>
+<p>OKF operates many different services for many different people. This document is
+intended to provide a broad overview of the infrastructure underlying these
+services and how it is managed.</p>
+<p>The infrastructure operated by OKF (and specifically that managed by the
+Sysadmin team) can broadly be divided into two categories:</p>
+<ol class="arabic simple">
+<li><a class="reference internal" href="#self-hosted-infrastructure">Self-hosted infrastructure</a></li>
+<li><a class="reference internal" href="#externally-hosted-infrastructure">Externally-hosted infrastructure</a></li>
+</ol>
+<p>This document describes these two areas below:</p>
+<div class="section" id="self-hosted-infrastructure">
+<h2>Self-hosted infrastructure<a class="headerlink" href="#self-hosted-infrastructure" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="machine-hosting">
+<h3>Machine hosting<a class="headerlink" href="#machine-hosting" title="Permalink to this headline">¶</a></h3>
+<p>We maintain a reasonable number of (primarily Ubuntu Linux) servers across a
+number of hosting providers. Without exception, these machines should be managed
+by our Ansible configuration management system.</p>
+<p>Please refer to the <a class="reference external" href="https://github.com/okfn/sysconfig-ansible/blob/master/inventory/hosts">Ansible inventory</a> for the canonical list of managed
+hosts and their whereabouts.</p>
+</div>
+<div class="section" id="mailing-lists">
+<h3>Mailing lists<a class="headerlink" href="#mailing-lists" title="Permalink to this headline">¶</a></h3>
+<p>We maintain a <a class="reference external" href="http://www.list.org/">Mailman</a> instance which manages a wide variety of public and
+private mailing lists on the <tt class="docutils literal"><span class="pre">lists.okfn.org</span></tt> mail domain.</p>
+</div>
+<div class="section" id="etherpad">
+<h3>Etherpad<a class="headerlink" href="#etherpad" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="http://etherpad.org/">Etherpad</a> is an online document editor providing collaborative real-time
+authoring. We host an instance at <a class="reference external" href="http://pad.okfn.org">http://pad.okfn.org</a>.</p>
+</div>
+<div class="section" id="wiki">
+<h3>Wiki<a class="headerlink" href="#wiki" title="Permalink to this headline">¶</a></h3>
+<p>There is a somewhat under-loved MediaWiki instance available at
+<a class="reference external" href="http://wiki.okfn.org">http://wiki.okfn.org</a></p>
+</div>
+</div>
+<div class="section" id="externally-hosted-infrastructure">
+<h2>Externally-hosted infrastructure<a class="headerlink" href="#externally-hosted-infrastructure" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mail-routing">
+<h3>Mail routing<a class="headerlink" href="#mail-routing" title="Permalink to this headline">¶</a></h3>
+<p>We use <a class="reference external" href="https://www.fastmail.fm">FastMail</a> as our front-line mail router for almost all mail domains
+associated with OKF (<tt class="docutils literal"><span class="pre">okfn.org</span></tt>, <tt class="docutils literal"><span class="pre">ckan.org</span></tt>, etc.). One notable exception is
+the mailing list server (<tt class="docutils literal"><span class="pre">lists.okfn.org</span></tt>) described above: <a class="reference internal" href="#mailing-lists">Mailing lists</a></p>
+</div>
+<div class="section" id="staff-email">
+<h3>Staff email<a class="headerlink" href="#staff-email" title="Permalink to this headline">¶</a></h3>
+<p>OKF Central staff email, calendars, etc. (often collectively known as
+&#8220;groupware&#8221;) is currently provided by <a class="reference external" href="http://www.google.com/enterprise/apps/business/">Google Apps for Business</a>.</p>
+</div>
+<div class="section" id="wordpress-farm">
+<h3>WordPress &#8220;farm&#8221;<a class="headerlink" href="#wordpress-farm" title="Permalink to this headline">¶</a></h3>
+<p>A multi-domain <a class="reference external" href="http://wordpress.org">WordPress</a> &#8220;farm&#8221; is operated for us by <a class="reference external" href="http://wpengine.com">WPEngine</a>. This hosts,
+among others, <tt class="docutils literal"><span class="pre">okfn.org</span></tt>, <tt class="docutils literal"><span class="pre">blog.okfn.org</span></tt>, as well as many other project and
+local group sites.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Infrastructure overview</a><ul>
+<li><a class="reference internal" href="#self-hosted-infrastructure">Self-hosted infrastructure</a><ul>
+<li><a class="reference internal" href="#machine-hosting">Machine hosting</a></li>
+<li><a class="reference internal" href="#mailing-lists">Mailing lists</a></li>
+<li><a class="reference internal" href="#etherpad">Etherpad</a></li>
+<li><a class="reference internal" href="#wiki">Wiki</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#externally-hosted-infrastructure">Externally-hosted infrastructure</a><ul>
+<li><a class="reference internal" href="#mail-routing">Mail routing</a></li>
+<li><a class="reference internal" href="#staff-email">Staff email</a></li>
+<li><a class="reference internal" href="#wordpress-farm">WordPress &#8220;farm&#8221;</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Sysadmin Wiki</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="services/index.html"
+                        title="next chapter">List of infrastructure services</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/overview.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/overview.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="services/index.html" title="List of infrastructure services"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Sysadmin Wiki"
+             >previous</a> |</li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="index.html" >Sysadmin Wiki</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

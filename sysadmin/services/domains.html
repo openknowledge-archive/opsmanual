@@ -1,0 +1,359 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Domain registration and naming &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="List of infrastructure services" href="index.html" />
+    <link rel="next" title="Email aliases and forwarders" href="email.html" />
+    <link rel="prev" title="WordPress “farm”" href="blogfarm.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="email.html" title="Email aliases and forwarders"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="blogfarm.html" title="WordPress “farm”"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="domain-registration-and-naming">
+<h1>Domain registration and naming<a class="headerlink" href="#domain-registration-and-naming" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Domain names are handled on two, technically independent levels:</p>
+<ul class="simple">
+<li><strong>Domain Registrar</strong>: To register new domains, to make sure they
+point to the correct DNS servers, and to renew already registered
+domains. We use <a class="reference external" href="http://gandi.net/">gandi.net</a> (<a class="reference external" href="https://www.gandi.net/domain/price/info">TLD price
+list</a>).</li>
+<li><strong>DNS Service</strong>: To administer DNS records (A/CNAME/MX/...) for
+domains which we have already registered. We use <a class="reference external" href="http://www.dnsmadeeasy.com/">DNS Made
+Easy</a> (&#8220;<strong>DME</strong>&#8221;).</li>
+</ul>
+<p>The connection between the two levels is that you have to tell the
+registrar which DNS service you intend to use for a specific domain.
+These settings are called the <strong>WHOIS NS records</strong>.</p>
+<p>Remark: Usually the order doesn&#8217;t matter, but for some TLDs (e.g. .DE),
+a new domain has first to be configured properly at the DNS service
+before it can be registered or transferred.</p>
+</div>
+<div class="section" id="a-how-to-transfer-an-existing-domain-to-okf">
+<h2>1a: How to <em>transfer</em> an <em>existing</em> domain to OKF<a class="headerlink" href="#a-how-to-transfer-an-existing-domain-to-okf" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="for-the-current-domain-owner">
+<h3>For the current domain owner:<a class="headerlink" href="#for-the-current-domain-owner" title="Permalink to this headline">¶</a></h3>
+<p>So you are the current owner of a domain and you want to transfer ot to
+OKF. You (or your domain admin) will have to prepare the domain transfer
+OR THE TRANSFER IT WILL FAIL. This is what you need to do:</p>
+<ul class="simple">
+<li>Get the <strong>domain (transfer) secret</strong> or <strong>Auth(Info)Code</strong> for the
+domain.</li>
+<li>Make sure the domain is not locked (some registrar call this
+<em>&#8220;disable Theft protection&#8221;</em>)</li>
+<li>Make sure any form of owner pseudonymization/anonymisation (<em>&#8220;Privacy
+protection&#8221;</em>) is disabled for the domain. Your mail address as domain
+owner should be visible in the domains <a class="reference external" href="http://www.whois.net/">WHOIS
+record</a>.</li>
+<li>Make sure that very owner mail address is functional. The registry
+will send a confirmation request to this address.</li>
+<li>In case the DNS servers for the domain are not already
+ns{10,11,12,13,14,15}.dnsmadeeasy.com. write down the list of all DNS
+records (A, CNAMEs, MX etc) for this domain. This list is called the
+<strong>zone file</strong> for the domain.</li>
+</ul>
+<p>When everything is prepared, do this:</p>
+<ul class="simple">
+<li>Send the above !AuthCode and (if required) the zone file to
+<a class="reference external" href="mailto:sysadmin&#37;&#52;&#48;okfn&#46;org">sysadmin<span>&#64;</span>okfn<span>&#46;</span>org</a>.</li>
+<li>Watch mail for the confirmation request from Gandi and follow the
+confirmation link</li>
+<li>Watch mail for a notification from your current registrar. Usually if
+you don&#8217;t do anything, the transfer will proceed after a couple of
+days automatically. Sometimes a confirmation link is included which
+allows you to speed up the transfer, but ...<ul>
+<li><strong>BEWARE: Some dodgy registrars send transfer notifications
+containing a *&#8221;click here to cancel the transfer&#8221;* link - DO NOT
+FOLLOW THAT LINK, the transfer would get cancelled immediately
+without any further questions.</strong>.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="for-the-okf-domain-admin">
+<h3>For the OKF domain admin:<a class="headerlink" href="#for-the-okf-domain-admin" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Verify the above requirements for domain transfer are given (not
+locked, not anonymized)</li>
+<li>If the domain is not yet served by the DME name servers: add the
+domains to DME (see below)</li>
+<li>Log into <a class="reference external" href="http://gandi.net/">gandi.net</a> with our handle
+OS1535-GANDI and transfer the domain in:<ul>
+<li>Using the &#8220;bulk transfer&#8221; option might speed up things</li>
+<li>Set our handle OS1535-GANDI (Open Knowledge Foundation,
+<a class="reference external" href="mailto:sysadmin&#37;&#52;&#48;okfn&#46;org">sysadmin<span>&#64;</span>okfn<span>&#46;</span>org</a>) as new owner.</li>
+<li>Set DNS servers to ns{10,11,12,13,14,15}.dnsmadeeasy.com</li>
+</ul>
+</li>
+<li>When the confirmation request to the future owner hits
+<a class="reference external" href="mailto:sysadmin&#37;&#52;&#48;okfn&#46;org">sysadmin<span>&#64;</span>okfn<span>&#46;</span>org</a>, confirm it.If a transfer fails, log into Gandi, go
+to our account, <em>Orders in Progress</em>, click on <em>Detail</em> next to the
+<em>Failed</em> message and read the error message carefully. Usually it is
+telling.&#8212;-</li>
+</ul>
+</div>
+</div>
+<div class="section" id="b-how-to-register-a-new-domain-for-okf">
+<h2>1b: How to <em>register</em> a <em>new</em> domain for OKF<a class="headerlink" href="#b-how-to-register-a-new-domain-for-okf" title="Permalink to this headline">¶</a></h2>
+<p>This procedure will secure a <em>formely non-existing</em> domain for OKF. And
+it will prepare the next step (setting DNS records) by telling the
+register what DNS will be used for To register a new domain, log in as
+OS1535-GANDI (ask Rufus or Nils for the password). Domain registration
+is straightforward [Note to self: test this procedure!!]</p>
+<ul class="simple">
+<li>Enter the domain name you want to register and click on Search for a
+domain name. This should bring up the results.</li>
+<li>Make sure the automatically selected domain name has the right
+address (.org or .com etc) and add to cart.</li>
+<li>Choose 1yr duration and make sure it has the correct contact details</li>
+<li>Pay using paypal account and click continue. Enter OKF paypal
+details. This should bring up the checkout page and should indicate
+that the transaction has been completed successfully.</li>
+<li>Now set the DNS servers to be the DME name servers:<ul>
+<li>In the &#8220;Domains&#8221; dashbord, click on the new domain name</li>
+<li>In the bottom right section &#8220;dns Name servers&#8221;, click on &#8220;Modify
+servers&#8221;</li>
+<li>Set the DME name servers:<ul>
+<li>DNS1=ns10.dnsmadeeasy.com</li>
+<li>DNS2=ns11.dnsmadeeasy.com</li>
+<li>DNS3=ns12.dnsmadeeasy.com</li>
+<li>DNS4=ns13.dnsmadeeasy.com</li>
+<li>DNS5=ns14.dnsmadeeasy.com</li>
+<li>DNS6=ns15.dnsmadeeasy.com</li>
+<li>DNS7= [empty]</li>
+</ul>
+</li>
+<li>Press &#8220;Submit&#8221;</li>
+</ul>
+</li>
+<li>Sign out.</li>
+</ul>
+</div>
+<div class="section" id="how-to-add-a-domain-to-our-dns-service">
+<h2>2: How to add a domain to our DNS service<a class="headerlink" href="#how-to-add-a-domain-to-our-dns-service" title="Permalink to this headline">¶</a></h2>
+<p>To add a new domain (e.g. &#8220;okfn.it&#8221;) to DME&#8217;s DNS service (which can be
+done before or after registration of the domain):</p>
+<ul class="simple">
+<li>Login into <a class="reference external" href="https://cp.dnsmadeeasy.com/">https://cp.dnsmadeeasy.com/</a> as user
+<em>openknowledgefoundation</em>. Ask the
+<a class="reference external" href="Sysadmin/sysadmin">Sysadmin/sysadmin</a> team for the password.</li>
+<li>In the top right navigation, click on the leftmost &#8220;<em>DNS</em>&#8221;, then
+&#8220;<em>Managed DNS</em>&#8221;.</li>
+<li>Click on &#8220;Add Domains&#8221; and follow the dialog. (<strong>ToDo: document the
+details</strong>)</li>
+</ul>
+<p>Note that DME allows so-called &#8220;ANAME records&#8221;. That are &#8220;internal
+CNAMEs that look from outside like A-records&#8221;. Very handy!</p>
+<p>This is how you can test a DNS record without poisoning your local DNS
+cache with old data:</p>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;host&nbsp;&nbsp;-t&nbsp;&nbsp;a&nbsp;&nbsp;$DOMAIN_NAME_WITH_TAILING_DOT&nbsp;&nbsp;ns10.dnsmadeeasy.com.</span></tt></p>
+<p>e.g.</p>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;host&nbsp;&nbsp;-t&nbsp;&nbsp;a&nbsp;&nbsp;www.bibsoup.net.&nbsp;&nbsp;ns10.dnsmadeeasy.com.</span></tt></p>
+<p>You can observe a DNS record until you see the change:</p>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;watch&nbsp;&nbsp;host&nbsp;&nbsp;-t&nbsp;&nbsp;a&nbsp;&nbsp;$DOMAIN_NAME_WITH_TAILING_DOT&nbsp;&nbsp;ns10.dnsmadeeasy.com.</span></tt></p>
+<p>Now the change should show up in the global DNS system (provided the
+domain was properly delegated at its registrar to the DME DNS servers).
+If your local DNS cache isn&#8217;t storing an outdated record, you should see
+the change now:</p>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;host&nbsp;&nbsp;-t&nbsp;&nbsp;a&nbsp;&nbsp;$DOMAIN_NAME_WITH_TAILING_DOT</span></tt></p>
+<p>Alternatively you could verify that &#8220;ping&#8221; is now using the correct IP
+address:</p>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;ping&nbsp;&nbsp;$DOMAIN_NAME</span></tt></p>
+<p>Remarks:</p>
+<ul class="simple">
+<li>&#8216;&#8217;&#8216;Always *test* DNS changes as described above! &#8216;&#8217;&#8216;</li>
+<li>Do not forget tailing dots when you create CNAMEs, otherwise e.g.
+www.bibsoup.net. might end up pointing to
+s065.okserver.org.bibsoup.net. instead of s065.okserver.org.</li>
+</ul>
+</div>
+<div class="section" id="history">
+<h2>History<a class="headerlink" href="#history" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="old-registrars-accuwebhosting-and-entity100">
+<h3>Old registrars: accuwebhosting and entity100<a class="headerlink" href="#old-registrars-accuwebhosting-and-entity100" title="Permalink to this headline">¶</a></h3>
+<p>Our former DNS registrars
+<a class="reference external" href="https://domains.accuwebhosting.com/">AccuWebhosting</a> and
+<a class="reference external" href="http://entity100.supersite.myorderbox.com/">Entity100</a> are terrible.
+We migrated all domains we want to keep to gandi.net (see #958). If one
+still needs to renew or change Whois records for one of our domains
+there, follow this procedure:</p>
+<ul class="simple">
+<li>Go to <a class="reference external" href="https://domains.accuwebhosting.com/">https://domains.accuwebhosting.com/</a> (or
+<a class="reference external" href="http://entity100.supersite.myorderbox.com/">http://entity100.supersite.myorderbox.com/</a> in case of ePSI). Press on
+&#8220;My Account&#8221; (top right).</li>
+<li>A new window open. Login as <em>admin at okfn.org</em> (ePSI: <em>sysadmin at
+okfn.org</em>)</li>
+<li>Go to tab &#8220;Domains&#8221; ==&gt; &#8220;List all orders&#8221;</li>
+<li>Select the domain you want to change the whois for. You will end up
+in the &#8220;Domain&#8221; tab of our account.</li>
+<li>For changing the authorative nameservers: Go to sub-tab &#8220;Name
+Servers&#8221;, enter the new name servers and &#8220;Submit&#8221;.</li>
+<li>For renewing domains: Go to sub-tab &#8220;Renewal management&#8221;, list all
+domains which are about to expire soon and proceed from there.</li>
+</ul>
+</div>
+<div class="section" id="old-dns-service-fry">
+<h3>Old DNS service: Fry<a class="headerlink" href="#old-dns-service-fry" title="Permalink to this headline">¶</a></h3>
+<p>Fry used djbdns/tinydns which is violating DNS protocols, but
+nevertheless known-to-work. If we run into issue we set up our own DNS
+servers. They used NicTool as admin interface.</p>
+</div>
+<div class="section" id="old-dns-service-everydns">
+<h3>Old DNS service: EveryDNS<a class="headerlink" href="#old-dns-service-everydns" title="Permalink to this headline">¶</a></h3>
+<p>Before Fry, we used the free DNS service
+<a class="reference external" href="http://www.everydns.net/">EveryDNS</a>, but their new owner Dyn.com
+closed them down on August 31 2011. We could not migrate to DynDNS
+because their affordable plans only allow 75 records per zone, and we
+have more in okfn.org and ckan.net. Therefore we migrated to Fy - see
+#662 and #870</p>
+<p>EveryDNS did not offer an API nor supported <a class="reference external" href="http://tools.ietf.org/html/rfc2136">DNS
+update</a>. But one could activate
+AXFR for the zones, see
+<a class="reference external" href="http://www.everydns.com/faq/secondary-domain/server-to-poll-for-AXFRs">http://www.everydns.com/faq/secondary-domain/server-to-poll-for-AXFRs</a> .</p>
+<p>There was a <a class="reference external" href="http://hostingfu.com/article/everydns-python-api-and-command-shell">Python API to
+EveryDNS</a>
+from Scott Yang (we forked it
+<a class="reference external" href="https://knowledgeforge.net/okfn/sysadmin/file/tip/bin/vendor/everydnslib.py">here</a>),
+but it stopped working when EveryDNS added a capture to their login
+page.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Domain registration and naming</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#a-how-to-transfer-an-existing-domain-to-okf">1a: How to <em>transfer</em> an <em>existing</em> domain to OKF</a><ul>
+<li><a class="reference internal" href="#for-the-current-domain-owner">For the current domain owner:</a></li>
+<li><a class="reference internal" href="#for-the-okf-domain-admin">For the OKF domain admin:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#b-how-to-register-a-new-domain-for-okf">1b: How to <em>register</em> a <em>new</em> domain for OKF</a></li>
+<li><a class="reference internal" href="#how-to-add-a-domain-to-our-dns-service">2: How to add a domain to our DNS service</a></li>
+<li><a class="reference internal" href="#history">History</a><ul>
+<li><a class="reference internal" href="#old-registrars-accuwebhosting-and-entity100">Old registrars: accuwebhosting and entity100</a></li>
+<li><a class="reference internal" href="#old-dns-service-fry">Old DNS service: Fry</a></li>
+<li><a class="reference internal" href="#old-dns-service-everydns">Old DNS service: EveryDNS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="blogfarm.html"
+                        title="previous chapter">WordPress &#8220;farm&#8221;</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="email.html"
+                        title="next chapter">Email aliases and forwarders</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/sysadmin/services/domains.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/domains.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="email.html" title="Email aliases and forwarders"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="blogfarm.html" title="WordPress “farm”"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

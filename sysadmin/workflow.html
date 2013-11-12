@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Sysadmin helpdesk &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>This page documents how the sysadmin workflow should work. It&#8217;s useful
+to both the sysadmin team and the wider community as it explains how
+processes work.</p>
+<div class="section" id="sysadmin-helpdesk">
+<h1><strong>Sysadmin helpdesk</strong><a class="headerlink" href="#sysadmin-helpdesk" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>The team can be reached at <em>sysadmin</em>&#64; okfn.org.</li>
+<li>When sending mails to the help-desk, reporters are expected to
+include as much as details as possible w.r.t the help required.</li>
+<li>When a mail is received on <em>sysadmin</em>&#64;, the sysadmins create a
+&#8216;trac&#8217; (might be deprecated soon) ticket and cc the reporter, they
+will then proceed to prioritize it in their (trello) list.</li>
+<li>Note: the&#8217;&#8217; blog-coord&#8217;&#8216;&#64;, <em>sysadmin-coord</em>&#64; aliases are only for
+internal communication between sysadmin team members, issue reports
+must <strong>not</strong> posted there.</li>
+<li>The team prioritizes tasks based on importance w.r.t other issues and
+how quickly the task can be completed.</li>
+</ul>
+<div class="section" id="common-helpdesk-requests">
+<h2><strong>Common helpdesk requests</strong><a class="headerlink" href="#common-helpdesk-requests" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Email alias tasks (add, remove, modify)</li>
+<li>Domain registration, modification of dns records</li>
+<li>Implement backup processes</li>
+<li>Mailing lists management (create/remove/modify lists, backups)</li>
+</ul>
+</div>
+<div class="section" id="service-and-or-server-request-workfow">
+<h2>Service and/or Server request workfow<a class="headerlink" href="#service-and-or-server-request-workfow" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference external" href="Sysadmin/ServiceLifeCycle">Service Life Cycle</a></p>
+</div>
+</div>
+<div class="section" id="service-issue-downtime-notifications">
+<h1><strong>Service issue/downtime notifications</strong><a class="headerlink" href="#service-issue-downtime-notifications" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>In case of a event which affects a lot of users e.g okfn.org is down,
+announcements should be sent out over mail and other communication
+mediums, depending on the impact.</li>
+<li>The following doc may be used to identify which lists and aliases
+should be informed about the issue.</li>
+<li>When projects service/s are affected sysadmins are expected to
+contact the project leads and/or whoever else is directly
+responsible.</li>
+<li>Refer this doc to figure contact points for each project -</li>
+</ul>
+</div>
+<div class="section" id="request-prioritization">
+<h1><strong>Request prioritization</strong><a class="headerlink" href="#request-prioritization" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>A sysadmins task could include multiple items from monitoring to
+resolving issues.</li>
+<li>The tasks being worked are part either the larger set of goals -
+Sysadmin Roadmap or daily recurring issues.</li>
+</ul>
+<div class="section" id="sysadmin-roadmap">
+<h2><strong>Sysadmin Roadmap</strong><a class="headerlink" href="#sysadmin-roadmap" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The Roadmap can be found on the <a class="reference external" href="https://trello.com/board/roadmap-sept-2012/5050c25b31b23a412014cf9b">sysadmin
+roadmap</a></li>
+<li>The roadmap is a high level overview of goals and projects, these
+mainly involve improving current processes and would involve multiple
+smaller tasks.</li>
+<li>Examples of tasks in a roadmap would be, implementing better
+monitoring or configuration management, packaging etc.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="backups-and-disaster-recovery-wip">
+<h1><strong>Backups and Disaster Recovery (WIP)</strong><a class="headerlink" href="#backups-and-disaster-recovery-wip" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Current backup method <a class="reference external" href="http://wiki.okfn.org/Sysadmin/Backup">http://wiki.okfn.org/Sysadmin/Backup</a></li>
+<li>VM snapshot backups</li>
+<li>Webapp backups</li>
+<li>Static page backups</li>
+<li>Recovering using snapshots</li>
+<li>Recovering from backups</li>
+<li>DR process - who will have access<ul>
+<li>How do we do dry-runs (?)</li>
+<li>Will this be automated</li>
+</ul>
+</li>
+</ul>
+<p>Category:Sysadmin</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#"><strong>Sysadmin helpdesk</strong></a><ul>
+<li><a class="reference internal" href="#common-helpdesk-requests"><strong>Common helpdesk requests</strong></a></li>
+<li><a class="reference internal" href="#service-and-or-server-request-workfow">Service and/or Server request workfow</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#service-issue-downtime-notifications"><strong>Service issue/downtime notifications</strong></a></li>
+<li><a class="reference internal" href="#request-prioritization"><strong>Request prioritization</strong></a><ul>
+<li><a class="reference internal" href="#sysadmin-roadmap"><strong>Sysadmin Roadmap</strong></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#backups-and-disaster-recovery-wip"><strong>Backups and Disaster Recovery (WIP)</strong></a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/workflow.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/workflow.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

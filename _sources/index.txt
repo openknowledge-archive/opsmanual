@@ -1,9 +1,11 @@
 OKF Operations Manual
 =====================
 
-Welcome to the OKF Operations Manual. This is the canonical source for
-information on the operations and infrastructure of the Open Knowledge
-Foundation.
+Welcome. This is the OKF Operations Manual, where you will find documentation
+and advice on how the Open Knowledge Foundation (OKF) operates. While primarily
+intended to be used by OKF staff, the content here may also be useful for those
+affiliated with the OKF's Working and Local Groups, as well as our broader
+community.
 
 .. note::
 
@@ -13,6 +15,8 @@ Foundation.
 
 .. toctree::
    :maxdepth: 2
+
+   sysadmin/index
 
 What is this?
 =============

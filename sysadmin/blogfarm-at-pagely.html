@@ -1,0 +1,937 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>See also &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p><strong>DISCLAIMER</strong></p>
+<p><strong>THIS ARTICLE CONTAINS OUTDATED HISTORIC INFORMATION! Our blogfarm is
+no longer hosted at Page.ly. The content of this article was originally
+in `Sysadmin/Blogfarm &lt;Sysadmin/Blogfarm&gt;`__ and is only kept here for
+archeological purposes.</strong></p>
+<hr class="docutils" />
+<p>OKF has a blog farm at specialized Wordpress hoster
+<a class="reference external" href="https://page.ly/">Pagely</a>. It is a wordpress multisite installation
+that serves numerous properties from a single codebase. It can provide
+sites at <strong>{name}.okfn.org</strong> as well as at any domain name (via
+Wordpress&#8217; domain alias feature)..</p>
+<p>Amongst the sites it currently hosts are the <a class="reference external" href="http://okfn.org/">OKFN
+website</a>, the <a class="reference external" href="http://blog.okfn.org/">OKFN
+blog</a>, local OKFN chapters like <a class="reference external" href="http://okfn.be/">OKFN
+Belgium</a> or <a class="reference external" href="http://okfn.de/">OKFN Germany</a>, the
+<a class="reference external" href="http://publicdomainreview.org/">Public Domain Review</a>,
+<a class="reference external" href="http://ckan.org/">CKAN</a>, the <a class="reference external" href="http://okfestival.org/">Open Knowledge &amp; Data
+Festival</a>,
+<a class="reference external" href="http://openglam.org/">OpenGLAM</a>, <a class="reference external" href="http://dm2e.eu/">Digitised Manuscripts to
+Europeana</a> and many others.</p>
+<div class="section" id="see-also">
+<h1>See also<a class="headerlink" href="#see-also" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference external" href="Sysadmin/BlogfarmEssentials">Sysadmin/Blogfarm Essentials</a>
+contains guidelines for site owners how to activate polular features
+in this blogfarm.</li>
+<li><a class="reference external" href="Sysadmin/BlogfarmCodeDeployment">Sysadmin/Blogfarm Code
+Deployment</a> describes how to
+deploy code to this blogfarm.</li>
+</ul>
+</div>
+<div class="section" id="contact">
+<h1>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>For <strong>non-technical issues</strong> with the OKFN blog farm, e.g. with the
+content of one of its sites, contact either the owner of a specific
+blog site, or &lt;<strong>blog</strong>&#64;<strong>okfn</strong>.<strong>org</strong>&gt;</li>
+<li>For <strong>technical problems</strong> with the OKFN blog farm, notify either the
+owner of a specific blog site, or
+&lt;<strong>sysadmin</strong>&#64;<strong>okfn</strong>.<strong>org</strong>&gt; (See also
+<a class="reference external" href="Sysadmin">Sysadmin</a>).</li>
+</ul>
+<p>Note that our current wordpress codebase maintainer is Bobby, who is not
+on the sysadmin alias. The OKF core sysadmin will notify him where his
+involvement is needed. There is a mail alias that includes him as well
+(), but we only use it internally for alerts and ticket notifications.</p>
+<p>There is also a mailing list
+&lt;<a class="reference external" href="http://lists.okfn.org/mailman/listinfo/blog-coord">**blog-coord**&#64;**lists**.**okfn**.**org**</a>&gt;
+for general technical discussions.</p>
+<div class="section" id="how-to-report-failing-blog-pages">
+<h2>How to report failing blog pages<a class="headerlink" href="#how-to-report-failing-blog-pages" title="Permalink to this headline">¶</a></h2>
+<p>If blog pages fail please report it to us! But in order to look into the
+failure, we need some details. Please collect the following data and
+either enter it into our Google spreadsheet &#8220;<em>blogfarm issue report</em>&#8221;,
+or send it to &lt;<strong>sysadmin</strong>&#64;<strong>okfn</strong>.<strong>org</strong>&gt;:</p>
+<ul class="simple">
+<li>The <strong>failing URL</strong>. If the issue affects several URLs or sites
+please mention a couple of them (at least three).</li>
+<li>The exact <strong>time and date</strong> of the failure, with timezone.</li>
+<li>Your <strong>IP address</strong>. Click <a class="reference external" href="http://the-i.de/">here</a> to find out.</li>
+<li>What is the <strong>false result</strong> (as opposed to the expected result)?
+E.g. copy&amp;paste the error message.</li>
+<li>(If you have a login to the site): Does it make a difference whether
+you are logged in or not?</li>
+<li>Make sure you are logged out. Does the error disappear when you
+circumvent Pagely&#8217;s cache? (Append a random querystring like
+&#8221;?q=5971&#8221; to the URL)</li>
+<li>(If yes, and you are a site admin) Does it help when you clear
+Pagely&#8217;s cache? (see section &#8220;Caching&#8221; below)</li>
+</ul>
+<p>Don&#8217;t bother to report failing blog pages if you don&#8217;t have the time to
+provide those details - there i nothing we can do without them.</p>
+</div>
+<div class="section" id="tickets-general">
+<h2>Tickets (general)<a class="headerlink" href="#tickets-general" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Single fails are logged in our Google Speadsheet <em>blogfarm issue
+reports</em>, see previous section <em>How to report failing blog pages</em></li>
+<li>Sysadmin issues with the wordpress blogfarm are traced in our
+[<a class="reference external" href="http://trac.okfn.org/query?status">http://trac.okfn.org/query?status</a>=!closed&amp;component=blogfarm trac]
+in the trac component &#8220;blogfarm&#8221;.</li>
+<li>If Pagely has to look into an issue, we raise a ticket in their
+support platform (see below)</li>
+<li>There is also &#8220;<a class="reference external" href="https://github.com/okfn/okfn.org/issues">Issue tracker for http://okfn.org/ and other OKFN
+websites</a>&#8221; which tracks
+non-sysadmin issues e.g. with layout and design.</li>
+<li>Themes and plugins might have their own repo trackers, e.g. the
+&#8220;<a class="reference external" href="https://github.com/okfn/wordpress-theme-okfn/issues">Wordpress OKFN general-purpose theme (v2). Based on Bootstrap and
+Buddypress</a>&#8220;</li>
+</ul>
+</div>
+<div class="section" id="tickets-at-pagely">
+<h2>Tickets at Pagely<a class="headerlink" href="#tickets-at-pagely" title="Permalink to this headline">¶</a></h2>
+<p>Annoyingly, at Pagely the Ticket system (pagely.zendesk.com) username
+has to be identical to the mail contact address at the control panel
+(atomic.pagely.com). Since our blog sysadmin Bobby need to see
+notifications, we had to introduce a new alias <em>blog-sysadmin&#64;okfn.org</em>.
+Therefore:</p>
+<ul class="simple">
+<li><strong>To *raise* a new ticket: log into the `Pagely control
+panel &lt;https://atomic.pagely.com/&gt;`__ as *sysadmin&#64;okfn.org* and go
+to &#8220;Support&#8221;. Do not forget to sign it with your name.</strong></li>
+<li><strong>To *view* or *comment* an existing ticket: log into the `Pagely
+support platform &lt;https://pagely.zendesk.com/&gt;`__ as
+*blog-sysadmin&#64;okfn.org* and go to &#8220;Check your existing requests.&#8221; Do
+not forget to sign your comments with your name.</strong></li>
+</ul>
+<p>See section <em>Pagely accounts</em> below for more details.</p>
+</div>
+</div>
+<div class="section" id="known-issues">
+<h1>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h1>
+<p>There is a set of known issues with the blog farm at pagely. Some of
+them should be solved by now. Here is an unsorted history. (Note that
+older Pagely tickets have to be viewed not with the current
+&#8216;blog-sysadmin&#64;&#8217; ticket account, but with our former &#8216;sysadmin&#64;&#8217;
+account)</p>
+<ul class="simple">
+<li>Failing blog pages:<ul>
+<li>(<strong>Please report failing pages according to above section *How to
+report failing blog pages*!</strong>)</li>
+<li>(last report 2012-10-31) Intermittant bogus redirects, e.g.
+<a class="reference external" href="http://okfn.org/support">http://okfn.org/support</a> ==&gt;
+<a class="reference external" href="http://publicdomainreview.org/support/">http://publicdomainreview.org/support/</a>. They disappear after a few
+minutes.</li>
+<li>(during 2012-11-02, no report since) During a whole day an error
+&#8220;<em>This webpage is not available. The connection to okfn.org was
+interrupted.</em>&#8221; on several blogs.</li>
+<li>(last report pre 2012-10) Bogus warning page &#8220;<em>What the heck? Our
+security droid has flagged this request.</em>&#8221; instead of the
+(legitimate) page. We suspect that Pagely&#8217;s security system
+sometimes conceils php error pages this way. We might find out
+once we have access to the logs (see below).</li>
+<li>(last report 2012-10-??) [STRIKEOUT:&#8221;<em>Page Not Found</em>&#8221; on
+<a class="reference external" href="http://okfn.org">http://okfn.org</a> and <a class="reference external" href="http://blog.okfn.org">http://blog.okfn.org</a>, not able to login]. Was
+an outage of Pagely&#8217;s hoster &#8220;Firehost&#8221;.</li>
+<li>[STRIKEOUT:Outdated pages] should be fixed, see below.</li>
+<li>[STRIKEOUT:403 pages] should be fixed, see below.</li>
+</ul>
+</li>
+<li>Buddypress password change form produces wrongly encoded URL
+<a class="reference external" href="https://support.pagely.com/requests/16307">ticket</a>.</li>
+<li>We currently do not have a good spam-prevention plugin, see
+<a class="reference external" href="http://trac.okfn.org/ticket/1320">ticket</a>. Both previous plugins
+(<em>&#8220;SI-captcha&#8221;</em> and <em>&#8220;Bad behaviour&#8221;</em>) turned out to be incompatible
+with Pagely. We will probably try Disqus, at least for comments.</li>
+<li>We currently do not have access to log files yet. That makes
+debugging hard. Pagely is working on it (<a class="reference external" href="https://support.pagely.com/requests/15766">ticket
+1</a>, <a class="reference external" href="https://support.pagely.com/requests/16490">ticket
+2</a>)</li>
+<li>We currently have no metrics besides our own Google Analytics stats.
+What we would need is (A) Munin-style ingres/egress traffic stats and
+(B) Pingdom-style response-time monitoring. We might be able to
+generate our own traffic stats once we have access to he logs.</li>
+<li>Pagely <a class="reference external" href="https://support.pagely.com/requests/16501">complained</a>
+(<a class="reference external" href="https://support.pagely.com/requests/15239">https://support.pagely.com/requests/15239</a> again]) that our blogfarm
+would use &#8220;too much traffic&#8221; and asked whether we wanted either to
+pay additional traffic fees, or to subscribe to a CDN service.</li>
+<li>Pagely&#8217;s Zendesk ticket system does not allow to CC easily (see
+section &#8220;<em>tickets</em>&#8221; above)</li>
+<li>Pagely likes to close tickets very quickly, sometimes prematurely.
+Once they closed a ticket, we can neither re-open nor comment. Only
+option is to file a follow-up ticket.</li>
+<li>Pagely sometimes makes unlikely claims concerning the cause of a
+problem without providing technical detail or evidence. E.g. when
+many blogs suddenly failed they claimed that the Domain Mapping
+Plugin was misbehaving but didn&#8217;t say what was wrong or how they
+fixed it (<a class="reference external" href="https://support.pagely.com/requests/15471">ticket</a>).</li>
+<li>Our &#8220;Striking&#8221; theme
+<a class="reference external" href="https://support.pagely.com/requests/15660">disables</a> posting
+sanitation. We need to <a class="reference external" href="http://trac.okfn.org/ticket/1321">check</a>
+whether that is a security issue.</li>
+<li>The presence of session cookies circumvents the Pagely caches and
+should be avoided for non-logged-in users (except maybe
+login/registration pages).</li>
+<li>Some PHP methods might be restricted or not available at all. Pagely
+applies strict security policies and restricts what PHP can do. That
+sometimes breaks plugins/themes (e.g. a DB-backup plugin).</li>
+<li>We currently do not have daily DB dumps. Bobby and Joel are <a class="reference external" href="http://trac.okfn.org/ticket/1310">working
+on it</a>. (Note that Pagely
+<a class="reference external" href="https://support.pagely.com/requests/15390">refused</a> to assist
+when a backup plugin could not write to disk, even though they once
+<a class="reference external" href="https://support.pagely.com/requests/14272">promised</a> to provide
+daily DB backup).</li>
+<li>We do not yet have a staging blog server. (Note that we do not have
+access to the Wordpress core Pagely is using)</li>
+<li>We have a git repository on s070, but it only covers the core OKFN
+themes. Bobby is working on version-controlling the rest of
+wp-content/{themes,plugins,mu-plugins,...}/ . This is not
+straghtforward because we only have very slow FTPS access
+(<a class="reference external" href="http://trac.okfn.org/ticket/1325">ticket</a>).</li>
+<li>We currently have theme/plugin-upload-via-webinterface enabled again
+(<a class="reference external" href="http://trac.okfn.org/ticket/1325">ticket</a>). We should either
+disable it or, or at least shrink the set of superadmins drastically
+(<a class="reference external" href="http://trac.okfn.org/ticket/911">ticket</a>).</li>
+</ul>
+<div class="section" id="solved-issues">
+<h2>Solved issues<a class="headerlink" href="#solved-issues" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Outdated pages. We experienced them a lot at the beginning. Clearing
+the Pagely caches usually helped.</li>
+<li>403 pages. <a class="reference external" href="http://trac.okfn.org/ticket/1313">Fixed</a>. They were
+caused by a plugin not compatible with Pagely (<em>&#8220;Bad behaviour&#8221;</em>) in
+combination with error page caching (see below).</li>
+<li>Occasionally/intermittently produced error pages were cached at
+Pagely and served for hours.
+<a class="reference external" href="http://trac.okfn.org/ticket/1314">Fixed</a>.</li>
+<li>Slow response times on many blogs. There were occasional complaints
+about the blogfarm being slow. We think that was caused by the (now
+removed) SI-Captcha plugin setting session cookies on every page of
+the heaviest blog site PDR, thus circumventing the Pagely caches and
+slowing down the whole Wordpress instance.</li>
+<li>Pagely used to not send mail notifications about scheduled downtimes
+but to only post about (twitter, dashboard, their blog). They
+promised to send mail notifications next time
+(<a class="reference external" href="https://support.pagely.com/requests/15671">ticket</a>)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="caching">
+<h1>Caching<a class="headerlink" href="#caching" title="Permalink to this headline">¶</a></h1>
+<p>Pagely applies heavy caching on our blogfarm: every blog site has
+automatically activated the <a class="reference external" href="http://wordpress.org/extend/plugins/wp-super-cache/WP">Super
+Cache</a> plugin.
+And the whole blog farm is cached by
+<a class="reference external" href="https://www.varnish-cache.org/">Varnish</a>.</p>
+<p>The caches speed up our blog farm significantly, but they also come with
+some downsides:</p>
+<ul class="simple">
+<li>The presence of a session cookie will circumvent the Varnish cache.
+Therefore, blog sites (aka their theme and their plugins) should make
+minimal use of sessions cookies. If possible, only use them on e.g.
+login/register/password-reminder pages.</li>
+<li>Sometimes the cache delivers outdated pages. It can help to purge the
+caches, see below.</li>
+</ul>
+<p>One can check whether a page was delivered from the Varnish cache by
+looking at the headers (e.g. using <tt class="docutils literal"><span class="pre">curl</span> <span class="pre">-I</span></tt> or the Firefox Add-on
+<a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/live-http-headers/">Live HTTP
+Headers</a>).
+If the headers <tt class="docutils literal"><span class="pre">X-Cache:</span> <span class="pre">V2HIT</span></tt> and <tt class="docutils literal"><span class="pre">Age</span></tt> are both &gt;0, then the page
+has been delivered from cache. Example of a cached page:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">$&nbsp;curl&nbsp;-sI&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`http://okfn.org/</span></tt> &lt;<a class="reference external" href="http://okfn.org/">http://okfn.org/</a>&gt;`__<tt class="docutils literal"><span class="pre">&nbsp;|&nbsp;egrep&nbsp;'^(X-Cache|Age):'</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">X-Cache:&nbsp;V2HIT&nbsp;28</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">Age:&nbsp;2264</span></tt></div>
+</div>
+<p>One can view any page bypassing the cache by appending a unique (e.g.
+random) query string. E.g.</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">$&nbsp;curl&nbsp;-sI&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`http://okfn.org/?nocache=00012</span></tt> &lt;<a class="reference external" href="http://okfn.org/?nocache=00012">http://okfn.org/?nocache=00012</a>&gt;`__<tt class="docutils literal"><span class="pre">&nbsp;|&nbsp;egrep&nbsp;'^(X-Cache|Age):'</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">X-Cache:&nbsp;V2MISS</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">Age:&nbsp;0</span></tt></div>
+</div>
+<div class="section" id="recommended-way-to-purge-the-caches-at-pagely">
+<h2>Recommended way to purge the caches at Pagely<a class="headerlink" href="#recommended-way-to-purge-the-caches-at-pagely" title="Permalink to this headline">¶</a></h2>
+<p>There are <strong>many</strong> (!) places where one can purge the caches. The steps
+detailed here are the suggested method of clearing the cache as it&#8217;s
+both the simplest and seemingly most effective solution for dealing with
+a site/page specific issue. Alternative methods and their drawbacks are
+noted in the next section.</p>
+<ol class="arabic simple">
+<li>In your main browser, log into your site admin panel at
+${blogsite}/wp-admin/</li>
+<li>Look for the &#8220;Hosting Panel&#8221; menu option on the left hand side and
+click on the &#8220;Purge Cache&#8221; sub menu here. The page should reload with
+a message of indicating that both Super Cache purge and Varnish cage
+purge were performed successfully.</li>
+<li>Check to see if the issue has been resolved. Make sure that you are
+<strong>not logged into the site</strong>, and that your browser <strong>has its browser
+cache cleared!</strong> We recommend you use<ol class="arabic">
+<li>either an incognito browser window (Firefox: <em>Tools</em> ==&gt; <em>Start
+Private Browsing</em>);</li>
+<li>or an alternative browser;</li>
+<li>or, if you only want to check the HTTP return code, use a command
+line tool like <tt class="docutils literal"><span class="pre">curl</span> <span class="pre">-I</span></tt>.</li>
+</ol>
+</li>
+<li>When you have to repeat the check, make sure your browser&#8217;s cache is
+clean again!<ol class="arabic">
+<li>If you use an incognito browser window, close and re-open it</li>
+<li>If you use an alternative browser: clear its cache (Firefox:
+<em>Tools</em> ==&gt; <em>Clear Recent History</em> ==&gt; make sure <em>Cache</em> is ticked
+==&gt; <em>OK</em>). Or if the browser supports it do a
+&#8220;Force-reload-without-cache&#8221; (Firefox: Hold when clicking the
+reload button; or press ++)</li>
+<li>If you use a commend like tool like curl, just repeat it. They
+usually don&#8217;t cache and don&#8217;t hold session cookies.</li>
+</ol>
+</li>
+</ol>
+<p>Checking without being logged in is important as both Super Cache and
+Varnish have methods of bypassing cached content when viewing pages as
+logged in user, making it seem like a cache issue is resolved when in
+fact it is not. We recommend to use the first browser to perform
+administrative actions, and the second to check the result from the user
+perspective.</p>
+<p>Checking with a clear cache is important because often the server side
+cache issue has already been resolved but your browser will continue to
+show the incorrect result as retrieved from its local cache.</p>
+</div>
+<div class="section" id="alternative-methods-to-purge-the-caches-at-pagely">
+<h2>Alternative methods to purge the caches at Pagely<a class="headerlink" href="#alternative-methods-to-purge-the-caches-at-pagely" title="Permalink to this headline">¶</a></h2>
+<p>So far we found six ways to purge the two caches. Unfortunately Pagely
+does not provide documentation of how they work and interact. It is
+currently not 100% clear how the different methods relate but here is a
+best guess description of each, derived from our experiments:</p>
+<ul class="simple">
+<li>As a blog site admin, you can purge the caches for your specific
+${blogsite}. Log into your blog site admin panel at
+${blogsite}/wp-admin/<ul>
+<li>[Method 1] In the left navigation bar, go to <em>Hosting Panel</em> and
+press &#8216;&#8217;&#8221;<strong>Purge Cache</strong>&#8220;&#8217;<ul>
+<li>This is the preferred method. It removes all the site&#8217;s pages
+from WPSC <strong>and</strong> from Varnish.</li>
+</ul>
+</li>
+<li>[Method 2] In the dashboard&#8217;s top navigation bar, click on
+<em>&#8220;**Delete cache*</em> (Delete cache of the current page)&#8221;*<ul>
+<li>This removes all the site&#8217;s pages from WPSC</li>
+<li>Clearing pages from WPSC only has turned out to not be very
+effective because pages are likely to be also in the Varnish
+cache. It should be followed by a Varnish purge.</li>
+</ul>
+</li>
+<li>[Method 3] In the left navigation bar, go to <em>Settings</em> ==&gt; <em>WP
+Super Cache</em>, then to tab <em>Easy</em> and press the button <em>&#8220;**Delete
+Cache &gt;&gt;*</em>&#8220;*<ul>
+<li>This removes all the site&#8217;s pages from WPSC. Same objection
+applies as in method 2.</li>
+</ul>
+</li>
+<li>[Method 4] At the same place, there is also a button <em>&#8220;**Delete
+Cache On All Blogs*</em>&#8220;*<ul>
+<li>This probably removes all pages <em>of all sites</em> from WPSC! Same
+objection applies as in method 2.</li>
+</ul>
+</li>
+<li>[Method 5] At the same place above the <em>Easy</em> tab, click on
+<em>&#8220;**Click to purge the Varnish cache.*</em>&#8220;*<ul>
+<li>This removes all the site&#8217;s pages from Varnish.</li>
+<li>As a follow up to purging WPSC (Methods 2/3) this is usually
+effective but currently doesn&#8217;t appear to work 100% of the
+time.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>As a OKFN sysadmin, you can purge Varnish across sites. Log into the
+<a class="reference external" href="https://atomic.pagely.com/">Pagely control panel</a><ul>
+<li>[Method 6] Go to <em>Manage ... okfn.org</em> ==&gt; tab <em>Actions</em> and press
+<em>&#8220;**Purge cache*</em>&#8220;*<ul>
+<li>This removes all pages <em>of all sites</em> from Varnish.</li>
+<li>Combined with purging all sites from WPSC (method 4), this is a
+<em>purge everything everywhere</em>. It is typically quite effective.</li>
+<li>Note that upon completion, Varnish return codes of the purging
+operation are displayed on the control page. This suggests that
+the function is simply looping through all sites on the
+blogfarm and requesting the Varnish purge url for each, then
+returning the result. Currently a mixture of 404 and 200 codes
+are returned suggesting that this is not working for all sites.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="how-to-create-a-new-blog">
+<h1>How to: create a new blog...<a class="headerlink" href="#how-to-create-a-new-blog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="as-name-okfn-org">
+<h2>... as {name}.okfn.org<a class="headerlink" href="#as-name-okfn-org" title="Permalink to this headline">¶</a></h2>
+<p>Requirements:</p>
+<ul class="simple">
+<li>You will need to be a Network Admin on okfn.org</li>
+</ul>
+<p>Basic install:</p>
+<ol class="arabic simple">
+<li>Login and go to Network Admin - <a class="reference external" href="http://okfn.org/wp-admin/network/">http://okfn.org/wp-admin/network/</a></li>
+<li>Select Add Site<ul>
+<li>For WG sites name after working group e.g. for economics wg would
+be economics.okfn.org</li>
+<li>Put your username/email for admin role</li>
+<li>Test <a class="reference external" href="http://{name}.okfn.org/">http://{name}.okfn.org/</a>, it
+should work now (There is a wildcard DNS CNAME *.okfn.org ==&gt;
+blogfarm.okserver.org)</li>
+</ul>
+</li>
+<li>Add users to site as appropriate</li>
+<li>Leave the &#8220;Network Admin&#8221; area. Instead, go to the admin area of you
+new blog at
+<a class="reference external" href="http://{name}.okfn.org/wp-admin/">http://{name}.okfn.org/wp-admin/</a></li>
+<li>Activate and configure standard plugins:<ul>
+<li><a class="reference external" href="http://akismet.com/">Akismet</a></li>
+<li>Google Analytics (see Google Analytics in Settings)</li>
+</ul>
+</li>
+<li>(Optional) Configure theme. The default OKFN theme is maintained at
+<a class="reference external" href="https://bitbucket.org/okfn/wp-theme-okfn">https://bitbucket.org/okfn/wp-theme-okfn</a>.</li>
+<li>(Optional) Activate &amp; configure additional plugins. Do this on a
+site-by-site basis, do <strong>not</strong> use &#8216;Network Activate&#8217;</li>
+</ol>
+<p>Remark:</p>
+<ul class="simple">
+<li>Commonly used files should be hosted on Amazon S3 bucket
+<a class="reference external" href="http://assets.okfn.org">http://assets.okfn.org</a>. The process for uploading is documented at
+<a class="reference external" href="https://bitbucket.org/okfn/m.okfn.org/src/d7625d7066d0/m.okfn.org/README.txt">https://bitbucket.org/okfn/m.okfn.org/src/d7625d7066d0/m.okfn.org/README.txt</a></li>
+</ul>
+</div>
+<div class="section" id="as-mydomain-org">
+<h2>... as mydomain.org<a class="headerlink" href="#as-mydomain-org" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You will need control over the DNS records for <em>mydomain.org</em> (see
+<a class="reference external" href="Sysadmin/DomainServices">Sysadmin/DomainServices</a>)</li>
+<li>You will need access to the <a class="reference external" href="https://atomic.pagely.com/">Pagely control
+panel</a> (see below).</li>
+<li>You will need to be a Network Admin on okfn.org.</li>
+<li>If your want the blog to be cached, you will need superuser access to
+our squid cache, or ask someone who has.</li>
+</ul>
+<ol class="arabic simple">
+<li>Setup a new site as {name}.okfn.org as described in the previous
+paragraph.</li>
+<li>Log into the new site&#8217;s admin dashboard (/wp-admin/) and go to
+<em>Tools</em> ==&gt; <em>Domain Mapping</em> (if there are two entries called <em>Domain
+Mapping</em>, use the top one) and enter the additional domain name(s)
+(www.)mydomain.org. Leave {name}.okfn.org the default domain for now.</li>
+<li>Log into <a class="reference external" href="https://atomic.pagely.com/">Pagely control panel</a>, go to
+<em>My Sites</em> ==&gt; <em>Manage ... okfn.org</em>, then tab <em>Domain aliases</em> ==&gt;
+<em>Add Alias</em> and enter mydomain.org (repeat for www.mydomain.org). Log
+out.</li>
+<li>Temporarily add the blog farm&#8217;s IP address &#8220;<em>193.34.146.141
+mydomain.org</em>&#8221; to your /etc/hosts and test <a class="reference external" href="http://mydomain.org/">http://mydomain.org/</a>.</li>
+<li>Create a DNS record (see
+<a class="reference external" href="Sysadmin/DomainServices">Sysadmin/DomainServices</a>) for
+mydomain.org (and www.mydomain.org) pointing to
+<em>blogfarm.okserver.org</em> or its IP address 193.34.146.141. If the
+domain is at DME, make it a &#8220;<em>A-NAME</em>&#8221; to <em>blogfarm.okserver.org</em>.
+Wait for the record to propagate and test.</li>
+<li>If all is working as expected, go back to the admin dashboard of your
+site <em>Tools</em> ==&gt; <em>Domain Mapping</em> and make (www.)mydomain.org the
+default domain.</li>
+</ol>
+<p>Note:</p>
+<ul class="simple">
+<li>See this tutorial (start at step 4 &#8211; plugin is already installed for
+you!):
+<a class="reference external" href="http://ottopress.com/2010/wordpress-3-0-multisite-domain-mapping-tutorial/">http://ottopress.com/2010/wordpress-3-0-multisite-domain-mapping-tutorial/</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="how-to-add-or-modify-a-theme-plugin">
+<h1>How to: add or modify a theme/plugin<a class="headerlink" href="#how-to-add-or-modify-a-theme-plugin" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="caveats">
+<h2>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">¶</a></h2>
+<p>There are certain things to be aware of when manageing a wordpress
+installation at Pagely:</p>
+<ul class="simple">
+<li><strong>Do not try to modify/update/upgrade the Wordpress core</strong>. It is
+maintained by Pagely</li>
+<li><strong>Make minimal use of session cookies</strong>. The presence of a session
+cookie will circumvent the Varnish cache. E.g. we had to disable the
+SI-capture plugin on the comment section of postings. If possible,
+only use them on e.g. login/register/password-reminder pages.</li>
+<li><strong>Some PHP methods might be restricted or not available at all</strong>.
+Pagely applies strict security policies and restricts what PHP can
+do. That sometimes breaks plugins/themes. E.g. when Bobby wrote a
+plugin that would dump the DB to disk, it could pull the DB, but then
+it would not write the dump file to disk. (To be elaborated).</li>
+</ul>
+</div>
+<div class="section" id="modifying-the-main-themes">
+<h2>Modifying the Main Themes<a class="headerlink" href="#modifying-the-main-themes" title="Permalink to this headline">¶</a></h2>
+<p><strong>You will need:</strong> SSH access to <tt class="docutils literal"><span class="pre">okfn&#64;s070.okserver.org</span></tt>, and a
+working knowledge of Git.</p>
+<p>The themes <tt class="docutils literal"><span class="pre">okfestival-wordpress</span></tt> and <tt class="docutils literal"><span class="pre">wordpress-theme-okfn</span></tt> are
+stored in a git repository on the server.</p>
+<div class="highlight-python"><pre>git clone okfn@s070.okserver.org:git/wordpress-theme-okfn</pre>
+</div>
+<div class="highlight-python"><pre>git clone okfn@s070.okserver.org:git/okfestival-wordpress</pre>
+</div>
+<p>You can then push &amp; pull changes as required. Note that every time you
+push to the server there follows a very slow post-receive hook which
+copies your updated files into Page.ly.</p>
+</div>
+<div class="section" id="modifying-other-themes-plugins">
+<h2>Modifying Other Themes &amp; Plugins<a class="headerlink" href="#modifying-other-themes-plugins" title="Permalink to this headline">¶</a></h2>
+<p><strong>You will need:</strong> SSH access to <tt class="docutils literal"><span class="pre">okfn&#64;s070.okserver.org</span></tt>, and a
+working knowledge of Bash and SSH.</p>
+<p>You can see installed plugins here:</p>
+<div class="highlight-python"><pre>ssh okfn@s070.okserver.org
+ls -l pagely-mount/wp-content/plugins</pre>
+</div>
+<p>Use <tt class="docutils literal"><span class="pre">scp</span></tt> to add your plugin to that folder, or to add a theme to
+<tt class="docutils literal"><span class="pre">pagely-mount/wp-content/themes</span></tt>.</p>
+<p>Note that this is extremely slow. <tt class="docutils literal"><span class="pre">pagely-mount/</span></tt> is an FTP
+filesystem; every filesystem operation interacts with the Pagely servers
+via FTP.</p>
+<p>If you&#8217;re going to do a lot of active development of a theme or plugin,
+consider setting up a git repository like the ones above. Use the
+existing examples as a starting point, with modifications to
+<tt class="docutils literal"><span class="pre">hooks/post_receive</span></tt>.</p>
+</div>
+</div>
+<div class="section" id="git-phing-deployment-procedure">
+<h1>Git/Phing Deployment Procedure<a class="headerlink" href="#git-phing-deployment-procedure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p>Read more about Phing at the project homepage
+(<a class="reference external" href="http://www.phing.info/trac/">http://www.phing.info/trac/</a>).</p>
+<p>The procedure outlined below has been designed with a very basic
+methodology in mind, untested code should never be pushed directly to a
+production environment. The steps below outline a basic system that
+should allow authorised users to efficiently and safely contribute code.</p>
+<ol class="arabic simple">
+<li><strong>Build Locally</strong>: Every person responsible for contributing code
+should have a completely operational local environment that matches
+the production environment as closely as possible. All modifications
+are made locally.</li>
+<li><strong>Test, then commit to the staging branch</strong>: Test your modifications
+in your local environment whenever you reach a milestone. Verify that
+the changes you&#8217;re about to commit to VCS will not adversely effect
+other developers working on the code base.</li>
+<li><strong>Deploy to staging, test again</strong>: Send your changes to the staging
+server, test them again. Don&#8217;t assume that just because it works on
+your local environment, it must work on the staging server. It has
+been designed to mirror the production site for the purpose of being
+a test bed, use it.</li>
+<li><strong>Repeat the steps above for any issues encountered</strong></li>
+<li><strong>Flag your commit as production ready</strong>: Once you&#8217;re satisfied that
+your changes are suitable for production, flag them as ready to me
+merged into the master branch (to whom should they be flagged?). You
+may need to provide all commit ID&#8217;s associated with your changes for
+cherry picking.</li>
+<li><strong>Test on production</strong>: Once your changes have been deployed to the
+main branch and deployed onto the production site, test them again.</li>
+</ol>
+<p>Merging and deployment of the main branch to the production environment
+should be performed on a consistent schedule. This philosophy has a few
+benefits.</p>
+<ol class="arabic simple">
+<li>To ensure that there has been adequate time for the automated
+monitoring systems on the staging environment to detect any behind
+the scenes issues</li>
+<li>To allow contributors and site owners to plan and coordinate their
+modifications</li>
+<li>Ensure that there are adequate sysadmin resources on call to deal
+with any emergency issues</li>
+</ol>
+<p>(Need to discuss a schedule that is suitable for all parties here)</p>
+</div>
+<div class="section" id="setting-up-a-local-dev-environment">
+<h2>Setting Up a Local Dev Environment<a class="headerlink" href="#setting-up-a-local-dev-environment" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Install Apache2, PHP, MySQL and Pear (typically best from maintainer
+packages rather than bundled packages such as MAMP/XAMPP)</li>
+<li>Install a command line ssh/scp/rsync client. Consider Cygwin for
+Windows (<a class="reference external" href="http://www.cygwin.com/">http://www.cygwin.com/</a>), Macports for mac
+(<a class="reference external" href="http://www.macports.org/">http://www.macports.org/</a>).</li>
+<li>Install a command line git client. Consider msysgit for Windows
+(<a class="reference external" href="http://code.google.com/p/msysgit/">http://code.google.com/p/msysgit/</a>).</li>
+<li>Ensure that the following commands are in your PATH environment
+variable so that they may be called from any location.
+ssh/scp/rsync/git/mysql/mysqldump</li>
+<li>Add the following minimum entries to your hosts file. Add additional
+items for any sub-domain you&#8217;re working on.</li>
+</ol>
+<div class="highlight-python"><pre>127.0.0.1 okfn.dev www.okfn.dev dev.okfn.dev</pre>
+</div>
+<ol class="arabic simple">
+<li>Configure a local Apache2 virtual host. A very basic example:</li>
+</ol>
+<div class="highlight-python"><pre>&lt;VirtualHost *:80&gt;
+    ServerName okfn.dev
+    ServerAlias *.okfn.dev
+    DocumentRoot "/var/www/okfn/okfn.org"
+    &lt;Directory "/var/www/okfn/okfn.org"&gt;
+        AllowOverride All
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</pre>
+</div>
+<p>N.B. The html directory is contained within the root directory of the
+git repo.</p>
+<ol class="arabic simple">
+<li>Make sure Pear is up-to-date and configured to use the alpha channel</li>
+</ol>
+<div class="highlight-python"><pre>pear config-set preferred_state alpha
+pear channel-update pear.php.net
+pear upgrade</pre>
+</div>
+<ol class="arabic simple">
+<li>Install Phing into Pear</li>
+</ol>
+<div class="highlight-python"><pre>pear channel-discover pear.phing.info
+pear channel-discover pear.phpunit.de
+pear channel-discover pear.pdepend.org
+pear channel-discover pear.phpmd.org
+pear channel-discover pear.docblox-project.org
+pear install --alldeps phing/phing</pre>
+</div>
+<ol class="arabic simple">
+<li>Clone the git repo to your local environment</li>
+</ol>
+<div class="highlight-python"><pre>cd /var/www/okfn/
+git clone git@git.okserver.org:wordpress ./</pre>
+</div>
+<ol class="arabic simple">
+<li>Create 2 local mysql databases, (main branch: &#8220;okfn&#8221;/ dev branch
+&#8220;okfn_dev&#8221;). Grant access to a user of your choice to both
+databases.</li>
+<li>Copy &#8220;build.conf/wp-config-local-dev.php.sample&#8221; to
+&#8220;build.conf/wp-config-local-dev.php&#8221; and modify the contents to suit
+your setup. (Attach to dev db)</li>
+<li>Copy &#8220;build.conf/wp-config-local-master.php.sample&#8221; to
+&#8220;build.conf/wp-config-local-master.php&#8221; and modify the contents to
+suit your setup (Attach to main db)</li>
+<li>Copy &#8220;build.conf/local.properties.sample&#8221; to
+&#8220;build.conf/local.properties&#8221; and modify the contents to suit your
+setup</li>
+<li>Run the Phing initialization task to setup your local environment.
+This will clone the production site, including database and user
+uploaded files.</li>
+</ol>
+</div>
+<div class="section" id="things-to-do-before-you-start-working">
+<h2>Things to do before you start working<a class="headerlink" href="#things-to-do-before-you-start-working" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Ensure you have retrieved the most recent changes from the git server</li>
+</ol>
+<div class="highlight-python"><pre>cd /var/www/okfn
+git pull</pre>
+</div>
+<ol class="arabic simple">
+<li>Run one of the Phing redownload tasks to sync the appropriate db and
+user uploaded files to your local environment</li>
+</ol>
+<div class="highlight-python"><pre>phing redownload
+phing redownload-db
+phing redownload-dev
+phing redownload-dev-db</pre>
+</div>
+<ol class="arabic simple">
+<li>Checkout or create a new local branch unique to you</li>
+</ol>
+<div class="highlight-python"><pre>git checkout bobby</pre>
+</div>
+<ol class="arabic simple">
+<li>If you need to reset your local db to the last download, run:</li>
+</ol>
+<div class="highlight-python"><pre>phing reset
+phing reset-dev</pre>
+</div>
+</div>
+<div class="section" id="to-deploy-your-changes">
+<h2>To deploy your changes<a class="headerlink" href="#to-deploy-your-changes" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Ensure your tested changes have been committed to your unique branch</li>
+<li>Switch to the &#8220;dev&#8221; branch and merge in your unique branch</li>
+</ol>
+<div class="highlight-python"><pre>git checkout dev
+git merge bobby
+git commit -am 'Merging tested feature'</pre>
+</div>
+<ol class="arabic simple">
+<li>Run Phing deploy-dev task to push and deploy changes to the staging
+server.</li>
+</ol>
+<div class="highlight-python"><pre>phing deploy-dev</pre>
+</div>
+</div>
+<div class="section" id="important-notes">
+<h2>Important Notes<a class="headerlink" href="#important-notes" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>It&#8217;s suggested that the number of characters in the domain used for
+your local environment match the number of characters for the primary
+domain. Eg okfn.org &gt; okfn.dev. Read the link below for a detailed
+description on why. Essentially it&#8217;s to ensure that when the Phing
+script runs a search &amp; replace on the database you download we don&#8217;t
+break any serialised arrays. Important to note that the staging site
+uses a similar script but does not match the character length, thus
+you&#8217;ll find missing content items (like widgets) on the staging site.
+(Yet to find a workaround to this)
+<a class="reference external" href="http://stackoverflow.com/a/8060418/324441">http://stackoverflow.com/a/8060418/324441</a></li>
+<li>Avoid using serialised arrays that may contain full urls in your
+plugins or themes. Where possible, use relative links when populating
+content.</li>
+<li>Domain redirects are disabled on your local environment and on the
+staging server. That is, publicdomainreview.okfn.dev not
+publicdomainreview.dev (This item is incomplete)</li>
+</ol>
+</div>
+</div>
+<div class="section" id="pagely-accounts">
+<h1>Pagely accounts<a class="headerlink" href="#pagely-accounts" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>The main control panel<ul>
+<li>Raise new tickets here. <strong>Make sure you sign comments with your
+name!</strong></li>
+<li>URL: <a class="reference external" href="https://atomic.pagely.com/">https://atomic.pagely.com/</a></li>
+<li>Primary Domain: okfn.org</li>
+<li>Username: <a class="reference external" href="mailto:sysadmin&#37;&#52;&#48;okfn&#46;org">sysadmin<span>&#64;</span>okfn<span>&#46;</span>org</a> (this is only the <em>username</em> here. The
+actual contact mail address is set to <em>blog-sysadmin&#64;okfn.org</em>)</li>
+<li>Password: Ask <a class="reference external" href="Sysadmin">Sysadmin</a> or see GDoc <em>Wordpress
+Sysadmin Info</em></li>
+</ul>
+</li>
+<li>The ticket system<ul>
+<li>Viewing and comment on existing tickets here. <strong>Do no raise new
+tickets here! Make sure you sign comments with your name!</strong></li>
+<li>URL: <a class="reference external" href="https://pagely.zendesk.com/">https://pagely.zendesk.com/</a></li>
+<li>Username: <a class="reference external" href="mailto:blog-sysadmin&#37;&#52;&#48;okfn&#46;org">blog-sysadmin<span>&#64;</span>okfn<span>&#46;</span>org</a> (Use the old Zendesk username
+<em>sysadmin&#64;okfn.org</em> to view old tickets).</li>
+<li>Password: Ask <a class="reference external" href="Sysadmin">Sysadmin</a> or see GDoc <em>Wordpress
+Sysadmin Info</em></li>
+</ul>
+</li>
+<li>File access to the WP codebase:<ul>
+<li>ftps://f3.pressftp.com (port 990)</li>
+<li>Username: ftp46NjjirT59KpzYg</li>
+<li>Password: Ask <a class="reference external" href="Sysadmin">Sysadmin</a> or see GDoc <em>Wordpress
+Sysadmin Info</em></li>
+</ul>
+</li>
+</ul>
+<p>Note that ftps is NOT sftp and not very well supported. See e.g.
+<a class="reference external" href="http://trac.okfn.org/ticket/1268#comment:9">#1268</a>.</p>
+</div>
+<div class="section" id="how-to-migrate-an-existing-single-site-wp-instance-into-our-blogfarm">
+<h1>How to: migrate an existing single-site WP instance into our blogfarm<a class="headerlink" href="#how-to-migrate-an-existing-single-site-wp-instance-into-our-blogfarm" title="Permalink to this headline">¶</a></h1>
+<ol class="arabic">
+<li><p class="first">Ensure you have the access level you need:</p>
+<ul class="simple">
+<li>Admin access to the old blog</li>
+<li>Superadmin access to the blogfarm</li>
+<li>File system read access to the old blog&#8217;s ${WP_ROOT}/wp-content/
+. Make sure rsync+ssh are installed and working.</li>
+<li>File system write access to the blogfarm&#8217;s ${WP_ROOT}/wp-content/</li>
+</ul>
+</li>
+<li><p class="first">[<em>To be cone by OKF core admin</em>] Domain preparation:</p>
+<ul class="simple">
+<li>On s006.okserver.org=cache-euw1.okserver.org (soon
+s050.okserver.org=cache-sov.okserver.org, see #881), configure the
+domain in question into /etc/squid3/squid.conf. For now, point it
+to the old blog. Re-load cache and test with your local
+/etc/hosts.</li>
+<li>Configure the DNS record(s) of the domain in question to point to
+the very cache. When the new records have propagated, unconfigure
+the domain name from your /etc/hosts.</li>
+</ul>
+</li>
+<li><p class="first">Notify blog users about the blog being read-only for the time of the
+migration.</p>
+</li>
+<li><p class="first">Disable editing on the old blog</p>
+</li>
+<li><p class="first">Export the old blog into a file</p>
+</li>
+<li><p class="first">Temporarily apply Rufus&#8217; famous import-fix to the blogfarm&#8217;s
+/home/okfn/var/wp/okfn.org/wp-includes/post.php (see #553). In line
+2436 (as of WP 3.2.1 - line number will shift with future releases),
+comment out this:</p>
+<div class="highlight-python"><pre>// $postarr = sanitize_post($postarr, 'db');</pre>
+</div>
+</li>
+<li><p class="first">Create an empty new blog in the blog farm</p>
+</li>
+<li><p class="first">Import the blog-export-file into the new farm site. During this
+process, many users in the old blog will either not have an account
+in our blog farm, or have a different username (but same mail
+address). Map the usernames of
+existing-users-with-different-username, and create missing users.</p>
+</li>
+<li><p class="first">rsync the old blog&#8217;s ${WP_ROOT}/wp-content/ to the blog farm.</p>
+</li>
+<li><p class="first">Verify &amp; test all went well (/etc/hosts trick). If not, delete the
+site in the blog farm and return to [7]</p>
+</li>
+<li><p class="first">Revert the above 1-line patch</p>
+</li>
+<li><p class="first">[<em>To be cone by OKF core admin</em>] In the cache server&#8217;s
+/etc/squid3/squid.conf, point the domain to <em>blogfarm.okserver.org</em></p>
+</li>
+<li><p class="first">Undo your /etc/hosts test line and check again.</p>
+</li>
+<li><p class="first">Notify blog users that the blog is fully operational again. Warn them
+that those clients which use outdated DNS entries might still end up
+on the old read-only blog.</p>
+</li>
+<li><p class="first">Once the DNS changes from [2] have propagated (usually after 1 day),
+disable the old blog.</p>
+</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">See also</a></li>
+<li><a class="reference internal" href="#contact">Contact</a><ul>
+<li><a class="reference internal" href="#how-to-report-failing-blog-pages">How to report failing blog pages</a></li>
+<li><a class="reference internal" href="#tickets-general">Tickets (general)</a></li>
+<li><a class="reference internal" href="#tickets-at-pagely">Tickets at Pagely</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#known-issues">Known issues</a><ul>
+<li><a class="reference internal" href="#solved-issues">Solved issues</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#caching">Caching</a><ul>
+<li><a class="reference internal" href="#recommended-way-to-purge-the-caches-at-pagely">Recommended way to purge the caches at Pagely</a></li>
+<li><a class="reference internal" href="#alternative-methods-to-purge-the-caches-at-pagely">Alternative methods to purge the caches at Pagely</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-to-create-a-new-blog">How to: create a new blog...</a><ul>
+<li><a class="reference internal" href="#as-name-okfn-org">... as {name}.okfn.org</a></li>
+<li><a class="reference internal" href="#as-mydomain-org">... as mydomain.org</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#how-to-add-or-modify-a-theme-plugin">How to: add or modify a theme/plugin</a><ul>
+<li><a class="reference internal" href="#caveats">Caveats</a></li>
+<li><a class="reference internal" href="#modifying-the-main-themes">Modifying the Main Themes</a></li>
+<li><a class="reference internal" href="#modifying-other-themes-plugins">Modifying Other Themes &amp; Plugins</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#git-phing-deployment-procedure">Git/Phing Deployment Procedure</a><ul>
+<li><a class="reference internal" href="#intro">Intro</a></li>
+<li><a class="reference internal" href="#setting-up-a-local-dev-environment">Setting Up a Local Dev Environment</a></li>
+<li><a class="reference internal" href="#things-to-do-before-you-start-working">Things to do before you start working</a></li>
+<li><a class="reference internal" href="#to-deploy-your-changes">To deploy your changes</a></li>
+<li><a class="reference internal" href="#important-notes">Important Notes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#pagely-accounts">Pagely accounts</a></li>
+<li><a class="reference internal" href="#how-to-migrate-an-existing-single-site-wp-instance-into-our-blogfarm">How to: migrate an existing single-site WP instance into our blogfarm</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/blogfarm-at-pagely.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/blogfarm-at-pagely.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

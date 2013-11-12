@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Installed Required Modules &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installed-required-modules">
+<h1>Installed Required Modules<a class="headerlink" href="#installed-required-modules" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Assumes you already have apache2 (e.g. apache2-mpm-worker) installed.</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">apt-get&nbsp;install&nbsp;php5-cgi&nbsp;libapache2-mod-fastcgi</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;if&nbsp;you&nbsp;want&nbsp;mysql&nbsp;access&nbsp;(e.g.&nbsp;for&nbsp;wordpress&nbsp;...)</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">apt-get&nbsp;install&nbsp;php5-mysql</span></tt></div>
+</div>
+<ul class="simple">
+<li>In Ubuntu libapache2-mod-fastcgi requires enabling Multiverse
+repository in /etc/apt/sources.list<ul>
+<li>You&#8217;ll also need to ensure the actions module is enabled:</li>
+</ul>
+</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">a2enmod&nbsp;actions&nbsp;fastcgi</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;for&nbsp;mod&nbsp;rewrite&nbsp;(for&nbsp;wordpress&nbsp;...)</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">a2enmod&nbsp;rewrite</span></tt></div>
+</div>
+<ul class="simple">
+<li>Set up fastcgi wrapper script and install at /etc/apache2/fastcgi-php
+(you can change this if you wish but remember to change apache config
+below):</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">#!/bin/sh</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">PHPRC=&quot;/etc/php5/cgi/php.ini&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">export&nbsp;PHPRC</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">PHP_FCGI_CHILDREN=4</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">export&nbsp;PHP_FCGI_CHILDREN</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">exec&nbsp;/usr/bin/php5-cgi</span></tt></div>
+</div>
+<ul class="simple">
+<li>Make sure the script is executable:</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">chmod&nbsp;+x&nbsp;/etc/apache2/fastcgi-php</span></tt></div>
+</div>
+<ul class="simple">
+<li>Add to /etc/apache2/conf.d/fastcgi-php</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;See&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`http://www.fastcgi.com/docs/faq.html#PHP</span></tt> &lt;<a class="reference external" href="http://www.fastcgi.com/docs/faq.html#PHP">http://www.fastcgi.com/docs/faq.html#PHP</a>&gt;`__<tt class="docutils literal"><span class="pre">&nbsp;(slightly&nbsp;modified)</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">FastCgiServer&nbsp;/etc/apache2/fastcgi-php</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">ScriptAlias&nbsp;/cgi-bin/php&nbsp;/etc/apache2/fastcgi-php</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">AddHandler&nbsp;php-fastcgi&nbsp;.php</span></tt></div>
+<div class="line"><br /></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;SetHandler&nbsp;fastcgi-script</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;SetOutputFilter&nbsp;stripcomments</span></tt></div>
+<div class="line"><br /></div>
+<div class="line"><tt class="docutils literal"><span class="pre">Action&nbsp;php-fastcgi&nbsp;/cgi-bin/php</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">AddType&nbsp;application/x-httpd-php&nbsp;.php</span></tt></div>
+</div>
+<ul class="simple">
+<li>That&#8217;s it!</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/apachephpfastcgihowto.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/apachephpfastcgihowto.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

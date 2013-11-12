@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Activate Akismet / Basic spam protection &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>This article contains guidelines for site owners how to activate polular
+features on OKFN&#8217;s Wordpress blogfarm at WPEngine. See
+<a class="reference external" href="Sysadmin/Blogfarm">Sysadmin/Blogfarm</a> for general information about
+the OKFN blogfarm.</p>
+<div class="section" id="activate-akismet-basic-spam-protection">
+<h1>Activate Akismet / Basic spam protection<a class="headerlink" href="#activate-akismet-basic-spam-protection" title="Permalink to this headline">¶</a></h1>
+<p>Akismet is a comment and trackback spam prevention plugin that ships
+with WordPress. Site administrators can implement basic spam protection
+on their site by activating and configuring this plugin using the
+following steps.</p>
+<ol class="arabic simple">
+<li>An API/Licence key is required for Akismet to function, you register
+for one at their website <a class="reference external" href="https://akismet.com/signup/">https://akismet.com/signup/</a></li>
+<li>Log into the dashboard for your site (<a class="reference external" href="http://site.okfn.org/wp-admin">http://site.okfn.org/wp-admin</a>)</li>
+<li>Navigate to Plugins and activate Akismet</li>
+<li>Navigate to Plugins &gt; Akismet</li>
+<li>Enter your API/Licence key then save</li>
+</ol>
+</div>
+<div class="section" id="disqus-comments">
+<h1>Disqus Comments<a class="headerlink" href="#disqus-comments" title="Permalink to this headline">¶</a></h1>
+<p>As an alternative to the built-in WordPress comments feature, the Disqus
+comments is a third party commenting system that may have more suitable
+features and spam prevention methods. Site admins can enable Disqus
+comments on their site using the following steps.</p>
+<ol class="arabic simple">
+<li>Signup at the Disqus website <a class="reference external" href="https://disqus.com/admin/signup/">https://disqus.com/admin/signup/</a></li>
+<li>Make note of the Site Shortname entry, and the login credentials of
+the Primary Moderator account you created</li>
+<li>Log into your site dashboard (<a class="reference external" href="http://site.okfn.org/wp-admin">http://site.okfn.org/wp-admin</a>)</li>
+<li>Navigate to Plugins and activate the Disqus Comment System plugin</li>
+<li>Navigate to Comments &gt; Disqus</li>
+<li>Login with the primary moderator account you created in the Disqus
+signup</li>
+<li>Select the correct website profile and save</li>
+<li>Disqus comments should now be active, verify this on your site. The
+Comments &gt; Disqus menu option should now provide a portal to
+moderate/manage comments and settings</li>
+</ol>
+</div>
+<div class="section" id="google-analytics-single-site">
+<h1>Google Analytics (single site)<a class="headerlink" href="#google-analytics-single-site" title="Permalink to this headline">¶</a></h1>
+<p>Google Analytics tracks visitors of your site. Site administrators can
+enable this on their site using the following steps/.</p>
+<ol class="arabic simple">
+<li>A Google Analytics tracking code is required, Google has existing
+help resources explaining how to do that -
+<a class="reference external" href="https://support.google.com/analytics/answer/1008015?hl=en">https://support.google.com/analytics/answer/1008015?hl=en</a></li>
+<li>Log into your admin dashboard</li>
+<li>Navigate to Settings &gt; Google Analytics</li>
+<li>Enter your tracking ID, then save.</li>
+</ol>
+<p>NOTE: only available if you have rights to demonstrate you are the owner
+of the site. (ftp access, template edition rights, etc)</p>
+</div>
+<div class="section" id="google-analytics-global-tracking-filter">
+<h1>Google Analytics (global tracking filter)<a class="headerlink" href="#google-analytics-global-tracking-filter" title="Permalink to this headline">¶</a></h1>
+<p>Each site is allowed a unique Google Analytics tracking code as per the
+above Google Analytics (single site). On top of this, a global OKF
+tracking code (UA-33874954) is added to every page to log data aggregate
+data across the entire blogfarm. No additional configuration is required
+to include traffic for a new site in this aggregate account, however it
+is possible to create a filter on this aggregate account to allow drill
+down reports of traffic for each site that is tracked. Administrators of
+the global tracking code may add this filter using the following steps.</p>
+<ol class="arabic simple">
+<li>Login to Google Analytics with a google account that has
+administrator access to the global profile</li>
+<li>From the home screen of Google Analytics, select the admin button
+near the top right of the screen. (if when you log in you do not land
+on the home screen, you should click the home button on the top left.
+These navigation instructions get quite confusing if starting from a
+different page).</li>
+<li>You should now be on the Account Administration screen with a table
+listing of the accounts your login has access to. Within this table
+click on &#8220;OKFN 2&#8221;.</li>
+<li>Then select &#8220;OKFN Aggregate&#8221; from the Properties table on the next
+screen.</li>
+<li>Here you should see a list of &#8220;Profiles&#8221; within this property. Do not
+edit the existing profiles, simply select &#8220;New Profile&#8221;</li>
+<li>Leave &#8220;Web Site&#8221; selected under the &#8220;what data should this profile
+collect&#8221; question.</li>
+<li>For the &#8220;Reporting Profile Name&#8221;, enter the name of the site</li>
+<li>Select a relevant reporting timezone</li>
+<li>Click &#8220;Create Profile&#8221;</li>
+<li>On the resulting new profile screen, select the &#8220;Filters&#8221; tab.</li>
+<li>Click &#8220;New Filter&#8221;</li>
+<li>Select &#8220;Apply Existing Filter&#8221;</li>
+<li>In the &#8220;Available Filters&#8221; list, scroll down and select the first
+&#8220;Add Hostname&#8221; item and click &#8220;Add&#8221; to add it to the &#8220;Selected
+Filters&#8221; list</li>
+<li>Click &#8220;Save&#8221;</li>
+<li>Return to the Filters List (by clicking save if you have landed on
+the &#8220;Edit Filter&#8221; page.</li>
+<li>Click &#8220;New Filter&#8221; again</li>
+<li>This time leave the &#8220;Create New Filter&#8221; option selected</li>
+<li>In the filter name, insert &#8220;Include Domain (example.com)&#8221; where the
+item in parenthesis is the url of the site being filtered. This is
+just for identification purposes.</li>
+<li>Select the &#8220;Custom Filter&#8221; option</li>
+<li>Then select the &#8220;Include&#8221; option</li>
+<li>Then from the &#8220;Filter Field&#8221; dropdown select &#8220;Hostname&#8221;</li>
+<li>Then in the filter pattern enter the domain, escaping periods with
+backslashes (eg publicdomainreview\.org or blog\.okfn\.org)</li>
+<li>Leave case sensitive as &#8220;No&#8221;</li>
+<li>Click &#8220;Save&#8221;</li>
+<li>It may take some hours for traffic stats to appear for this profile
+in the reporting section</li>
+</ol>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Activate Akismet / Basic spam protection</a></li>
+<li><a class="reference internal" href="#disqus-comments">Disqus Comments</a></li>
+<li><a class="reference internal" href="#google-analytics-single-site">Google Analytics (single site)</a></li>
+<li><a class="reference internal" href="#google-analytics-global-tracking-filter">Google Analytics (global tracking filter)</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/blogfarm-essentials.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/blogfarm-essentials.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

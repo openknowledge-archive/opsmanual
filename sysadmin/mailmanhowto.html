@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Mailman on Debian &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mailman-on-debian">
+<h1>Mailman on Debian<a class="headerlink" href="#mailman-on-debian" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="renaming-lists">
+<h2>Renaming Lists<a class="headerlink" href="#renaming-lists" title="Permalink to this headline">¶</a></h2>
+<p>See this FAQ (or just search!):
+<a class="reference external" href="http://wiki.list.org/pages/viewpage.action?pageId=4030617">http://wiki.list.org/pages/viewpage.action?pageId=4030617</a></p>
+</div>
+<div class="section" id="mailman">
+<h2>Mailman<a class="headerlink" href="#mailman" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Edit mm_cfg.py (in /etc/mailman/)</li>
+<li>In particular make sure url setup here coincides with that in apache.
+e.g. I set IMAGE_LOGOS = &#8216;/mmimages/&#8217; to coincide with what I set in
+apache config (see below).</li>
+</ul>
+</div>
+<div class="section" id="exim4-howto">
+<h2>Exim4 Howto<a class="headerlink" href="#exim4-howto" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>apt-get mailman -t unstable for mailman 2.1 (this is 20041001 and
+using exim4 so want unstable)</li>
+<li>Start with this which is exim4&#8217;s own docs:
+<a class="reference external" href="http://www.exim.org/howto/mailman21.html">http://www.exim.org/howto/mailman21.html</a></li>
+<li>This is <strong>excellent</strong>
+<a class="reference external" href="http://mail.python.org/pipermail/mailman-users/2004-June/037419.html">http://mail.python.org/pipermail/mailman-users/2004-June/037419.html</a>,
+Suggests naming for files in debian&#8217;s new exim4 file layout.</li>
+<li>For macros part of exim4 i tried MM_UID=mail and MM_GID=list and
+this seemed to work.</li>
+<li><strong>IMPORTANT</strong> With default setup mailman would send out admin mails
+(e.g. about subscriptions) but would freeze all mails sent to list.
+This was fixed by modifying the following exim4 file
+conf.d/acl/30_exim4-config_check_rcpt as follows (see [2.1]):</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">acl_check_rcpt:&nbsp;&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#Accept&nbsp;if&nbsp;the&nbsp;source&nbsp;is&nbsp;local&nbsp;SMTP&nbsp;(i.e.&nbsp;not&nbsp;over&nbsp;TCP/IP).&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#We&nbsp;do&nbsp;this&nbsp;by&nbsp;testing&nbsp;for&nbsp;an&nbsp;empty&nbsp;sending&nbsp;host&nbsp;field.&nbsp;&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">accept&nbsp;hosts&nbsp;=&nbsp;:&nbsp;&nbsp;&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#INSERTED&nbsp;BY&nbsp;RP&nbsp;2004-10-09&nbsp;to&nbsp;deal&nbsp;with&nbsp;mailman&nbsp;&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">accept&nbsp;&nbsp;hosts&nbsp;=&nbsp;127.0.0.1</span></tt></div>
+</div>
+</div>
+<div class="section" id="setting-up-apache">
+<h2>Setting up Apache<a class="headerlink" href="#setting-up-apache" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Follow [1] but replace /usr/lib/mailman throughout by
+/var/lib/mailman</li>
+</ul>
+</div>
+<div class="section" id="test-it">
+<h2>Test it<a class="headerlink" href="#test-it" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Follow [1]</li>
+</ul>
+</div>
+<div class="section" id="multiple-domains-on-one-machine">
+<h2>Multiple Domains on One Machine<a class="headerlink" href="#multiple-domains-on-one-machine" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>If you can ensure having list names that don&#8217;t conflict across
+domains this is very simple. Just add another add_virtual_host item
+in /etc/mailman/mm_cfg.py</li>
+<li>Remember to add list through web interface rather than from server
+admin so that list is created in correct domain</li>
+<li>Still doesn&#8217;t give you seperate admin password for creating and
+deleting lists</li>
+<li>o/w more complicated and probably involves installing one mailman
+instance for each domain (not sure about exim4 config). See [2]</li>
+<li>For summary of what is and is not possible in mailman 2.</li>
+<li>see [3]</li>
+</ul>
+</div>
+</div>
+<div class="section" id="biblio">
+<h1>Biblio<a class="headerlink" href="#biblio" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="http://www.linuxgazette.com/issue91/price.html">Mailman with Exim on Woody
+Howto</a>
+<a class="reference external" href="http://www.us.exim.org/howto/mailman21.html">1</a>
+<a class="reference external" href="http://www.us.exim.org/howto/mailman21.html#retune">2</a>
+<a class="reference external" href="http://mail.python.org/pipermail/mailman-users/2004-March/035277.html">3</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mailman on Debian</a><ul>
+<li><a class="reference internal" href="#renaming-lists">Renaming Lists</a></li>
+<li><a class="reference internal" href="#mailman">Mailman</a></li>
+<li><a class="reference internal" href="#exim4-howto">Exim4 Howto</a></li>
+<li><a class="reference internal" href="#setting-up-apache">Setting up Apache</a></li>
+<li><a class="reference internal" href="#test-it">Test it</a></li>
+<li><a class="reference internal" href="#multiple-domains-on-one-machine">Multiple Domains on One Machine</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#biblio">Biblio</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/mailmanhowto.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/mailmanhowto.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

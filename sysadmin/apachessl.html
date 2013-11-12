@@ -1,0 +1,300 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>SSL for Apache Howto &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="ssl-for-apache-howto">
+<h1>SSL for Apache Howto<a class="headerlink" href="#ssl-for-apache-howto" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="ssl-certs">
+<h2>SSL certs<a class="headerlink" href="#ssl-certs" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To use SSL you actually need a certificate *and* a private key
+(otherwise how is communicate encrypted?).</li>
+<li>things required to to create a valid certificate:<ul>
+<li>A root certficiate and associated private key</li>
+<li>A new certficate signed by the private key of the root certificate</li>
+</ul>
+</li>
+</ul>
+<div class="section" id="generate-root-certificate">
+<h3>Generate Root Certificate<a class="headerlink" href="#generate-root-certificate" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Pick a directory where you want your root CA stuff to be stored.</li>
+<li>The default in <em>openssl.cnf</em> is <em>./demoCA</em> and we shall proceed
+assuming that is being used, this generates a certificate valid for
+10 years.</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">openssl&nbsp;req&nbsp;-new&nbsp;-x509&nbsp;-keyout&nbsp;root.key&nbsp;-out&nbsp;root.crt&nbsp;-days&nbsp;3650&nbsp;</span></tt></p>
+<ul class="simple">
+<li>Note this will request a password for your private key. This should
+be reasonably secure as the security of your root certificate (and
+everything signed by that) depend on it.</li>
+<li>Now ensure that the file <em>index.txt</em> is empty and that the file
+serial contains 01 (both in <em>./demoCA</em>).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="generate-signed-certificate">
+<h2>Generate Signed Certificate<a class="headerlink" href="#generate-signed-certificate" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Generate a new key and unsigned certificate:</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">openssl&nbsp;req&nbsp;-new&nbsp;-keyout&nbsp;new.key&nbsp;-out&nbsp;newreq.pem&nbsp;-days&nbsp;</span></tt><tt class="docutils literal"><span class="pre">&nbsp;</span></tt></div>
+<div class="line"><a href="#id1"><span class="problematic" id="id2">*</span></a><tt class="docutils literal"><span class="pre">NB:</span></tt> <tt class="docutils literal"><span class="pre">the</span></tt> <tt class="docutils literal"><span class="pre">password</span></tt> <tt class="docutils literal"><span class="pre">for</span></tt> <tt class="docutils literal"><span class="pre">the</span></tt> <tt class="docutils literal"><span class="pre">private</span></tt> <tt class="docutils literal"><span class="pre">key</span></tt></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">need</span></tt> <tt class="docutils literal"><span class="pre">not</span></tt> <tt class="docutils literal"><span class="pre">be</span></tt> <tt class="docutils literal"><span class="pre">very</span></tt> <tt class="docutils literal"><span class="pre">secure</span></tt> <tt class="docutils literal"><span class="pre">here</span></tt> <tt class="docutils literal"><span class="pre">as</span></tt> <tt class="docutils literal"><span class="pre">it</span></tt>
+<tt class="docutils literal"><span class="pre">only</span></tt> <tt class="docutils literal"><span class="pre">relates</span></tt> <tt class="docutils literal"><span class="pre">to</span></tt> <tt class="docutils literal"><span class="pre">this</span></tt> <tt class="docutils literal"><span class="pre">individual</span></tt>
+<tt class="docutils literal"><span class="pre">certificate``*\</span> <span class="pre">``&nbsp;&nbsp;</span></tt>
+| <tt class="docutils literal"><span class="pre">''NB:&nbsp;difference&nbsp;between&nbsp;this&nbsp;and&nbsp;root&nbsp;certificate&nbsp;is&nbsp;no&nbsp;-x509&nbsp;option&nbsp;&nbsp;</span></tt></p>
+<ul class="simple">
+<li>Now sign unsigned certificate with the root cert made above&#8217;&#8216;</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">openssl&nbsp;ca&nbsp;-policy&nbsp;policy_anything&nbsp;-out&nbsp;newcert.pem&nbsp;-cert&nbsp;root.crt&nbsp;-keyfile&nbsp;root.key&nbsp;-in&nbsp;newreq.pem&nbsp;&nbsp;</span></tt></p>
+<ul class="simple">
+<li>For this to work you may to reconfigure <em>/etc/ssl/openssl.cnf</em> as it
+is likely to be broken (e.g. pointing to <em>./demoCA</em> directory that
+does not exist).<ul>
+<li>You probably want the policy <strong>policy_anything</strong>, which imposes
+no conditions on the relation of the certificate request to the
+root certificate (see <em>openssl.cnf</em> for more details).</li>
+</ul>
+</li>
+<li>[optional] you may want to remove the passphrase from the private
+key:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">openssl&nbsp;rsa&nbsp;-in&nbsp;new.key&nbsp;-out&nbsp;new.unsecure.key&nbsp;&nbsp;</span></tt></p>
+<ul class="simple">
+<li>Make sure you now restrict access to this file by changing the file
+permissions (for example make it only readable by Apache user).</li>
+</ul>
+</div>
+<div class="section" id="simpler-method">
+<h2>Simpler Method<a class="headerlink" href="#simpler-method" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Edit <em>openssl.cnf</em> to set your certificate authority directory (by
+default it is <em>./demoCA</em>).</li>
+<li>Generate root stuff and distribute it in accordance with the layout
+in <em>openssl.cnf</em>.</li>
+<li>Then from now on you do not need to specify root ca stuff, the rest
+is as above</li>
+</ul>
+</div>
+<div class="section" id="howto-setup-apache-and-ssl-on-debian-old">
+<h2>HowTo Setup Apache and SSL On Debian (OLD)<a class="headerlink" href="#howto-setup-apache-and-ssl-on-debian-old" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Consists of two steps<ul>
+<li>Generating SSL certificates</li>
+<li>setting up apache to use this</li>
+<li>reference certificate in VirtualHost directive in config file</li>
+<li>Enable port 443 (https port) - edit ports.conf</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="generating-ssl-certificates">
+<h2>Generating SSL Certificates<a class="headerlink" href="#generating-ssl-certificates" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Follow [1].</li>
+<li>If you use /<em>CA.pl</em> output is in /<em>demoCA</em></li>
+<li>You need to create:<ul>
+<li>your own self-signed root certificate authority certificate</li>
+<li>certificate: <em>cacert.pem</em></li>
+<li>key: <em>private/newreq.pem</em></li>
+</ul>
+</li>
+<li>For each certificate:<ul>
+<li>create a request (out: <em>newreq.pem</em>) for</li>
+<li>you then sign with your root certificate producing: newcert.pem</li>
+<li>so you now have key (newreq.pem) and certificate (newcert.pem)</li>
+</ul>
+</li>
+<li>Optional:<ul>
+<li>strip certificate request section from newreq.pem (no longer
+needed) to leave just the key.</li>
+</ul>
+</li>
+<li>You may also want to strip the passphrase from the private key:
+<em>openssl rsa -in newreq.pem -out wwwkeyunsecure.pem</em> (you must then
+change permissions to restrict access)</li>
+<li>suggest then renaming everything as follows<ul>
+<li>.key (newreq.pem), .insecure.key (wwwkeyunsecure.pem)</li>
+</ul>
+</li>
+<li>.cert (newcert.pem) (also you can create stripped down version with
+just actual certificate rather than the metadata as .crt</li>
+</ul>
+<div class="section" id="references">
+<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/">http://www.tldp.org/HOWTO/SSL-Certificates-HOWTO/</a></li>
+<li><a class="reference external" href="http://forums.devshed.com/archive/t-22189">http://forums.devshed.com/archive/t-22189</a> - some info on difference
+between mod_ssl and Apache-SSL 1.</li>
+<li><a class="reference external" href="http://myrddin.org/howto/debian-apache-sslcert.html">http://myrddin.org/howto/debian-apache-sslcert.html</a> - short and to
+the point but not as clear as it might be.</li>
+<li><a class="reference external" href="http://www.webhostingtalk.com/showthread.php?threadid=241850">http://www.webhostingtalk.com/showthread.php?threadid=241850</a> -
+another how-to. a little short</li>
+<li><a class="reference external" href="http://httpd.apache.org/docs-2.0/ssl/ssl_faq.html#aboutcerts">http://httpd.apache.org/docs-2.0/ssl/ssl_faq.html#aboutcerts</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="certificate-authentication">
+<h2>Certificate Authentication<a class="headerlink" href="#certificate-authentication" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Apache offers a variety of authentication methods:<ul>
+<li>BasicAuth -<ul>
+<li>This the simplest and over SSL this is reasonably secure.
+However does require user to always enter their details (i
+think) which is annoying if you are using a program over https
+(such as svn)</li>
+</ul>
+</li>
+<li>Certificate authentication. See [1] and [2]. In [1] see
+SSLVerifyClient Directive and SSLVerifyDepth Directive</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="trusted-certificates">
+<h2>Trusted Certificates<a class="headerlink" href="#trusted-certificates" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Every SSL certificate used by every website is derived from a &#8216;root
+certificate&#8217;.</li>
+<li>Certificates derived from &#8216;trusted&#8217; root certificates cost money.</li>
+<li>Default generated certificates do not derive from a trusted root,
+this means that any user who browses to <a class="reference external" href="https://">https://</a>... will receive a
+message saying &#8216;this certificate is not trusted, continue? yes/no&#8217;.</li>
+<li>This doesn&#8217;t matter for internal purposes, but if you want to set up
+public https access, or if you want to take credit card details via
+https, one needs to buy a certificate. <a class="reference external" href="http://www.instantssl.com/">http://www.instantssl.com/</a>
+offer the cheapest - about $50/year.</li>
+</ul>
+<div class="section" id="id3">
+<h3>references<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="http://httpd.apache.org/docs-2.0/mod/mod_ssl.html">mod_ssl</a></li>
+<li><a class="reference external" href="http://httpd.apache.org/docs-2.0/ssl/ssl_howto.html">SSL howto</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SSL for Apache Howto</a><ul>
+<li><a class="reference internal" href="#ssl-certs">SSL certs</a><ul>
+<li><a class="reference internal" href="#generate-root-certificate">Generate Root Certificate</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#generate-signed-certificate">Generate Signed Certificate</a></li>
+<li><a class="reference internal" href="#simpler-method">Simpler Method</a></li>
+<li><a class="reference internal" href="#howto-setup-apache-and-ssl-on-debian-old">HowTo Setup Apache and SSL On Debian (OLD)</a></li>
+<li><a class="reference internal" href="#generating-ssl-certificates">Generating SSL Certificates</a><ul>
+<li><a class="reference internal" href="#references">References</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#certificate-authentication">Certificate Authentication</a></li>
+<li><a class="reference internal" href="#trusted-certificates">Trusted Certificates</a><ul>
+<li><a class="reference internal" href="#id3">references</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/apachessl.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/apachessl.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

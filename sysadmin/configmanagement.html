@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>&lt;no title&gt; &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <p>We are not really doing config management or policy enforcement. At
+least we have a Fabric <a class="reference external" href="https://bitbucket.org/okfn/sysadmin/src/default/bin/fabfile.py">deployment
+script</a>.</p>
+<p>This page is to catch brain storm output before it gets forgotten.</p>
+<p>Here are some interesting links:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">*&nbsp;Classic&nbsp;config&nbsp;management/deployment:</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Puppet</span></tt> &lt;<a class="reference external" href="http://puppetlabs.com/">http://puppetlabs.com/</a>&gt;`__</div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Chef</span></tt> &lt;<a class="reference external" href="http://www.opscode.com/chef/">http://www.opscode.com/chef/</a>&gt;`__</div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Fabric</span></tt> &lt;<a class="reference external" href="http://docs.fabfile.org/">http://docs.fabfile.org/</a>&gt;`__</div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Cuisine</span></tt> &lt;<a class="reference external" href="https://github.com/sebastien/cuisine">https://github.com/sebastien/cuisine</a>&gt;`__<tt class="docutils literal"><span class="pre">,&nbsp;&quot;</span></tt><a href="#id1"><span class="problematic" id="id2">*</span></a><tt class="docutils literal"><span class="pre">Chef-like</span></tt></div>
+</div>
+<p><tt class="docutils literal"><span class="pre">functionality</span></tt> <tt class="docutils literal"><span class="pre">for</span></tt> <tt class="docutils literal"><span class="pre">Fabric``*\</span> <span class="pre">``&quot;</span></tt>
+| <tt class="docutils literal"><span class="pre">*&nbsp;New&nbsp;shit:</span></tt>
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Ubuntu</span></tt> <tt class="docutils literal"><span class="pre">juju</span></tt> &lt;<a class="reference external" href="https://juju.ubuntu.com/">https://juju.ubuntu.com/</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Ansible</span></tt> &lt;<a class="reference external" href="http://ansible.github.com/">http://ansible.github.com/</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`BluePrint</span></tt> &lt;<a class="reference external" href="http://devstructure.github.com/blueprint/">http://devstructure.github.com/blueprint/</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Pacha</span></tt> &lt;<a class="reference external" href="http://pacha.cafepais.com/">http://pacha.cafepais.com/</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Lettuce</span></tt> &lt;<a class="reference external" href="http://lettuce.it/">http://lettuce.it/</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">*&nbsp;Poetry:</span></tt>
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;!DevOps&nbsp;python&nbsp;apps&nbsp;with&nbsp;fabric,&nbsp;puppet&nbsp;and&nbsp;deb/apt:&nbsp;</span></tt><em>```Python``
+``Application`` ``Deployment`` ``with`` ``Native``
+``Packages`` &lt;http://hynek.me/articles/python-app-deployment-with-native-packages/&gt;`__</em>
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;The&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`ideal</span></tt> <tt class="docutils literal"><span class="pre">operations</span></tt> <tt class="docutils literal"><span class="pre">check</span></tt>
+<tt class="docutils literal"><span class="pre">list</span></tt> &lt;<a class="reference external" href="https://gist.github.com/2777306">https://gist.github.com/2777306</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Everything</span></tt>
+<tt class="docutils literal"><span class="pre">Sysadmin</span></tt> &lt;<a class="reference external" href="http://everythingsysadmin.com/the-test.html">http://everythingsysadmin.com/the-test.html</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">*&nbsp;Log&nbsp;analysis:</span></tt>
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Splunk</span></tt> &lt;<a class="reference external" href="http://www.splunk.com/view/product-tour/SP-CAAAAGV">http://www.splunk.com/view/product-tour/SP-CAAAAGV</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`Graylog2</span></tt> &lt;<a class="reference external" href="http://graylog2.org/">http://graylog2.org/</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`logstash</span></tt> &lt;<a class="reference external" href="http://logstash.net/">http://logstash.net/</a>&gt;`__
+| <tt class="docutils literal"><span class="pre">*&nbsp;Interesting&nbsp;tools</span></tt>
+| <tt class="docutils literal"><span class="pre">&nbsp;*&nbsp;</span></tt><tt class="docutils literal"><span class="pre">`redo</span></tt> &lt;<a class="reference external" href="https://github.com/apenwarr/redo">https://github.com/apenwarr/redo</a>&gt;`__</p>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/configmanagement.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/configmanagement.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

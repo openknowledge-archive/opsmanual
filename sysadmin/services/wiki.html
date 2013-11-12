@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Wiki “farm” &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="List of infrastructure services" href="index.html" />
+    <link rel="next" title="Getting started with the Ops Manual, reStructuredText, and Sphinx" href="../../opsmanual-getting-started.html" />
+    <link rel="prev" title="Resource and service monitoring" href="monitoring.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../opsmanual-getting-started.html" title="Getting started with the Ops Manual, reStructuredText, and Sphinx"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="monitoring.html" title="Resource and service monitoring"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="wiki-farm">
+<h1>Wiki &#8220;farm&#8221;<a class="headerlink" href="#wiki-farm" title="Permalink to this headline">¶</a></h1>
+<p>This article is about our MediaWiki-based wikifarm on
+wikifarm.okserver.org.</p>
+<p><strong>Note we are about to merge all existing MediaWiki-based wikis into the
+central wikifarm. Please see http://trac.okfn.org/ticket/979 for the
+current situation.</strong></p>
+<div class="section" id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Installed on wikifarm.okserver.org (that is currently
+s013.okserver.org at EC2) in /home/okfn/var/wikifarm/</li>
+<li>It is currently using the central mysql service on mysql-int.okfn.org
+(s005.okserver.org at EC2).</li>
+<li>Currently all wiki&#8217;s are cached at
+<a class="reference external" href="http://trac.okfn.org/wiki/CacheService">cache.okserver.org</a> (that
+is currently s006.okserver.org)</li>
+<li>It is based on MediaWiki (currently 1.19.2)</li>
+<li>The wiki farming based on a php config-switch as described
+<a class="reference external" href="http://www.mediawiki.org/wiki/Manual:Wiki_family">here</a>. It is
+<strong>not</strong> using softlinks, another popular method.</li>
+<li>We serve pages as <a class="reference external" href="http://$domainname/$PageName">http://$domainname/$PageName</a> (though the <a class="reference external" href="http://www.mediawiki.org/wiki/Manual:Short_URLs">Mediawiki
+manual</a>
+recommends <a class="reference external" href="http://$domainname/wiki/$PageName">http://$domainname/wiki/$PageName</a>), see. That is done in
+/home/okfn/var/wikifarm/.htaccess via a redirect /$PageName &#8211;&gt;
+/wiki/index.php/$PageName. Therefore wiki instances should use these
+path settings:</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">$wgScriptPath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;/wiki&quot;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">$wgArticlePath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;/$1&quot;;&nbsp;</span></tt></div>
+</div>
+</div>
+<div class="section" id="how-create-an-instance-in-wiki-farm">
+<h2>How create an instance in wiki farm<a class="headerlink" href="#how-create-an-instance-in-wiki-farm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="prepare-the-database-on-the-central-db-server">
+<h3>Prepare the database on the central DB server<a class="headerlink" href="#prepare-the-database-on-the-central-db-server" title="Permalink to this headline">¶</a></h3>
+<p>On s005, create a new DB:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">s005:~$&nbsp;mysql&nbsp;-u&nbsp;root&nbsp;--password=`sudo&nbsp;cat&nbsp;/etc/mysql/rootpw`</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mysql&gt;&nbsp;CREATE&nbsp;DATABASE&nbsp;testwiki2_okserver_org;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mysql&gt;&nbsp;CREATE&nbsp;USER&nbsp;testwiki2&nbsp;IDENTIFIED&nbsp;BY&nbsp;'testwikipass2';</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mysql&gt;&nbsp;GRANT&nbsp;ALL&nbsp;ON&nbsp;testwiki2_okserver_org.*&nbsp;TO&nbsp;testwiki2;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mysql&gt;&nbsp;quit</span></tt></div>
+</div>
+<div class="section" id="importing-an-old-wiki">
+<h4>Importing an old wiki<a class="headerlink" href="#importing-an-old-wiki" title="Permalink to this headline">¶</a></h4>
+<p>If you have a dump, import it. You can do this from s005 or s013:</p>
+<p><tt class="docutils literal"><span class="pre">s005:~$&nbsp;cat&nbsp;wikidump.sql&nbsp;|&nbsp;mysql&nbsp;-h&nbsp;mysql-int.okfn.org&nbsp;-u&nbsp;testwiki2&nbsp;--password=testwikipass2&nbsp;testwiki2_okserver_org</span></tt></p>
+<p>Back on the wikifarm server s013, test the new DB:</p>
+<p><tt class="docutils literal"><span class="pre">s013:~$&nbsp;echo&nbsp;'show&nbsp;tables;'&nbsp;|&nbsp;mysql&nbsp;-h&nbsp;mysql-int.okfn.org&nbsp;-u&nbsp;testwiki2&nbsp;--password=testwikipass2&nbsp;testwiki2_okserver_org</span></tt></p>
+</div>
+<div class="section" id="if-its-a-new-wiki-setup">
+<h4>If its a new wiki setup<a class="headerlink" href="#if-its-a-new-wiki-setup" title="Permalink to this headline">¶</a></h4>
+<p><strong>NOTE</strong> &#8216;&#8217;This only works if the wikimedia version being setup is the
+latest version. To get a table schema data for an older version, you may
+use &#8216;mysqldump -d -uuser -ppass old_db &gt;wiki_schema.sql&#8217; &#8216;&#8217; Download
+the sql file for mediawiki, linked under
+<a class="reference external" href="http://www.mediawiki.org/wiki/Manual:Database_layout">http://www.mediawiki.org/wiki/Manual:Database_layout</a></p>
+<p><tt class="docutils literal"><span class="pre">&nbsp;wget&nbsp;'</span></tt><tt class="docutils literal"><span class="pre">`https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/core.git;a=blob_plain;f=maintenance/tables.sql;hb=HEAD</span></tt> &lt;<a class="reference external" href="https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/core.git;a=blob_plain;f=maintenance/tables.sql;hb=HEAD">https://gerrit.wikimedia.org/r/gitweb?p=mediawiki/core.git;a=blob_plain;f=maintenance/tables.sql;hb=HEAD</a>&gt;`__<tt class="docutils literal"><span class="pre">'&nbsp;-O&nbsp;mediawiki.sql</span></tt></p>
+<p>Import the .sql</p>
+<p><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;mysql&nbsp;-u&nbsp;root&nbsp;--password='somepass'&nbsp;testwiki2_okserver_org&nbsp;&lt;&nbsp;mediawiki.sql</span></tt></p>
+</div>
+</div>
+<div class="section" id="prepare-wiki-configuration">
+<h3>Prepare wiki configuration<a class="headerlink" href="#prepare-wiki-configuration" title="Permalink to this headline">¶</a></h3>
+<p>On the wikifarm server s013, create a Mediawiki configuration file. You
+can either use one of the existing LocalSettings-*.php configs as
+template, or bring your existing one. Make sure it has the correct
+database setting you used above:</p>
+<p><tt class="docutils literal"><span class="pre">s013:~$&nbsp;vi&nbsp;/home/okfn/var/wikifarm/wiki/LocalSettings-testwiki2.okserver.org.php'''</span></tt></p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">$wgDBtype&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;mysql&quot;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">$wgDBserver&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;mysql-int.okfn.org&quot;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">$wgDBname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;testwiki2_okserver_org&quot;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">$wgDBuser&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;testwiki2&quot;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">$wgDBpassword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;testwikipass2&quot;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">$wgDBprefix&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;&quot;;</span></tt></div>
+</div>
+<p>The wiki sould use these paths:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">$wgScriptPath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;/wiki&quot;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">$wgArticlePath&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;&quot;/$1&quot;;&nbsp;</span></tt></div>
+</div>
+<p>Make sure that all anti-spam extensions are activated</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">require_once(&nbsp;&quot;$IP/extensions/AntiBot/AntiBot.php&quot;&nbsp;);</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">require_once(&nbsp;&quot;$IP/extensions/AntiSpoof/AntiSpoof.php&quot;&nbsp;);</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">require_once(&nbsp;&quot;$IP/extensions/SimpleAntiSpam/SimpleAntiSpam.php&quot;&nbsp;);</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">require_once(&nbsp;&quot;$IP/extensions/TitleBlacklist/TitleBlacklist.php&quot;&nbsp;);</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">require_once(&nbsp;&quot;$IP/extensions/SpamBlacklist/SpamBlacklist.php&quot;&nbsp;);</span></tt></div>
+</div>
+<p>Once you are done with the instance&#8217;s configuration, invoke it from the
+central farm configuration:</p>
+<p><tt class="docutils literal"><span class="pre">s013:~$&nbsp;vi&nbsp;/home/okfn/var/wikifarm/wiki/LocalSettings.php</span></tt></p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">case&nbsp;&quot;testwiki2.okserver.org&quot;:</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;require_once&nbsp;&quot;LocalSettings-testwiki2.okserver.org.php&quot;;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;break;</span></tt></div>
+</div>
+<p>Now run the Mediawiki update script:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">s013:~$&nbsp;cd&nbsp;/home/okfn/var/wikifarm/wiki/maintenance/</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">s013:~$&nbsp;php&nbsp;update.php&nbsp;--conf&nbsp;/home/okfn/var/wikifarm/wiki/LocalSettings-testwiki2.okserver.org.php</span></tt></div>
+</div>
+<p>If it fails, you have to fix the
+LocalSettings-testwiki2.okserver.org.php. E.g. some extensions might not
+be present or have other names now.</p>
+</div>
+<div class="section" id="prepare-apache-configuration">
+<h3>Prepare Apache configuration<a class="headerlink" href="#prepare-apache-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Before we touch the Apache configuration we should make sure the local
+clone of the sysadmin repo is up2date:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">s013:~$&nbsp;cd&nbsp;/home/okfn/hg-sysadmin/</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">s013:~$&nbsp;hg&nbsp;pull&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">s013:~$&nbsp;hg&nbsp;update</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">s013:~$&nbsp;hg&nbsp;stat</span></tt></div>
+</div>
+<p>If the last command shows any changes, check them in before you proceed.</p>
+<p>Now tell Apache about the new wiki instance</p>
+<p><tt class="docutils literal"><span class="pre">s013:~$&nbsp;vi&nbsp;/etc/apache2/sites-available/testwiki.okserver.org</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">ServerAlias&nbsp;&nbsp;&nbsp;&nbsp;testwiki2.okserver.org</span></tt></p>
+<p>If the syntax check does not show any errors, reload Apache:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">s013:~$&nbsp;sudo&nbsp;apache2ctl&nbsp;-S</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">s013:~$&nbsp;sudo&nbsp;/etc/init.d/apache2&nbsp;reload</span></tt></div>
+</div>
+<p><strong>Warning</strong>: If you need to put in wiki-specific rewrite rules (e.g.
+redirects), <strong>make sure they are specific to your instance&#8217;s domainname
+and do not affect the other wiki instances</strong>. If you use &#8220;RewriteCond&#8221;,
+don&#8217;t forget that you have to prefix each of your rules seperately</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">RewriteCond&nbsp;%{HTTP_HOST}&nbsp;^testwiki2.okserver.org$</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">RewriteRule&nbsp;&nbsp;&nbsp;&nbsp;^/foo1\.html$&nbsp;&nbsp;bar.html&nbsp;&nbsp;[R]</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">RewriteCond&nbsp;%{HTTP_HOST}&nbsp;^testwiki2.okserver.org$</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">RewriteRule&nbsp;&nbsp;&nbsp;&nbsp;^/foo2\.html$&nbsp;&nbsp;baz.html&nbsp;&nbsp;[R]</span></tt></div>
+</div>
+</div>
+<div class="section" id="test">
+<h3>Test<a class="headerlink" href="#test" title="Permalink to this headline">¶</a></h3>
+<p>If the DNS record in question does not yet exist, you can test with with
+this line in your local /etc/hosts (do not forget to remove afterwards!)</p>
+<p><tt class="docutils literal"><span class="pre">mycomputer:~$&nbsp;sudo&nbsp;vi&nbsp;/etc/hosts</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">46.51.142.120&nbsp;testwiki2.okserver.org</span></tt></p>
+<p>Now point open your new wiki instance in your browser and verify it is
+working as expected:</p>
+<ul class="simple">
+<li>Main page: <a class="reference external" href="http://testwiki2.okserver.org/">http://testwiki2.okserver.org/</a></li>
+<li>Version &amp; extensions: <a class="reference external" href="http://testwiki2.okserver.org/Special:Version">http://testwiki2.okserver.org/Special:Version</a></li>
+</ul>
+</div>
+<div class="section" id="set-dns-records">
+<h3>Set DNS records<a class="headerlink" href="#set-dns-records" title="Permalink to this headline">¶</a></h3>
+<p>If you do not want the new instance to be cached, set this DNS record
+(see <a class="reference external" href="Sysadmin/DomainServices">Sysadmin/DomainServices</a>):</p>
+<ul class="simple">
+<li>testwiki2.okserver.org. IN CNAME wikifarm.okserver.org.</li>
+</ul>
+<p>If you do want it to be cached, configure the squid cache as per
+<a class="reference external" href="http://trac.okfn.org/wiki/CacheService">documentation</a> and set this
+DNS record:</p>
+<ul class="simple">
+<li>testwiki2.okserver.org. IN CNAME cache.okserver.org.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="old-wiki-installations">
+<h2>Old wiki installations<a class="headerlink" href="#old-wiki-installations" title="Permalink to this headline">¶</a></h2>
+<p>A number of wikis on s013:/home/okfn/var/ are not yet migrated into the
+wiki farm, see http://trac.okfn.org/ticket/979 for the current status.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Wiki &#8220;farm&#8221;</a><ul>
+<li><a class="reference internal" href="#technical-details">Technical details</a></li>
+<li><a class="reference internal" href="#how-create-an-instance-in-wiki-farm">How create an instance in wiki farm</a><ul>
+<li><a class="reference internal" href="#prepare-the-database-on-the-central-db-server">Prepare the database on the central DB server</a><ul>
+<li><a class="reference internal" href="#importing-an-old-wiki">Importing an old wiki</a></li>
+<li><a class="reference internal" href="#if-its-a-new-wiki-setup">If its a new wiki setup</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#prepare-wiki-configuration">Prepare wiki configuration</a></li>
+<li><a class="reference internal" href="#prepare-apache-configuration">Prepare Apache configuration</a></li>
+<li><a class="reference internal" href="#test">Test</a></li>
+<li><a class="reference internal" href="#set-dns-records">Set DNS records</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#old-wiki-installations">Old wiki installations</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="monitoring.html"
+                        title="previous chapter">Resource and service monitoring</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../opsmanual-getting-started.html"
+                        title="next chapter">Getting started with the Ops Manual, reStructuredText, and Sphinx</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/sysadmin/services/wiki.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/wiki.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../opsmanual-getting-started.html" title="Getting started with the Ops Manual, reStructuredText, and Sphinx"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="monitoring.html" title="Resource and service monitoring"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

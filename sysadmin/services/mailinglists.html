@@ -1,0 +1,331 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Mailing list hosting &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="List of infrastructure services" href="index.html" />
+    <link rel="next" title="Resource and service monitoring" href="monitoring.html" />
+    <link rel="prev" title="Server hosting" href="hosting.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="monitoring.html" title="Resource and service monitoring"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="hosting.html" title="Server hosting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="mailing-list-hosting">
+<h1>Mailing list hosting<a class="headerlink" href="#mailing-list-hosting" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Runs on <a class="reference external" href="http://www.gnu.org/s/mailman/index.html">GNU Mailman</a></li>
+<li>Deployed at: <a class="reference external" href="http://lists.okfn.org/">http://lists.okfn.org/</a></li>
+<li>Details of setup/configuration at: <a class="reference external" href="MailmanHowto">MailmanHowto</a></li>
+<li>List creation password: std low-sec pwd</li>
+</ul>
+<div class="section" id="how-to-add-a-new-mailing-list-domain">
+<h2>How to add a new mailing list domain<a class="headerlink" href="#how-to-add-a-new-mailing-list-domain" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><strong>NOTE</strong>: While its possible to create multiple domains in mailman,
+its upto the admin/users to ensure lists with duplicate names are not
+created.</li>
+<li>The current default is &#64;lists.okfn.org</li>
+<li>To add more domains, append the domain name into the below set of
+files</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">/etc/exim4/conf.d/main/01_exim4-config_listmacrosdefs</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">domainlist&nbsp;local_domains&nbsp;=&nbsp;&#64;:localhost:lists.okfn.org:lists.knowledgeforge.net:lists.dataexpeditions.org:partial-lsearch;/etc/mailconfig/mail_domains</span></tt></div>
+</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">/conf.d/main/04_exim4-config_mailman</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">domainlist&nbsp;mm_domains=lists.okfn.org:lists.knowledgeforge.net:lists.dataexpeditions.org</span></tt></div>
+</div>
+<ul class="simple">
+<li>Ensure that the new domain has been added into the MTA as mentioned
+<a class="reference external" href="http://wiki.okfn.org/Sysadmin/EmailService#How_to_add_a_new_email_domain">here</a></li>
+<li>If the domain was just added into exim&#8217;s config files, you may need
+to reload exim.</li>
+</ul>
+</div>
+<div class="section" id="how-to-rebuild-list-archives">
+<h2>How to Rebuild list archives<a class="headerlink" href="#how-to-rebuild-list-archives" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">mmarch&nbsp;</span></tt></p>
+</div>
+<div class="section" id="how-to-rename-a-list">
+<h2>How to Rename a List<a class="headerlink" href="#how-to-rename-a-list" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>See mailman documentation :<ul>
+<li><a class="reference external" href="http://How%20to%20Rename%20a%20List%20in%20http://www.gnu.org/software/mailman/faq.html">How to Rename a
+List</a></li>
+<li><a class="reference external" href="http://wiki.list.org/pages/viewpage.action?pageId=4030617">How do I change the name of (rename) a
+list?</a></li>
+</ul>
+</li>
+<li><em>Note that some files and dirs need to be readable and/or writeable
+by user/group www-data, others by user/group &#8220;list&#8221;.</em><ul>
+<li>See e.g. <a class="reference external" href="http://trac.okfn.org/ticket/1198">trac-ticket</a> where
+a rename left /var/lib/mailman/lists/$LIST/config.pck not being
+accessible by &#8220;list&#8221;.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="how-to-remove-an-individual-post">
+<h2>How to remove an individual post<a class="headerlink" href="#how-to-remove-an-individual-post" title="Permalink to this headline">¶</a></h2>
+<p>&#8216;&#8217; This is quite painful. See also&#8217;&#8217; <a class="reference external" href="http://wiki.list.org/pages/viewpage.action?pageId=4030681">How can I remove a post from the
+list archive or remove an entire
+archive?</a></p>
+<ul class="simple">
+<li>Log into our mailman host (currently <em>s001.okserver.org</em>) and follow
+the below steps:</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;What&nbsp;list&nbsp;do&nbsp;we&nbsp;want&nbsp;to&nbsp;edit?&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;ML=&quot;sysadmin-coord&quot;&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;Make&nbsp;a&nbsp;backup&nbsp;of&nbsp;the&nbsp;mbox&nbsp;file&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;cp&nbsp;-a&nbsp;/var/lib/mailman/archives/private/${ML}.mbox/${ML}.mbox{,.SAVE-`date&nbsp;+%Y%m%d`}&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;Make&nbsp;a&nbsp;working&nbsp;copy&nbsp;of&nbsp;the&nbsp;mbox&nbsp;file&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;cp&nbsp;-a&nbsp;/var/lib/mailman/archives/private/${ML}.mbox/${ML}.mbox{,.work}&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;Enter&nbsp;the&nbsp;mbox&nbsp;and&nbsp;remove&nbsp;the&nbsp;posting.&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#BEWARE:&nbsp;*REMOVING*&nbsp;the&nbsp;post&nbsp;will&nbsp;cause&nbsp;renumbering&nbsp;of&nbsp;the&nbsp;subsequent&nbsp;posts&nbsp;in&nbsp;the&nbsp;archive.</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#You&nbsp;might&nbsp;want&nbsp;to&nbsp;*EDIT*&nbsp;the&nbsp;post&nbsp;instead&nbsp;and&nbsp;remove&nbsp;its&nbsp;content.&nbsp;Not&nbsp;sure&nbsp;whether&nbsp;this&nbsp;can&nbsp;be&nbsp;done&nbsp;with&nbsp;mutt&nbsp;though.</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;mutt&nbsp;-f&nbsp;/var/lib/mailman/archives/private/${ML}.mbox/${ML}.mbox.work&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;Remove&nbsp;the&nbsp;new&nbsp;headers&nbsp;mutt&nbsp;has&nbsp;left&nbsp;behind:&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#BEWARE&nbsp;1:&nbsp;Maybe&nbsp;other&nbsp;statuses&nbsp;are&nbsp;also&nbsp;possible,&nbsp;e.g.&nbsp;&quot;R&quot;.&nbsp;Make&nbsp;sure&nbsp;they&nbsp;are&nbsp;removed&nbsp;as&nbsp;well</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#BEWARE&nbsp;2:&nbsp;This&nbsp;would&nbsp;also&nbsp;remove&nbsp;such&nbsp;lines&nbsp;from&nbsp;mail&nbsp;BODIES&nbsp;which&nbsp;would&nbsp;be&nbsp;wrong!</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;egrep&nbsp;-v&nbsp;'^(Status:&nbsp;O|Content-Length:&nbsp;[0-9]*|Lines:&nbsp;[0-9]*)$'&nbsp;/var/lib/mailman/archives/private/${ML}.mbox/${ML}.mboxwork&nbsp;&gt;&nbsp;/var/lib/mailman/archives/private/${ML}.mbox/${ML}.mbox&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#Check&nbsp;that&nbsp;we&nbsp;really&nbsp;only&nbsp;removed&nbsp;the&nbsp;one&nbsp;post:&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;diff&nbsp;/var/lib/mailman/archives/private/${ML}.mbox/${ML}.mbox{,.work}&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#Is&nbsp;all&nbsp;fine?&nbsp;The&nbsp;proceed:&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#Remove&nbsp;the&nbsp;working&nbsp;copy&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;rm&nbsp;/var/lib/mailman/archives/private/${ML}.mbox/${ML}.mbox.work&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#move&nbsp;the&nbsp;old&nbsp;HTML&nbsp;archive:&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;mv&nbsp;/var/lib/mailman/archives/private/${ML}{,.SAVE-`date&nbsp;+%Y%m%d`}&nbsp;&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#re-create&nbsp;html&nbsp;archive:</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;sudo&nbsp;-u&nbsp;www-data&nbsp;mkdir&nbsp;-m&nbsp;775&nbsp;/var/lib/mailman/archives/private/${ML}&nbsp;sudo&nbsp;-u&nbsp;list&nbsp;/usr/lib/mailman/bin/arch&nbsp;${ML}</span></tt></div>
+</div>
+</div>
+<div class="section" id="how-to-remove-a-user-from-a-mailinglist-via-cli">
+<h2>How to remove a user from a mailinglist via cli<a class="headerlink" href="#how-to-remove-a-user-from-a-mailinglist-via-cli" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">remove_members&nbsp;-n&nbsp;-N&nbsp;</span></tt><tt class="docutils literal"><span class="pre">&nbsp;</span></tt></p>
+</div>
+<div class="section" id="how-to-add-a-user-into-a-mailling-list-via-cli">
+<h2>How to add a user into a mailling list via cli<a class="headerlink" href="#how-to-add-a-user-into-a-mailling-list-via-cli" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">echo&nbsp;&nbsp;'</span></tt><tt class="docutils literal"><span class="pre">'&nbsp;|&nbsp;add_members&nbsp;-r&nbsp;-&nbsp;-wn&nbsp;</span></tt></p>
+</div>
+<div class="section" id="how-to-export-mailinglist-users">
+<h2>How to export mailinglist users<a class="headerlink" href="#how-to-export-mailinglist-users" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To list users of a particular list, with full names - <a href="#id1"><span class="problematic" id="id2">*</span></a>&#8216;Full Name&#8217; *</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">list_members&nbsp;--fullnames&nbsp;--</span></tt><tt class="docutils literal"><span class="pre">&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">e.g&nbsp;#&nbsp;list_members&nbsp;--fullnames&nbsp;--regular&nbsp;okfn-announce</span></tt></div>
+</div>
+<ul class="simple">
+<li>To convert the list into csv separted format like - &#8216;,,&#8217;</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">sed&nbsp;-e&nbsp;'s/^</span></tt><span class="formula">[<sup> &lt; </sup>]*</span>
+<tt class="docutils literal"><span class="pre">$/&lt;\1&gt;/g'&nbsp;-e&nbsp;'s/&nbsp;*&lt;/,/g'&nbsp;-e&nbsp;'s/&gt;$//g'&nbsp;-e&nbsp;'s/\&quot;//g'&nbsp;awk&nbsp;-F&nbsp;','&nbsp;&quot;{print&nbsp;\$2&nbsp;\&quot;,\&quot;&nbsp;\$1&nbsp;\&quot;,${type}\&quot;&nbsp;}&nbsp;|&nbsp;sort</span></tt></p>
+</div>
+<div class="section" id="how-to-upgrade-mailman">
+<h2>How to upgrade mailman<a class="headerlink" href="#how-to-upgrade-mailman" title="Permalink to this headline">¶</a></h2>
+<p>Mailman does not like to be upgraded while it has messages in its
+queues. Therefore you should follow this procedure:</p>
+<ul class="simple">
+<li>Stop mailman.</li>
+<li>If you want, make a backup of the queues</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">/var/lib/mailman/qfiles/{bad,shunt}/&nbsp;</span></tt></p>
+<ul class="simple">
+<li>Remove &#8220;bad&#8221; and &#8220;shunt&#8221; queued messages:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">sudo&nbsp;/usr/lib/mailman/cron/cull_bad_shunt&nbsp;</span></tt></p>
+<ul class="simple">
+<li>Check whether there are still queue files:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">sudo&nbsp;find&nbsp;/var/lib/mailman/qfiles/&nbsp;-type&nbsp;f&nbsp;</span></tt></p>
+<p>If there are no more queued messages, you can upgrade mailman now.
+Otherwise proceed:</p>
+<ul class="simple">
+<li>Prevent the MTA (exim in our case) from passing new postings to
+mailman, but make sure it still accepts mails *from* mailman. I am
+not sure whether stopping the exim service would work, so instead i
+block port 25 temporarily:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">sudo&nbsp;iptables&nbsp;-A&nbsp;INPUT&nbsp;-m&nbsp;state&nbsp;--state&nbsp;NEW&nbsp;-p&nbsp;tcp&nbsp;--dport&nbsp;25&nbsp;-i&nbsp;!&nbsp;lo&nbsp;-j&nbsp;REJECT&nbsp;</span></tt></p>
+<ul class="simple">
+<li>Start mailman and wait until the queues are empty:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">sudo&nbsp;watch&nbsp;'find&nbsp;/var/lib/mailman/qfiles/&nbsp;-type&nbsp;f&nbsp;|&nbsp;wc&nbsp;-l'</span></tt></p>
+<ul class="simple">
+<li>Stop mailman. Revert the above step that stopped exim from passing
+messages to mailman, e.g. start exim, or remove any block:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">sudo&nbsp;iptables&nbsp;-D&nbsp;INPUT&nbsp;-m&nbsp;state&nbsp;--state&nbsp;NEW&nbsp;-p&nbsp;tcp&nbsp;--dport&nbsp;25&nbsp;-i&nbsp;!&nbsp;lo&nbsp;-j&nbsp;REJECT&nbsp;</span></tt></p>
+<p>Now it should be safe to upgrade mailman.</p>
+<p>&#8211; from <a class="reference external" href="http://trac.okfn.org/ticket/611">http://trac.okfn.org/ticket/611</a></p>
+</div>
+<div class="section" id="mailman-troubleshooting">
+<h2>Mailman Troubleshooting<a class="headerlink" href="#mailman-troubleshooting" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Important folders</li>
+</ul>
+<p>mailman folder</p>
+<p><tt class="docutils literal"><span class="pre">/var/lib/mailman/</span></tt></p>
+<p>mailman private archives (all lists, mbox files)</p>
+<p><tt class="docutils literal"><span class="pre">/var/lib/mailman/archives/</span></tt></p>
+<p>mailman public archives (lists available via the web interface, html
+files)</p>
+<p><tt class="docutils literal"><span class="pre">/var/lib/mailman/archives/public</span></tt></p>
+<p>individual list config (stored in python pickle format)</p>
+<p><tt class="docutils literal"><span class="pre">/var/lib/mailman/lists/${list-name}/config.pck</span></tt></p>
+<ul class="simple">
+<li>Reading list config</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">/var/lib/mailman/bin/dumpdb&nbsp;/var/lib/mailman/lists/${list-name}/config.pck</span></tt></p>
+<ul class="simple">
+<li>modifying a list config</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">*&nbsp;Create&nbsp;a&nbsp;config&nbsp;file&nbsp;with&nbsp;content&nbsp;like&nbsp;'key=value'&nbsp;pairs,&nbsp;key&nbsp;and&nbsp;value&nbsp;pairs&nbsp;can&nbsp;be&nbsp;read&nbsp;from&nbsp;the&nbsp;.pck&nbsp;file.</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">*&nbsp;In&nbsp;the&nbsp;config&nbsp;given&nbsp;below,&nbsp;we're&nbsp;modifying&nbsp;the&nbsp;list&nbsp;footer&nbsp;to&nbsp;include&nbsp;an&nbsp;unsubscribe&nbsp;link.</span></tt></div>
+</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">#cat&nbsp;/root/mailman_list_config</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mlist.personalize=1&nbsp;&nbsp;mlist.msg_footer='_______________________________________________\n%(real_name)s&nbsp;mailing&nbsp;list\n%(real_name)s&#64;%(host_name)s\n%(web_page_url)slistinfo%(cgiext)s/%&nbsp;&nbsp;&nbsp;(_internal_name)s\nUnsubscribe:&nbsp;%(web_page_url)soptions/%(_internal_name)s\n'&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mlist.digest_footer='_______________________________________________\n%(real_name)s&nbsp;mailing&nbsp;list\n%(real_name)s&#64;%(host_name)s\n%(web_page_url)slistinfo%(cgiext)s/%(_internal_name)s\nUnsubscribe:&nbsp;%(web_page_url)soptionss/%(_internal_name)s\n'&nbsp;</span></tt></div>
+</div>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;##Apply&nbsp;the&nbsp;config&nbsp;to&nbsp;the&nbsp;list</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">/usr/sbin/config_list&nbsp;-i&nbsp;mailman_list_config&nbsp;${list-name}</span></tt></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Mailing list hosting</a><ul>
+<li><a class="reference internal" href="#how-to-add-a-new-mailing-list-domain">How to add a new mailing list domain</a></li>
+<li><a class="reference internal" href="#how-to-rebuild-list-archives">How to Rebuild list archives</a></li>
+<li><a class="reference internal" href="#how-to-rename-a-list">How to Rename a List</a></li>
+<li><a class="reference internal" href="#how-to-remove-an-individual-post">How to remove an individual post</a></li>
+<li><a class="reference internal" href="#how-to-remove-a-user-from-a-mailinglist-via-cli">How to remove a user from a mailinglist via cli</a></li>
+<li><a class="reference internal" href="#how-to-add-a-user-into-a-mailling-list-via-cli">How to add a user into a mailling list via cli</a></li>
+<li><a class="reference internal" href="#how-to-export-mailinglist-users">How to export mailinglist users</a></li>
+<li><a class="reference internal" href="#how-to-upgrade-mailman">How to upgrade mailman</a></li>
+<li><a class="reference internal" href="#mailman-troubleshooting">Mailman Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="hosting.html"
+                        title="previous chapter">Server hosting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="monitoring.html"
+                        title="next chapter">Resource and service monitoring</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/sysadmin/services/mailinglists.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/mailinglists.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="monitoring.html" title="Resource and service monitoring"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="hosting.html" title="Server hosting"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

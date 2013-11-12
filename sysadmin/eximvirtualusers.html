@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Intro &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="intro">
+<h1>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h1>
+<p>This describes setting up a (debian) email system to deliver email for
+virtual users (i.e. for users with email accounts but no shell account).
+It explains both how to deliver mail and how to set up imap and pop to
+allow users to pick it up.</p>
+<p>Software:</p>
+<ul class="simple">
+<li>Exim MTA</li>
+<li>Courier (Imap and Pop)</li>
+<li>[Optional] a webmail program</li>
+</ul>
+<p>Requirements:</p>
+<ul class="simple">
+<li>Wish to provide email routing and access</li>
+<li>Want to be able to run off centralized information set</li>
+</ul>
+<p>Two steps in this process:</p>
+<ul class="simple">
+<li>Routing email as it arrives</li>
+<li>Setting up courier pop and imap to pick it up.</li>
+</ul>
+<p>These steps are independent in theory but we will want to have only a
+single set of config files driving both processes. The method of choice
+will be built around courier userdb files which is a relatively
+&#8216;low-tech&#8217; solution and avoids the use of a direct connection to a db
+(which can be awkward as such support must be compiled into exim and
+courier).</p>
+<p>NB: many of these options benefit from having some kind of alias
+director (e.g. for catch all routing). An alias director allows
+rerouting of domains to shell users e.g. <a class="reference external" href="mailto:*&#37;&#52;&#48;xyz&#46;com">*<span>&#64;</span>xyz<span>&#46;</span>com</a>: joe. Two docs on
+how to do this are (implementing a very similar solution)</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.wlug.org.nz/EximNotes">http://www.wlug.org.nz/EximNotes</a> section called: Configuring Exim4
+with a virtual domain table/users in text files</li>
+</ul>
+</div>
+<div class="section" id="routing-incoming-email">
+<h1>Routing Incoming Email<a class="headerlink" href="#routing-incoming-email" title="Permalink to this headline">¶</a></h1>
+<p>Two choices about how you do this</p>
+<ol class="arabic simple">
+<li>use exim to do the virtual domain and user routing. See [1]</li>
+<li>route it all to a real user and then use a .forward file in that
+directory</li>
+</ol>
+<p>Option 1 is preferable though 2 is included as it could be easier in a
+very simple case of only 1 domain on a system and also provides useful
+examples of .forward files.</p>
+<div class="section" id="implementing-option-1">
+<h2>Implementing Option 1<a class="headerlink" href="#implementing-option-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>In exim.conf put this in your Director section near the top
+(certainly before localuser and any aliasing director you may have):</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">virtualuser_delivery:</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">driver&nbsp;=&nbsp;appendfile</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;this&nbsp;looks&nbsp;up&nbsp;the&nbsp;correct&nbsp;shell&nbsp;user&nbsp;account&nbsp;to&nbsp;use&nbsp;when&nbsp;writing&nbsp;mail</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">user&nbsp;=&nbsp;${lookup&nbsp;{$domain}&nbsp;lsearch&nbsp;{/etc/exim/virtual/domains}&nbsp;{$value}}</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;the&nbsp;default&nbsp;exim&nbsp;mail&nbsp;user</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">group&nbsp;=&nbsp;mail</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;write&nbsp;files&nbsp;and&nbsp;directories&nbsp;with&nbsp;permissions&nbsp;770</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">directory_mode&nbsp;=&nbsp;0770</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mode&nbsp;=&nbsp;0770</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mode_fail_narrower&nbsp;=&nbsp;false</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">maildir_format&nbsp;=&nbsp;yes</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;we&nbsp;write&nbsp;to&nbsp;/home/$user_for_which_domain_runs/Maildir/$local_part</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;if&nbsp;we&nbsp;were&nbsp;using&nbsp;a&nbsp;generic&nbsp;system&nbsp;we&nbsp;might&nbsp;use&nbsp;/var/virtual_mail/&nbsp;instead</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">directory&nbsp;=&nbsp;/home/${lookup&nbsp;{$domain}&nbsp;lsearch&nbsp;{/etc/exim/virtual/domains}&nbsp;{$value}}/Maildir/$local_part</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">create_directory&nbsp;=&nbsp;yes</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">delivery_date_add&nbsp;=&nbsp;yes</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">envelope_to_add&nbsp;=&nbsp;yes</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">return_path_add&nbsp;=&nbsp;yes</span></tt></div>
+</div>
+<ul class="simple">
+<li>In the transports section (remember order does not matter)</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">virtualuser:</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">driver&nbsp;=&nbsp;smartuser</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;check&nbsp;this&nbsp;is&nbsp;in&nbsp;the&nbsp;virtual&nbsp;domain&nbsp;list</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">domains&nbsp;=&nbsp;lsearch;/etc/exim/virtual/domains</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;check&nbsp;that&nbsp;this&nbsp;local&nbsp;user&nbsp;exists</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">local_parts&nbsp;=&nbsp;lsearch;/etc/exim/virtual/$domain</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">transport&nbsp;=&nbsp;virtualuser_delivery</span></tt></div>
+</div>
+<p>Organization:</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">userdb&nbsp;files&nbsp;put&nbsp;in&nbsp;directory&nbsp;/etc/courier/userdb</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">exim&nbsp;config&nbsp;info:&nbsp;/etc/exim/virtual&nbsp;directory</span></tt></div>
+</div>
+<p>Steps:</p>
+<ul class="simple">
+<li>Create userdb file for the domain (see
+<a class="reference external" href="http://www.inter7.com/courierimap/INSTALL.html#userdb">http://www.inter7.com/courierimap/INSTALL.html#userdb</a>).</li>
+<li>Put in /etc/courier/userdb and name the file ${domain} e.g. xyz.com</li>
+<li>Run extract script on it (see below for script), this will take info
+from userdb files and dump it into right place for exim (currently
+/etc/exim/virtual)</li>
+<li>create entry in file /etc/exim/virtual/domains of the form $domain:
+[$corresponding_user] ([ ... ] indicates optional)</li>
+<li>If not done automatcially then copy file generated in 2 to
+/etc/exim/virtual</li>
+<li>chown -R $user:mail /home/$user/Maildir and make sure permissions are
+660 or 770.</li>
+<li>This is to ensure the exim can deliver mail okay and the user can
+read it</li>
+<li>OPTIONAL: test exim by running exim -d2 -bt and then entering test
+email addresses. Should pick up virtual users.</li>
+</ul>
+<p>Script to extract exim delivery tables from courier userdb</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">#!/bin/bash</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">#&nbsp;exim&nbsp;deliverytables&nbsp;from&nbsp;the&nbsp;courier&nbsp;userdb</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">COURIERDIR=&quot;/etc/courier&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">USERDBDIR=&quot;$COURIERDIR/userdb&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">EXIMDIR=&quot;/etc/exim&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">DELITABLEDIR=&quot;$EXIMDIR/virtual&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mkdir&nbsp;-p&nbsp;$DELITABLEDIR</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">cd&nbsp;$USERDBDIR</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">for&nbsp;domain&nbsp;in&nbsp;*;&nbsp;do</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;FILE=&quot;$DELITABLEDIR/$domain&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&nbsp;&gt;&nbsp;$FILE&nbsp;&quot;#&nbsp;exim&nbsp;delivery&nbsp;table&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&gt;&gt;&nbsp;$FILE&nbsp;&quot;#&nbsp;generated&nbsp;by&nbsp;$0&quot;&nbsp;&gt;&gt;&nbsp;$FILE</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&gt;&gt;&nbsp;$FILE&nbsp;-n&nbsp;&quot;#&nbsp;from&nbsp;$USERDBDIR/$domain&nbsp;on&nbsp;&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;date&nbsp;&gt;&gt;&nbsp;$FILE&nbsp;+&quot;%Y-%m-%d&nbsp;%k:%M:%S&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&gt;&gt;&nbsp;$FILE&nbsp;&quot;#&nbsp;do&nbsp;not&nbsp;edit&quot;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&gt;&gt;&nbsp;$FILE</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">&nbsp;&nbsp;&nbsp;&lt;&nbsp;$domain&nbsp;sed&nbsp;'s/</span></tt><span class="formula">[<sup></sup>]*</span>
+<tt class="docutils literal"><span class="pre">.*/\1/'&nbsp;&gt;&gt;&nbsp;$FILE</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">done</span></tt></div>
+</div>
+<div class="section" id="old-version-of-option-1">
+<h3>Old Version of Option 1<a class="headerlink" href="#old-version-of-option-1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Follow <a class="reference external" href="http://www.alexlomas.com/info/exim-courier-virtualusers.html">Virtual Users with Exim and Courier
+IMAP</a></li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">#This&nbsp;router&nbsp;matches&nbsp;virtual_users&nbsp;mailboxes</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">virtual_user:</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">driver&nbsp;=&nbsp;accept</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">domains&nbsp;=&nbsp;+local_domains</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">local_parts&nbsp;=&nbsp;lsearch:/etc/virtual_users_$domain</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">transport&nbsp;=&nbsp;virtual_localuserdelivery</span></tt></div>
+</div>
+<ul class="simple">
+<li>Add this anywhere in your transports section (order is irrelevant):</li>
+<li>This transport is for virtual user delivery after checking for local
+delivery</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">virtual_localuserdelivery:</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">driver&nbsp;=&nbsp;appendfile</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">user&nbsp;=&nbsp;courier</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">maildir_format</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">directory&nbsp;=&nbsp;/home/courier/$domain/$local_part</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">create_directory</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">delivery_date_add</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">envelope_to_add</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">return_path_add</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">group&nbsp;=&nbsp;mail</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">mode&nbsp;=&nbsp;0660</span></tt></div>
+</div>
+<ul class="simple">
+<li>Note that that router means director in the above.</li>
+<li>This is fine. My only problem was</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Intro</a></li>
+<li><a class="reference internal" href="#routing-incoming-email">Routing Incoming Email</a><ul>
+<li><a class="reference internal" href="#implementing-option-1">Implementing Option 1</a><ul>
+<li><a class="reference internal" href="#old-version-of-option-1">Old Version of Option 1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/eximvirtualusers.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/eximvirtualusers.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

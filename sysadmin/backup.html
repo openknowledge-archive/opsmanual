@@ -1,0 +1,298 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Overview &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p><strong>IMPORTANT:</strong> The OKFN core sysadmin team <strong>does NOT provide backup for
+machines outside Rackspace!</strong> If you need backup for machines outside
+Rackspace, you have to configure and maintain it yourself. (As always,
+there are a few historic exceptions to this rule, see below).</p>
+<p>At Rackspace, we have two methods of backup:</p>
+<ul class="simple">
+<li><strong>Snapshotting</strong> of the VMs. Should be activated for <strong>all</strong> VMs.
+Important Notes:<ul>
+<li>The maximum image size that can be snapshotted at RS is <strong>80GB</strong>.
+If a VM disk contains more data, it cannot be snapshotted!</li>
+<li>There is a bug in the rackspace interface that disables the
+snapshot schedule when a VM is resized. Make sure you re-enable it
+after resizing a VM!</li>
+<li>The retention is.<ul>
+<li>Managed VMs: 14 daily images and 1 weekly image</li>
+<li>Unmanaged VMs: 2 daily images and 1 weekly image</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>File-level backup</strong> is <strong>only</strong> available for managed VMs. One can
+configure which directories to backup.</li>
+</ul>
+<p>We should have a script that ensures on a regular basis, that all our
+VMs get snapshotted, see ticket
+<a class="reference external" href="http://trac.okfn.org/ticket/1397">#1397</a>.</p>
+</div>
+<div class="section" id="setting-up-backups">
+<h1>Setting up backups ...<a class="headerlink" href="#setting-up-backups" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="at-rackspace">
+<h2>... at Rackspace<a class="headerlink" href="#at-rackspace" title="Permalink to this headline">¶</a></h2>
+<p>The VMs should already be snapshotted (<em>Hosting</em> ==&gt; <em>Cloud Servers</em> ==&gt;
+<em>My server Images</em>). If you need file-level backup and the VM is a
+managed one, then you can activate and configure Rackspace Backup quite
+easily in the Rackspace control panel.</p>
+<ul class="simple">
+<li>When using the <a class="reference external" href="https://mycloud.rackspace.com">https://mycloud.rackspace.com</a> insterface to deploy a
+cloud server, please ensure you create a first generation instance
+(under the region drop down), next generation instances do not
+support periodic snapshots(as of Dec 2012)</li>
+</ul>
+</div>
+<div class="section" id="outside-rackspace">
+<h2>... outside Rackspace<a class="headerlink" href="#outside-rackspace" title="Permalink to this headline">¶</a></h2>
+<p>Outside Rackspace, you are mainly on you own. Except we could add your
+backup source to our <a class="reference external" href="https://bitbucket.org/okfn/sysadmin/src/default/etc/backup/rsnapshot.conf">rsnapshot
+config</a>
+on our little backup machine s088, itself at snapshotted Rackspace VM.
+Drop us a ticket. Though there is currently <a class="reference external" href="http://trac.okfn.org/ticket/1391">no space left on
+s088</a>.</p>
+</div>
+</div>
+<div class="section" id="backup-status-outside-rackspace">
+<h1>Backup status outside Rackspace<a class="headerlink" href="#backup-status-outside-rackspace" title="Permalink to this headline">¶</a></h1>
+<p>For a list of backup status per host, see the <em>&#8220;backup&#8221;</em> column in our
+<a class="reference external" href="https://docs.google.com/spreadsheet/pub?key=0Aon3JiuouxLUdC1IZ2kwRDMtX2ZaM0ZELWVJQzBrZXc&amp;single=true&amp;gid=14&amp;output=html">host
+matrix</a></p>
+<ul class="simple">
+<li>Bytemark (s001)<ul>
+<li>Essetial data pulled nightly to s088/rsnapshot</li>
+</ul>
+</li>
+<li>Amazon (s005/6/9/13/17/21)<ul>
+<li>Those EC2 VMs that run off &#8220;instance-store&#8221; have a EBS device
+attached as /dev/sdp and backup into that daily (4 day retension)</li>
+<li>All EBS volumes get manually snapshotted, roughly monthly. See
+<a class="reference external" href="http://trac.okfn.org/ticket/498">#498</a></li>
+<li>Essential data of s005 (DB dumps) pulled nightly to s088/rsnapshot</li>
+</ul>
+</li>
+<li>Hetzner<ul>
+<li>The Openspending team runs their own backup of s033 to S3</li>
+<li>Essential data of CKAN&#8217;s s031 is pulled nightly to s088/rsnapshot.
+Also virtualbox images files are rsynced to s088</li>
+</ul>
+</li>
+<li>Linode (s034, s035)<ul>
+<li>snapshotted nightly, similar to Rackspace</li>
+</ul>
+</li>
+<li>Dreamhost (dh1)<ul>
+<li>All data pulled nightly to s088/rsnapshot. Should be disabled as
+soon as all blogs are migrated, see
+<a class="reference external" href="http://trac.okfn.org/ticket/1075">#1075</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="disaster-recovery">
+<h1>Disaster recovery<a class="headerlink" href="#disaster-recovery" title="Permalink to this headline">¶</a></h1>
+<p>At Rackspace it should be simple and straightforward: just re-create the
+VM from its latest snapshot. For a managed VM we might even ask
+Rackspace to do that for us.</p>
+<p>Same should be true for Linode hosts.</p>
+<p>For EBS-based EC2 hosts, one can try to recreate the VM from the latest
+manual EBS-snapshot and go from there. See Appendix below</p>
+<p>For all other machines, one had to re-install it and inject the data
+from a backup (if any).</p>
+</div>
+<div class="section" id="appendix">
+<h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>s088 is full <a class="reference external" href="http://trac.okfn.org/ticket/1391">#1391</a></li>
+<li>Our backup verification is limited (#496)</li>
+<li><em>Proper</em> backup should be either covered by an SLA (e.g. Rackspace,
+Bytemark managed), or at least not at the same provider.</li>
+<li>Linode: snapshots might be too few. Linode&#8217;s backup system does work
+on the fs layer, not on the block layer which makes it <a class="reference external" href="http://library.linode.com/linode-platform/backups/#limitations">pretty
+limited</a>.</li>
+<li>Amazon EC2:<ul>
+<li>Some EC2 servers are running off instance-store and have no
+/dev/sdp attached (bkn-2, eu11, eu15)</li>
+<li>EBS snapshotting is currently done manually.</li>
+<li>Our backup scripts at EC2 has issues:</li>
+<li>Doesn&#8217;t cope with /dev/sdp being mounted elsewhere</li>
+<li>Lock file sometimes left over, no warning sent (?)</li>
+<li>Several similar but not equal scripts on eu2 to backup itself and
+eu1/us2</li>
+<li>Does only do (four) daily backups, no weekly or monthly.</li>
+</ul>
+</li>
+</ul>
+<p>For how to set up backups on AWS machines see browser:doc/BACKUP.txt</p>
+<p>You will need the necessary credentials for Amazon&#8217;s SOAP API (your AWS
+certificate and key PEM files) in order to use Amazon&#8217;s ec2-tools, see
+section <em>Access credentials</em> in [wiki:HostingService].</p>
+<p>There should be at least monthly snapshots from our EBS volumes. In
+order to restore an instance from a snapshot you need this information:</p>
+<ul class="simple">
+<li>The architecture, &#8220;i386&#8221; or &#8220;x86_64&#8221;.</li>
+<li>The id of the snapshot (e.g. &#8220;snap-0ab6ed63&#8221;). Must be compatible
+with the architecture.</li>
+<li>The <a class="reference external" href="http://aws.amazon.com/ec2/instance-types/">instance type</a> of
+the machine (e.g &#8220;t1.micro&#8221;). Must be compatible with the
+architecture.</li>
+<li>The id of the kernel (and ramdisk if any) to be used. I guess it does
+not need to be exactly the same as the one of the original machine,
+it only needs to meet the architecture and the distribution, (e.g.
+the ubuntu lucid x86_64 kernel &#8220;aki-14340160&#8221;). Look into our
+<a class="reference external" href="https://bitbucket.org/okfn/sysadmin/src/default/aws/manage.py">manage.py</a>
+script for hints of which kernel id was probably used for the
+original instance.</li>
+</ul>
+<p>Now when you have all the information, do two steps: Create a system
+image from the snapshot, and deploy a new instance from that system
+image.</p>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">ec2-register&nbsp;--region&nbsp;eu-west-1&nbsp;--architecture&nbsp;x86_64&nbsp;--snapshot&nbsp;snap-0ab6ed63&nbsp;--kernel&nbsp;aki-14340160&nbsp;--name&nbsp;'Image_eu17_backup_snapshot'</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">IMAGE&nbsp;&nbsp;ami-3cdaec48</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">ec2-run-instances&nbsp;--region&nbsp;eu-west-1&nbsp;ami-3cdaec48&nbsp;--availability-zone&nbsp;eu-west-1b&nbsp;--kernel&nbsp;aki-14340160&nbsp;--instance-type&nbsp;t1.micro</span></tt></div>
+</div>
+<p>Congratulation, you now have cloned a EC2 instance from a snapshot!</p>
+<p><strong>Warning:</strong> This procedure does *not* yet consider</p>
+<ul class="simple">
+<li>membership of the new instance in security groups</li>
+<li>instance name tag (see section <em>Deployment</em> in [wiki:HostingService])</li>
+<li>setting the &#8220;disable-api-termination&#8221; flag (see section <em>Deployment</em>
+in [wiki:HostingService])</li>
+</ul>
+<p>Note: Beware of Linode&#8217;s <a class="reference external" href="http://library.linode.com/linode-platform/backups/#limitations">backup
+restrictions</a>.
+OK, this is how it works (as of 2011-03-25):</p>
+<ul class="simple">
+<li>Log into <a class="reference external" href="https://manager.linode.com/">https://manager.linode.com/</a></li>
+<li>If you want to recover to not the same Linode, create a new Linode:<ul>
+<li>At least the same size and at the same location as the
+to-be-cloned Linode</li>
+<li>When asked which Linux distribution to install, either
+abort/navigate back, or select some random distro and later remove
+all disk images.</li>
+</ul>
+</li>
+<li>Make sure the Linode you want to restore *to* has enough
+un-allocated disk-allowance (that is different from &#8220;free disk
+space&#8221;). In necessary, remove disk images.</li>
+<li>Go into the Dashboard of the to-be-cloned Linode, tab <em>Backups</em></li>
+<li>Select the backup snapshot to recover from and press <em>restore to...</em>.
+There now should be a Linode with enough free disk-allowance to
+restore to.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Overview</a></li>
+<li><a class="reference internal" href="#setting-up-backups">Setting up backups ...</a><ul>
+<li><a class="reference internal" href="#at-rackspace">... at Rackspace</a></li>
+<li><a class="reference internal" href="#outside-rackspace">... outside Rackspace</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#backup-status-outside-rackspace">Backup status outside Rackspace</a></li>
+<li><a class="reference internal" href="#disaster-recovery">Disaster recovery</a></li>
+<li><a class="reference internal" href="#appendix">Appendix</a></li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/backup.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/backup.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

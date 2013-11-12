@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Listing Information About Packages &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="listing-information-about-packages">
+<h1>Listing Information About Packages<a class="headerlink" href="#listing-information-about-packages" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>general information about the package including version and
+description</li>
+</ul>
+<div class="line-block">
+<div class="line"><tt class="docutils literal"><span class="pre">apt-cache&nbsp;show&nbsp;</span></tt><tt class="docutils literal"><span class="pre">&nbsp;</span></tt></div>
+<div class="line"><tt class="docutils literal"><span class="pre">dpkg&nbsp;-l&nbsp;'</span></tt><tt class="docutils literal"><span class="pre">'&nbsp;--&nbsp;see&nbsp;[1]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></tt></div>
+</div>
+<ul class="simple">
+<li>list installed packages:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">dpkg&nbsp;-l&nbsp;pattern&nbsp;|&nbsp;grep&nbsp;'^i'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;dpkg&nbsp;--status&nbsp;package&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></tt></p>
+<ul class="simple">
+<li>To list the files installed from a specified package, issue the
+command:</li>
+</ul>
+<p><tt class="docutils literal"><span class="pre">dpkg&nbsp;--listfiles&nbsp;package&nbsp;&nbsp;</span></tt></p>
+<div class="section" id="biblio">
+<h2>Biblio<a class="headerlink" href="#biblio" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://www.oreilly.com/catalog/debian/chapter/book/appc_03.html">http://www.oreilly.com/catalog/debian/chapter/book/appc_03.html</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Listing Information About Packages</a><ul>
+<li><a class="reference internal" href="#biblio">Biblio</a></li>
+</ul>
+</li>
+</ul>
+
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/sysadmin/apthowto.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/apthowto.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

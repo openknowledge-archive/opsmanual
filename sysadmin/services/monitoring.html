@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Resource and service monitoring &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="List of infrastructure services" href="index.html" />
+    <link rel="next" title="Wiki “farm”" href="wiki.html" />
+    <link rel="prev" title="Mailing list hosting" href="mailinglists.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="wiki.html" title="Wiki “farm”"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mailinglists.html" title="Mailing list hosting"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="resource-and-service-monitoring">
+<h1>Resource and service monitoring<a class="headerlink" href="#resource-and-service-monitoring" title="Permalink to this headline">¶</a></h1>
+<p>The Monitoring Service provides monitoring of servers and the
+applications they serve (such as websites).</p>
+<div class="section" id="resource-monitoring">
+<h2>Resource monitoring<a class="headerlink" href="#resource-monitoring" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://munin.okfn.org/">Munin</a> on s001 (#321)</li>
+</ul>
+</div>
+<div class="section" id="availability-monitoring">
+<h2>Availability monitoring<a class="headerlink" href="#availability-monitoring" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://status.okfn.org/">Nagios3</a> on s001 (#564)</li>
+<li>Rackspace alert monitors (to be documented)</li>
+</ul>
+</div>
+<div class="section" id="service-levels">
+<h2>Service levels<a class="headerlink" href="#service-levels" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="8%" />
+<col width="12%" />
+<col width="79%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>SL1</td>
+<td>low</td>
+<td>no backup/redundancy/alerting. But don&#8217;t switch off without notice</td>
+</tr>
+<tr class="row-even"><td>SL2</td>
+<td>medium</td>
+<td>occasional backup, alerts but without immediate response, no redundancy</td>
+</tr>
+<tr class="row-odd"><td>SL3</td>
+<td>high</td>
+<td>daily backups, 1-working-day response to alerts, running off redundant DB</td>
+</tr>
+<tr class="row-even"><td>SL3A</td>
+<td>high</td>
+<td>same a SL3/High, but with guaranteed response</td>
+</tr>
+<tr class="row-odd"><td>SL4</td>
+<td>critical</td>
+<td>fundemantal. ASAP response any time (e.g. central DB service)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="availability-history">
+<h2>Availability history<a class="headerlink" href="#availability-history" title="Permalink to this headline">¶</a></h2>
+<p>Nagios has an alert history and a simple report facility. In Nagios, go
+to</p>
+<ul class="simple">
+<li>&#8220;Host Detail&#8221; ==&gt; select a host (e.g. &#8220;s060.okfn-openspending&#8221;) ==&gt;
+(top left corner of frame) &#8220;View Availability Report For This Host&#8221;
+==&gt; &#8220;Report period: This Year&#8221;.</li>
+</ul>
+<p>You can also request reports for any period. E.g. you want a report for
+February. Convert start and end datetime into UNIX epoch (e.g.
+<a class="reference external" href="http://www.epochconverter.com/">here</a>), for example</p>
+<ul class="simple">
+<li><ol class="first arabic">
+<li>Feb 2012 00:00 UTC = 1328054400</li>
+</ol>
+</li>
+<li><ol class="first arabic">
+<li>Mar 2012 00:00 UTC = 1330560000</li>
+</ol>
+</li>
+</ul>
+<p>and put them into this URL scheme:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://$NAGIOS_CGI_BASE/avail.cgi?host=HOSTNAME&amp;t1">https://$NAGIOS_CGI_BASE/avail.cgi?host=HOSTNAME&amp;t1</a>=$STARTTIME&amp;t2=$ENDTIME</li>
+</ul>
+<p>for example</p>
+<ul class="simple">
+<li><a class="reference external" href="http://status.okfn.org/cgi-bin/nagios3/avail.cgi?host=eu1&amp;t1=1328054400&amp;t2=1330560000">http://status.okfn.org/cgi-bin/nagios3/avail.cgi?host=eu1&amp;t1=1328054400&amp;t2=1330560000</a></li>
+</ul>
+</div>
+<div class="section" id="setting-up-munin">
+<h2>Setting up Munin<a class="headerlink" href="#setting-up-munin" title="Permalink to this headline">¶</a></h2>
+<p>See also #321</p>
+<ul class="simple">
+<li>Munin master:<ul>
+<li>apt-get install munin</li>
+<li>symlink /etc/munin/munin.conf from sysadmin repo into /etc/munin)</li>
+<li>Update the aws firewall settings with ip address of munin master</li>
+</ul>
+</li>
+<li>Munin Node:<ul>
+<li>apt-get install munin-node<ul>
+<li>Install any relevent plugins</li>
+<li>Edit the munin-node conf to allow access from the munin master
+machine</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="depricated-monitors">
+<h2>Depricated monitors<a class="headerlink" href="#depricated-monitors" title="Permalink to this headline">¶</a></h2>
+<p>Don&#8217;t use</p>
+<ul class="simple">
+<li>Fry&#8217;s <a class="reference external" href="https://monitor-okfn.fry-it.com/munin/">Munin monitor</a></li>
+<li>Fry&#8217;s <a class="reference external" href="https://monitor-okfn.fry-it.com/nagios2/">Nagios monitor</a></li>
+<li><a class="reference external" href="http://nagios.hmg.ckan.net/">HMG Nagios</a> on hmg.ckan.net
+monitoring the CKAN-HMG service group</li>
+<li>Our <a class="reference external" href="http://wasitup.com/">WasItUp</a> account (e.g.
+{ca,de,www}.ckan.org, {blog,www}.okfn.org)</li>
+<li>Montastic</li>
+<li><a class="reference external" href="http://isitup.org/">http://isitup.org/</a> (See also #93)</li>
+</ul>
+</div>
+<div class="section" id="links">
+<h2>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="http://ganglia.sourceforge.net/">http://ganglia.sourceforge.net/</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Resource and service monitoring</a><ul>
+<li><a class="reference internal" href="#resource-monitoring">Resource monitoring</a></li>
+<li><a class="reference internal" href="#availability-monitoring">Availability monitoring</a></li>
+<li><a class="reference internal" href="#service-levels">Service levels</a></li>
+<li><a class="reference internal" href="#availability-history">Availability history</a></li>
+<li><a class="reference internal" href="#setting-up-munin">Setting up Munin</a></li>
+<li><a class="reference internal" href="#depricated-monitors">Depricated monitors</a></li>
+<li><a class="reference internal" href="#links">Links</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mailinglists.html"
+                        title="previous chapter">Mailing list hosting</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wiki.html"
+                        title="next chapter">Wiki &#8220;farm&#8221;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/sysadmin/services/monitoring.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/monitoring.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="wiki.html" title="Wiki “farm”"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mailinglists.html" title="Mailing list hosting"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin Wiki</a> &raquo;</li>
+          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

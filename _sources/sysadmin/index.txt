@@ -14,12 +14,15 @@ Who are we?
 -  Joel Rebello: Full-time sysadmin
 -  Bobby Donovan: Blogfarm sysadmin (0.1 FTE)
 
-These people advise and support sysadmin team:
+At various times, the following people have provided advice and support to the
+sysadmin team:
 
 -  James Casbon
 -  Michelle Heydon
 -  Rufus Pollock
 -  Nick Stenning
+-  Nils Toedtmann
+-  Will Waites
 
 How to get help
 ---------------

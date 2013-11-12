@@ -1,20 +1,30 @@
 #!/bin/sh
 
-if [ -n "$TRAVIS_PULL_REQUEST" ]; then
+set -eu
+
+cd "$(dirname "$0")"
+cd ..
+
+if [ "$TRAVIS_PULL_REQUEST" -ne "0" ]; then
   echo "Not pushing for branch build." >&2
   exit
 fi
 
-set -eu
-
-DEPLOY_BRANCH=gh-pages
+BRANCH=gh-pages
 REPO=$(git config remote.origin.url | sed s/^git:/https:/)
 
-git remote set-url --push origin "$REPO"
-git remote set-branches --add origin "$DEPLOY_BRANCH"
 git config user.name "$GIT_NAME"
 git config user.email "$GIT_EMAIL"
 git config credential.helper "store --file=.git/credentials"
 echo "https://${GH_TOKEN}:@github.com" >.git/credentials
-git push origin "${DEPLOY_BRANCH}:${DEPLOY_BRANCH}"
+
+git remote set-url --push origin "$REPO"
+git remote set-branches --add origin "$BRANCH"
+
+git fetch -q
+git branch -f "$BRANCH" "origin/${BRANCH}"
+
+./tools/buildpages
+
+git push origin "${BRANCH}:${BRANCH}"
 rm .git/credentials

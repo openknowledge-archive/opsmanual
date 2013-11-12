@@ -1,3 +1,6 @@
+Resource and service monitoring
+###############################
+
 The Monitoring Service provides monitoring of servers and the
 applications they serve (such as websites).
 

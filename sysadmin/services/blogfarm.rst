@@ -1,3 +1,6 @@
+WordPress "farm"
+################
+
 **Note that we recently migrated to our new wordpress hoster
 `WPEngine <http://wpengine.com>`__. Some parts of this article are not
 yet updated and lack details about WPEngine. We will close those gaps

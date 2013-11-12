@@ -1,5 +1,5 @@
-Remark: This page has been migrated here from
-http://trac.okfn.org/wiki/DnsService as per #992'''
+Domain registration and naming
+##############################
 
 Overview
 ========

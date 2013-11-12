@@ -1,5 +1,5 @@
-Mailing List Service
-====================
+Mailing list hosting
+####################
 
 -  Runs on `GNU Mailman <http://www.gnu.org/s/mailman/index.html>`__
 -  Deployed at: http://lists.okfn.org/

@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Getting started with the Ops Manual, reStructuredText, and Sphinx &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="index.html" />
+    <link rel="next" title="README" href="README.html" />
+    <link rel="prev" title="OKF Operations Manual" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="README.html" title="README"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="OKF Operations Manual"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="getting-started-with-the-ops-manual-restructuredtext-and-sphinx">
+<span id="opsmanual-getting-started"></span><h1>Getting started with the Ops Manual, reStructuredText, and Sphinx<a class="headerlink" href="#getting-started-with-the-ops-manual-restructuredtext-and-sphinx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="basics">
+<h2>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h2>
+<p>The Ops Manual is maintained as a <a class="reference external" href="http://sphinx-doc.org">Sphinx</a> project on <a class="reference external" href="https://github.com">GitHub</a>. This
+means that the pages you&#8217;re viewing are plain text files (actually, they&#8217;re in a
+format called <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>, of which more later) which live in <a class="reference external" href="https://github.com/okfn/opsmanual">a git
+repository</a>. Editing the manual is as simple as clicking the &#8220;Edit on GitHub&#8221;
+link which appears in the sidebar of each page. When you click &#8220;Commit changes,&#8221;
+your changes will be built and pushed to the live copy of the manual that you&#8217;re
+looking at. It might take a minute or two before your changes are live.</p>
+<p>Alternatively, if you&#8217;re more comfortable on the command line, you can check out
+the repository and work on the files on your own computer:</p>
+<div class="highlight-python"><pre>git clone git@github.com:okfn/opsmanual
+cd opsmanual
+vim opsmanual-getting-started.rst
+git commit -am "Improve the getting started guide"
+git push</pre>
+</div>
+<p>You can also build the project locally by running <tt class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></tt> from the root of
+the project. The built site will be placed in <tt class="docutils literal"><span class="pre">_build/html</span></tt>. You don&#8217;t need to
+do this, but if you&#8217;re making large edits it can help you preview your changes
+before pushing.</p>
+</div>
+<div class="section" id="ops-manual-structure">
+<h2>Ops Manual Structure<a class="headerlink" href="#ops-manual-structure" title="Permalink to this headline">¶</a></h2>
+<p>The manual is divided into a few sections, each broadly aimed at a particular
+group in a particular role. Existing sections include:</p>
+<dl class="docutils">
+<dt><tt class="docutils literal"><span class="pre">guides/</span></tt></dt>
+<dd>Guides to getting stuff done at the Open Knowledge Foundation. Most people
+will want to start here.</dd>
+<dt><tt class="docutils literal"><span class="pre">sysadmin/</span></tt></dt>
+<dd>Internal documentation and content aimed primarily at members of the OKF
+sysadmin team.</dd>
+</dl>
+<p>The tables of contents that form the main navigational structure of the site are
+maintained in <tt class="docutils literal"><span class="pre">index.rst</span></tt> files at various points. See the <tt class="docutils literal"><span class="pre">toctree</span></tt>
+directives in, for example, <a class="reference external" href="/_sources/index.txt">index.rst</a> or
+<a class="reference external" href="/_sources/2nd-line/index.txt">2nd-line/index.rst</a>. If you&#8217;re adding a new
+page you should ensure it&#8217;s included in at least one <tt class="docutils literal"><span class="pre">toctree</span></tt> so it&#8217;s
+discoverable from the root of the site. (Although even if you don&#8217;t add it to a
+ToC, it will still show up in the site search.)</p>
+</div>
+<div class="section" id="restructuredtext">
+<h2>reStructuredText<a class="headerlink" href="#restructuredtext" title="Permalink to this headline">¶</a></h2>
+<p>The manual pages are written in a format called <a class="reference external" href="http://docutils.sourceforge.net/rst.html">reStructuredText</a>, or rST. At
+its simplest, rST is much like the <a class="reference external" href="http://daringfireball.net/projects/markdown/">Markdown</a> format with which you may be more
+familiar. You can view the rST source of any page on this site by clicking the
+&#8220;Show Source&#8221; link in the left-hand column.</p>
+<p>Some useful resources for getting started editing rST documents:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html">Quick reStructuredText</a></li>
+<li><a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/demo.txt">rST demonstration document</a>
+(and <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/demo.html">its HTML output</a>)</li>
+<li><a class="reference external" href="http://johnmacfarlane.net/pandoc/try/?from=markdown&amp;to=rst">Markdown to rST converter</a></li>
+</ul>
+<div class="section" id="a-note-on-linking">
+<h3>A note on linking<a class="headerlink" href="#a-note-on-linking" title="Permalink to this headline">¶</a></h3>
+<p>If you want to link to another part of the wiki and it&#8217;s not a title (underlined
+with ===), you can do this by inserting a label.</p>
+<p><tt class="docutils literal"><span class="pre">`..</span> <span class="pre">_a-label:`</span></tt></p>
+<p>Note the <tt class="docutils literal"><span class="pre">..</span></tt>, the opening <tt class="docutils literal"><span class="pre">_</span></tt> and the closing <tt class="docutils literal"><span class="pre">:</span></tt>.
+The label goes before the heading you want to link to.</p>
+<p>It is ESSENTIAL that this label is followed by a blank line.</p>
+<p>You can then refer to the label from anywhere else in the opsmanual like so:</p>
+<p><tt class="docutils literal"><span class="pre">:ref:`Whatever</span> <span class="pre">you</span> <span class="pre">want</span> <span class="pre">&lt;a-label&gt;`</span></tt></p>
+</div>
+</div>
+<div class="section" id="the-build">
+<h2>The Build<a class="headerlink" href="#the-build" title="Permalink to this headline">¶</a></h2>
+<p>The content you push to GitHub constitutes the &#8220;source format&#8221; of the manual.
+This source content is compiled by <a class="reference external" href="http://sphinx-doc.org">Sphinx</a> into the web pages you are currently
+viewing. This is done by a <a class="reference external" href="https://travis-ci.org/okfn/opsmanual/">Travis CI job</a>. The output of this job will also
+inform you of any rST syntax errors or other problems Sphinx encountered when
+building the site.</p>
+<p>The build artefacts (a static HTML website) are copied into the <tt class="docutils literal"><span class="pre">gh-pages</span></tt>
+branch of the git repository and pushed to GitHub. The manual is then served at:</p>
+<blockquote>
+<div><a class="reference external" href="https://ops.okfn.org/">https://ops.okfn.org/</a></div></blockquote>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Getting started with the Ops Manual, reStructuredText, and Sphinx</a><ul>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#ops-manual-structure">Ops Manual Structure</a></li>
+<li><a class="reference internal" href="#restructuredtext">reStructuredText</a><ul>
+<li><a class="reference internal" href="#a-note-on-linking">A note on linking</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#the-build">The Build</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">OKF Operations Manual</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="README.html"
+                        title="next chapter">README</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/opsmanual-getting-started.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/opsmanual-getting-started.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="README.html" title="README"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="OKF Operations Manual"
+             >previous</a> |</li>
+        <li><a href="index.html">OKF Operations Manual</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

@@ -77,7 +77,7 @@ A note on linking
 If you want to link to another part of the wiki and it's not a title (underlined
 with ===), you can do this by inserting a label.
 
-```.. _a-label:```
+``.. _a-label:``
 
 Note the ``..``, the opening ``_`` and the closing ``:``.
 The label goes before the heading you want to link to.

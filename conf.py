@@ -256,4 +256,4 @@ edit_on_github_doc_root = ''
 
 # -- Options for todo extension ------------------------------------------------
 
-todo_include_todos = False
+todo_include_todos = True

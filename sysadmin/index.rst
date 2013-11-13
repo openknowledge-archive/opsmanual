@@ -1,10 +1,9 @@
-Sysadmin Wiki
-=============
+Sysadmin pages
+==============
 
 This part of the operations manual contains documentation by and for the OKF's
 system administrators. If you have any questions about this content, please
 contact one of the sysadmin team: :ref:`who_are_we`
-
 
 .. _who_are_we:
 
@@ -65,4 +64,4 @@ Documentation and notes
    repositories
    services/index
    howto/index
-   onboarding-offboarding
+   backup

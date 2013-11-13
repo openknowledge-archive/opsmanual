@@ -119,6 +119,23 @@ instance for each domain (not sure about exim4 config). See [2]</li>
 </ul>
 </div>
 </div>
+<div class="section" id="bulk-operations-on-mailing-lists">
+<h1>Bulk operations on mailing lists.<a class="headerlink" href="#bulk-operations-on-mailing-lists" title="Permalink to this headline">¶</a></h1>
+<p>Nick asked if we could normalise all the names of the mailing lists to
+lowercase. It turns out to be pretty easy. Create a python file like
+this, and call it <cite>lowername.py</cite>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">lowername</span><span class="p">(</span><span class="n">mlist</span><span class="p">):</span>
+  <span class="n">mlist</span><span class="o">.</span><span class="n">real_name</span> <span class="o">=</span> <span class="n">mlist</span><span class="o">.</span><span class="n">real_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+  <span class="n">mlist</span><span class="o">.</span><span class="n">Save</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then this can be run with the <cite>withlist</cite> program:</p>
+<div class="highlight-python"><pre>export PYTHONPATH=`pwd`
+ls /var/lib/mailman/lists | while read list; do
+    withlist -l -r lowername $list
+done</pre>
+</div>
+</div>
 <div class="section" id="biblio">
 <h1>Biblio<a class="headerlink" href="#biblio" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="http://www.linuxgazette.com/issue91/price.html">Mailman with Exim on Woody
@@ -145,6 +162,7 @@ Howto</a>
 <li><a class="reference internal" href="#multiple-domains-on-one-machine">Multiple Domains on One Machine</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#bulk-operations-on-mailing-lists">Bulk operations on mailing lists.</a></li>
 <li><a class="reference internal" href="#biblio">Biblio</a></li>
 </ul>
 

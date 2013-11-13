@@ -1,3 +1,8 @@
+HOWTO: Administer Feedburner
+############################
+
+.. todo:: Not sure this document is even remotely relevant any more?
+
 We use Feedburner for managing some of our blog feeds and for providing
 "subscribe via email" options on our blogs.
 

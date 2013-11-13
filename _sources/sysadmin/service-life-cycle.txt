@@ -1,4 +1,9 @@
-Document describes the process of requesting a server/service and its
+Service lifecycle
+=================
+
+.. todo:: This document is out-of-date and needs updating.
+
+This document describes the process of requesting a server/service and its
 life cycle.
 
 Prerequisites of requesting a Server or Service
@@ -46,11 +51,6 @@ Setting up/requesting a new service or server
 -  This will help us update our records as well, `service
    matrix <https://spreadsheets.google.com/ccc?key=t-Hgi0D3-_fZ3FD-eIC0kew#gid=11>`__.
 
-Estimating costs
-~~~~~~~~~~~~~~~~
-
--  http://wiki.okfn.org/Sysadmin/Hosting_Service
-
 Remarks on hostnames
 ~~~~~~~~~~~~~~~~~~~~
 
@@ -71,21 +71,10 @@ Remarks on hostnames
    -  *dev* - development services. don't use: devel, hack, (buildbot)
    -  "sandbox" - public permanent non-production service.
 
-Production
-~~~~~~~~~~
-
--  Putting new service into production mode
-
-Maintenance
-~~~~~~~~~~~
-
--  Maintenance during production
-
 Decomission/EOL servers or service
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -  Notify sysadmin-announce
--  If hosted at Fry: notify them via a ticket
 -  Terminate service/server
 -  Mark with date and "sign-off $NAME" as "closed" or "terminated in
    service matrix

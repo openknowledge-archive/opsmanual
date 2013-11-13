@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Prerequisites of requesting a Server or Service &mdash; OKF Operations Manual</title>
+    <title>Service lifecycle &mdash; OKF Operations Manual</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
@@ -29,7 +29,10 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/searchtools.js"></script>
-    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+    <link rel="top" title="OKF Operations Manual" href="../index.html" />
+    <link rel="up" title="Sysadmin pages" href="index.html" />
+    <link rel="next" title="Getting started with the Ops Manual, reStructuredText, and Sphinx" href="../opsmanual-getting-started.html" />
+    <link rel="prev" title="Backups for our services: state of the union" href="backup.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +41,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+        <li class="right" >
+          <a href="../opsmanual-getting-started.html" title="Getting started with the Ops Manual, reStructuredText, and Sphinx"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="backup.html" title="Backups for our services: state of the union"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Sysadmin pages</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,10 +57,16 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p>Document describes the process of requesting a server/service and its
+  <div class="section" id="service-lifecycle">
+<h1>Service lifecycle<a class="headerlink" href="#service-lifecycle" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">This document is out-of-date and needs updating.</p>
+</div>
+<p>This document describes the process of requesting a server/service and its
 life cycle.</p>
 <div class="section" id="prerequisites-of-requesting-a-server-or-service">
-<h1>Prerequisites of requesting a Server or Service<a class="headerlink" href="#prerequisites-of-requesting-a-server-or-service" title="Permalink to this headline">¶</a></h1>
+<h2>Prerequisites of requesting a Server or Service<a class="headerlink" href="#prerequisites-of-requesting-a-server-or-service" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Before requesting for a service, please make sure the below set of
 details are available.<ul>
@@ -63,7 +79,7 @@ by the project lead.</li>
 </ul>
 </div>
 <div class="section" id="setting-up-requesting-a-new-service-or-server">
-<h1>Setting up/requesting a new service or server<a class="headerlink" href="#setting-up-requesting-a-new-service-or-server" title="Permalink to this headline">¶</a></h1>
+<h2>Setting up/requesting a new service or server<a class="headerlink" href="#setting-up-requesting-a-new-service-or-server" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>So if are about to deploy a new service at OKFN or want the sysadmin
 team to deploy it,<ul>
@@ -100,14 +116,8 @@ request.</li>
 matrix</a>.</li>
 </ul>
 </div>
-<div class="section" id="estimating-costs">
-<h1>Estimating costs<a class="headerlink" href="#estimating-costs" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference external" href="http://wiki.okfn.org/Sysadmin/Hosting_Service">http://wiki.okfn.org/Sysadmin/Hosting_Service</a></li>
-</ul>
-</div>
 <div class="section" id="remarks-on-hostnames">
-<h1>Remarks on hostnames<a class="headerlink" href="#remarks-on-hostnames" title="Permalink to this headline">¶</a></h1>
+<h2>Remarks on hostnames<a class="headerlink" href="#remarks-on-hostnames" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Every server has a hostname like s001.okserver.org with its A record.</li>
 <li>You will need to ensure the hostname isn&#8217;t already in use by looking
@@ -127,23 +137,10 @@ uat</li>
 </li>
 </ul>
 </div>
-<div class="section" id="production">
-<h1>Production<a class="headerlink" href="#production" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>Putting new service into production mode</li>
-</ul>
-</div>
-<div class="section" id="maintenance">
-<h1>Maintenance<a class="headerlink" href="#maintenance" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>Maintenance during production</li>
-</ul>
-</div>
 <div class="section" id="decomission-eol-servers-or-service">
-<h1>Decomission/EOL servers or service<a class="headerlink" href="#decomission-eol-servers-or-service" title="Permalink to this headline">¶</a></h1>
+<h2>Decomission/EOL servers or service<a class="headerlink" href="#decomission-eol-servers-or-service" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Notify sysadmin-announce</li>
-<li>If hosted at Fry: notify them via a ticket</li>
 <li>Terminate service/server</li>
 <li>Mark with date and &#8220;sign-off $NAME&#8221; as &#8220;closed&#8221; or &#8220;terminated in
 service matrix</li>
@@ -152,6 +149,7 @@ service matrix</li>
 <li>either remove from DNS and squid.con, or redirect in squid/nginx to
 other service or to a &#8220;This service is decommissioned&#8221; page</li>
 </ul>
+</div>
 </div>
 
 
@@ -162,15 +160,21 @@ other service or to a &#8220;This service is decommissioned&#8221; page</li>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Prerequisites of requesting a Server or Service</a></li>
+<li><a class="reference internal" href="#">Service lifecycle</a><ul>
+<li><a class="reference internal" href="#prerequisites-of-requesting-a-server-or-service">Prerequisites of requesting a Server or Service</a></li>
 <li><a class="reference internal" href="#setting-up-requesting-a-new-service-or-server">Setting up/requesting a new service or server</a></li>
-<li><a class="reference internal" href="#estimating-costs">Estimating costs</a></li>
 <li><a class="reference internal" href="#remarks-on-hostnames">Remarks on hostnames</a></li>
-<li><a class="reference internal" href="#production">Production</a></li>
-<li><a class="reference internal" href="#maintenance">Maintenance</a></li>
 <li><a class="reference internal" href="#decomission-eol-servers-or-service">Decomission/EOL servers or service</a></li>
 </ul>
+</li>
+</ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="backup.html"
+                        title="previous chapter">Backups for our services: state of the union</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../opsmanual-getting-started.html"
+                        title="next chapter">Getting started with the Ops Manual, reStructuredText, and Sphinx</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/sysadmin/service-life-cycle.txt"
@@ -201,7 +205,14 @@ other service or to a &#8220;This service is decommissioned&#8221; page</li>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+        <li class="right" >
+          <a href="../opsmanual-getting-started.html" title="Getting started with the Ops Manual, reStructuredText, and Sphinx"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="backup.html" title="Backups for our services: state of the union"
+             >previous</a> |</li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="index.html" >Sysadmin pages</a> &raquo;</li> 
       </ul>
     </div>
 <div class="footer">

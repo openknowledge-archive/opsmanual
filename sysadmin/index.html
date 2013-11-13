@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Sysadmin Wiki &mdash; OKF Operations Manual</title>
+    <title>Sysadmin pages &mdash; OKF Operations Manual</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
@@ -31,7 +31,7 @@
     <script type="text/javascript" src="../../_static/searchtools.js"></script>
     <link rel="top" title="OKF Operations Manual" href="../index.html" />
     <link rel="next" title="Infrastructure overview" href="overview.html" />
-    <link rel="prev" title="Email alias management" href="../guides/email-aliases/index.html" /> 
+    <link rel="prev" title="Managing a site in the Blogfarm" href="../guides/managing-a-blogfarm-site/index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -44,7 +44,7 @@
           <a href="overview.html" title="Infrastructure overview"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../guides/email-aliases/index.html" title="Email alias management"
+          <a href="../guides/managing-a-blogfarm-site/index.html" title="Managing a site in the Blogfarm"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
       </ul>
@@ -55,8 +55,8 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="sysadmin-wiki">
-<h1>Sysadmin Wiki<a class="headerlink" href="#sysadmin-wiki" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="sysadmin-pages">
+<h1>Sysadmin pages<a class="headerlink" href="#sysadmin-pages" title="Permalink to this headline">¶</a></h1>
 <p>This part of the operations manual contains documentation by and for the OKF&#8217;s
 system administrators. If you have any questions about this content, please
 contact one of the sysadmin team: <a class="reference internal" href="#who-are-we"><em>Who are we?</em></a></p>
@@ -129,6 +129,30 @@ but this may result in your request taking longer to be fulfilled.</p>
 <li class="toctree-l2"><a class="reference internal" href="services/wiki.html">Wiki &#8220;farm&#8221;</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="howto/index.html">Step-by-step HOWTOs for common problems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="howto/administering-apt.html">HOWTO: Administering APT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/blogfarm-deploy.html">HOWTO: Deploy changes to the blogfarm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/debian-packaging.html">HOWTO: Debian packaging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/feedburner.html">HOWTO: Administer Feedburner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/mailman.html">HOWTO: Administering Mailman</a></li>
+<li class="toctree-l2"><a class="reference internal" href="howto/s3.html">HOWTO: Managing S3 buckets and users</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backup.html">Backups for our services: state of the union</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backup.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup.html#setting-up-backups">Setting up backups ...</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup.html#backup-status-outside-rackspace">Backup status outside Rackspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup.html#disaster-recovery">Disaster recovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup.html#appendix">Appendix</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="service-life-cycle.html">Service lifecycle</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="service-life-cycle.html#prerequisites-of-requesting-a-server-or-service">Prerequisites of requesting a Server or Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service-life-cycle.html#setting-up-requesting-a-new-service-or-server">Setting up/requesting a new service or server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service-life-cycle.html#remarks-on-hostnames">Remarks on hostnames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="service-life-cycle.html#decomission-eol-servers-or-service">Decomission/EOL servers or service</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -142,7 +166,7 @@ but this may result in your request taking longer to be fulfilled.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Sysadmin Wiki</a><ul>
+<li><a class="reference internal" href="#">Sysadmin pages</a><ul>
 <li><a class="reference internal" href="#who-are-we">Who are we?</a></li>
 <li><a class="reference internal" href="#how-to-get-help">How to get help</a></li>
 <li><a class="reference internal" href="#documentation-and-notes">Documentation and notes</a><ul>
@@ -153,8 +177,8 @@ but this may result in your request taking longer to be fulfilled.</p>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="../guides/email-aliases/index.html"
-                        title="previous chapter">Email alias management</a></p>
+  <p class="topless"><a href="../guides/managing-a-blogfarm-site/index.html"
+                        title="previous chapter">Managing a site in the Blogfarm</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="overview.html"
                         title="next chapter">Infrastructure overview</a></p>
@@ -192,7 +216,7 @@ but this may result in your request taking longer to be fulfilled.</p>
           <a href="overview.html" title="Infrastructure overview"
              >next</a> |</li>
         <li class="right" >
-          <a href="../guides/email-aliases/index.html" title="Email alias management"
+          <a href="../guides/managing-a-blogfarm-site/index.html" title="Managing a site in the Blogfarm"
              >previous</a> |</li>
         <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
       </ul>

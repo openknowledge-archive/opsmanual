@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Email aliases and forwarders &mdash; OKF Operations Manual</title>
+    <title>HOWTO: Administering APT &mdash; OKF Operations Manual</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
@@ -30,9 +30,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
     <link rel="top" title="OKF Operations Manual" href="../../index.html" />
-    <link rel="up" title="List of infrastructure services" href="index.html" />
-    <link rel="next" title="Server hosting" href="hosting.html" />
-    <link rel="prev" title="Domain registration and naming" href="domains.html" /> 
+    <link rel="up" title="Step-by-step HOWTOs for common problems" href="index.html" />
+    <link rel="next" title="HOWTO: Deploy changes to the blogfarm" href="blogfarm-deploy.html" />
+    <link rel="prev" title="Step-by-step HOWTOs for common problems" href="index.html" /> 
   </head>
   <body>
     <div class="related">
@@ -42,14 +42,14 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="hosting.html" title="Server hosting"
+          <a href="blogfarm-deploy.html" title="HOWTO: Deploy changes to the blogfarm"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="domains.html" title="Domain registration and naming"
+          <a href="index.html" title="Step-by-step HOWTOs for common problems"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
           <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U">Step-by-step HOWTOs for common problems</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,11 +58,28 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="email-aliases-and-forwarders">
-<h1>Email aliases and forwarders<a class="headerlink" href="#email-aliases-and-forwarders" title="Permalink to this headline">¶</a></h1>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Document the email setup</p>
+  <div class="section" id="howto-administering-apt">
+<h1>HOWTO: Administering APT<a class="headerlink" href="#howto-administering-apt" title="Permalink to this headline">¶</a></h1>
+<p>Various tips and tricks for administering APT on Debian/Ubuntu servers</p>
+<hr class="docutils" />
+<p>General information about any package, installed or otherwise, including version
+and description:</p>
+<div class="highlight-python"><pre>apt-cache show &lt;pkgname&gt;</pre>
+</div>
+<p>Summary (name, version, arch) for all <strong>installed</strong> packages matching
+<em>pkgname</em>:</p>
+<div class="highlight-python"><pre>dpkg -l &lt;pkgname&gt;</pre>
+</div>
+<p>List installed packages:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">dpkg</span> <span class="o">--</span><span class="n">get</span><span class="o">-</span><span class="n">selections</span>
+</pre></div>
+</div>
+<p>List the files installed by a specified package:</p>
+<div class="highlight-python"><pre>dpkg -L &lt;pkgname&gt;</pre>
+</div>
+<p>Find out which package provides <tt class="docutils literal"><span class="pre">/usr/bin/foo</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">dpkg</span> <span class="o">-</span><span class="n">S</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">foo</span>
+</pre></div>
 </div>
 </div>
 
@@ -73,16 +90,16 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="domains.html"
-                        title="previous chapter">Domain registration and naming</a></p>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Step-by-step HOWTOs for common problems</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="hosting.html"
-                        title="next chapter">Server hosting</a></p>
+  <p class="topless"><a href="blogfarm-deploy.html"
+                        title="next chapter">HOWTO: Deploy changes to the blogfarm</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/sysadmin/services/email.txt"
+    <li><a href="../../_sources/sysadmin/howto/administering-apt.txt"
            rel="nofollow">Show Source</a></li>
-    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/email.rst"
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/howto/administering-apt.rst"
            rel="nofollow">Edit on GitHub</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -109,14 +126,14 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="hosting.html" title="Server hosting"
+          <a href="blogfarm-deploy.html" title="HOWTO: Deploy changes to the blogfarm"
              >next</a> |</li>
         <li class="right" >
-          <a href="domains.html" title="Domain registration and naming"
+          <a href="index.html" title="Step-by-step HOWTOs for common problems"
              >previous</a> |</li>
         <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
           <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+          <li><a href="index.html" >Step-by-step HOWTOs for common problems</a> &raquo;</li> 
       </ul>
     </div>
 <div class="footer">

@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Email aliases and forwarders &mdash; OKF Operations Manual</title>
+    <title>HOWTO: Administer Feedburner &mdash; OKF Operations Manual</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
@@ -30,9 +30,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
     <link rel="top" title="OKF Operations Manual" href="../../index.html" />
-    <link rel="up" title="List of infrastructure services" href="index.html" />
-    <link rel="next" title="Server hosting" href="hosting.html" />
-    <link rel="prev" title="Domain registration and naming" href="domains.html" /> 
+    <link rel="up" title="Step-by-step HOWTOs for common problems" href="index.html" />
+    <link rel="next" title="HOWTO: Administering Mailman" href="mailman.html" />
+    <link rel="prev" title="HOWTO: Debian packaging" href="debian-packaging.html" /> 
   </head>
   <body>
     <div class="related">
@@ -42,14 +42,14 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="hosting.html" title="Server hosting"
+          <a href="mailman.html" title="HOWTO: Administering Mailman"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="domains.html" title="Domain registration and naming"
+          <a href="debian-packaging.html" title="HOWTO: Debian packaging"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
           <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U">Step-by-step HOWTOs for common problems</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,11 +58,38 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="email-aliases-and-forwarders">
-<h1>Email aliases and forwarders<a class="headerlink" href="#email-aliases-and-forwarders" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="howto-administer-feedburner">
+<h1>HOWTO: Administer Feedburner<a class="headerlink" href="#howto-administer-feedburner" title="Permalink to this headline">¶</a></h1>
 <div class="admonition-todo admonition" id="index-0">
 <p class="first admonition-title">Todo</p>
-<p class="last">Document the email setup</p>
+<p class="last">Not sure this document is even remotely relevant any more?</p>
+</div>
+<p>We use Feedburner for managing some of our blog feeds and for providing
+&#8220;subscribe via email&#8221; options on our blogs.</p>
+<div class="section" id="access">
+<h2>Access<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h2>
+<p>Use admin [at] okfn [dot] org email.</p>
+</div>
+<div class="section" id="customization">
+<h2>Customization<a class="headerlink" href="#customization" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="email">
+<h3>Email<a class="headerlink" href="#email" title="Permalink to this headline">¶</a></h3>
+<p>Recommend customizing the email. By default every email for subscribers
+will have the same title of the name of your weblog. This isn&#8217;t very
+useful. To change this:</p>
+<ol class="arabic simple">
+<li>Login to Feedburner</li>
+<li>Click on the Publicize Tab</li>
+<li>Choose Email Subscriptions from the left navigation menu</li>
+<li>Click on Email Branding sub menu</li>
+<li>Now you have the option to change the email title.</li>
+<li>Change the feedburner email subject / title as required. Adding
+${latestItemTitle} in the title will replace it with your Posts title</li>
+<li>Scroll down and click Save.</li>
+</ol>
+<p>Also worth adding our logo:
+<a class="reference external" href="http://assets.okfn.org/p/okfn/img/logo_135x135.png">http://assets.okfn.org/p/okfn/img/logo_135x135.png</a></p>
+</div>
 </div>
 </div>
 
@@ -72,17 +99,29 @@
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HOWTO: Administer Feedburner</a><ul>
+<li><a class="reference internal" href="#access">Access</a></li>
+<li><a class="reference internal" href="#customization">Customization</a><ul>
+<li><a class="reference internal" href="#email">Email</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
   <h4>Previous topic</h4>
-  <p class="topless"><a href="domains.html"
-                        title="previous chapter">Domain registration and naming</a></p>
+  <p class="topless"><a href="debian-packaging.html"
+                        title="previous chapter">HOWTO: Debian packaging</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="hosting.html"
-                        title="next chapter">Server hosting</a></p>
+  <p class="topless"><a href="mailman.html"
+                        title="next chapter">HOWTO: Administering Mailman</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/sysadmin/services/email.txt"
+    <li><a href="../../_sources/sysadmin/howto/feedburner.txt"
            rel="nofollow">Show Source</a></li>
-    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/email.rst"
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/howto/feedburner.rst"
            rel="nofollow">Edit on GitHub</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -109,14 +148,14 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="hosting.html" title="Server hosting"
+          <a href="mailman.html" title="HOWTO: Administering Mailman"
              >next</a> |</li>
         <li class="right" >
-          <a href="domains.html" title="Domain registration and naming"
+          <a href="debian-packaging.html" title="HOWTO: Debian packaging"
              >previous</a> |</li>
         <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
           <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+          <li><a href="index.html" >Step-by-step HOWTOs for common problems</a> &raquo;</li> 
       </ul>
     </div>
 <div class="footer">

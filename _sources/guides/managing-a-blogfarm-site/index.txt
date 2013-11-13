@@ -1,7 +1,8 @@
-This article contains guidelines for site owners how to activate polular
-features on OKFN's Wordpress blogfarm at WPEngine. See
-`Sysadmin/Blogfarm <Sysadmin/Blogfarm>`__ for general information about
-the OKFN blogfarm.
+Managing a site in the Blogfarm
+###############################
+
+This article contains guidelines for site owners how to activate popular
+features on OKFN's Wordpress blogfarm at WPEngine.
 
 Activate Akismet / Basic spam protection
 ========================================
@@ -104,7 +105,7 @@ the global tracking code may add this filter using the following steps.
 #. Then select the "Include" option
 #. Then from the "Filter Field" dropdown select "Hostname"
 #. Then in the filter pattern enter the domain, escaping periods with
-   backslashes (eg publicdomainreview\\.org or blog\\.okfn\\.org)
+   backslashes (eg ``publicdomainreview\.org`` or ``blog\.okfn\.org``)
 #. Leave case sensitive as "No"
 #. Click "Save"
 #. It may take some hours for traffic stats to appear for this profile

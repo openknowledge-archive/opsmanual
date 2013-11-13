@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Overview &mdash; OKF Operations Manual</title>
+    <title>Backups for our services: state of the union &mdash; OKF Operations Manual</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
@@ -29,7 +29,10 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../../_static/searchtools.js"></script>
-    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+    <link rel="top" title="OKF Operations Manual" href="../index.html" />
+    <link rel="up" title="Sysadmin pages" href="index.html" />
+    <link rel="next" title="Service lifecycle" href="service-life-cycle.html" />
+    <link rel="prev" title="HOWTO: Managing S3 buckets and users" href="howto/s3.html" /> 
   </head>
   <body>
     <div class="related">
@@ -38,7 +41,14 @@
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+        <li class="right" >
+          <a href="service-life-cycle.html" title="Service lifecycle"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="howto/s3.html" title="HOWTO: Managing S3 buckets and users"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Sysadmin pages</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,8 +57,15 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="overview">
-<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="backups-for-our-services-state-of-the-union">
+<h1>Backups for our services: state of the union<a class="headerlink" href="#backups-for-our-services-state-of-the-union" title="Permalink to this headline">¶</a></h1>
+<div class="admonition-todo admonition" id="index-0">
+<p class="first admonition-title">Todo</p>
+<p class="last">This is hopelessly out of date and FAR too detailed (and thus prone to
+going out of date). Needs fixing.</p>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
 <p><strong>IMPORTANT:</strong> The OKFN core sysadmin team <strong>does NOT provide backup for
 machines outside Rackspace!</strong> If you need backup for machines outside
 Rackspace, you have to configure and maintain it yourself. (As always,
@@ -77,9 +94,9 @@ VMs get snapshotted, see ticket
 <a class="reference external" href="http://trac.okfn.org/ticket/1397">#1397</a>.</p>
 </div>
 <div class="section" id="setting-up-backups">
-<h1>Setting up backups ...<a class="headerlink" href="#setting-up-backups" title="Permalink to this headline">¶</a></h1>
+<h2>Setting up backups ...<a class="headerlink" href="#setting-up-backups" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="at-rackspace">
-<h2>... at Rackspace<a class="headerlink" href="#at-rackspace" title="Permalink to this headline">¶</a></h2>
+<h3>... at Rackspace<a class="headerlink" href="#at-rackspace" title="Permalink to this headline">¶</a></h3>
 <p>The VMs should already be snapshotted (<em>Hosting</em> ==&gt; <em>Cloud Servers</em> ==&gt;
 <em>My server Images</em>). If you need file-level backup and the VM is a
 managed one, then you can activate and configure Rackspace Backup quite
@@ -92,7 +109,7 @@ support periodic snapshots(as of Dec 2012)</li>
 </ul>
 </div>
 <div class="section" id="outside-rackspace">
-<h2>... outside Rackspace<a class="headerlink" href="#outside-rackspace" title="Permalink to this headline">¶</a></h2>
+<h3>... outside Rackspace<a class="headerlink" href="#outside-rackspace" title="Permalink to this headline">¶</a></h3>
 <p>Outside Rackspace, you are mainly on you own. Except we could add your
 backup source to our <a class="reference external" href="https://bitbucket.org/okfn/sysadmin/src/default/etc/backup/rsnapshot.conf">rsnapshot
 config</a>
@@ -102,7 +119,7 @@ s088</a>.</p>
 </div>
 </div>
 <div class="section" id="backup-status-outside-rackspace">
-<h1>Backup status outside Rackspace<a class="headerlink" href="#backup-status-outside-rackspace" title="Permalink to this headline">¶</a></h1>
+<h2>Backup status outside Rackspace<a class="headerlink" href="#backup-status-outside-rackspace" title="Permalink to this headline">¶</a></h2>
 <p>For a list of backup status per host, see the <em>&#8220;backup&#8221;</em> column in our
 <a class="reference external" href="https://docs.google.com/spreadsheet/pub?key=0Aon3JiuouxLUdC1IZ2kwRDMtX2ZaM0ZELWVJQzBrZXc&amp;single=true&amp;gid=14&amp;output=html">host
 matrix</a></p>
@@ -138,7 +155,7 @@ soon as all blogs are migrated, see
 </ul>
 </div>
 <div class="section" id="disaster-recovery">
-<h1>Disaster recovery<a class="headerlink" href="#disaster-recovery" title="Permalink to this headline">¶</a></h1>
+<h2>Disaster recovery<a class="headerlink" href="#disaster-recovery" title="Permalink to this headline">¶</a></h2>
 <p>At Rackspace it should be simple and straightforward: just re-create the
 VM from its latest snapshot. For a managed VM we might even ask
 Rackspace to do that for us.</p>
@@ -149,7 +166,7 @@ manual EBS-snapshot and go from there. See Appendix below</p>
 from a backup (if any).</p>
 </div>
 <div class="section" id="appendix">
-<h1>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h1>
+<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>s088 is full <a class="reference external" href="http://trac.okfn.org/ticket/1391">#1391</a></li>
 <li>Our backup verification is limited (#496)</li>
@@ -230,6 +247,7 @@ There now should be a Linode with enough free disk-allowance to
 restore to.</li>
 </ul>
 </div>
+</div>
 
 
           </div>
@@ -239,7 +257,8 @@ restore to.</li>
         <div class="sphinxsidebarwrapper">
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Overview</a></li>
+<li><a class="reference internal" href="#">Backups for our services: state of the union</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
 <li><a class="reference internal" href="#setting-up-backups">Setting up backups ...</a><ul>
 <li><a class="reference internal" href="#at-rackspace">... at Rackspace</a></li>
 <li><a class="reference internal" href="#outside-rackspace">... outside Rackspace</a></li>
@@ -249,7 +268,15 @@ restore to.</li>
 <li><a class="reference internal" href="#disaster-recovery">Disaster recovery</a></li>
 <li><a class="reference internal" href="#appendix">Appendix</a></li>
 </ul>
+</li>
+</ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="howto/s3.html"
+                        title="previous chapter">HOWTO: Managing S3 buckets and users</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="service-life-cycle.html"
+                        title="next chapter">Service lifecycle</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../_sources/sysadmin/backup.txt"
@@ -280,7 +307,14 @@ restore to.</li>
         <li class="right" style="margin-right: 10px">
           <a href="../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+        <li class="right" >
+          <a href="service-life-cycle.html" title="Service lifecycle"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="howto/s3.html" title="HOWTO: Managing S3 buckets and users"
+             >previous</a> |</li>
+        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="index.html" >Sysadmin pages</a> &raquo;</li> 
       </ul>
     </div>
 <div class="footer">

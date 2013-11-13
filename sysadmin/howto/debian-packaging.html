@@ -7,7 +7,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Email aliases and forwarders &mdash; OKF Operations Manual</title>
+    <title>HOWTO: Debian packaging &mdash; OKF Operations Manual</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
@@ -30,9 +30,9 @@
     <script type="text/javascript" src="../../_static/doctools.js"></script>
     <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
     <link rel="top" title="OKF Operations Manual" href="../../index.html" />
-    <link rel="up" title="List of infrastructure services" href="index.html" />
-    <link rel="next" title="Server hosting" href="hosting.html" />
-    <link rel="prev" title="Domain registration and naming" href="domains.html" /> 
+    <link rel="up" title="Step-by-step HOWTOs for common problems" href="index.html" />
+    <link rel="next" title="HOWTO: Administer Feedburner" href="feedburner.html" />
+    <link rel="prev" title="HOWTO: Deploy changes to the blogfarm" href="blogfarm-deploy.html" /> 
   </head>
   <body>
     <div class="related">
@@ -42,14 +42,14 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="hosting.html" title="Server hosting"
+          <a href="feedburner.html" title="HOWTO: Administer Feedburner"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="domains.html" title="Domain registration and naming"
+          <a href="blogfarm-deploy.html" title="HOWTO: Deploy changes to the blogfarm"
              accesskey="P">previous</a> |</li>
         <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
           <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U">Step-by-step HOWTOs for common problems</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -58,12 +58,19 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="email-aliases-and-forwarders">
-<h1>Email aliases and forwarders<a class="headerlink" href="#email-aliases-and-forwarders" title="Permalink to this headline">¶</a></h1>
-<div class="admonition-todo admonition" id="index-0">
-<p class="first admonition-title">Todo</p>
-<p class="last">Document the email setup</p>
-</div>
+  <div class="section" id="howto-debian-packaging">
+<h1>HOWTO: Debian packaging<a class="headerlink" href="#howto-debian-packaging" title="Permalink to this headline">¶</a></h1>
+<p>Useful resources on Ubuntu/Debian packaging:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://wiki.ubuntu.com/PackagingGuide/Complete">Ubuntu packaging guide</a></li>
+<li><a class="reference external" href="https://wiki.ubuntu.com/PackagingGuide/Python">Ubuntu packaging guide Python</a></li>
+<li><a class="reference external" href="http://www.debian.org/doc/packaging-manuals/python-policy/">Debian Python Policy</a> includes bits about packaging Python modules and programs</li>
+<li>Debian <a class="reference external" href="http://www.debian.org/doc/manuals/apt-howto/ch-apt-get.en.html#s-pin">APT HowTo</a> on pinning</li>
+<li>StackOverflow <a class="reference external" href="http://stackoverflow.com/questions/130894/how-to-build-a-debian-ubuntu-package-from-source">How to build a Debian/Ubuntu package from
+source?</a></li>
+<li><a class="reference external" href="http://linux.die.net/man/8/update-alternatives">update-alternatives</a>
+man page (helpful when installing several versions in parallel)</li>
+</ul>
 </div>
 
 
@@ -73,16 +80,16 @@
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
   <h4>Previous topic</h4>
-  <p class="topless"><a href="domains.html"
-                        title="previous chapter">Domain registration and naming</a></p>
+  <p class="topless"><a href="blogfarm-deploy.html"
+                        title="previous chapter">HOWTO: Deploy changes to the blogfarm</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="hosting.html"
-                        title="next chapter">Server hosting</a></p>
+  <p class="topless"><a href="feedburner.html"
+                        title="next chapter">HOWTO: Administer Feedburner</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../../_sources/sysadmin/services/email.txt"
+    <li><a href="../../_sources/sysadmin/howto/debian-packaging.txt"
            rel="nofollow">Show Source</a></li>
-    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/email.rst"
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/howto/debian-packaging.rst"
            rel="nofollow">Edit on GitHub</a></li>
   </ul>
 <div id="searchbox" style="display: none">
@@ -109,14 +116,14 @@
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="hosting.html" title="Server hosting"
+          <a href="feedburner.html" title="HOWTO: Administer Feedburner"
              >next</a> |</li>
         <li class="right" >
-          <a href="domains.html" title="Domain registration and naming"
+          <a href="blogfarm-deploy.html" title="HOWTO: Deploy changes to the blogfarm"
              >previous</a> |</li>
         <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
           <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+          <li><a href="index.html" >Step-by-step HOWTOs for common problems</a> &raquo;</li> 
       </ul>
     </div>
 <div class="footer">

@@ -7,38 +7,48 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>Activate Akismet / Basic spam protection &mdash; OKF Operations Manual</title>
+    <title>Managing a site in the Blogfarm &mdash; OKF Operations Manual</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
 
     
-    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
+        URL_ROOT:    '../../',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/searchtools.js"></script>
-    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="Guides" href="../index.html" />
+    <link rel="next" title="Sysadmin pages" href="../../sysadmin/index.html" />
+    <link rel="prev" title="Email alias management" href="../email-aliases/index.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+        <li class="right" >
+          <a href="../../sysadmin/index.html" title="Sysadmin pages"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../email-aliases/index.html" title="Email alias management"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Guides</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,12 +57,12 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p>This article contains guidelines for site owners how to activate polular
-features on OKFN&#8217;s Wordpress blogfarm at WPEngine. See
-<a class="reference external" href="Sysadmin/Blogfarm">Sysadmin/Blogfarm</a> for general information about
-the OKFN blogfarm.</p>
+  <div class="section" id="managing-a-site-in-the-blogfarm">
+<h1>Managing a site in the Blogfarm<a class="headerlink" href="#managing-a-site-in-the-blogfarm" title="Permalink to this headline">¶</a></h1>
+<p>This article contains guidelines for site owners how to activate popular
+features on OKFN&#8217;s Wordpress blogfarm at WPEngine.</p>
 <div class="section" id="activate-akismet-basic-spam-protection">
-<h1>Activate Akismet / Basic spam protection<a class="headerlink" href="#activate-akismet-basic-spam-protection" title="Permalink to this headline">¶</a></h1>
+<h2>Activate Akismet / Basic spam protection<a class="headerlink" href="#activate-akismet-basic-spam-protection" title="Permalink to this headline">¶</a></h2>
 <p>Akismet is a comment and trackback spam prevention plugin that ships
 with WordPress. Site administrators can implement basic spam protection
 on their site by activating and configuring this plugin using the
@@ -67,7 +77,7 @@ for one at their website <a class="reference external" href="https://akismet.com
 </ol>
 </div>
 <div class="section" id="disqus-comments">
-<h1>Disqus Comments<a class="headerlink" href="#disqus-comments" title="Permalink to this headline">¶</a></h1>
+<h2>Disqus Comments<a class="headerlink" href="#disqus-comments" title="Permalink to this headline">¶</a></h2>
 <p>As an alternative to the built-in WordPress comments feature, the Disqus
 comments is a third party commenting system that may have more suitable
 features and spam prevention methods. Site admins can enable Disqus
@@ -88,7 +98,7 @@ moderate/manage comments and settings</li>
 </ol>
 </div>
 <div class="section" id="google-analytics-single-site">
-<h1>Google Analytics (single site)<a class="headerlink" href="#google-analytics-single-site" title="Permalink to this headline">¶</a></h1>
+<h2>Google Analytics (single site)<a class="headerlink" href="#google-analytics-single-site" title="Permalink to this headline">¶</a></h2>
 <p>Google Analytics tracks visitors of your site. Site administrators can
 enable this on their site using the following steps/.</p>
 <ol class="arabic simple">
@@ -103,7 +113,7 @@ help resources explaining how to do that -
 of the site. (ftp access, template edition rights, etc)</p>
 </div>
 <div class="section" id="google-analytics-global-tracking-filter">
-<h1>Google Analytics (global tracking filter)<a class="headerlink" href="#google-analytics-global-tracking-filter" title="Permalink to this headline">¶</a></h1>
+<h2>Google Analytics (global tracking filter)<a class="headerlink" href="#google-analytics-global-tracking-filter" title="Permalink to this headline">¶</a></h2>
 <p>Each site is allowed a unique Google Analytics tracking code as per the
 above Google Analytics (single site). On top of this, a global OKF
 tracking code (UA-33874954) is added to every page to log data aggregate
@@ -150,12 +160,13 @@ just for identification purposes.</li>
 <li>Then select the &#8220;Include&#8221; option</li>
 <li>Then from the &#8220;Filter Field&#8221; dropdown select &#8220;Hostname&#8221;</li>
 <li>Then in the filter pattern enter the domain, escaping periods with
-backslashes (eg publicdomainreview\.org or blog\.okfn\.org)</li>
+backslashes (eg <tt class="docutils literal"><span class="pre">publicdomainreview\.org</span></tt> or <tt class="docutils literal"><span class="pre">blog\.okfn\.org</span></tt>)</li>
 <li>Leave case sensitive as &#8220;No&#8221;</li>
 <li>Click &#8220;Save&#8221;</li>
 <li>It may take some hours for traffic stats to appear for this profile
 in the reporting section</li>
 </ol>
+</div>
 </div>
 
 
@@ -164,24 +175,33 @@ in the reporting section</li>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Activate Akismet / Basic spam protection</a></li>
+<li><a class="reference internal" href="#">Managing a site in the Blogfarm</a><ul>
+<li><a class="reference internal" href="#activate-akismet-basic-spam-protection">Activate Akismet / Basic spam protection</a></li>
 <li><a class="reference internal" href="#disqus-comments">Disqus Comments</a></li>
 <li><a class="reference internal" href="#google-analytics-single-site">Google Analytics (single site)</a></li>
 <li><a class="reference internal" href="#google-analytics-global-tracking-filter">Google Analytics (global tracking filter)</a></li>
 </ul>
+</li>
+</ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../email-aliases/index.html"
+                        title="previous chapter">Email alias management</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../sysadmin/index.html"
+                        title="next chapter">Sysadmin pages</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/sysadmin/blogfarm-essentials.txt"
+    <li><a href="../../_sources/guides/managing-a-blogfarm-site/index.txt"
            rel="nofollow">Show Source</a></li>
-    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/blogfarm-essentials.rst"
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/guides/managing-a-blogfarm-site/index.rst"
            rel="nofollow">Edit on GitHub</a></li>
   </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -200,9 +220,16 @@ in the reporting section</li>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+        <li class="right" >
+          <a href="../../sysadmin/index.html" title="Sysadmin pages"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../email-aliases/index.html" title="Email alias management"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Guides</a> &raquo;</li> 
       </ul>
     </div>
 <div class="footer">

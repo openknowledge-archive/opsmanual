@@ -7,38 +7,49 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
 
-    <title>General &mdash; OKF Operations Manual</title>
+    <title>HOWTO: Deploy changes to the blogfarm &mdash; OKF Operations Manual</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
 
 
     
-    <link rel="stylesheet" href="../_static/rtd.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    '../',
+        URL_ROOT:    '../../',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
         HAS_SOURCE:  true
       };
     </script>
-    <script type="text/javascript" src="../_static/jquery.js"></script>
-    <script type="text/javascript" src="../_static/underscore.js"></script>
-    <script type="text/javascript" src="../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../_static/searchtools.js"></script>
-    <link rel="top" title="OKF Operations Manual" href="../index.html" /> 
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="Step-by-step HOWTOs for common problems" href="index.html" />
+    <link rel="next" title="HOWTO: Debian packaging" href="debian-packaging.html" />
+    <link rel="prev" title="HOWTO: Administering APT" href="administering-apt.html" /> 
   </head>
   <body>
     <div class="related">
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
-        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+        <li class="right" >
+          <a href="debian-packaging.html" title="HOWTO: Debian packaging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="administering-apt.html" title="HOWTO: Administering APT"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Step-by-step HOWTOs for common problems</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -47,13 +58,14 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <p>This article describes how to deploy code to OKFN&#8217;s Wordpress blogfarm
-at WPEngine. See <a class="reference external" href="Sysadmin/Blogfarm">Sysadmin/Blogfarm</a> for general
-information about the OKFN blogfarm</p>
+  <div class="section" id="howto-deploy-changes-to-the-blogfarm">
+<h1>HOWTO: Deploy changes to the blogfarm<a class="headerlink" href="#howto-deploy-changes-to-the-blogfarm" title="Permalink to this headline">¶</a></h1>
+<p>This article describes how to deploy code to OKFN&#8217;s Wordpress blogfarm
+at WPEngine.</p>
 <div class="section" id="general">
-<h1>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h1>
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
 <p>Some basic instructions outlining the code deployment procedures for our
-blog farm hoster WPE (WP Engine - <a class="reference external" href="http://wpengine.com/">http://wpengine.com/</a>).</p>
+blog farm hoster WPE (WPEngine - <a class="reference external" href="http://wpengine.com/">http://wpengine.com/</a>).</p>
 <p>WPE code deployment is done through their git post-recieve hook. In
 essence it&#8217;s as simply as commiting code changes to the repository and
 doing a git push back to the WPE remote. More detailed instructions can
@@ -76,29 +88,30 @@ the staging remote as we don&#8217;t have anything setup there.</p>
 depending on how you have your local code setup you can add this remote
 to an existing repo, or create a new working directory and run the
 following:</p>
-<div class="highlight-python"><pre>$ git clone git@git.wpengine.com:production/okf.git .</pre>
+<div class="highlight-python"><pre>$ git clone git@git.wpengine.com:production/okf.git wordpress
+$ cd wordpress</pre>
 </div>
 <p>This repository uses submodules for the various plugins and themes. So
-before doing anything else you should initialize and update these.</p>
+before doing anything else you should initialize and update these:</p>
 <div class="highlight-python"><pre>$ git submodule init
 $ git submodule update</pre>
 </div>
 <p>Deploying changes is as simple as pushing your commits back to the
 production remote. So something like the following. It&#8217;s advised that
 you do this via a terminal window so that you can see descriptive
-deployment progress output, along with any custom errors.</p>
+deployment progress output, along with any custom errors:</p>
 <div class="highlight-python"><pre>$ git push origin master</pre>
 </div>
 <p>Or run git remote -v to list the remotes of your local repo. If you
 cloned from the production repo then that is most like the &#8220;origin&#8221;
 remote.</p>
 <p>As always, be sure to retrieve changes made by other users before
-pushing back to WPE.</p>
-<div class="highlight-python"><pre>$ git pull</pre>
+pushing back to WPE:</p>
+<div class="highlight-python"><pre>$ git pull --rebase</pre>
 </div>
 </div>
 <div class="section" id="sub-modules">
-<h1>Sub Modules<a class="headerlink" href="#sub-modules" title="Permalink to this headline">¶</a></h1>
+<h2>Sub Modules<a class="headerlink" href="#sub-modules" title="Permalink to this headline">¶</a></h2>
 <p>Note that submodules are referenced to a master repository via commit
 ID&#8217;s, rather than branches. As such, changes to submodules need to be
 committed to the master repo as well. That is, if you commit a change to
@@ -113,7 +126,7 @@ This means 2 things: 1) The repo must be publicly readable. WPE does not
 provide a public key for you to grant access to private repos. 2) The
 commit to retrieve must be available on that remote (pushed)</p>
 <p>The latter is often forgotten. Use the following one liner to push all
-submodules from your master repo root dir.</p>
+submodules from your master repo root dir:</p>
 <div class="highlight-python"><pre>$ git submodule foreach git push master origin</pre>
 </div>
 <p>It&#8217;s typically easier to work on all files (main repo and submodules)
@@ -126,6 +139,7 @@ good practice to do the following:</p>
 $ git submodule foreach git pull origin master</pre>
 </div>
 </div>
+</div>
 
 
           </div>
@@ -133,22 +147,31 @@ $ git submodule foreach git pull origin master</pre>
       </div>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
-  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">General</a></li>
+<li><a class="reference internal" href="#">HOWTO: Deploy changes to the blogfarm</a><ul>
+<li><a class="reference internal" href="#general">General</a></li>
 <li><a class="reference internal" href="#sub-modules">Sub Modules</a></li>
 </ul>
+</li>
+</ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="administering-apt.html"
+                        title="previous chapter">HOWTO: Administering APT</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="debian-packaging.html"
+                        title="next chapter">HOWTO: Debian packaging</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
-    <li><a href="../_sources/sysadmin/blogfarm-code-deployment.txt"
+    <li><a href="../../_sources/sysadmin/howto/blogfarm-deploy.txt"
            rel="nofollow">Show Source</a></li>
-    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/blogfarm-code-deployment.rst"
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/howto/blogfarm-deploy.rst"
            rel="nofollow">Edit on GitHub</a></li>
   </ul>
 <div id="searchbox" style="display: none">
   <h3>Quick search</h3>
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="../../search.html" method="get">
       <input type="text" name="q" />
       <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
@@ -167,9 +190,17 @@ $ git submodule foreach git pull origin master</pre>
       <h3>Navigation</h3>
       <ul>
         <li class="right" style="margin-right: 10px">
-          <a href="../genindex.html" title="General Index"
+          <a href="../../genindex.html" title="General Index"
              >index</a></li>
-        <li><a href="../index.html">OKF Operations Manual</a> &raquo;</li> 
+        <li class="right" >
+          <a href="debian-packaging.html" title="HOWTO: Debian packaging"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="administering-apt.html" title="HOWTO: Administering APT"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
+          <li><a href="index.html" >Step-by-step HOWTOs for common problems</a> &raquo;</li> 
       </ul>
     </div>
 <div class="footer">

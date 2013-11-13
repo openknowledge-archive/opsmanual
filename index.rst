@@ -16,6 +16,7 @@ community.
 .. toctree::
    :maxdepth: 2
 
+   guides/index
    sysadmin/index
 
 What is this?

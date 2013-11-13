@@ -65,6 +65,24 @@ Multiple Domains on One Machine
 -  For summary of what is and is not possible in mailman 2.
 -  see [3]
 
+Bulk operations on mailing lists.
+=================================
+
+Nick asked if we could normalise all the names of the mailing lists to
+lowercase. It turns out to be pretty easy. Create a python file like
+this, and call it `lowername.py`::
+
+  def lowername(mlist):
+    mlist.real_name = mlist.real_name.lower()
+    mlist.Save()
+
+Then this can be run with the `withlist` program::
+
+  export PYTHONPATH=`pwd`
+  ls /var/lib/mailman/lists | while read list; do
+      withlist -l -r lowername $list
+  done
+
 Biblio
 ======
 

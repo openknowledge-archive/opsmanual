@@ -65,3 +65,4 @@ Documentation and notes
    services/index
    howto/index
    backup
+   service-life-cycle

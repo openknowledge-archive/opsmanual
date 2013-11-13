@@ -1,3 +1,6 @@
+HOWTO: Managing S3 buckets and users
+####################################
+
 S3 is a good place for static content. This document is about how to
 create and use a AWS S3 bucket for static content.
 

@@ -6,7 +6,8 @@ at https://sendy.okfn.org. Sendy (which sends email through `Amazon SES`_) is
 dramatically cheaper than equivalent commercial offerings. ($0.10 per 1000
 mails, vs. ~$8-30 per 1000 mails for Mailchimp).
 
-.. _Sendy: http//sendy.co
+.. _Sendy: http://sendy.co
+.. _Amazon SES: https://aws.amazon.com/ses/
 
 Details
 =======

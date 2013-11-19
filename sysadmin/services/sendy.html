@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Sendy: announce list and newsletter service &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="List of infrastructure services" href="index.html" />
+    <link rel="next" title="Wiki “farm”" href="wiki.html" />
+    <link rel="prev" title="Resource and service monitoring" href="monitoring.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="wiki.html" title="Wiki “farm”"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="monitoring.html" title="Resource and service monitoring"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="sendy-announce-list-and-newsletter-service">
+<h1>Sendy: announce list and newsletter service<a class="headerlink" href="#sendy-announce-list-and-newsletter-service" title="Permalink to this headline">¶</a></h1>
+<p>For managing large or frequent mailouts, we run a self-hosted version of <a class="reference external" href="http//sendy.co">Sendy</a>
+at <a class="reference external" href="https://sendy.okfn.org">https://sendy.okfn.org</a>. Sendy (which sends email through <a href="#id1"><span class="problematic" id="id2">`Amazon SES`_</span></a>) is
+dramatically cheaper than equivalent commercial offerings. ($0.10 per 1000
+mails, vs. ~$8-30 per 1000 mails for Mailchimp).</p>
+<div class="section" id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this headline">¶</a></h2>
+<p>Our Sendy instance is hosted on Heroku (under the main sysadmin account account:
+<tt class="docutils literal"><span class="pre">opensendy</span></tt>), and the customized source code is kept in a private GitHub
+repository: <a class="reference external" href="https://github.com/okfn/opensendy">https://github.com/okfn/opensendy</a>.</p>
+<p>It is important to note that Sendy is <strong>not</strong> open-source software, and thus
+this source code repository must remain private.</p>
+</div>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Sendy has three main parts:</p>
+<dl class="docutils">
+<dt><em>Campaign</em></dt>
+<dd>Campaigns are specific mailings (i.e. specific emails), which are sent to one
+or more...</dd>
+<dt><em>List</em></dt>
+<dd>Each <em>List</em> is a set of recipient email addresses, and associated metadata on
+previous bounces, complaints, etc.</dd>
+</dl>
+<p>Both <em>Campaigns</em> and <em>Lists</em> are associated with exactly one</p>
+<dl class="docutils">
+<dt><em>Brand</em></dt>
+<dd>A <em>Brand</em> is the top-level identity of the mailout (e.g. &#8220;Widgets Monthly&#8221;)
+and are tied to a username and password which allow for management of all
+aspects of the <em>Brand</em>.</dd>
+</dl>
+<p>Sendy also has an administrator account, the details of which are kept in the
+<tt class="docutils literal"><span class="pre">team-sysadmin</span></tt> shared folder on LastPass.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Sendy: announce list and newsletter service</a><ul>
+<li><a class="reference internal" href="#details">Details</a></li>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="monitoring.html"
+                        title="previous chapter">Resource and service monitoring</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="wiki.html"
+                        title="next chapter">Wiki &#8220;farm&#8221;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/sysadmin/services/sendy.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/sendy.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="wiki.html" title="Wiki “farm”"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="monitoring.html" title="Resource and service monitoring"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
+          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

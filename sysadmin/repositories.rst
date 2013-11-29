@@ -8,11 +8,12 @@ fashion.
 
 The following repositories are used to manage the OKF infrastructure:
 
-``sysconfig-ansible``
----------------------
+``infra``
+---------
 
-https://github.com/okfn/sysconfig-ansible is the main configuration repository
-for the Ansible_ configuration management system.
+https://github.com/okfn/infra is the main repository we use to manage our
+infrastructure. It includes configuration and data for the Ansible_
+configuration management system.
 
 .. _Ansible: http://www.ansibleworks.com/
 
@@ -24,16 +25,6 @@ keys, and other things the rest of the world shouldn't know. The contents of
 this repository are encrypted using git-crypt_.
 
 .. _git-crypt: https://www.agwa.name/projects/git-crypt/
-
-``sysadmin`` (**DEPRECATED**)
------------------------------
-
-https://github.com/okfn/sysadmin is the old and deprecated sysadmin repository,
-containing ad-hoc shell scripts, Fabric_ scripts, and other such joys. This will
-be removed in due course.
-
-.. _Fabric: http://fabfile.org/
-
 
 ``sysadmin-oz``
 ---------------

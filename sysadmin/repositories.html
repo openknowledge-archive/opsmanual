@@ -1,3 +1,4 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -64,22 +65,17 @@ to abide by the principle of &#8220;Infrastructure as Code&#8221; &#8211; all pa
 infrastructure configuration should be easily reproducible in an automated
 fashion.</p>
 <p>The following repositories are used to manage the OKF infrastructure:</p>
-<div class="section" id="sysconfig-ansible">
-<h2><tt class="docutils literal"><span class="pre">sysconfig-ansible</span></tt><a class="headerlink" href="#sysconfig-ansible" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/okfn/sysconfig-ansible">https://github.com/okfn/sysconfig-ansible</a> is the main configuration repository
-for the <a class="reference external" href="http://www.ansibleworks.com/">Ansible</a> configuration management system.</p>
+<div class="section" id="infra">
+<h2><tt class="docutils literal"><span class="pre">infra</span></tt><a class="headerlink" href="#infra" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/okfn/infra">https://github.com/okfn/infra</a> is the main repository we use to manage our
+infrastructure. It includes configuration and data for the <a class="reference external" href="http://www.ansibleworks.com/">Ansible</a>
+configuration management system.</p>
 </div>
 <div class="section" id="credentials">
 <h2><tt class="docutils literal"><span class="pre">credentials</span></tt><a class="headerlink" href="#credentials" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://github.com/okfn/credentials">https://github.com/okfn/credentials</a> is a private repository containing secrets,
 keys, and other things the rest of the world shouldn&#8217;t know. The contents of
 this repository are encrypted using <a class="reference external" href="https://www.agwa.name/projects/git-crypt/">git-crypt</a>.</p>
-</div>
-<div class="section" id="sysadmin-deprecated">
-<h2><tt class="docutils literal"><span class="pre">sysadmin</span></tt> (<strong>DEPRECATED</strong>)<a class="headerlink" href="#sysadmin-deprecated" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="https://github.com/okfn/sysadmin">https://github.com/okfn/sysadmin</a> is the old and deprecated sysadmin repository,
-containing ad-hoc shell scripts, <a class="reference external" href="http://fabfile.org/">Fabric</a> scripts, and other such joys. This will
-be removed in due course.</p>
 </div>
 <div class="section" id="sysadmin-oz">
 <h2><tt class="docutils literal"><span class="pre">sysadmin-oz</span></tt><a class="headerlink" href="#sysadmin-oz" title="Permalink to this headline">¶</a></h2>
@@ -97,9 +93,8 @@ according to our internal DNS standards.</p>
   <h3><a href="../index.html">Table Of Contents</a></h3>
   <ul>
 <li><a class="reference internal" href="#">Repositories</a><ul>
-<li><a class="reference internal" href="#sysconfig-ansible"><tt class="docutils literal"><span class="pre">sysconfig-ansible</span></tt></a></li>
+<li><a class="reference internal" href="#infra"><tt class="docutils literal"><span class="pre">infra</span></tt></a></li>
 <li><a class="reference internal" href="#credentials"><tt class="docutils literal"><span class="pre">credentials</span></tt></a></li>
-<li><a class="reference internal" href="#sysadmin-deprecated"><tt class="docutils literal"><span class="pre">sysadmin</span></tt> (<strong>DEPRECATED</strong>)</a></li>
 <li><a class="reference internal" href="#sysadmin-oz"><tt class="docutils literal"><span class="pre">sysadmin-oz</span></tt></a></li>
 </ul>
 </li>
@@ -153,7 +148,7 @@ according to our internal DNS standards.</p>
     </div>
 <div class="footer">
     &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
   <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
 
 </div>

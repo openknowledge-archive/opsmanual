@@ -40,7 +40,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Open Knowledge Foundation Operations Manual'
+project = u'OKF Operations Manual'
 copyright = u'2013, Open Knowledge Foundation'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -92,17 +92,9 @@ pygments_style = 'sphinx'
 
 # -- Options for HTML output ---------------------------------------------------
 
-# Custom sidebar templates, maps document names to template names.
-html_sidebars = {
-    '**':  ['globaltoc.html']
-}
-html_theme_options = {
-    'logo_icon': 'http://assets.okfn.org/web/images/header-logox2.png',
-}
-
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'sphinx-theme-okfn'
+html_theme = 'okf'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -114,10 +106,10 @@ html_theme_path = ['_themes']
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = "Open Knowledge Foundation Operations Manual"
+html_title = "OKF Operations Manual"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = "Operations Manual"
+#html_short_title = None
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.

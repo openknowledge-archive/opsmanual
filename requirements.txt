@@ -1,1 +1,3 @@
-sphinx
+# we need more recent JS for new sphinx theme plus fixes for some bugs e.g. toc
+# generation with hidden
+sphinx==1.2b3

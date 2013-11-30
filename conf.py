@@ -94,7 +94,7 @@ pygments_style = 'sphinx'
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-    '**':  ['globaltoc.html']
+    '**':  ['globaltoc.html', 'sourcelink.html']
 }
 html_theme_options = {
     'logo_icon': 'http://assets.okfn.org/web/images/header-logox2.png',

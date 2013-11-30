@@ -7,7 +7,7 @@ Backups for our services: state of the union
 Overview
 ========
 
-**IMPORTANT:** The OKFN core sysadmin team **does NOT provide backup for
+**IMPORTANT:** The Open Knowledge Foundation core sysadmin team **does NOT provide backup for
 machines outside Rackspace!** If you need backup for machines outside
 Rackspace, you have to configure and maintain it yourself. (As always,
 there are a few historic exceptions to this rule, see below).

@@ -7,15 +7,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-    <title>Managing a site in the Blogfarm &mdash; OKF Operations Manual</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-
-
+    <title>Managing a site in the Blogfarm &mdash; Open Knowledge Foundation Operations Manual</title>
     
-    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -29,35 +25,102 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
-    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <script type="text/javascript" src="../../_static/bootstrap-css-tweaks.js"></script>
+    <link rel="top" title="Open Knowledge Foundation Operations Manual" href="../../index.html" />
     <link rel="up" title="Guides" href="../index.html" />
     <link rel="next" title="Sysadmin pages" href="../../sysadmin/index.html" />
-    <link rel="prev" title="Email alias management" href="../email-aliases/index.html" /> 
+    <link rel="prev" title="Email alias management" href="../email-aliases/index.html" />
+
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="../../sysadmin/index.html" title="Sysadmin pages"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="../email-aliases/index.html" title="Email alias management"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
-          <li><a href="../index.html" accesskey="U">Guides</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+  <div id="okf-panel" class="collapse"><iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html" scrolling="no"></iframe></div>
+
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+         
+        <a class="logo-icon pull-left" href="../../index.html"><img src="http://assets.okfn.org/web/images/header-logox2.png" alt="Open Knowledge Foundation Operations Manual" /></a>
+        
+        <a class="brand" href="../../index.html">Open Knowledge Foundation Operations Manual<span class="version"> v1.0</span></a>
+        
+        
+          <div class="okfn-ribbon"><a href="http://okfn.org/" data-toggle="collapse" data-target="#okf-panel" title="Part of the Open Knowledge Foundation Network">An Open Knowledge Foundation Site</a></div>
+        
+        <div class="pull-right navbar-search span3">
+          
+              <h3 class="searchheading">Quick search</h3>
+<form class="searchbox" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+<small class="searchtip">Enter search terms or a module, class or function name.</small>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="sub-header">
+  <ul class="container breadcrumb">
+      <li><a href="../../index.html">Operations Manual</a> &raquo;</li>
+      <li><a href="../index.html"
+            accesskey="U">
+            Guides
+          </a> &raquo;</li>
+      <li><a href="">
+            Managing a site in the Blogfarm
+          </a></li>
+  </ul>
+</div>
+ 
+<div class="container">
+  <div class="row">
+    <div class="span3">
+      
+        
+          
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><div class="widget toc">
+  <h3>Table of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Guides</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../email-aliases/index.html">Email alias management</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="">Managing a site in the Blogfarm</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#activate-akismet-basic-spam-protection">Activate Akismet / Basic spam protection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disqus-comments">Disqus Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#google-analytics-single-site">Google Analytics (single site)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#google-analytics-global-tracking-filter">Google Analytics (global tracking filter)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sysadmin/index.html">Sysadmin pages</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../opsmanual-getting-started.html">Getting started with the Ops Manual, reStructuredText, and Sphinx</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../README.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sitemap.html">Sitemap</a></li>
+</ul>
+
+</div>
+
+        </div>
+      </div>
+        
+      
+    </div><!--/span-->
+    <div class="span7 offset1">
+      <div class="content">
+
+        
   <div class="section" id="managing-a-site-in-the-blogfarm">
 <h1>Managing a site in the Blogfarm<a class="headerlink" href="#managing-a-site-in-the-blogfarm" title="Permalink to this headline">¶</a></h1>
 <p>This article contains guidelines for site owners how to activate popular
@@ -133,8 +196,8 @@ These navigation instructions get quite confusing if starting from a
 different page).</li>
 <li>You should now be on the Account Administration screen with a table
 listing of the accounts your login has access to. Within this table
-click on &#8220;OKFN 2&#8221;.</li>
-<li>Then select &#8220;OKFN Aggregate&#8221; from the Properties table on the next
+click on &#8220;Open Knowledge Foundation 2&#8221;.</li>
+<li>Then select &#8220;Open Knowledge Foundation Aggregate&#8221; from the Properties table on the next
 screen.</li>
 <li>Here you should see a list of &#8220;Profiles&#8221; within this property. Do not
 edit the existing profiles, simply select &#8220;New Profile&#8221;</li>
@@ -171,76 +234,64 @@ in the reporting section</li>
 </div>
 
 
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Managing a site in the Blogfarm</a><ul>
-<li><a class="reference internal" href="#activate-akismet-basic-spam-protection">Activate Akismet / Basic spam protection</a></li>
-<li><a class="reference internal" href="#disqus-comments">Disqus Comments</a></li>
-<li><a class="reference internal" href="#google-analytics-single-site">Google Analytics (single site)</a></li>
-<li><a class="reference internal" href="#google-analytics-global-tracking-filter">Google Analytics (global tracking filter)</a></li>
-</ul>
-</li>
-</ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="../email-aliases/index.html"
-                        title="previous chapter">Email alias management</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../../sysadmin/index.html"
-                        title="next chapter">Sysadmin pages</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../_sources/guides/managing-a-blogfarm-site/index.txt"
-           rel="nofollow">Show Source</a></li>
-    <li><a href="https://github.com/okfn/opsmanual/edit/master/guides/managing-a-blogfarm-site/index.rst"
-           rel="nofollow">Edit on GitHub</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+        
+        <div style="font-size:smaller;">
+          <hr/>
+          
+            
+          
+            
+              <div class="pull-right">
+                <a href="../../sysadmin/index.html"
+                  title="Sysadmin pages" accesskey="N">
+                    
+                      
+                    
+                    Sysadmin pages→
+                </a>
+              </div>
+            
+          
+            
+              <div >
+                <a href="../email-aliases/index.html"
+                  title="Email alias management" accesskey="P">
+                    
+                      
+                    
+                    ← Email alias management
+                </a>
+              </div>
+            
+          
+          <div style="clear:both;"></div>
         </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="../../sysadmin/index.html" title="Sysadmin pages"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="../email-aliases/index.html" title="Email alias management"
-             >previous</a> |</li>
-        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
-          <li><a href="../index.html" >Guides</a> &raquo;</li> 
-      </ul>
-    </div>
-<div class="footer">
-    &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
 
+      </div>
+    </div>
+  </div> <!-- / row -->
 </div>
 
+<footer>
+  <div class="inner">
+    <div class="container">
+            <p class="copyright">
+        2013, Open Knowledge Foundation<br/>
+      </p>
 
+      <p class="meta">
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.<br/>
+      </p>
+
+      
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://assets.okfn.org/themes/okfn/collapse.min.js" type="text/javascript"></script>
+<script src="http://assets.okfn.org/themes/okfn/okf-panel.js" type="text/javascript"></script>
 
 
 

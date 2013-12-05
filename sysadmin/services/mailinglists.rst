@@ -97,7 +97,7 @@ How to add a user into a mailling list via cli
 How to export mailinglist users
 ===============================
 
--  To list users of a particular list, with full names - *'Full Name' *
+-  To list users of a particular list, with full names - *'Full Name'*
 
 | ``list_members --fullnames --``\ \ `` ``\
 | ``e.g # list_members --fullnames --regular okfn-announce``

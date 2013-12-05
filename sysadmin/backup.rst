@@ -38,7 +38,7 @@ Setting up backups ...
 ======================
 
 ... at Rackspace
-~~~~~~~~~~~~~~~~
+----------------
 
 The VMs should already be snapshotted (*Hosting* ==> *Cloud Servers* ==>
 *My server Images*). If you need file-level backup and the VM is a
@@ -51,7 +51,7 @@ easily in the Rackspace control panel.
    support periodic snapshots(as of Dec 2012)
 
 ... outside Rackspace
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 Outside Rackspace, you are mainly on you own. Except we could add your
 backup source to our `rsnapshot

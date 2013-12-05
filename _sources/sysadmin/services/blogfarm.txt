@@ -16,10 +16,10 @@ installation that serves numerous properties from a single codebase. It
 can provide sites at **{name}.okfn.org** as well as at any domain name
 (via Wordpress' domain alias feature).
 
-Amongst the sites it currently hosts are the `OKFN
-website <http://okfn.org/>`__, the `OKFN
-blog <http://blog.okfn.org/>`__, local OKFN chapters like `OKFN
-Belgium <http://okfn.be/>`__ or `OKFN Germany <http://okfn.de/>`__, the
+Amongst the sites it currently hosts are the `Open Knowledge Foundation
+website <http://okfn.org/>`__, the `Open Knowledge Foundation
+blog <http://blog.okfn.org/>`__, local Open Knowledge Foundation chapters like `Open Knowledge Foundation
+Belgium <http://okfn.be/>`__ or `Open Knowledge Foundation Germany <http://okfn.de/>`__, the
 `Public Domain Review <http://publicdomainreview.org/>`__,
 `CKAN <http://ckan.org/>`__, the `Open Knowledge & Data
 Festival <http://okfestival.org/>`__,
@@ -42,10 +42,10 @@ See also
 Contact
 =======
 
--  For **non-technical issues** with the OKFN blog farm, e.g. with the
+-  For **non-technical issues** with the Open Knowledge Foundation blog farm, e.g. with the
    content of one of its sites, contact either the owner of a specific
    blog site, or <**blog**\ @\ **okfn**.\ **org**>
--  For **technical problems** with the OKFN blog farm, notify either the
+-  For **technical problems** with the Open Knowledge Foundation blog farm, notify either the
    owner of a specific blog site, or
    <**sysadmin**\ @\ **okfn**.\ **org**> (See also
    `Sysadmin <Sysadmin>`__).
@@ -72,11 +72,11 @@ Tickets (general)
    trac] in the trac component "blogfarm".]
 -  If our blogfarm hoster WPEngine has to look into an issue, we raise a
    ticket in their support platform (see below)
--  There is also "`Issue tracker for http://okfn.org/ and other OKFN
+-  There is also "`Issue tracker for http://okfn.org/ and other Open Knowledge Foundation
    websites <https://github.com/okfn/okfn.org/issues>`__\ " which tracks
    non-sysadmin issues e.g. with layout and design.
 -  Themes and plugins might have their own repo trackers, e.g. the
-   "`Wordpress OKFN general-purpose theme (v2). Based on Bootstrap and
+   "`Wordpress Open Knowledge Foundation general-purpose theme (v2). Based on Bootstrap and
    Buddypress <https://github.com/okfn/wordpress-theme-okfn/issues>`__\ "
 
 Tickets at WPEngine
@@ -193,7 +193,7 @@ Basic install:
    -  `Akismet <http://akismet.com/>`__
    -  Google Analytics (see Google Analytics in Settings)
 
-#. (Optional) Configure theme. The default OKFN theme is maintained at
+#. (Optional) Configure theme. The default Open Knowledge Foundation theme is maintained at
    https://bitbucket.org/okfn/wp-theme-okfn.
 #. (Optional) Activate & configure additional plugins. Do this on a
    site-by-site basis, do **not** use 'Network Activate'

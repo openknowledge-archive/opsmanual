@@ -77,8 +77,8 @@ the global tracking code may add this filter using the following steps.
    different page).
 #. You should now be on the Account Administration screen with a table
    listing of the accounts your login has access to. Within this table
-   click on "OKFN 2".
-#. Then select "OKFN Aggregate" from the Properties table on the next
+   click on "Open Knowledge Foundation 2".
+#. Then select "Open Knowledge Foundation Aggregate" from the Properties table on the next
    screen.
 #. Here you should see a list of "Profiles" within this property. Do not
    edit the existing profiles, simply select "New Profile"

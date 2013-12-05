@@ -20,7 +20,7 @@ Prerequisites of requesting a Server or Service
 Setting up/requesting a new service or server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
--  So if are about to deploy a new service at Open Knowledge Foundation or want the sysadmin
+-  So if are about to deploy a new service at OKFN or want the sysadmin
    team to deploy it,
 
    -  Fill up the google form `server request

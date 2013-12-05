@@ -5,9 +5,9 @@ set -eu
 cd "$(dirname "$0")"
 cd ..
 
-if [ "$TRAVIS_PULL_REQUEST" = "true" ]; then
+if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then
   echo "Not pushing for branch build." >&2
-  exit
+  exec ./tools/buildpages
 fi
 
 BRANCH=gh-pages

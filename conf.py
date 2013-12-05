@@ -101,6 +101,7 @@ html_sidebars = {
 }
 html_theme_options = {
     'logo_icon': 'http://assets.okfn.org/web/images/header-logox2.png',
+    'show_version': False
 }
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

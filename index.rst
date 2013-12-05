@@ -1,19 +1,17 @@
-=========================
-Welcome to the Ops Manual
-=========================
+OKF Operations Manual
+=====================
 
-Welcome. This is the Open Knowledge Foundation Operations Manual, where you
-will find documentation and advice on how the Open Knowledge Foundation (Open
-Knowledge Foundation) operates. While primarily intended to be used by Open
-Knowledge Foundation staff, the content here may also be useful for those
-affiliated with the Open Knowledge Foundation's Working and Local Groups, as
-well as our broader community.
+Welcome. This is the OKF Operations Manual, where you will find documentation
+and advice on how the Open Knowledge Foundation (OKF) operates. While primarily
+intended to be used by OKF staff, the content here may also be useful for those
+affiliated with the OKF's Working and Local Groups, as well as our broader
+community.
 
 .. note::
 
    The Operations Manual is new, and content is still being migrated from its
-   various previous homes (Google Drive, the Open Knowledge Foundation wiki,
-   peoples' heads). Please bear with us while we get the manual up to scratch.
+   various previous homes (Google Drive, the OKFN wiki, peoples' heads). Please
+   bear with us while we get the manual up to scratch.
 
 .. toctree::
    :maxdepth: 2

@@ -1,5 +1,5 @@
-OKF Operations Manual
-=====================
+Welcome
+=======
 
 Welcome. This is the OKF Operations Manual, where you will find documentation
 and advice on how the Open Knowledge Foundation (OKF) operates. While primarily

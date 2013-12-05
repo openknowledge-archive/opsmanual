@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,15 +6,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-    <title>Mailing list hosting &mdash; OKF Operations Manual</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-
-
+    <title>Mailing list hosting &mdash; Open Knowledge Foundation Operations Manual</title>
     
-    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -29,36 +24,114 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
-    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <script type="text/javascript" src="../../_static/bootstrap-css-tweaks.js"></script>
+    <link rel="top" title="Open Knowledge Foundation Operations Manual" href="../../index.html" />
     <link rel="up" title="List of infrastructure services" href="index.html" />
     <link rel="next" title="Resource and service monitoring" href="monitoring.html" />
-    <link rel="prev" title="Server hosting" href="hosting.html" /> 
+    <link rel="prev" title="Server hosting" href="hosting.html" />
+
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="monitoring.html" title="Resource and service monitoring"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="hosting.html" title="Server hosting"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
-          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">List of infrastructure services</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+  <div id="okf-panel" class="collapse"><iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html" scrolling="no"></iframe></div>
+
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+         
+        <a class="logo-icon pull-left" href="../../index.html"><img src="http://assets.okfn.org/web/images/header-logox2.png" alt="Open Knowledge Foundation Operations Manual" /></a>
+        
+        <a class="brand" href="../../index.html">Open Knowledge Foundation Operations Manual</a>
+        
+        
+          <div class="okfn-ribbon"><a href="http://okfn.org/" data-toggle="collapse" data-target="#okf-panel" title="Part of the Open Knowledge Foundation Network">An Open Knowledge Foundation Site</a></div>
+        
+        <div class="pull-right navbar-search span3">
+          
+              <h3 class="searchheading">Quick search</h3>
+<form class="searchbox" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+<small class="searchtip">Enter search terms or a module, class or function name.</small>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="sub-header">
+  <ul class="container breadcrumb">
+      <li><a href="../../index.html">Operations Manual</a> &raquo;</li>
+      <li><a href="../index.html"
+            >
+            Sysadmin pages
+          </a> &raquo;</li>
+      <li><a href="index.html"
+            accesskey="U">
+            List of infrastructure services
+          </a> &raquo;</li>
+      <li><a href="">
+            Mailing list hosting
+          </a></li>
+  </ul>
+</div>
+ 
+<div class="container">
+  <div class="row">
+    <div class="span3">
+      
+        
+          
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><div class="widget toc">
+  <h3>Table of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../guides/index.html">Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Sysadmin pages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#who-are-we">Who are we?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#how-to-get-help">How to get help</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#documentation-and-notes">Documentation and notes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../overview.html">Infrastructure overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../repositories.html">Repositories</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">List of infrastructure services</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../howto/index.html">Step-by-step HOWTOs for common problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../backup.html">Backups for our services: state of the union</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../service-life-cycle.html">Service lifecycle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../opsmanual-getting-started.html">Getting started with the Ops Manual, reStructuredText, and Sphinx</a></li>
+</ul>
+
+</div>
+
+  <h3>This Page</h3>
+  <div class="toc">
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/sysadmin/services/mailinglists.txt"
+             rel="nofollow">Show Source</a></li>
+      <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/mailinglists.rst"
+             rel="nofollow">Edit on GitHub</a></li>
+    </ul>
+  </div>
+        </div>
+      </div>
+        
+      
+    </div><!--/span-->
+    <div class="span7 offset1">
+      <div class="content">
+
+        
   <div class="section" id="mailing-list-hosting">
 <h1>Mailing list hosting<a class="headerlink" href="#mailing-list-hosting" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
@@ -161,7 +234,7 @@ the below steps:</li>
 <div class="section" id="how-to-export-mailinglist-users">
 <h2>How to export mailinglist users<a class="headerlink" href="#how-to-export-mailinglist-users" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>To list users of a particular list, with full names - <a href="#id1"><span class="problematic" id="id2">*</span></a>&#8216;Full Name&#8217; *</li>
+<li>To list users of a particular list, with full names - <em>&#8216;Full Name&#8217;</em></li>
 </ul>
 <div class="line-block">
 <div class="line"><tt class="docutils literal"><span class="pre">list_members&nbsp;--fullnames&nbsp;--</span></tt><tt class="docutils literal"><span class="pre">&nbsp;</span></tt></div>
@@ -249,82 +322,64 @@ files)</p>
 </div>
 
 
-          </div>
-        </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">Mailing list hosting</a><ul>
-<li><a class="reference internal" href="#how-to-add-a-new-mailing-list-domain">How to add a new mailing list domain</a></li>
-<li><a class="reference internal" href="#how-to-rebuild-list-archives">How to Rebuild list archives</a></li>
-<li><a class="reference internal" href="#how-to-rename-a-list">How to Rename a List</a></li>
-<li><a class="reference internal" href="#how-to-remove-an-individual-post">How to remove an individual post</a></li>
-<li><a class="reference internal" href="#how-to-remove-a-user-from-a-mailinglist-via-cli">How to remove a user from a mailinglist via cli</a></li>
-<li><a class="reference internal" href="#how-to-add-a-user-into-a-mailling-list-via-cli">How to add a user into a mailling list via cli</a></li>
-<li><a class="reference internal" href="#how-to-export-mailinglist-users">How to export mailinglist users</a></li>
-<li><a class="reference internal" href="#how-to-upgrade-mailman">How to upgrade mailman</a></li>
-<li><a class="reference internal" href="#mailman-troubleshooting">Mailman Troubleshooting</a></li>
-</ul>
-</li>
-</ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="hosting.html"
-                        title="previous chapter">Server hosting</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="monitoring.html"
-                        title="next chapter">Resource and service monitoring</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../_sources/sysadmin/services/mailinglists.txt"
-           rel="nofollow">Show Source</a></li>
-    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/services/mailinglists.rst"
-           rel="nofollow">Edit on GitHub</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
+        
+        <div style="font-size:smaller;">
+          <hr/>
+          
+            
+          
+            
+              <div class="pull-right">
+                <a href="monitoring.html"
+                  title="Resource and service monitoring" accesskey="N">
+                    
+                      
+                    
+                    Resource and service monitoring→
+                </a>
+              </div>
+            
+          
+            
+              <div >
+                <a href="hosting.html"
+                  title="Server hosting" accesskey="P">
+                    
+                      
+                    
+                    ← Server hosting
+                </a>
+              </div>
+            
+          
+          <div style="clear:both;"></div>
         </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="monitoring.html" title="Resource and service monitoring"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="hosting.html" title="Server hosting"
-             >previous</a> |</li>
-        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
-          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" >List of infrastructure services</a> &raquo;</li> 
-      </ul>
-    </div>
-<div class="footer">
-    &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
 
+      </div>
+    </div>
+  </div> <!-- / row -->
 </div>
 
+<footer>
+  <div class="inner">
+    <div class="container">
+            <p class="copyright">
+        2013, Open Knowledge Foundation<br/>
+      </p>
 
+      <p class="meta">
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.<br/>
+      </p>
+
+      
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://assets.okfn.org/themes/okfn/collapse.min.js" type="text/javascript"></script>
+<script src="http://assets.okfn.org/themes/okfn/okf-panel.js" type="text/javascript"></script>
 
 
 

@@ -7,7 +7,7 @@ Backups for our services: state of the union
 Overview
 ========
 
-**IMPORTANT:** The Open Knowledge Foundation core sysadmin team **does NOT provide backup for
+**IMPORTANT:** The OKFN core sysadmin team **does NOT provide backup for
 machines outside Rackspace!** If you need backup for machines outside
 Rackspace, you have to configure and maintain it yourself. (As always,
 there are a few historic exceptions to this rule, see below).
@@ -38,7 +38,7 @@ Setting up backups ...
 ======================
 
 ... at Rackspace
-~~~~~~~~~~~~~~~~
+----------------
 
 The VMs should already be snapshotted (*Hosting* ==> *Cloud Servers* ==>
 *My server Images*). If you need file-level backup and the VM is a
@@ -51,7 +51,7 @@ easily in the Rackspace control panel.
    support periodic snapshots(as of Dec 2012)
 
 ... outside Rackspace
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 Outside Rackspace, you are mainly on you own. Except we could add your
 backup source to our `rsnapshot

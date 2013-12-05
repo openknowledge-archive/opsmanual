@@ -1,4 +1,3 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -7,15 +6,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-
-    <title>HOWTO: Deploy changes to the blogfarm &mdash; OKF Operations Manual</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-
-
+    <title>HOWTO: Deploy changes to the blogfarm &mdash; Open Knowledge Foundation Operations Manual</title>
     
-    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
@@ -29,36 +24,114 @@
     <script type="text/javascript" src="../../_static/jquery.js"></script>
     <script type="text/javascript" src="../../_static/underscore.js"></script>
     <script type="text/javascript" src="../../_static/doctools.js"></script>
-    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
-    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <script type="text/javascript" src="../../_static/bootstrap-css-tweaks.js"></script>
+    <link rel="top" title="Open Knowledge Foundation Operations Manual" href="../../index.html" />
     <link rel="up" title="Step-by-step HOWTOs for common problems" href="index.html" />
     <link rel="next" title="HOWTO: Debian packaging" href="debian-packaging.html" />
-    <link rel="prev" title="HOWTO: Administering APT" href="administering-apt.html" /> 
+    <link rel="prev" title="HOWTO: Administering APT" href="administering-apt.html" />
+
   </head>
   <body>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             accesskey="I">index</a></li>
-        <li class="right" >
-          <a href="debian-packaging.html" title="HOWTO: Debian packaging"
-             accesskey="N">next</a> |</li>
-        <li class="right" >
-          <a href="administering-apt.html" title="HOWTO: Administering APT"
-             accesskey="P">previous</a> |</li>
-        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
-          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">Step-by-step HOWTOs for common problems</a> &raquo;</li> 
-      </ul>
-    </div>  
+  
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          <div class="body">
-            
+  <div id="okf-panel" class="collapse"><iframe src="http://assets.okfn.org/themes/okfn/okf-panel.html" scrolling="no"></iframe></div>
+
+
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+         
+        <a class="logo-icon pull-left" href="../../index.html"><img src="http://assets.okfn.org/web/images/header-logox2.png" alt="Open Knowledge Foundation Operations Manual" /></a>
+        
+        <a class="brand" href="../../index.html">Open Knowledge Foundation Operations Manual</a>
+        
+        
+          <div class="okfn-ribbon"><a href="http://okfn.org/" data-toggle="collapse" data-target="#okf-panel" title="Part of the Open Knowledge Foundation Network">An Open Knowledge Foundation Site</a></div>
+        
+        <div class="pull-right navbar-search span3">
+          
+              <h3 class="searchheading">Quick search</h3>
+<form class="searchbox" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" class="search-query" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+<small class="searchtip">Enter search terms or a module, class or function name.</small>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<div class="sub-header">
+  <ul class="container breadcrumb">
+      <li><a href="../../index.html">Operations Manual</a> &raquo;</li>
+      <li><a href="../index.html"
+            >
+            Sysadmin pages
+          </a> &raquo;</li>
+      <li><a href="index.html"
+            accesskey="U">
+            Step-by-step HOWTOs for common problems
+          </a> &raquo;</li>
+      <li><a href="">
+            HOWTO: Deploy changes to the blogfarm
+          </a></li>
+  </ul>
+</div>
+ 
+<div class="container">
+  <div class="row">
+    <div class="span3">
+      
+        
+          
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper"><div class="widget toc">
+  <h3>Table of Contents</h3>
+  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../guides/index.html">Guides</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Sysadmin pages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#who-are-we">Who are we?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#how-to-get-help">How to get help</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#documentation-and-notes">Documentation and notes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../overview.html">Infrastructure overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../repositories.html">Repositories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../services/index.html">List of infrastructure services</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Step-by-step HOWTOs for common problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../backup.html">Backups for our services: state of the union</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../service-life-cycle.html">Service lifecycle</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../opsmanual-getting-started.html">Getting started with the Ops Manual, reStructuredText, and Sphinx</a></li>
+</ul>
+
+</div>
+
+  <h3>This Page</h3>
+  <div class="toc">
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/sysadmin/howto/blogfarm-deploy.txt"
+             rel="nofollow">Show Source</a></li>
+      <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/howto/blogfarm-deploy.rst"
+             rel="nofollow">Edit on GitHub</a></li>
+    </ul>
+  </div>
+        </div>
+      </div>
+        
+      
+    </div><!--/span-->
+    <div class="span7 offset1">
+      <div class="content">
+
+        
   <div class="section" id="howto-deploy-changes-to-the-blogfarm">
 <h1>HOWTO: Deploy changes to the blogfarm<a class="headerlink" href="#howto-deploy-changes-to-the-blogfarm" title="Permalink to this headline">¶</a></h1>
 <p>This article describes how to deploy code to OKFN&#8217;s Wordpress blogfarm
@@ -74,12 +147,13 @@ be found in their documentation about this - <a class="reference external" href=
 <p>Access to the WPE git repos is controlled by public keys. You&#8217;ll need to
 contact the OKF Sysadmin team to have your public key granted access
 before proceeding. Once this has been done, confirm access by:</p>
-<div class="highlight-python"><pre>$ ssh git@git.wpengine.com info</pre>
+<div class="highlight-none"><div class="highlight"><pre>$ ssh git@git.wpengine.com info
+</pre></div>
 </div>
 <p>You should get a response back listing the repositories you have access
 to. At a minimum these should be:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">production</span><span class="o">/</span><span class="n">okf</span>
-<span class="n">staging</span><span class="o">/</span><span class="n">okf</span>
+<div class="highlight-none"><div class="highlight"><pre>production/okf
+staging/okf
 </pre></div>
 </div>
 <p>Consider these as two separate git remotes containing the code for the
@@ -89,26 +163,30 @@ the staging remote as we don&#8217;t have anything setup there.</p>
 depending on how you have your local code setup you can add this remote
 to an existing repo, or create a new working directory and run the
 following:</p>
-<div class="highlight-python"><pre>$ git clone git@git.wpengine.com:production/okf.git wordpress
-$ cd wordpress</pre>
+<div class="highlight-none"><div class="highlight"><pre>$ git clone git@git.wpengine.com:production/okf.git wordpress
+$ cd wordpress
+</pre></div>
 </div>
 <p>This repository uses submodules for the various plugins and themes. So
 before doing anything else you should initialize and update these:</p>
-<div class="highlight-python"><pre>$ git submodule init
-$ git submodule update</pre>
+<div class="highlight-none"><div class="highlight"><pre>$ git submodule init
+$ git submodule update
+</pre></div>
 </div>
 <p>Deploying changes is as simple as pushing your commits back to the
 production remote. So something like the following. It&#8217;s advised that
 you do this via a terminal window so that you can see descriptive
 deployment progress output, along with any custom errors:</p>
-<div class="highlight-python"><pre>$ git push origin master</pre>
+<div class="highlight-none"><div class="highlight"><pre>$ git push origin master
+</pre></div>
 </div>
 <p>Or run git remote -v to list the remotes of your local repo. If you
 cloned from the production repo then that is most like the &#8220;origin&#8221;
 remote.</p>
 <p>As always, be sure to retrieve changes made by other users before
 pushing back to WPE:</p>
-<div class="highlight-python"><pre>$ git pull --rebase</pre>
+<div class="highlight-none"><div class="highlight"><pre>$ git pull --rebase
+</pre></div>
 </div>
 </div>
 <div class="section" id="sub-modules">
@@ -128,7 +206,8 @@ provide a public key for you to grant access to private repos. 2) The
 commit to retrieve must be available on that remote (pushed)</p>
 <p>The latter is often forgotten. Use the following one liner to push all
 submodules from your master repo root dir:</p>
-<div class="highlight-python"><pre>$ git submodule foreach git push master origin</pre>
+<div class="highlight-none"><div class="highlight"><pre>$ git submodule foreach git push master origin
+</pre></div>
 </div>
 <p>It&#8217;s typically easier to work on all files (main repo and submodules)
 within the same working directory so that you can commit to both the sub
@@ -136,82 +215,72 @@ and main repos quickly.</p>
 <p>If other users make changes to the sub-modules, you&#8217;ll need to retrieve
 these to your own local dir also. So before making any changes, it&#8217;s
 good practice to do the following:</p>
-<div class="highlight-python"><pre>$ git pull origin master
-$ git submodule foreach git pull origin master</pre>
+<div class="highlight-none"><div class="highlight"><pre>$ git pull origin master
+$ git submodule foreach git pull origin master
+</pre></div>
 </div>
 </div>
 </div>
 
 
-          </div>
+
+        
+        <div style="font-size:smaller;">
+          <hr/>
+          
+            
+          
+            
+              <div class="pull-right">
+                <a href="debian-packaging.html"
+                  title="HOWTO: Debian packaging" accesskey="N">
+                    
+                      
+                    
+                    HOWTO: Debian packaging→
+                </a>
+              </div>
+            
+          
+            
+              <div >
+                <a href="administering-apt.html"
+                  title="HOWTO: Administering APT" accesskey="P">
+                    
+                      
+                    
+                    ← HOWTO: Administering APT
+                </a>
+              </div>
+            
+          
+          <div style="clear:both;"></div>
         </div>
-      </div>
-      <div class="sphinxsidebar">
-        <div class="sphinxsidebarwrapper">
-  <h3><a href="../../index.html">Table Of Contents</a></h3>
-  <ul>
-<li><a class="reference internal" href="#">HOWTO: Deploy changes to the blogfarm</a><ul>
-<li><a class="reference internal" href="#general">General</a></li>
-<li><a class="reference internal" href="#sub-modules">Sub Modules</a></li>
-</ul>
-</li>
-</ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="administering-apt.html"
-                        title="previous chapter">HOWTO: Administering APT</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="debian-packaging.html"
-                        title="next chapter">HOWTO: Debian packaging</a></p>
-  <h3>This Page</h3>
-  <ul class="this-page-menu">
-    <li><a href="../../_sources/sysadmin/howto/blogfarm-deploy.txt"
-           rel="nofollow">Show Source</a></li>
-    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/howto/blogfarm-deploy.rst"
-           rel="nofollow">Edit on GitHub</a></li>
-  </ul>
-<div id="searchbox" style="display: none">
-  <h3>Quick search</h3>
-    <form class="search" action="../../search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
-      <input type="hidden" name="check_keywords" value="yes" />
-      <input type="hidden" name="area" value="default" />
-    </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms.
-    </p>
-</div>
-<script type="text/javascript">$('#searchbox').show(0);</script>
-        </div>
       </div>
-      <div class="clearer"></div>
     </div>
-    <div class="related">
-      <h3>Navigation</h3>
-      <ul>
-        <li class="right" style="margin-right: 10px">
-          <a href="../../genindex.html" title="General Index"
-             >index</a></li>
-        <li class="right" >
-          <a href="debian-packaging.html" title="HOWTO: Debian packaging"
-             >next</a> |</li>
-        <li class="right" >
-          <a href="administering-apt.html" title="HOWTO: Administering APT"
-             >previous</a> |</li>
-        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
-          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
-          <li><a href="index.html" >Step-by-step HOWTOs for common problems</a> &raquo;</li> 
-      </ul>
-    </div>
-<div class="footer">
-    &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
-  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
-
+  </div> <!-- / row -->
 </div>
 
+<footer>
+  <div class="inner">
+    <div class="container">
+            <p class="copyright">
+        2013, Open Knowledge Foundation<br/>
+      </p>
 
+      <p class="meta">
+        Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.<br/>
+      </p>
+
+      
+    </div>
+  </div>
+</footer>
+
+
+<script src="http://assets.okfn.org/themes/okfn/collapse.min.js" type="text/javascript"></script>
+<script src="http://assets.okfn.org/themes/okfn/okf-panel.js" type="text/javascript"></script>
 
 
 

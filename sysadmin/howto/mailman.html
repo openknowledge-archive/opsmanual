@@ -168,6 +168,32 @@ done
 </pre></div>
 </div>
 </div>
+<div class="section" id="archive-a-mailing-list">
+<h2>Archive a Mailing List<a class="headerlink" href="#archive-a-mailing-list" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Disable delivery to the mailing list using the aliases file. This is done by
+taking the mailing list address to <cite>/dev/null</cite> in <cite>src/infra/ansible/roles/postfix/templates/s116.okserver.org/aliases</cite> and then running ansible.
+it is a good idea to also redirect the meta-addresses, <cite>-owner</cite> and <cite>-request</cite>
+to <cite>/dev/null</cite> as well.</p>
+</li>
+<li><p class="first">Disable public advertisement of the list either by using the list administrative
+interface or by doing</p>
+<blockquote>
+<div><p>/usr/lib/mailman/bin/config_list -o /tmp/foo.py foo-list
+sed -i <a class="reference external" href="mailto:'s&#37;&#52;&#48;^advertised">'s<span>&#64;</span>^advertised</a> = <a class="reference external" href="mailto:1$&#37;&#52;&#48;advertised">1$<span>&#64;</span>advertised</a> = 0&#64;&#8217; /tmp/foo.py
+sed -i <a class="reference external" href="mailto:'s&#37;&#52;&#48;^emergency">'s<span>&#64;</span>^emergency</a> = <a class="reference external" href="mailto:0$&#37;&#52;&#48;emergency">0$<span>&#64;</span>emergency</a> = 1&#64;&#8217; /tmp/foo.py
+/usr/lib/mailman/bin/config_list -i /tmp/foo.py foo-list</p>
+</div></blockquote>
+<p>the second sed command is a belt and braces approach to disabling posting to the
+list, in addition to the aliases trick.</p>
+</li>
+<li><p class="first">Unsubscribe all members from the list:</p>
+<blockquote>
+<div><p>/usr/lib/mailman/bin/list_members foo-list | xargs /usr/lib/mailman/bin/remove_members foo-list</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
 </div>
 
 

@@ -34,3 +34,24 @@ Then this can be run with the `withlist` program::
   ls /var/lib/mailman/lists | while read list; do
       withlist -l -r lowername $list
   done
+
+Archive a Mailing List
+----------------------
+
+- Disable delivery to the mailing list using the aliases file. This is done by
+  taking the mailing list address to `/dev/null` in `src/infra/ansible/roles/postfix/templates/s116.okserver.org/aliases` and then running ansible.
+  it is a good idea to also redirect the meta-addresses, `-owner` and `-request`
+  to `/dev/null` as well.
+- Disable public advertisement of the list either by using the list administrative
+  interface or by doing
+
+    /usr/lib/mailman/bin/config_list -o /tmp/foo.py foo-list
+    sed -i 's@^advertised = 1$@advertised = 0@' /tmp/foo.py
+    sed -i 's@^emergency = 0$@emergency = 1@' /tmp/foo.py
+    /usr/lib/mailman/bin/config_list -i /tmp/foo.py foo-list
+
+  the second sed command is a belt and braces approach to disabling posting to the
+  list, in addition to the aliases trick.
+- Unsubscribe all members from the list:
+
+    /usr/lib/mailman/bin/list_members foo-list | xargs /usr/lib/mailman/bin/remove_members foo-list

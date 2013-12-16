@@ -43,7 +43,7 @@ Archive a Mailing List
   it is a good idea to also redirect the meta-addresses, `-owner` and `-request`
   to `/dev/null` as well.
 - Disable public advertisement of the list either by using the list administrative
-  interface or by doing
+  interface or by doing::
 
     /usr/lib/mailman/bin/config_list -o /tmp/foo.py foo-list
     sed -i 's@^advertised = 1$@advertised = 0@' /tmp/foo.py
@@ -52,6 +52,6 @@ Archive a Mailing List
 
   the second sed command is a belt and braces approach to disabling posting to the
   list, in addition to the aliases trick.
-- Unsubscribe all members from the list:
+- Unsubscribe all members from the list::
 
     /usr/lib/mailman/bin/list_members foo-list | xargs /usr/lib/mailman/bin/remove_members foo-list

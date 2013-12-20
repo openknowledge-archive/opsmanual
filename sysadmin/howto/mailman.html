@@ -64,18 +64,6 @@
 <h2>Renaming lists<a class="headerlink" href="#renaming-lists" title="Permalink to this headline">¶</a></h2>
 <p>See this FAQ: <a class="reference external" href="http://wiki.list.org/pages/viewpage.action?pageId=4030617">http://wiki.list.org/pages/viewpage.action?pageId=4030617</a></p>
 </div>
-<div class="section" id="multiple-domains-on-one-machine">
-<h2>Multiple domains on one machine<a class="headerlink" href="#multiple-domains-on-one-machine" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>If you can ensure having list names that don&#8217;t conflict across
-domains this is very simple. Just add another <tt class="docutils literal"><span class="pre">add_virtual_host</span></tt> item
-in <tt class="docutils literal"><span class="pre">/etc/mailman/mm_cfg.py</span></tt></li>
-<li>Remember to add list through web interface rather than from server
-admin so that list is created in correct domain</li>
-<li>Still doesn&#8217;t give you seperate admin password for creating and
-deleting lists</li>
-</ul>
-</div>
 <div class="section" id="bulk-operations-on-mailing-lists">
 <h2>Bulk operations on mailing lists<a class="headerlink" href="#bulk-operations-on-mailing-lists" title="Permalink to this headline">¶</a></h2>
 <p>Nick asked if we could normalise all the names of the mailing lists to
@@ -129,7 +117,6 @@ list, in addition to the aliases trick.</p>
   <ul>
 <li><a class="reference internal" href="#">HOWTO: Administering Mailman</a><ul>
 <li><a class="reference internal" href="#renaming-lists">Renaming lists</a></li>
-<li><a class="reference internal" href="#multiple-domains-on-one-machine">Multiple domains on one machine</a></li>
 <li><a class="reference internal" href="#bulk-operations-on-mailing-lists">Bulk operations on mailing lists</a></li>
 <li><a class="reference internal" href="#archive-a-mailing-list">Archive a Mailing List</a></li>
 </ul>

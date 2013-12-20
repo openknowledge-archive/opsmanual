@@ -6,16 +6,6 @@ Renaming lists
 
 See this FAQ: http://wiki.list.org/pages/viewpage.action?pageId=4030617
 
-Multiple domains on one machine
--------------------------------
-
--  If you can ensure having list names that don't conflict across
-   domains this is very simple. Just add another ``add_virtual_host`` item
-   in ``/etc/mailman/mm_cfg.py``
--  Remember to add list through web interface rather than from server
-   admin so that list is created in correct domain
--  Still doesn't give you seperate admin password for creating and
-   deleting lists
 
 Bulk operations on mailing lists
 --------------------------------

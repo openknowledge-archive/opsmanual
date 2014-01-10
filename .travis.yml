@@ -18,6 +18,7 @@ env:
   global:
     - GIT_NAME="OKF Continuous Integration Bot"
     - GIT_EMAIL="ci@okfn.org"
+    - GH_USERNAME="okf-ci-bot"
     - secure: "DE8jrMGM45u5IxgsHXHDi10zKwrCcIhiHMIuQmXb9uJahZMaS47iL9BE2m/R22khVcZAn1Kwmiy1420DGSmOxx9WyffUG5wMqOZuPjtaYCKRUCE2EjdnCU5fx4iABtvl8WmdjmAXRwZKNpZZQfaTeLebT8iBJGPamGbD8SMnsRs="
 language: python
 python:

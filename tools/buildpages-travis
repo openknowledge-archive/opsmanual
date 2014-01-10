@@ -16,7 +16,7 @@ REPO=$(git config remote.origin.url | sed s/^git:/https:/)
 git config user.name "$GIT_NAME"
 git config user.email "$GIT_EMAIL"
 git config credential.helper "store --file=.git/credentials"
-echo "https://${GH_TOKEN}:@github.com" >.git/credentials
+echo "https://${GH_USERNAME}:${GH_TOKEN}@github.com" >.git/credentials
 
 git remote set-url --push origin "$REPO"
 git remote set-branches --add origin "$BRANCH"

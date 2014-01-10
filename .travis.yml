@@ -5,7 +5,7 @@
 #     curl -u okf-ci-bot -d \
 #     '{"scopes":["public_repo"],"note":"okfn/opsmanual CI"}' \
 #     https://api.github.com/authorizations
-# 
+#
 # The response will contain a "token" key. This token can then be used to update
 # the secure environment variable below by installing the `travis` rubygem and
 # running the following:
@@ -18,7 +18,7 @@ env:
   global:
     - GIT_NAME="OKF Continuous Integration Bot"
     - GIT_EMAIL="ci@okfn.org"
-    - secure: "jiTa6DO7pP6CO4rEFfWnB9aD/UBtd4bxArXpMeJZrw8VifLVYV7/8bEnJTjWJFyxmmWT9t+DTRYxnQ03j+ENtonDYbWBlDZ7o4PJer0MMHG6ummAMbPvEe8aSDMWe9LrmXQLHPo/JhUk5Id60+1gmi1r2c8yBgmwzUKx3xMyaAQ="
+    - secure: "DE8jrMGM45u5IxgsHXHDi10zKwrCcIhiHMIuQmXb9uJahZMaS47iL9BE2m/R22khVcZAn1Kwmiy1420DGSmOxx9WyffUG5wMqOZuPjtaYCKRUCE2EjdnCU5fx4iABtvl8WmdjmAXRwZKNpZZQfaTeLebT8iBJGPamGbD8SMnsRs="
 language: python
 python:
   - "2.7"

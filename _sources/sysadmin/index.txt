@@ -16,6 +16,7 @@ Who are we?
 At various times, the following people have provided advice and support to the
 sysadmin team:
 
+-  Neal Bastek
 -  James Casbon
 -  Michelle Heydon
 -  Rufus Pollock

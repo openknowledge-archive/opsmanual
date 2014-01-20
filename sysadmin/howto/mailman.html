@@ -31,7 +31,7 @@
     <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
     <link rel="top" title="OKF Operations Manual" href="../../index.html" />
     <link rel="up" title="Step-by-step HOWTOs for common problems" href="index.html" />
-    <link rel="next" title="HOWTO: Managing S3 buckets and users" href="s3.html" />
+    <link rel="next" title="HOWTO: Administering RT (Request Tracker)" href="rt.html" />
     <link rel="prev" title="HOWTO: Administer Feedburner" href="feedburner.html" /> 
   </head>
   <body>
@@ -42,7 +42,7 @@
           <a href="../../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="s3.html" title="HOWTO: Managing S3 buckets and users"
+          <a href="rt.html" title="HOWTO: Administering RT (Request Tracker)"
              accesskey="N">next</a> |</li>
         <li class="right" >
           <a href="feedburner.html" title="HOWTO: Administer Feedburner"
@@ -75,10 +75,11 @@ this, and call it <cite>lowername.py</cite>:</p>
 </pre></div>
 </div>
 <p>Then this can be run with the <cite>withlist</cite> program:</p>
-<div class="highlight-python"><pre>export PYTHONPATH=`pwd`
+<div class="highlight-python"><div class="highlight"><pre>export PYTHONPATH=`pwd`
 ls /var/lib/mailman/lists | while read list; do
     withlist -l -r lowername $list
-done</pre>
+done
+</pre></div>
 </div>
 </div>
 <div class="section" id="archive-a-mailing-list">
@@ -91,16 +92,18 @@ to <cite>/dev/null</cite> as well.</p>
 </li>
 <li><p class="first">Disable public advertisement of the list either by using the list administrative
 interface or by doing:</p>
-<div class="highlight-python"><pre>/usr/lib/mailman/bin/config_list -o /tmp/foo.py foo-list
-sed -i 's@^advertised = 1$@advertised = 0@' /tmp/foo.py
-sed -i 's@^emergency = 0$@emergency = 1@' /tmp/foo.py
-/usr/lib/mailman/bin/config_list -i /tmp/foo.py foo-list</pre>
+<div class="highlight-python"><div class="highlight"><pre>/usr/lib/mailman/bin/config_list -o /tmp/foo.py foo-list
+sed -i &#39;s@^advertised = 1$@advertised = 0@&#39; /tmp/foo.py
+sed -i &#39;s@^emergency = 0$@emergency = 1@&#39; /tmp/foo.py
+/usr/lib/mailman/bin/config_list -i /tmp/foo.py foo-list
+</pre></div>
 </div>
 <p>the second sed command is a belt and braces approach to disabling posting to the
 list, in addition to the aliases trick.</p>
 </li>
 <li><p class="first">Unsubscribe all members from the list:</p>
-<div class="highlight-python"><pre>/usr/lib/mailman/bin/list_members foo-list | xargs /usr/lib/mailman/bin/remove_members foo-list</pre>
+<div class="highlight-python"><div class="highlight"><pre>/usr/lib/mailman/bin/list_members foo-list | xargs /usr/lib/mailman/bin/remove_members foo-list
+</pre></div>
 </div>
 </li>
 </ul>
@@ -127,8 +130,8 @@ list, in addition to the aliases trick.</p>
   <p class="topless"><a href="feedburner.html"
                         title="previous chapter">HOWTO: Administer Feedburner</a></p>
   <h4>Next topic</h4>
-  <p class="topless"><a href="s3.html"
-                        title="next chapter">HOWTO: Managing S3 buckets and users</a></p>
+  <p class="topless"><a href="rt.html"
+                        title="next chapter">HOWTO: Administering RT (Request Tracker)</a></p>
   <h3>This Page</h3>
   <ul class="this-page-menu">
     <li><a href="../../_sources/sysadmin/howto/mailman.txt"
@@ -160,7 +163,7 @@ list, in addition to the aliases trick.</p>
           <a href="../../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="s3.html" title="HOWTO: Managing S3 buckets and users"
+          <a href="rt.html" title="HOWTO: Administering RT (Request Tracker)"
              >next</a> |</li>
         <li class="right" >
           <a href="feedburner.html" title="HOWTO: Administer Feedburner"
@@ -172,7 +175,7 @@ list, in addition to the aliases trick.</p>
     </div>
 <div class="footer">
     &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.
   <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
 
 </div>

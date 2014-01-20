@@ -344,7 +344,8 @@ migration.</p>
 /home/okfn/var/wp/okfn.org/wp-includes/post.php (see #553). In line
 2436 (as of WP 3.2.1 - line number will shift with future releases),
 comment out this:</p>
-<div class="highlight-python"><pre>// $postarr = sanitize_post($postarr, 'db');</pre>
+<div class="highlight-python"><div class="highlight"><pre>// $postarr = sanitize_post($postarr, &#39;db&#39;);
+</pre></div>
 </div>
 </li>
 <li><p class="first">Create an empty new blog in the blog farm</p>
@@ -459,7 +460,7 @@ disable the old blog.</p>
     </div>
 <div class="footer">
     &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.
   <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
 
 </div>

@@ -64,18 +64,21 @@
 <hr class="docutils" />
 <p>General information about any package, installed or otherwise, including version
 and description:</p>
-<div class="highlight-python"><pre>apt-cache show &lt;pkgname&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>apt-cache show &lt;pkgname&gt;
+</pre></div>
 </div>
 <p>Summary (name, version, arch) for all <strong>installed</strong> packages matching
 <em>pkgname</em>:</p>
-<div class="highlight-python"><pre>dpkg -l &lt;pkgname&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>dpkg -l &lt;pkgname&gt;
+</pre></div>
 </div>
 <p>List installed packages:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">dpkg</span> <span class="o">--</span><span class="n">get</span><span class="o">-</span><span class="n">selections</span>
 </pre></div>
 </div>
 <p>List the files installed by a specified package:</p>
-<div class="highlight-python"><pre>dpkg -L &lt;pkgname&gt;</pre>
+<div class="highlight-python"><div class="highlight"><pre>dpkg -L &lt;pkgname&gt;
+</pre></div>
 </div>
 <p>Find out which package provides <tt class="docutils literal"><span class="pre">/usr/bin/foo</span></tt>:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="n">dpkg</span> <span class="o">-</span><span class="n">S</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">foo</span>
@@ -138,7 +141,7 @@ and description:</p>
     </div>
 <div class="footer">
     &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.
   <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
 
 </div>

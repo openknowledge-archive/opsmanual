@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>HOWTO: “Dead man’s switch” monitoring &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="Step-by-step HOWTOs for common problems" href="index.html" />
+    <link rel="next" title="HOWTO: Debian packaging" href="debian-packaging.html" />
+    <link rel="prev" title="HOWTO: Deploy changes to the blogfarm" href="blogfarm-deploy.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="debian-packaging.html" title="HOWTO: Debian packaging"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="blogfarm-deploy.html" title="HOWTO: Deploy changes to the blogfarm"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">Step-by-step HOWTOs for common problems</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="howto-dead-man-s-switch-monitoring">
+<h1>HOWTO: &#8220;Dead man&#8217;s switch&#8221; monitoring<a class="headerlink" href="#howto-dead-man-s-switch-monitoring" title="Permalink to this headline">¶</a></h1>
+<p>Monitoring things that are supposed to be working all the time (like a website)
+is relatively easy to do. You simply check every few minutes that the website is
+up, or that the server responds to pings.</p>
+<p>Monitoring things that are supposed to happen periodically (like daily, weekly,
+or monthly backups) is a little harder. One of the best ways to do this is a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Dead_man's_switch">dead man&#8217;s switch</a>, also known as a dead man&#8217;s handle. In a DMS system, an
+external service expects to be notified every time the event occurs, and raises
+the alarm if no report is received in a given time period.</p>
+<p>There is a simple web service, <a class="reference external" href="https://deadmanssnitch.com/">Dead Man&#8217;s Snitch</a>, which allows for easy
+creation of an unlimited number of DMS-type monitoring checks for $19 per month.
+We use this in a number of places to ensure that periodic events are working. In
+the event that a task fails to report, Dead Man&#8217;s Snitch will email our ticket
+address, notifying us of the failure.</p>
+<div class="section" id="creating-a-dms-monitoring-check">
+<h2>Creating a DMS monitoring check<a class="headerlink" href="#creating-a-dms-monitoring-check" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Log in to <a class="reference external" href="https://deadmanssnitch.com/">https://deadmanssnitch.com/</a> using the account details stored in
+LastPass.</p>
+</li>
+<li><p class="first">Create a new &#8220;snitch,&#8221; specifying the frequency at which the job should run.
+You will be given a URL that looks something like
+<tt class="docutils literal"><span class="pre">https://nosnch.in/5e5879c9be</span></tt>. This is the URL that you have to request
+(usually programmatically) in order to report in for a given job.</p>
+</li>
+<li><p class="first">Make sure that the URL is called if and only if the job is successful. For
+example, here is a shell script that dumps PostgreSQL databases and calls
+DMS</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+<span class="c"># This ensures that if any command in the script exits abnormally (i.e.</span>
+<span class="c"># with a non-zero exit code), the script will immediately abort.</span>
+<span class="c">#</span>
+<span class="c"># This is important, because it means that the request to Dead Man&#39;s</span>
+<span class="c"># Snitch will not happen if pg_dump or s3cmd fails.</span>
+<span class="nb">set</span> -e
+
+<span class="c"># It&#39;s also a good idea to detect and treat the use of undefined</span>
+<span class="c"># environment variables as an error:</span>
+<span class="nb">set</span> -u
+
+<span class="nv">DUMPNAME</span><span class="o">=</span><span class="s2">&quot;$(date +&quot;</span>%Y%m%d%H%M%S<span class="s2">&quot;)-mydatabase.dump&quot;</span>
+
+<span class="c"># Dump the PostgreSQL database to a time</span>
+pg_dump mydatabase &gt;<span class="s2">&quot;$DUMPNAME&quot;</span>
+
+<span class="c"># Upload the dump to S3</span>
+s3cmd put <span class="s2">&quot;$DUMPNAME&quot;</span> s3://backupbucket/postgres/
+
+<span class="c"># Record the file size</span>
+<span class="nv">DUMPSIZE</span><span class="o">=</span><span class="k">$(</span>ls -lhd <span class="s2">&quot;$DUMPNAME&quot;</span> | awk <span class="s1">&#39;{ print $5 }&#39;</span><span class="k">)</span>
+
+<span class="c"># If we got this far, all is well, and we should report to DMS. The</span>
+<span class="c"># message part is completely optional, but it can be useful to return</span>
+<span class="c"># basic stats (such as size of backup, or how long the task took), which</span>
+<span class="c"># are then displayed on the DMS web interface.</span>
+curl -sSL https://nosnch.in/5e5879c9be <span class="se">\</span>
+     -d <span class="s2">&quot;m=size: $DUMPSIZE&quot;</span> <span class="se">\</span>
+     &gt;/dev/null
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">HOWTO: &#8220;Dead man&#8217;s switch&#8221; monitoring</a><ul>
+<li><a class="reference internal" href="#creating-a-dms-monitoring-check">Creating a DMS monitoring check</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="blogfarm-deploy.html"
+                        title="previous chapter">HOWTO: Deploy changes to the blogfarm</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="debian-packaging.html"
+                        title="next chapter">HOWTO: Debian packaging</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/sysadmin/howto/deadmanssnitch.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/sysadmin/howto/deadmanssnitch.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="debian-packaging.html" title="HOWTO: Debian packaging"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="blogfarm-deploy.html" title="HOWTO: Deploy changes to the blogfarm"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Sysadmin pages</a> &raquo;</li>
+          <li><a href="index.html" >Step-by-step HOWTOs for common problems</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

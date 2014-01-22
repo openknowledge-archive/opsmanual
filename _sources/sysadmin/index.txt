@@ -24,6 +24,8 @@ sysadmin team:
 -  Nils Toedtmann
 -  Will Waites
 
+.. _how-to-get-help:
+
 How to get help
 ---------------
 

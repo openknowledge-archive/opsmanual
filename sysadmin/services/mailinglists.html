@@ -169,7 +169,8 @@ the below steps:</li>
 <ul class="simple">
 <li>To convert the list into csv separted format like - &#8216;,,&#8217;</li>
 </ul>
-<p><tt class="docutils literal"><span class="pre">sed&nbsp;-e&nbsp;'s/^</span></tt><tt class="docutils literal"><span class="pre">$/&lt;\1&gt;/g'&nbsp;-e&nbsp;'s/&nbsp;*&lt;/,/g'&nbsp;-e&nbsp;'s/&gt;$//g'&nbsp;-e&nbsp;'s/\&quot;//g'&nbsp;awk&nbsp;-F&nbsp;','&nbsp;&quot;{print&nbsp;\$2&nbsp;\&quot;,\&quot;&nbsp;\$1&nbsp;\&quot;,${type}\&quot;&nbsp;}&nbsp;|&nbsp;sort</span></tt></p>
+<p><tt class="docutils literal"><span class="pre">sed&nbsp;-e&nbsp;'s/^</span></tt><span class="formula">[<sup> &lt; </sup>]*</span>
+<tt class="docutils literal"><span class="pre">$/&lt;\1&gt;/g'&nbsp;-e&nbsp;'s/&nbsp;*&lt;/,/g'&nbsp;-e&nbsp;'s/&gt;$//g'&nbsp;-e&nbsp;'s/\&quot;//g'&nbsp;awk&nbsp;-F&nbsp;','&nbsp;&quot;{print&nbsp;\$2&nbsp;\&quot;,\&quot;&nbsp;\$1&nbsp;\&quot;,${type}\&quot;&nbsp;}&nbsp;|&nbsp;sort</span></tt></p>
 </div>
 <div class="section" id="how-to-upgrade-mailman">
 <h2>How to upgrade mailman<a class="headerlink" href="#how-to-upgrade-mailman" title="Permalink to this headline">¶</a></h2>
@@ -317,7 +318,7 @@ files)</p>
     </div>
 <div class="footer">
     &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
   <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
 
 </div>

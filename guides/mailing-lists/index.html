@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+
+    <title>Managing mailing lists &mdash; OKF Operations Manual</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+
+
+    
+    <link rel="stylesheet" href="../../_static/rtd.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../../../_static/searchtools.js"></script>
+    <link rel="top" title="OKF Operations Manual" href="../../index.html" />
+    <link rel="up" title="Guides" href="../index.html" />
+    <link rel="next" title="Managing a site in the Blogfarm" href="../managing-a-blogfarm-site/index.html" />
+    <link rel="prev" title="Email alias management" href="../email-aliases/index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../managing-a-blogfarm-site/index.html" title="Managing a site in the Blogfarm"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../email-aliases/index.html" title="Email alias management"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" accesskey="U">Guides</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="managing-mailing-lists">
+<h1>Managing mailing lists<a class="headerlink" href="#managing-mailing-lists" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This document contains a description of how we manage a large set of community
+mailing lists, and how you can perform common operations required of a list
+owner or moderator.</p>
+</div>
+<div class="section" id="the-basics">
+<h2>The basics<a class="headerlink" href="#the-basics" title="Permalink to this headline">¶</a></h2>
+<p>Our list server is known as <tt class="docutils literal"><span class="pre">lists.okfn.org</span></tt>, and can be visited on the web at
+<a class="reference external" href="https://lists.okfn.org">https://lists.okfn.org</a>.</p>
+<p>A mailing list called <tt class="docutils literal"><span class="pre">widgets-discuss</span></tt> will have an email address of the form
+<tt class="docutils literal"><span class="pre">widgets-discuss&#64;lists.okfn.org</span></tt>. List owners can always be contacted by
+emailing <tt class="docutils literal"><span class="pre">widgets-discuss-owner&#64;lists.okfn.org</span></tt>.</p>
+<p>You can link to the <tt class="docutils literal"><span class="pre">widgets-discuss</span></tt> email address directly at
+<a class="reference external" href="https://lists.okfn.org/mailman/listinfo/widgets-discuss">https://lists.okfn.org/mailman/listinfo/widgets-discuss</a> (please note that this
+particular link will not work, as we don&#8217;t &#8211; yet &#8211; have a widget discussion
+list).</p>
+</div>
+<div class="section" id="list-administrators-and-moderators">
+<h2>List administrators and moderators<a class="headerlink" href="#list-administrators-and-moderators" title="Permalink to this headline">¶</a></h2>
+<p>List administrators and moderators are responsible for the smooth operation of
+the list. Their tasks may include:</p>
+<ul class="simple">
+<li>Helping users who have difficulty subscribing to or unsubscribing from their
+lists.</li>
+<li>Banning abusive users.</li>
+<li>Filtering spam that&#8217;s sent to the list.</li>
+<li>Ensuring that the list description and settings are kept up-to-date.</li>
+</ul>
+<p>In particular, list administrators (also known as list owners) can do all of
+these things and more. List moderators have a single role: reviewing the
+moderation queue of the mailing list and letting through legitimate emails while
+rejecting spam.</p>
+</div>
+<div class="section" id="obtaining-a-mailing-list">
+<h2>Obtaining a mailing list<a class="headerlink" href="#obtaining-a-mailing-list" title="Permalink to this headline">¶</a></h2>
+<p>If you need a mailing list for your project, you need to make a few decisions
+about your list, and then you can contact the Open Knowledge Foundation sysadmin
+administrators for help. You should decide:</p>
+<ol class="arabic simple">
+<li>What you want your list to be called. A list to discuss geographic data might
+be called <tt class="docutils literal"><span class="pre">geodata-discuss</span></tt>, while a local group list for Spain might be
+called <tt class="docutils literal"><span class="pre">okfn-es</span></tt>. See the list names already taken at
+<a class="reference external" href="https://lists.okfn.org">https://lists.okfn.org</a> for ideas.</li>
+<li>Do you want your list to be public or private? Should anyone be able to
+subscribe, or do you want to approve new sign-ups on a case-by-case basis?</li>
+<li>Do you want your list to be publicly advertised in the list of lists at
+<a class="reference external" href="https://lists.okfn.org">https://lists.okfn.org</a>?</li>
+<li>Who will be your list owners? Ideally you should have at least two.</li>
+<li>Do you want to designate additional list moderators?</li>
+</ol>
+<p>When you have answers to all these questions, you should contact the system
+administrators with your request. Details on how to do this can be found here on
+the Ops Manual: <a class="reference internal" href="../../sysadmin/index.html#how-to-get-help"><em>How to get help</em></a>.</p>
+</div>
+<div class="section" id="administering-or-moderating-a-mailing-list">
+<h2>Administering or moderating a mailing list<a class="headerlink" href="#administering-or-moderating-a-mailing-list" title="Permalink to this headline">¶</a></h2>
+<p>Say your list is called <tt class="docutils literal"><span class="pre">widgets-discuss</span></tt>. You can visit the list information
+page at <a class="reference external" href="https://lists.okfn.org/mailman/listinfo/widgets-discuss">https://lists.okfn.org/mailman/listinfo/widgets-discuss</a>. From there, you
+can select either the &#8220;administrative interface&#8221; or the &#8220;moderation interface&#8221;
+links at the bottom of the page.</p>
+<p>If you are a list administrator or a list moderator, you should have been
+emailed a password allowing you to administer or moderate the list. Please check
+your email archive for this email (it will come from <tt class="docutils literal"><span class="pre">mailman&#64;lists.okfn.org</span></tt>
+and have a subject like &#8220;Your new widgets-discuss list password&#8221; or &#8220;Your new
+widgets-discuss moderator password&#8221;).</p>
+<p>If you still can&#8217;t find the password and think you can have it, please contact
+the system administrators: <a class="reference internal" href="../../sysadmin/index.html#how-to-get-help"><em>How to get help</em></a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Managing mailing lists</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#the-basics">The basics</a></li>
+<li><a class="reference internal" href="#list-administrators-and-moderators">List administrators and moderators</a></li>
+<li><a class="reference internal" href="#obtaining-a-mailing-list">Obtaining a mailing list</a></li>
+<li><a class="reference internal" href="#administering-or-moderating-a-mailing-list">Administering or moderating a mailing list</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../email-aliases/index.html"
+                        title="previous chapter">Email alias management</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../managing-a-blogfarm-site/index.html"
+                        title="next chapter">Managing a site in the Blogfarm</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/guides/mailing-lists/index.txt"
+           rel="nofollow">Show Source</a></li>
+    <li><a href="https://github.com/okfn/opsmanual/edit/master/guides/mailing-lists/index.rst"
+           rel="nofollow">Edit on GitHub</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../managing-a-blogfarm-site/index.html" title="Managing a site in the Blogfarm"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../email-aliases/index.html" title="Email alias management"
+             >previous</a> |</li>
+        <li><a href="../../index.html">OKF Operations Manual</a> &raquo;</li>
+          <li><a href="../index.html" >Guides</a> &raquo;</li> 
+      </ul>
+    </div>
+<div class="footer">
+    &copy; Copyright 2013, Open Knowledge Foundation.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
+  <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
+
+</div>
+
+
+
+
+
+  </body>
+</html>

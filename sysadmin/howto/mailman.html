@@ -75,11 +75,10 @@ this, and call it <cite>lowername.py</cite>:</p>
 </pre></div>
 </div>
 <p>Then this can be run with the <cite>withlist</cite> program:</p>
-<div class="highlight-python"><div class="highlight"><pre>export PYTHONPATH=`pwd`
+<div class="highlight-python"><pre>export PYTHONPATH=`pwd`
 ls /var/lib/mailman/lists | while read list; do
     withlist -l -r lowername $list
-done
-</pre></div>
+done</pre>
 </div>
 </div>
 <div class="section" id="archive-a-mailing-list">
@@ -92,18 +91,16 @@ to <cite>/dev/null</cite> as well.</p>
 </li>
 <li><p class="first">Disable public advertisement of the list either by using the list administrative
 interface or by doing:</p>
-<div class="highlight-python"><div class="highlight"><pre>/usr/lib/mailman/bin/config_list -o /tmp/foo.py foo-list
-sed -i &#39;s@^advertised = 1$@advertised = 0@&#39; /tmp/foo.py
-sed -i &#39;s@^emergency = 0$@emergency = 1@&#39; /tmp/foo.py
-/usr/lib/mailman/bin/config_list -i /tmp/foo.py foo-list
-</pre></div>
+<div class="highlight-python"><pre>/usr/lib/mailman/bin/config_list -o /tmp/foo.py foo-list
+sed -i 's@^advertised = 1$@advertised = 0@' /tmp/foo.py
+sed -i 's@^emergency = 0$@emergency = 1@' /tmp/foo.py
+/usr/lib/mailman/bin/config_list -i /tmp/foo.py foo-list</pre>
 </div>
 <p>the second sed command is a belt and braces approach to disabling posting to the
 list, in addition to the aliases trick.</p>
 </li>
 <li><p class="first">Unsubscribe all members from the list:</p>
-<div class="highlight-python"><div class="highlight"><pre>/usr/lib/mailman/bin/list_members foo-list | xargs /usr/lib/mailman/bin/remove_members foo-list
-</pre></div>
+<div class="highlight-python"><pre>/usr/lib/mailman/bin/list_members foo-list | xargs /usr/lib/mailman/bin/remove_members foo-list</pre>
 </div>
 </li>
 </ul>
@@ -175,7 +172,7 @@ list, in addition to the aliases trick.</p>
     </div>
 <div class="footer">
     &copy; Copyright 2013, Open Knowledge Foundation.
-  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2.1.
+  Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.2b3.
   <br />Theme based on <a href="http://readthedocs.org/">Read The Docs</a>
 
 </div>

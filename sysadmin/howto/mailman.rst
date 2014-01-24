@@ -34,7 +34,9 @@ for multiple moderators on a list and this results in passwords being required t
 
 The solution we came up with, was to have a shared password for all list moderators, and have it reset once every six months.
 
-- The script used to reset the moderator password across all lists is [/usr/lib/mailman/bin/change_mod_pw](https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw)::
+The script used to reset the moderator password across all lists is [/usr/lib/mailman/bin/change_mod_pw](https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw)
+
+- To update the moderator password for all lists::
 
     /usr/lib/mailman/bin/change_mod_pw -a -p <newpasswd>
 

@@ -87,8 +87,9 @@ done
 <p>We needed a better way to manage moderator passwords across lists, since mailman keeps one password -
 for multiple moderators on a list and this results in passwords being required to be reset and additional overhead.</p>
 <p>The solution we came up with, was to have a shared password for all list moderators, and have it reset once every six months.</p>
+<p>The script used to reset the moderator password across all lists is [/usr/lib/mailman/bin/change_mod_pw](<a class="reference external" href="https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw">https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw</a>)</p>
 <ul>
-<li><p class="first">The script used to reset the moderator password across all lists is [/usr/lib/mailman/bin/change_mod_pw](<a class="reference external" href="https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw">https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw</a>):</p>
+<li><p class="first">To update the moderator password for all lists:</p>
 <div class="highlight-python"><div class="highlight"><pre>/usr/lib/mailman/bin/change_mod_pw -a -p &lt;newpasswd&gt;
 </pre></div>
 </div>

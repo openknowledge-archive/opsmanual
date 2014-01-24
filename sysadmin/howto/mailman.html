@@ -82,6 +82,25 @@ done
 </pre></div>
 </div>
 </div>
+<div class="section" id="common-list-moderator-password">
+<h2>Common list moderator password<a class="headerlink" href="#common-list-moderator-password" title="Permalink to this headline">¶</a></h2>
+<p>We needed a better way to manage moderator passwords across lists, since mailman keeps one password -
+for multiple moderators on a list and this results in passwords being required to be reset and additional overhead.</p>
+<p>The solution we came up with, was to have a shared password for all list moderators, and have it reset once every six months.</p>
+<ul>
+<li><p class="first">The script used to reset the moderator password across all lists is [/usr/lib/mailman/bin/change_mod_pw](<a class="reference external" href="https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw">https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw</a>):</p>
+<div class="highlight-python"><div class="highlight"><pre>/usr/lib/mailman/bin/change_mod_pw -a -p &lt;newpasswd&gt;
+</pre></div>
+</div>
+</li>
+<li><p class="first">To update the moderator password for a single list:</p>
+<div class="highlight-python"><div class="highlight"><pre>/usr/lib/mailman/bin/change_pw -l &lt;listname&gt; -p &lt;password&gt;
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Run with &#8211;help for other options, you may require -q if the moderators do not need to be informed.</p>
+</div>
 <div class="section" id="archive-a-mailing-list">
 <h2>Archive a Mailing List<a class="headerlink" href="#archive-a-mailing-list" title="Permalink to this headline">¶</a></h2>
 <ul>
@@ -121,6 +140,7 @@ list, in addition to the aliases trick.</p>
 <li><a class="reference internal" href="#">HOWTO: Administering Mailman</a><ul>
 <li><a class="reference internal" href="#renaming-lists">Renaming lists</a></li>
 <li><a class="reference internal" href="#bulk-operations-on-mailing-lists">Bulk operations on mailing lists</a></li>
+<li><a class="reference internal" href="#common-list-moderator-password">Common list moderator password</a></li>
 <li><a class="reference internal" href="#archive-a-mailing-list">Archive a Mailing List</a></li>
 </ul>
 </li>

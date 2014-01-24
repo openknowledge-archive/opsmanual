@@ -25,6 +25,28 @@ Then this can be run with the `withlist` program::
       withlist -l -r lowername $list
   done
 
+
+Common list moderator password
+------------------------------
+
+We needed a better way to manage moderator passwords across lists, since mailman keeps one password - 
+for multiple moderators on a list and this results in passwords being required to be reset and additional overhead.
+
+The solution we came up with, was to have a shared password for all list moderators, and have it reset once every six months.
+
+- The script used to reset the moderator password across all lists is [/usr/lib/mailman/bin/change_mod_pw](https://github.com/okfn/infra/blob/master/ansible/roles/mailman/files/change_mod_pw)::
+
+    /usr/lib/mailman/bin/change_mod_pw -a -p <newpasswd>
+
+- To update the moderator password for a single list::
+
+   /usr/lib/mailman/bin/change_pw -l <listname> -p <password> 
+
+
+Run with --help for other options, you may require -q if the moderators do not need to be informed.
+
+
+
 Archive a Mailing List
 ----------------------
 

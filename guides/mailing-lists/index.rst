@@ -8,6 +8,7 @@ This document contains a description of how we manage a large set of community
 mailing lists, and how you can perform common operations required of a list
 owner or moderator.
 
+
 The basics
 ----------
 
@@ -78,3 +79,19 @@ widgets-discuss moderator password").
 
 If you still can't find the password and think you can have it, please contact
 the system administrators: :ref:`how-to-get-help`.
+
+
+Mailing list actions that require sysadmin help
+------------------------------------------------
+
+ You may request help from sysadmins for these mailing list queries
+
+1. Create a new list @lists.okfn.org
+..* Create a list on a different @domain
+2. Delete a list
+..* Keep list of subscribers
+..* Keep list archive
+3. Rename a list (copy subscribers over to a new list and archive the old one)
+4. Mailing list archives in a tarball/zip
+5. Reset the Admin password
+6. Export list subscribers as csv

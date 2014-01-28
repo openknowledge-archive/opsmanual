@@ -86,12 +86,17 @@ Mailing list actions that require sysadmin help
 
  You may request help from sysadmins for these mailing list queries
 
-1. Create a new list @lists.okfn.org
-..* Create a list on a different @domain
-2. Delete a list
-..* Keep list of subscribers
-..* Keep list archive
-3. Rename a list (copy subscribers over to a new list and archive the old one)
-4. Mailing list archives in a tarball/zip
-5. Reset the Admin password
-6. Export list subscribers as csv
+- Create a new list @lists.okfn.org
+ - Create a list on a different @domain
+
+- Delete a list
+ - Keep list of subscribers
+ - Keep list archive
+
+- Rename a list (copy subscribers over to a new list and archive the old one)
+
+- Mailing list archives in a tarball/zip
+
+- Reset the Admin password
+
+- Export list subscribers as csv

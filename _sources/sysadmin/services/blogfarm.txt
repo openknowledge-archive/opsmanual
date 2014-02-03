@@ -193,8 +193,8 @@ Basic install:
    -  `Akismet <http://akismet.com/>`__
    -  Google Analytics (see Google Analytics in Settings)
 
-#. (Optional) Configure theme. The default OKFN theme is maintained at
-   https://bitbucket.org/okfn/wp-theme-okfn.
+#. (Optional) Configure theme. The default Open Knowledge Foundation theme is maintained at
+   https://github.com/okfn/wordpress-theme-okfn.
 #. (Optional) Activate & configure additional plugins. Do this on a
    site-by-site basis, do **not** use 'Network Activate'
 

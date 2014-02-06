@@ -61,7 +61,7 @@ administrators for help. You should decide:
 
 When you have answers to all these questions, you should contact the system
 administrators with your request. Details on how to do this can be found here on
-the Ops Manual: :ref:`how-to-get-help`.
+the Ops Manual: :doc:`/sysadmin/getting-help`.
 
 Administering or moderating a mailing list
 ------------------------------------------
@@ -78,25 +78,20 @@ and have a subject like "Your new widgets-discuss list password" or "Your new
 widgets-discuss moderator password").
 
 If you still can't find the password and think you can have it, please contact
-the system administrators: :ref:`how-to-get-help`.
+the system administrators: :doc:`/sysadmin/getting-help`.
 
 
 Mailing list actions that require sysadmin help
 ------------------------------------------------
 
- You may request help from sysadmins for these mailing list queries
+You may request help from sysadmins for these mailing list queries
 
 - Create a new list @lists.okfn.org
- - Create a list on a different @domain
-
+- Create a list on a different @domain
 - Delete a list
- - Keep list of subscribers
- - Keep list archive
-
+- Keep list of subscribers
+- Keep list archive
 - Rename a list (copy subscribers over to a new list and archive the old one)
-
 - Mailing list archives in a tarball/zip
-
 - Reset the Admin password
-
 - Export list subscribers as csv

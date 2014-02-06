@@ -104,7 +104,7 @@ How to export mailinglist users
 
 -  To convert the list into csv separted format like - ',,'
 
-``sed -e 's/^``\ :math:`[^<]*`\ ``$/<\1>/g' -e 's/ *</,/g' -e 's/>$//g' -e 's/\"//g' awk -F ',' "{print \$2 \",\" \$1 \",${type}\" } | sort``
+``sed -e 's/^``\ ``[^<]*``\ ``$/<\1>/g' -e 's/ *</,/g' -e 's/>$//g' -e 's/\"//g' awk -F ',' "{print \$2 \",\" \$1 \",${type}\" } | sort``
 
 How to upgrade mailman
 ======================

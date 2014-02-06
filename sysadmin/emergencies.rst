@@ -38,9 +38,9 @@ We distinguish between the following situations:
 In general:
 
 #. Any unscheduled outage or breakage of any public-facing system is an
-emergency.
+   emergency.
 #. Any unscheduled outage or breakage of any system that is critical for
-you to do your job is an emergency.
+   you to do your job is an emergency.
 
 Here are a few emergencies:
 

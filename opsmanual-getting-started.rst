@@ -74,20 +74,29 @@ Some useful resources for getting started editing rST documents:
 A note on linking
 ~~~~~~~~~~~~~~~~~
 
-If you want to link to another part of the wiki and it's not a title (underlined
-with ===), you can do this by inserting a label.
+If you want to link to another part of the manual, you can use the ``:doc:``
+Sphinx role (`more documentation about this here <http://sphinx-doc.org/markup/inline.html#role-doc>`__)
+to reference another file in the repository. For example, you can say::
 
-``.. _a-label:``
+    More information on widgets can be found in :doc:`manufacturing/widgets`.
 
-Note the ``..``, the opening ``_`` and the closing ``:``.
-The label goes before the heading you want to link to.
+This will insert a reference to the ``manufacturing/widgets.rst`` file relative
+to the current file.
 
-It is ESSENTIAL that this label is followed by a blank line.
+If you want to reference a particular part of another document, you can do so by
+inserting a label::
 
-You can then refer to the label from anywhere else in the opsmanual like so:
+    .. _a-label:
 
-``:ref:`Whatever you want <a-label>```
+Note the ``..``, the opening ``_`` and the closing ``:``. The label goes before
+the heading you want to link to. It is ESSENTIAL that this label is followed by
+a blank line.
 
+You can then refer to the label from anywhere else in the manual using the
+``:ref:`` Sphinx role (`more documentation about this here <http://sphinx-doc.org/markup/inline.html#role-ref>`__)::
+
+    You should refer to :ref:`Whatever you want <a-label>` for more information
+    on this subject.
 
 
 The Build

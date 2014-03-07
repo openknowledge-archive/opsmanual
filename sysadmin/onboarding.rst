@@ -8,4 +8,5 @@ Things that need doing when a new sysadmin comes on board:
 - WPEngine:
   - my.wpengine.com account
   - superadmin privileges on the blogfarm
+- add to sysadmin-team in Google Groups
 

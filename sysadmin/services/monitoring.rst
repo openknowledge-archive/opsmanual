@@ -1,98 +1,61 @@
-Resource and service monitoring
-###############################
+# Monitoring and Graphs
 
-The Monitoring Service provides monitoring of servers and the
-applications they serve (such as websites).
+We use a bunch of tools for monitoring and graphing - which are [Nagios](http://nagios.org), [check_mk](http://mathias-kettner.com/check_mk_introduction.html), [graphite](http://graphite.wikidot.com/), [collectd](http://collectd.org).<br>
 
-Resource monitoring
-===================
+Each of these are managed as a role in the Ansible [OKF infra repo](https://github.com/okfn/infra/tree/master/ansible/roles)
 
--  `Munin <http://munin.okfn.org/>`__ on s001 (#321)
 
-Availability monitoring
-=======================
+## Host and service monitoring
 
--  `Nagios3 <http://status.okfn.org/>`__ on s001 (#564)
--  Rackspace alert monitors (to be documented)
+[Nagios](http://nagios.okfn.org) is setup to monitor hosts and services.
 
-Service levels
-==============
+check_mk is used along with nagios, since check_mk allows managing nagios config as a template.<br>
+Checks are mainly passive, thus reducing load on the nagios server.<br>
+The check_mk agent is installed on each host, which adds passive checks for host services.
 
-+--------+------------+-----------------------------------------------------------------------------+
-| SL1    | low        | no backup/redundancy/alerting. But don't switch off without notice          |
-+--------+------------+-----------------------------------------------------------------------------+
-| SL2    | medium     | occasional backup, alerts but without immediate response, no redundancy     |
-+--------+------------+-----------------------------------------------------------------------------+
-| SL3    | high       | daily backups, 1-working-day response to alerts, running off redundant DB   |
-+--------+------------+-----------------------------------------------------------------------------+
-| SL3A   | high       | same a SL3/High, but with guaranteed response                               |
-+--------+------------+-----------------------------------------------------------------------------+
-| SL4    | critical   | fundemantal. ASAP response any time (e.g. central DB service)               |
-+--------+------------+-----------------------------------------------------------------------------+
+All nagios config is managed using Ansible from within the [check_mk-server](https://github.com/okfn/infra/tree/master/ansible/roles/check_mk-server) and [nagios-server](https://github.com/okfn/infra/tree/master/ansible/roles/check_mk-server) roles.
 
-Availability history
-====================
 
-Nagios has an alert history and a simple report facility. In Nagios, go
-to
+#### Add a host into Nagios
 
--  "Host Detail" ==> select a host (e.g. "s060.okfn-openspending") ==>
-   (top left corner of frame) "View Availability Report For This Host"
-   ==> "Report period: This Year".
+<br>
 
-You can also request reports for any period. E.g. you want a report for
-February. Convert start and end datetime into UNIX epoch (e.g.
-`here <http://www.epochconverter.com/>`__), for example
+To add a host for monitoring, the host just needs to be listed under the right group in the Ansible Inventory.
 
--  1. Feb 2012 00:00 UTC = 1328054400
--  1. Mar 2012 00:00 UTC = 1330560000
+`https://github.com/okfn/infra/blob/master/ansible/inventory/hosts`
 
-and put them into this URL scheme:
+Once the host is added into the inventory, running the check_mk-server play on the target host,<br> 
+which should take care of the rest. <br>
 
--  https://$NAGIOS_CGI_BASE/avail.cgi?host=HOSTNAME&t1\ =$STARTTIME&t2=$ENDTIME
+`ansible-playbook  main.yml --tags="check_mk_config_main" -i inventory/hosts -c ssh -vvv`
 
-for example
+#### Remove a host from Nagios
 
--  http://status.okfn.org/cgi-bin/nagios3/avail.cgi?host=eu1&t1=1328054400&t2=1330560000
+To remove a host from nagios, it must be removed from the Ansible [inventory](https://github.com/okfn/infra/tree/master/ansible/inventory).
 
-Setting up Munin
-================
+We also need to remove any .yml [vars](https://github.com/okfn/infra/tree/master/ansible/inventory/host_vars) file for the host.
 
-See also #321
+The next step is to update the check_mk config, by running:
 
--  Munin master:
+`ansible-playbook  main.yml --tags="check_mk_config_main" -i inventory/hosts -c ssh -vvv`
 
-   -  apt-get install munin
-   -  symlink /etc/munin/munin.conf from sysadmin repo into /etc/munin)
-   -  Update the aws firewall settings with ip address of munin master
 
--  Munin Node:
+#### Other monitoring related Ansible flags
+<br>
+We have a bunch of flags in Ansible to simplify managing checks for each host, <br>
+they are documented here in the [OKF infra repo](https://github.com/okfn/infra/tree/master/ansible/inventory)
 
-   -  apt-get install munin-node
+## Stats collection and graphs in Graphite
+<br>
+Graphite is used to aggregate and display stats as graphs, stats are gathered with with collectd.
 
-      -  Install any relevent plugins
-      -  Edit the munin-node conf to allow access from the munin master
-         machine
+- Resource graphs for OKF servers are at [graphite.okfn.org](http://graphite.okfn.org/). 
+- The OKF infra ansible `monitoring` role is used to add servers into graphite. 
+- Collectd is installed on every host using the `monitoring` role 
 
-Depricated monitors
-===================
+#### Our current Dashboards
 
-Don't use
+- [All system Metrics](http://graphite.okfn.org/dashboard#system-metrics)
+- [Mail Metrics](http://graphite.okfn.org/dashboard#mail-metrics)
+- [Openspending Metrics](http://graphite.okfn.org/dashboard#openspending-application-metrics)
 
--  Fry's `Munin monitor <https://monitor-okfn.fry-it.com/munin/>`__
--  Fry's `Nagios monitor <https://monitor-okfn.fry-it.com/nagios2/>`__
--  `HMG Nagios <http://nagios.hmg.ckan.net/>`__ on hmg.ckan.net
-   monitoring the CKAN-HMG service group
--  Our `WasItUp <http://wasitup.com/>`__ account (e.g.
-   {ca,de,www}.ckan.org, {blog,www}.okfn.org)
--  Montastic
--  http://isitup.org/ (See also #93)
-
-Links
-=====
-
--  http://ganglia.sourceforge.net/
-
-.. raw:: mediawiki
-
-   {{Category:Sysadmin}}

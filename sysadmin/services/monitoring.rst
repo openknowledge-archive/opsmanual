@@ -1,61 +1,85 @@
-# Monitoring and Graphs
+Monitoring and Graphs
+=====================
 
-We use a bunch of tools for monitoring and graphing - which are [Nagios](http://nagios.org), [check_mk](http://mathias-kettner.com/check_mk_introduction.html), [graphite](http://graphite.wikidot.com/), [collectd](http://collectd.org).<br>
+We use a bunch of tools for monitoring and graphing - which are
+`Nagios`_, `check\_mk`_, `graphite`_, `collectd`_.
 
-Each of these are managed as a role in the Ansible [OKF infra repo](https://github.com/okfn/infra/tree/master/ansible/roles)
+Each of these are managed as a role in the Ansible `OKF infra repo`_
 
+Host and service monitoring
+---------------------------
 
-## Host and service monitoring
+`Nagios <http://nagios.okfn.org>`__ is setup to monitor hosts and
+services.
 
-[Nagios](http://nagios.okfn.org) is setup to monitor hosts and services.
+check\_mk is used along with nagios, since check\_mk allows managing
+nagios config as a template. Checks are mainly passive, thus reducing
+load on the nagios server. The check\_mk agent is installed on each
+host, which adds passive checks for host services.
 
-check_mk is used along with nagios, since check_mk allows managing nagios config as a template.<br>
-Checks are mainly passive, thus reducing load on the nagios server.<br>
-The check_mk agent is installed on each host, which adds passive checks for host services.
+All nagios config is managed using Ansible from within the
+`check\_mk-server`_ and `nagios-server`_ roles.
 
-All nagios config is managed using Ansible from within the [check_mk-server](https://github.com/okfn/infra/tree/master/ansible/roles/check_mk-server) and [nagios-server](https://github.com/okfn/infra/tree/master/ansible/roles/check_mk-server) roles.
+Add a host into Nagios
+^^^^^^^^^^^^^^^^^^^^^^
 
+To add a host for monitoring, the host just needs to be listed under the
+right group in the Ansible Inventory.
 
-#### Add a host into Nagios
+``https://github.com/okfn/infra/blob/master/ansible/inventory/hosts``
 
-<br>
+Once the host is added into the inventory, running the check\_mk-server
+play on the target host, which should take care of the rest.
 
-To add a host for monitoring, the host just needs to be listed under the right group in the Ansible Inventory.
+``ansible-playbook  main.yml --tags="check_mk_config_main" -i inventory/hosts -c ssh -vvv``
 
-`https://github.com/okfn/infra/blob/master/ansible/inventory/hosts`
+Remove a host from Nagios
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Once the host is added into the inventory, running the check_mk-server play on the target host,<br> 
-which should take care of the rest. <br>
+To remove a host from nagios, it must be removed from the Ansible
+`inventory`_.
 
-`ansible-playbook  main.yml --tags="check_mk_config_main" -i inventory/hosts -c ssh -vvv`
+We also need to remove any .yml `vars`_ file for the host.
 
-#### Remove a host from Nagios
+The next step is to update the check\_mk config, by running:
 
-To remove a host from nagios, it must be removed from the Ansible [inventory](https://github.com/okfn/infra/tree/master/ansible/inventory).
+``ansible-playbook  main.yml --tags="check_mk_config_main" -i inventory/hosts -c ssh -vvv``
 
-We also need to remove any .yml [vars](https://github.com/okfn/infra/tree/master/ansible/inventory/host_vars) file for the host.
+Other monitoring related Ansible flags
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The next step is to update the check_mk config, by running:
+ We have a bunch of flags in Ansible to simplify managing checks for
+each host, they are documented here in the `OKF infra
+repo <https://github.com/okfn/infra/tree/master/ansible/inventory>`__
 
-`ansible-playbook  main.yml --tags="check_mk_config_main" -i inventory/hosts -c ssh -vvv`
+Stats collection and graphs in Graphite
+---------------------------------------
 
+ Graphite is used to aggregate and display stats as graphs, stats are
+gathered with with collectd.
 
-#### Other monitoring related Ansible flags
-<br>
-We have a bunch of flags in Ansible to simplify managing checks for each host, <br>
-they are documented here in the [OKF infra repo](https://github.com/okfn/infra/tree/master/ansible/inventory)
+-  Resource graphs for OKF servers are at `graphite.okfn.org`_.
+-  The OKF infra ansible ``monitoring`` role is used to add servers into
+   graphite.
+-  Collectd is installed on every host using the ``monitoring`` role
 
-## Stats collection and graphs in Graphite
-<br>
-Graphite is used to aggregate and display stats as graphs, stats are gathered with with collectd.
+Our current Dashboards
+^^^^^^^^^^^^^^^^^^^^^^
 
-- Resource graphs for OKF servers are at [graphite.okfn.org](http://graphite.okfn.org/). 
-- The OKF infra ansible `monitoring` role is used to add servers into graphite. 
-- Collectd is installed on every host using the `monitoring` role 
+-  `All system Metrics`_
+-  `Mail Metrics`_
+-  `Openspending Metrics`_
 
-#### Our current Dashboards
-
-- [All system Metrics](http://graphite.okfn.org/dashboard#system-metrics)
-- [Mail Metrics](http://graphite.okfn.org/dashboard#mail-metrics)
-- [Openspending Metrics](http://graphite.okfn.org/dashboard#openspending-application-metrics)
-
+.. _Nagios: http://nagios.org
+.. _check\_mk: http://mathias-kettner.com/check_mk_introduction.html
+.. _graphite: http://graphite.wikidot.com/
+.. _collectd: http://collectd.org
+.. _OKF infra repo: https://github.com/okfn/infra/tree/master/ansible/roles
+.. _check\_mk-server: https://github.com/okfn/infra/tree/master/ansible/roles/check_mk-server
+.. _nagios-server: https://github.com/okfn/infra/tree/master/ansible/roles/check_mk-server
+.. _inventory: https://github.com/okfn/infra/tree/master/ansible/inventory
+.. _vars: https://github.com/okfn/infra/tree/master/ansible/inventory/host_vars
+.. _graphite.okfn.org: http://graphite.okfn.org/
+.. _All system Metrics: http://graphite.okfn.org/dashboard#system-metrics
+.. _Mail Metrics: http://graphite.okfn.org/dashboard#mail-metrics
+.. _Openspending Metrics: http://graphite.okfn.org/dashboard#openspending-application-metrics

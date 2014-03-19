@@ -7,6 +7,19 @@ Renaming lists
 See this FAQ: http://wiki.list.org/pages/viewpage.action?pageId=4030617
 
 
+Regenerate list archive HTML 
+----------------------------
+
+In some cases, the [HTML archive](https://lists.okfn.org/pipermail/<list-name>/) because a post had to be removed from the list or,
+Mailman doesn't stops updating the HTML archive, 
+
+To regenerate the HTML archive ::
+
+  /usr/lib/mailman/bin/arch --wipe <list-name>
+
+  --wipe clears out the old HTML content
+
+
 Bulk operations on mailing lists
 --------------------------------
 

@@ -19,11 +19,11 @@ done with the following steps.
 #. You should now be on the Account Administration screen with a table
    listing of the accounts your login has access to. Within this table
    click on "Create a new property". This should be at the bottom of the list.
-#. Enter the website name (e.g. Open Development Tookit) and website URL
+#. Enter the website name (e.g. Open Development Toolkit) and website URL
    (e.g. http://opendevelopmenttoolkit.net). Change the Reporting Time Zone to
    United Kingdom and select "GMT (no daylight saving)".
 #. Click on "Get Tracking ID". This will get you to a page where the tracking
-   ID will be promimently displayed.
+   ID will be prominently displayed.
 #. Go back to the Admin page and select the new Property. The view on the third
    column will be called "All Website Data". Click on "View Settings" and
    rename that to the property name.

@@ -27,6 +27,9 @@ done with the following steps.
 #. Go back to the Admin page and select the new Property. The view on the third
    column will be called "All Website Data". Click on "View Settings" and
    rename that to the property name.
+#. Go back to the Admin page and select the new Property. Click on User
+   Management. At the bottom of the page, under "Add permissions for", grant
+   the users of the project all permissions to this property.
 
 
 Google Analytics (global tracking filter)

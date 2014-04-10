@@ -98,11 +98,15 @@ In some cases, a mailman list needs to be imported into the OKF mailman server,
 
   - We create a new list, the admin user doesn't matter as of now::
      
-      /usr/sbin/newlist
+     /usr/sbin/newlist
 
-  - We import the mbox file::
+  - Copy the mbox file::
+      
+    cp /tmp/<listname>.mbox /var/lib/mailman/archives/private/<listname>.mbox/<listname>.mbox
+
+  - Generate HTML archives::
      
-     /var/lib/mailman/bin/arch <listname> /tmp/<listname>.mbox
+    /var/lib/mailman/bin/arch --wipe <listname> 
     
   - Copy over the config.pck file which contains the users info and list config::
 
@@ -114,5 +118,5 @@ In some cases, a mailman list needs to be imported into the OKF mailman server,
 
 -  The admin interface, html archives should now be accessible with all its users::
 
-   https://lists.okfn.org/mailman/admin/<listname>
-   https://lists.okfn.org/pipermail/<listname>
+     https://lists.okfn.org/mailman/admin/<listname>
+     https://lists.okfn.org/pipermail/<listname>

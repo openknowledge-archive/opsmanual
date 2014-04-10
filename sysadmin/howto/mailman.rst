@@ -82,3 +82,37 @@ Archive a Mailing List
 - Unsubscribe all members from the list::
 
     /usr/lib/mailman/bin/list_members foo-list | xargs /usr/lib/mailman/bin/remove_members foo-list
+
+
+Import a mailinglist into the OKF mailman server
+------------------------------------------------
+
+In some cases, a mailman list needs to be imported into the OKF mailman server,
+
+- To import a single list, from a remote host we require::
+  
+  /var/lib/mailman/archives/private/<listname>.mbox
+  /var/lib/mailman/lists/<listname>/config.pck 
+
+- Once the files are copied over to the OKF mailman server
+
+  - We create a new list, the admin user doesn't matter as of now::
+     
+      /usr/sbin/newlist
+
+  - We import the mbox file::
+     
+     /var/lib/mailman/bin/arch <listname> /tmp/<listname>.mbox
+    
+  - Copy over the config.pck file which contains the users info and list config::
+
+     cp /tmp/config.pck /var/lib/mailman/lists/<listname>/config.pck
+
+  - Update the list url in config.pck::
+     
+     /var/lib/mailman/bin/withlist -l -r fix_url <listname> https://lists.okfn.org/mailman/
+
+-  The admin interface, html archives should now be accessible with all its users::
+
+   https://lists.okfn.org/mailman/admin/<listname>
+   https://lists.okfn.org/pipermail/<listname>

@@ -66,8 +66,7 @@ We don't want to be seen as `BOFHs <https://en.wikipedia.org/wiki/Bastard_Operat
 
 That means that you should not second-guess the system administrators' workload.
 Please trust that we prioritise work such that everyone is happiest over the
-long run. If that means that you have to wait longer than you would like for
-your new knitting blog to be created, then sorry, you might have to wait.
+long run.
 
 Here are a few plausible situations in which flagging a request as "urgent" is
 not usually acceptable:

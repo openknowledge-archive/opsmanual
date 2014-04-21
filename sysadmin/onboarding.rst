@@ -10,4 +10,4 @@ Things that need doing when a new sysadmin comes on board:
   - superadmin privileges on the blogfarm
 - add to sysadmin-team in Google Groups
 - Google analytics
-
+- Lastpass

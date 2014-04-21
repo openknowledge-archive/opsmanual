@@ -1,12 +1,12 @@
 Infrastructure overview
 =======================
 
-OKF operates many different services for many different people. This document is
-intended to provide a broad overview of the infrastructure underlying these
-services and how it is managed.
+Open Knowledge operates many different services for many different people. This
+document is intended to provide a broad overview of the infrastructure
+underlying these services and how it is managed.
 
-The infrastructure operated by OKF (and specifically that managed by the
-Sysadmin team) can broadly be divided into two categories:
+The infrastructure operated by Open Knowledge (and specifically that managed by
+the Sysadmin team) can broadly be divided into two categories:
 
 #. `Self-hosted infrastructure`_
 #. `Externally-hosted infrastructure`_
@@ -26,7 +26,7 @@ by our Ansible configuration management system.
 Please refer to the `Ansible inventory`_ for the canonical list of managed
 hosts and their whereabouts.
 
-.. _Ansible inventory: https://github.com/okfn/sysconfig-ansible/blob/master/inventory/hosts
+.. _Ansible inventory: https://github.com/okfn/infra/blob/master/inventory/hosts
 
 Mailing lists
 ~~~~~~~~~~~~~
@@ -66,8 +66,8 @@ the mailing list server (``lists.okfn.org``) described above: `Mailing lists`_
 Staff email
 ~~~~~~~~~~~
 
-OKF Central staff email, calendars, etc. (often collectively known as
-"groupware") is currently provided by `Google Apps for Business`_.
+Open Knowledge Central staff email, calendars, etc. (often collectively known
+as "groupware") is currently provided by `Google Apps for Business`_.
 
 .. _Google Apps for Business: http://www.google.com/enterprise/apps/business/
 
@@ -75,8 +75,9 @@ WordPress "farm"
 ~~~~~~~~~~~~~~~~
 
 A multi-domain WordPress_ "farm" is operated for us by WPEngine_. This hosts,
-among others, ``okfn.org``, ``blog.okfn.org``, as well as many other project and
-local group sites.
+among others, ``blog.okfn.org``, as well as many other project and
+local group sites. Please note that this **does not** host the `okfn.org`
+website.
 
 .. _WordPress: http://wordpress.org
 .. _WPEngine: http://wpengine.com

@@ -7,11 +7,6 @@ Backups for our services: state of the union
 Overview
 ========
 
-**IMPORTANT:** The OKFN core sysadmin team **does NOT provide backup for
-machines outside Rackspace!** If you need backup for machines outside
-Rackspace, you have to configure and maintain it yourself. (As always,
-there are a few historic exceptions to this rule, see below).
-
 At Rackspace, we have two methods of backup:
 
 -  **Snapshotting** of the VMs. Should be activated for **all** VMs.
@@ -30,10 +25,6 @@ At Rackspace, we have two methods of backup:
 -  **File-level backup** is **only** available for managed VMs. One can
    configure which directories to backup.
 
-We should have a script that ensures on a regular basis, that all our
-VMs get snapshotted, see ticket
-`#1397 <http://trac.okfn.org/ticket/1397>`__.
-
 Setting up backups ...
 ======================
 
@@ -50,16 +41,6 @@ easily in the Rackspace control panel.
    (under the region drop down), next generation instances do not
    support periodic snapshots(as of Dec 2012)
 
-... outside Rackspace
----------------------
-
-Outside Rackspace, you are mainly on you own. Except we could add your
-backup source to our `rsnapshot
-config <https://bitbucket.org/okfn/sysadmin/src/default/etc/backup/rsnapshot.conf>`__
-on our little backup machine s088, itself at snapshotted Rackspace VM.
-Drop us a ticket. Though there is currently `no space left on
-s088 <http://trac.okfn.org/ticket/1391>`__.
-
 Backup status outside Rackspace
 ===============================
 
@@ -71,29 +52,15 @@ matrix <https://docs.google.com/spreadsheet/pub?key=0Aon3JiuouxLUdC1IZ2kwRDMtX2Z
 
    -  Essetial data pulled nightly to s088/rsnapshot
 
--  Amazon (s005/6/9/13/17/21)
+-  Amazon
 
    -  Those EC2 VMs that run off "instance-store" have a EBS device
       attached as /dev/sdp and backup into that daily (4 day retension)
-   -  All EBS volumes get manually snapshotted, roughly monthly. See
-      `#498 <http://trac.okfn.org/ticket/498>`__
-   -  Essential data of s005 (DB dumps) pulled nightly to s088/rsnapshot
-
--  Hetzner
-
-   -  The Openspending team runs their own backup of s033 to S3
-   -  Essential data of CKAN's s031 is pulled nightly to s088/rsnapshot.
-      Also virtualbox images files are rsynced to s088
+   -  All EBS volumes get manually snapshotted, roughly monthly.
 
 -  Linode (s034, s035)
 
    -  snapshotted nightly, similar to Rackspace
-
--  Dreamhost (dh1)
-
-   -  All data pulled nightly to s088/rsnapshot. Should be disabled as
-      soon as all blogs are migrated, see
-      `#1075 <http://trac.okfn.org/ticket/1075>`__
 
 Disaster recovery
 =================
@@ -116,8 +83,6 @@ Appendix
 Appendix: Backup issues
 -----------------------
 
--  s088 is full `#1391 <http://trac.okfn.org/ticket/1391>`__
--  Our backup verification is limited (#496)
 -  *Proper* backup should be either covered by an SLA (e.g. Rackspace,
    Bytemark managed), or at least not at the same provider.
 -  Linode: snapshots might be too few. Linode's backup system does work

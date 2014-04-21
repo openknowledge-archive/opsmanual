@@ -1,21 +1,20 @@
 Getting help
 ============
 
-It's important you know how to request support from the Open Knowledge
-Foundation's sysadmin team. If your support request is made through the right
-channels with the right information included, it will get dealt with much more
-quickly than if it is not.
+It's important you know how to request support from the Open Knowledge sysadmin
+team. If your support request is made through the right channels with the right
+information included, it will get dealt with much more quickly than if it is
+not.
 
-If you work for Open Knowledge Foundation Ltd.
-----------------------------------------------
+If you work for Open Knowledge
+------------------------------
 
-If you work for the Open Knowledge Foundation Ltd. (AKA "OKF Central") you
-should email sysadmin@okfn.org.
+If you work for the Open Knowledge, you should email sysadmin@okfn.org.
 
 Please see below for a request template.
 
-If you do NOT work for Open Knowledge Foundation Ltd.
------------------------------------------------------
+If you do NOT work for Open Knowledge
+-------------------------------------
 
 If you are affiliated with the Open Knowledge Foundation community (our Local
 Groups, Working Groups, Chapters, or similar) you should, in the first instance,
@@ -32,9 +31,9 @@ of information** when submitting your request.
 
 If you don't give us enough information, it make take a long chain of
 back-and-forth emails to understand what needs to be done. Given that system
-administrators tend to attend to support emails in short bursts between actually
-processing requests, this could dramatically extend the amount of time required
-to process your request.
+administrators tend to attend to support emails in short bursts between
+actually processing requests, this could dramatically extend the amount of time
+required to process your request.
 
 That said, if you give us your entire life history, current emotional state, and
 the details of your pet's dietary requirements, we may find it difficult to

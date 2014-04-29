@@ -24,6 +24,8 @@ Documentation and notes
    services/index
    howto/index
    backup
+   onboarding
+   onboarding-a-sysadmin
    service-life-cycle
 
 .. _who_are_we:

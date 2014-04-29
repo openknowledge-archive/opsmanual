@@ -1,13 +1,28 @@
-Onboarding a sysadmin
-=====================
+Onboarding staff
+================
 
-Things that need doing when a new sysadmin comes on board:
+Things that need doing when a new member of staff joins or leaves:
 
-- reencrypt credentials repo with their GPG key
-- add to sysadmin group and run ansible across all machines
-- WPEngine:
-  - my.wpengine.com account
-  - superadmin privileges on the blogfarm
-- add to sysadmin-team in Google Groups
-- Google analytics
-- Lastpass
+
+Joiners
+-------
+
+#. Create Google Apps account
+#. Add to relevant Google Groups
+#. Add email alias to FastMail, and wait 15m for alias to become live
+#. Send a Toggl invitation
+#. Add a LastPass account and add to relevant LastPass group
+#. Send a Grove invitation
+#. If needed, send a Highrise invitation
+
+
+Leavers
+-------
+
+#. Remove keys from infra repo and accounts from any servers
+#. Remove any account from Highrise
+#. Remove any account from Grove
+#. Remove any account from LastPass
+#. Remove any account from Toggl
+#. Remove from any email aliases in FastMail
+#. Remove Google Apps account

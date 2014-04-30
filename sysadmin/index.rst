@@ -34,7 +34,7 @@ Who are we?
 -----------
 
 -  Joel Rebello: Full-time sysadmin
--  Bobby Donovan: Blogfarm sysadmin (0.1 FTE)
+-  Nigel Babu: Part-time sysadmin
 
 At various times, the following people have provided advice and support to the
 sysadmin team:
@@ -46,4 +46,3 @@ sysadmin team:
 -  Nick Stenning
 -  Nils Toedtmann
 -  Will Waites
--  Nigel Babu

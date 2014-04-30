@@ -1,5 +1,5 @@
-WordPress "farm"
-################
+Blogfarm
+########
 
 OKF has a blog farm at specialized Wordpress hoster `WPEngine
 <http://wpengine.com>`__. It is a wordpress multisite installation that serves
@@ -15,41 +15,112 @@ Review <http://publicdomainreview.org/>`__, `CKAN <http://ckan.org/>`__, the
 <http://openglam.org/>`__, `Digitised Manuscripts to Europeana
 <http://dm2e.eu/>`__ and many others.
 
-See also
-========
+Deploy changes to the blogfarm
+==============================
 
--  `Sysadmin/Blogfarm Essentials <Sysadmin/Blogfarm Essentials>`__
-   contains guidelines for site owners how to activate polular features
-   in this blogfarm.
--  :doc:`/sysadmin/howto/blogfarm-deploy` describes how to deploy code to this
-   blogfarm.
+Some basic instructions outlining the code deployment procedures for our
+blog farm hoster WPE (WPEngine - http://wpengine.com/).
+
+WPE code deployment is done through their git post-recieve hook. In
+essence it's as simply as commiting code changes to the repository and
+doing a git push back to the WPE remote. More detailed instructions can
+be found in their documentation about this - http://git.wpengine.com/.
+
+Access to the WPE git repos is controlled by public keys. You'll need to
+contact the OKF Sysadmin team to have your public key granted access
+before proceeding. Once this has been done, confirm access by::
+
+    $ ssh git@git.wpengine.com info
+
+You should get a response back listing the repositories you have access
+to. At a minimum these should be::
+
+    production/okf
+    staging/okf
+
+Consider these as two separate git remotes containing the code for the
+production web dir and staging web dir respectively.
+
+The first thing you want to do is sync with the production remote,
+depending on how you have your local code setup you can add this remote
+to an existing repo, or create a new working directory and run the
+following::
+
+    $ git clone git@git.wpengine.com:production/okf.git wordpress-production
+    $ cd wordpress-production
+
+This repository uses submodules for the various plugins and themes. So
+before doing anything else you should initialize and update these::
+
+    $ git submodule init
+    $ git submodule update
+
+Deploying changes is as simple as pushing your commits back to the
+production remote. So something like the following. It's advised that
+you do this via a terminal window so that you can see descriptive
+deployment progress output, along with any custom errors::
+
+    $ git push origin master
+
+Or run git remote -v to list the remotes of your local repo. If you
+cloned from the production repo then that is most like the "origin"
+remote.
+
+As always, be sure to retrieve changes made by other users before
+pushing back to WPE::
+
+    $ git pull --rebase
+
+Sub Modules
+-----------
+
+Note that submodules are referenced to a master repository via commit
+ID's, rather than branches. As such, changes to submodules need to be
+committed to the master repo as well. That is, if you commit a change to
+a submodule, the latest commit for that repository has progressed, and
+that new status needs to be reflected in the master repo. If you make
+changes to the submodule outside of the main repo working directory,
+you'll need to git pull that submodule into the main working dir and
+commit it's new pointer to that main repo.
+
+When you deploy to WPE, for any submodule that the master repository
+knows about, the commit for that submodule must be accessible to WPE.
+This means 2 things: 1) The repo must be publicly readable. WPE does not
+provide a public key for you to grant access to private repos. 2) The
+commit to retrieve must be available on that remote (pushed)
+
+The latter is often forgotten. Use the following one liner to push all
+submodules from your master repo root dir::
+
+    $ git submodule foreach git push master origin
+
+It's typically easier to work on all files (main repo and submodules)
+within the same working directory so that you can commit to both the sub
+and main repos quickly.
+
+If other users make changes to the sub-modules, you'll need to retrieve
+these to your own local dir also. So before making any changes, it's
+good practice to do the following::
+
+    $ git pull origin master
+    $ git submodule foreach git pull origin master
 
 Contact
 =======
 
 -  For **non-technical issues** with the OKFN blog farm, e.g. with the
    content of one of its sites, contact either the owner of a specific
-   blog site, or <**blog**\ @\ **okfn**.\ **org**>
--  For **technical problems** with the OKFN blog farm, notify either the
-   owner of a specific blog site, or
-   <**sysadmin**\ @\ **okfn**.\ **org**> (See also
-   `Sysadmin <Sysadmin>`__).
+   blog site, or <blog@okfn.org>
+-  For **technical problems** with the OKFN blog farm, notify either the owner
+   of a specific blog site, or <sysadmin@okfn.org>.
 
-There is also a mailing list
-<`**sysadmin-coord**\ @\ **lists**.\ **okfn**.\ **org** <http://lists.okfn.org/mailman/listinfo/sysadmin-coord>`__\ >
-for general technical discussions.
+There is also a mailing list <sysadmin-coord@lists.okfn.rg> for general technical
+discussions.
 
 Tickets (general)
 -----------------
 
--  Single fails are logged in our Google Speadsheet *blogfarm issue
-   reports*, see section *How to report failing blog pages* below
--  To raise a ticket in OKFN's Tenderapp tracker, simply send a mail to
-   <**sysadmin**\ @\ **okfn**.\ **org**> (See also
-   `Sysadmin <Sysadmin>`__)
--  [STRIKEOUT:Sysadmin issues with the wordpress blogfarm are traced in
-   our [http://trac.okfn.org/query?status\ =!closed&component=blogfarm
-   trac] in the trac component "blogfarm".]
+-  To raise a ticket in RT tracker, simply send a mail to <sysadmin@okfn.org>
 -  If our blogfarm hoster WPEngine has to look into an issue, we raise a
    ticket in their support platform (see below)
 -  There is also "`Issue tracker for http://okfn.org/ and other OKFN
@@ -70,7 +141,7 @@ How to file a ticket at WPEngine:
 -  Log into `WPEngine's Zendesk
    platform <https://wpengine.zendesk.com/>`__. You should see
    "OKFN.org" organisation.
--  Click on "*SUBMIT A REQUEST*\ ". Bobby, Joel and Nils should be
+-  Click on "*SUBMIT A REQUEST*\ ". Joel, Nick, and Nigel should be
    automatically CCed onto the ticket.
 
 Their core support times are 9:00-18:00 US Central Time (WPE sits in
@@ -98,8 +169,7 @@ How to report failing blog pages
 
 If blog pages fail please report it to us! But in order to look into the
 failure, we need some details. Please collect the following data and
-either enter it into our Google spreadsheet "*blogfarm issue report*\ ",
-or send it to <**sysadmin**\ @\ **okfn**.\ **org**>:
+send it to <**sysadmin**\ @\ **okfn**.\ **org**>:
 
 -  The **failing URL**. If the issue affects several URLs or sites
    please mention a couple of them (at least three).
@@ -116,13 +186,10 @@ or send it to <**sysadmin**\ @\ **okfn**.\ **org**>:
    WPEngine cache? (see section "Caching" below)
 
 Don't bother to report failing blog pages if you don't have the time to
-provide those details - there i nothing we can do without them.
+provide those details - there is nothing we can do without them.
 
 Caching
 =======
-
-**TO BE DOCUMENTED**: How does caching works at WPEngine, and how can we
-manage the cache at WPEngine
 
 One can check whether a page was delivered from a cache by looking at
 the headers (e.g. using ``curl -I`` or the Firefox Add-on `Live HTTP
@@ -142,6 +209,9 @@ random) query string. E.g.
 | ``X-Cache: MISS``
 | ``X-Cache-Group: normal``
 
+WPEngine uses Varnish, which caches aggressively. If this cache needs to be
+busted, it needs to be ticketed with them.
+
 How to: create a new blog...
 ============================
 
@@ -151,28 +221,39 @@ How to: create a new blog...
 Requirements:
 
 -  You will need to be a Network Admin on okfn.org
+-  You will need control over the DNS records for *okfn.org*
+-  You will need access to the `WPEngine control
+   panel <https://my.wpengine.com/>`__ (see below).
 
 Basic install:
 
-#. Login and go to Network Admin - http://okfn.org/wp-admin/network/
+#. Login and go to Network Admin - http://okblogfarm.org/wp-admin/network/
 #. Select Add Site
 
    -  For WG sites name after working group e.g. for economics wg would
-      be economics.okfn.org
+      be economics.okblogfarm.org
    -  Put your username/email for admin role
-   -  Test `http://{name}.okfn.org/ <http://{name}.okfn.org/>`__, it
-      should work now (There is a wildcard DNS CNAME \*.okfn.org ==>
-      blogfarm.okserver.org)
+   -  Test `http://{name}.okblogfarm.org/`, it should work now.
 
 #. Add users to site as appropriate
 #. Leave the "Network Admin" area. Instead, go to the admin area of you
    new blog at
-   `http://{name}.okfn.org/wp-admin/ <http://{name}.okfn.org/wp-admin/>`__
+   `http://{name}.okblogfarm.org/wp-admin/`
 #. Activate and configure standard plugins:
 
    -  `Akismet <http://akismet.com/>`__
    -  Google Analytics (see Google Analytics in Settings)
 
+#. Go go the `domain admin page
+   <http://okblogfarm.org/wp-admin/network/settings.php?page=dm_domains_admin>__`.
+   Add the site ID of your new site and the domain name if it needs to be
+   `http://{name}.okfn.org/`, tick the `Primary` checkbox and submit the form.
+#. Log into the `WPEngine control panel <https://my.wpengine.com/>`__
+   then, add the new site hostname under
+   `Domains <https://my.wpengine.com/installs/okf/domains>`__ (you might want
+   to add redirects from www - optional)
+#. Create a DNS CNAME record for `{{name}}.okfn.org` pointing to
+   *blogfarm.okserver.org*. Wait for the record to propagate and test.
 #. (Optional) Configure theme. The default Open Knowledge Foundation theme is maintained at
    https://github.com/okfn/wordpress-theme-okfn.
 #. (Optional) Activate & configure additional plugins. Do this on a
@@ -197,7 +278,7 @@ Remark:
    paragraph.
 #. Log into the `WPEngine control panel <https://my.wpengine.com/>`__
    then, add the new site hostname under
-   `1 <https://my.wpengine.com/installs/okf/domains>`__ (you might want
+   `Domain <https://my.wpengine.com/installs/okf/domains>`__ (you might want
    to add redirects from www - optional)
 #. Temporarily add the blog farm's IP address "*178.79.131.171
    mydomain.org*\ " to your /etc/hosts and test http://mydomain.org/.
@@ -207,12 +288,6 @@ Remark:
    *blogfarm.okserver.org* or its IP address 178.79.131.171. If the
    domain is at DME, make it a "*A-NAME*\ " to *blogfarm.okserver.org*.
    Wait for the record to propagate and test.
-
-Note:
-
--  See this tutorial (start at step 4 -- plugin is already installed for
-   you!):
-   http://ottopress.com/2010/wordpress-3-0-multisite-domain-mapping-tutorial/
 
 How to: add or modify a theme/plugin
 ====================================
@@ -239,52 +314,4 @@ WPE accounts
 How to: migrate an existing single-site WP instance into our blogfarm
 =====================================================================
 
-#. Ensure you have the access level you need:
-
-   -  Admin access to the old blog
-   -  Superadmin access to the blogfarm
-   -  File system read access to the old blog's ${WP\_ROOT}/wp-content/
-      . Make sure rsync+ssh are installed and working.
-   -  File system write access to the blogfarm's ${WP\_ROOT}/wp-content/
-
-#. [*To be cone by OKF core admin*\ ] Domain preparation:
-
-   -  On s006.okserver.org=cache-euw1.okserver.org (soon
-      s050.okserver.org=cache-sov.okserver.org, see #881), configure the
-      domain in question into /etc/squid3/squid.conf. For now, point it
-      to the old blog. Re-load cache and test with your local
-      /etc/hosts.
-   -  Configure the DNS record(s) of the domain in question to point to
-      the very cache. When the new records have propagated, unconfigure
-      the domain name from your /etc/hosts.
-
-#. Notify blog users about the blog being read-only for the time of the
-   migration.
-#. Disable editing on the old blog
-#. Export the old blog into a file
-#. Temporarily apply Rufus' famous import-fix to the blogfarm's
-   /home/okfn/var/wp/okfn.org/wp-includes/post.php (see #553). In line
-   2436 (as of WP 3.2.1 - line number will shift with future releases),
-   comment out this:
-   ::
-
-       // $postarr = sanitize_post($postarr, 'db');
-
-#. Create an empty new blog in the blog farm
-#. Import the blog-export-file into the new farm site. During this
-   process, many users in the old blog will either not have an account
-   in our blog farm, or have a different username (but same mail
-   address). Map the usernames of
-   existing-users-with-different-username, and create missing users.
-#. rsync the old blog's ${WP\_ROOT}/wp-content/ to the blog farm.
-#. Verify & test all went well (/etc/hosts trick). If not, delete the
-   site in the blog farm and return to [7]
-#. Revert the above 1-line patch
-#. [*To be cone by OKF core admin*\ ] In the cache server's
-   /etc/squid3/squid.conf, point the domain to *blogfarm.okserver.org*
-#. Undo your /etc/hosts test line and check again.
-#. Notify blog users that the blog is fully operational again. Warn them
-   that those clients which use outdated DNS entries might still end up
-   on the old read-only blog.
-#. Once the DNS changes from [2] have propagated (usually after 1 day),
-   disable the old blog.
+**TO BE DOCUMENTED**

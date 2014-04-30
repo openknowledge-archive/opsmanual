@@ -28,16 +28,15 @@ to. At a minimum these should be::
     staging/okf
 
 Consider these as two separate git remotes containing the code for the
-production web dir and staging web dir respectively. For now, disregard
-the staging remote as we don't have anything setup there.
+production web dir and staging web dir respectively.
 
 The first thing you want to do is sync with the production remote,
 depending on how you have your local code setup you can add this remote
 to an existing repo, or create a new working directory and run the
 following::
 
-    $ git clone git@git.wpengine.com:production/okf.git wordpress
-    $ cd wordpress
+    $ git clone git@git.wpengine.com:production/okf.git wordpress-production
+    $ cd wordpress-production
 
 This repository uses submodules for the various plugins and themes. So
 before doing anything else you should initialize and update these::

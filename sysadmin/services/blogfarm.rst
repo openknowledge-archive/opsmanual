@@ -280,12 +280,12 @@ Remark:
    then, add the new site hostname under
    `Domain <https://my.wpengine.com/installs/okf/domains>`__ (you might want
    to add redirects from www - optional)
-#. Temporarily add the blog farm's IP address "*178.79.131.171
+#. Temporarily add the blog farm's IP address "*178.79.130.212
    mydomain.org*\ " to your /etc/hosts and test http://mydomain.org/.
 #. Create a DNS CNAME record (see
    `Sysadmin/DomainServices <Sysadmin/DomainServices>`__) for
    mydomain.org (and www.mydomain.org) pointing to
-   *blogfarm.okserver.org* or its IP address 178.79.131.171. If the
+   *blogfarm.okserver.org* or its IP address 178.79.130.212. If the
    domain is at DME, make it a "*A-NAME*\ " to *blogfarm.okserver.org*.
    Wait for the record to propagate and test.
 

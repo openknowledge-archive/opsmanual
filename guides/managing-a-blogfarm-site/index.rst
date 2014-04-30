@@ -56,3 +56,11 @@ enable this on their site using the following steps/.
 NOTE: only available if you have rights to demonstrate you are the owner
 of the site. (ftp access, template edition rights, etc)
 
+Domain Redirections
+===================
+
+Redirections should *only* be managed on the WPEngine domain panel
+https://my.wpengine.com/installs/okf/domains
+
+Click "Add Domain Redirect to this Domain" to add a new redirection for that
+domain.

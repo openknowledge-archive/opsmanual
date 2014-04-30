@@ -1,30 +1,19 @@
 WordPress "farm"
 ################
 
-**Note that we recently migrated to our new wordpress hoster
-`WPEngine <http://wpengine.com>`__. Some parts of this article are not
-yet updated and lack details about WPEngine. We will close those gaps
-shortly.**
+OKF has a blog farm at specialized Wordpress hoster `WPEngine
+<http://wpengine.com>`__. It is a wordpress multisite installation that serves
+numerous properties from a single codebase. It can provide sites at
+**{name}.okblogfarm.org** as well as at any domain name (via Wordpress' domain
+alias feature).
 
-Editors, look out for the tag "*TO BE DOCUMENTED*\ "
-
---------------
-
-OKF has a blog farm at specialized Wordpress hoster
-`WPEngine <http://wpengine.com>`__. It is a wordpress multisite
-installation that serves numerous properties from a single codebase. It
-can provide sites at **{name}.okfn.org** as well as at any domain name
-(via Wordpress' domain alias feature).
-
-Amongst the sites it currently hosts are the `OKFN
-website <http://okfn.org/>`__, the `OKFN
-blog <http://blog.okfn.org/>`__, local OKFN chapters like `OKFN
-Belgium <http://okfn.be/>`__ or `OKFN Germany <http://okfn.de/>`__, the
-`Public Domain Review <http://publicdomainreview.org/>`__,
-`CKAN <http://ckan.org/>`__, the `Open Knowledge & Data
-Festival <http://okfestival.org/>`__,
-`OpenGLAM <http://openglam.org/>`__, `Digitised Manuscripts to
-Europeana <http://dm2e.eu/>`__ and many others.
+Amongst the sites it currently hosts are the `OKFN blog
+<http://blog.okfn.org/>`__, local OKFN chapters like `OKFN Belgium
+<http://okfn.be/>`__ or `OKFN Germany <http://okfn.de/>`__, the `Public Domain
+Review <http://publicdomainreview.org/>`__, `CKAN <http://ckan.org/>`__, the
+`Open Knowledge & Data Festival <http://okfestival.org/>`__, `OpenGLAM
+<http://openglam.org/>`__, `Digitised Manuscripts to Europeana
+<http://dm2e.eu/>`__ and many others.
 
 See also
 ========
@@ -32,12 +21,8 @@ See also
 -  `Sysadmin/Blogfarm Essentials <Sysadmin/Blogfarm Essentials>`__
    contains guidelines for site owners how to activate polular features
    in this blogfarm.
--  `Sysadmin/Blogfarm Code
-   Deployment <Sysadmin/Blogfarm Code Deployment>`__ describes how to
-   deploy code to this blogfarm.
--  `Sysadmin/Blogfarm at Pagely <Sysadmin/Blogfarm at Pagely>`__ An
-   outdated historic version of this article when it was hosted at
-   Pagely
+-  :doc:`/sysadmin/howto/blogfarm-deploy` describes how to deploy code to this
+   blogfarm.
 
 Contact
 =======
@@ -49,11 +34,6 @@ Contact
    owner of a specific blog site, or
    <**sysadmin**\ @\ **okfn**.\ **org**> (See also
    `Sysadmin <Sysadmin>`__).
-
-Note that our current wordpress codebase maintainer is Bobby, who is not
-on the sysadmin alias. The OKF core sysadmin will notify him where his
-involvement is needed. There is a mail alias that includes him as well
-(), but we only use it internally for alerts and ticket notifications.
 
 There is also a mailing list
 <`**sysadmin-coord**\ @\ **lists**.\ **okfn**.\ **org** <http://lists.okfn.org/mailman/listinfo/sysadmin-coord>`__\ >

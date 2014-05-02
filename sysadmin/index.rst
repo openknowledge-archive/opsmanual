@@ -26,7 +26,6 @@ Documentation and notes
    backup
    onboarding
    onboarding-a-sysadmin
-   service-life-cycle
 
 .. _who_are_we:
 

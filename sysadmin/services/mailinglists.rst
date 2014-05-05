@@ -186,3 +186,20 @@ individual list config (stored in python pickle format)
 
 | `` ##Apply the config to the list``
 | ``/usr/sbin/config_list -i mailman_list_config ${list-name}``
+
+Cleaning the Postfix Queue on the Mailman Server
+================================================
+
+Occasionally, postfix on the mailman server will have a large queue because of
+rejections. Usually, there might a spam user who was sent emails which were
+rejected several times ending up in the queue.
+
+When this happens, run the following command to get a list of users and the
+number of emails in the queue for them:
+
+    postqueue -p | grep '@' | grep -v bounces | sort | uniq -c
+
+Get the most offending user from this list and delete them from the queue with
+the `postfix_queue_del.pl` script
+
+    postfix_queue_del.pl spammer@example.com

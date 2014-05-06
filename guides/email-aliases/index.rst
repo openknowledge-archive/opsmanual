@@ -38,23 +38,23 @@ How to remove an email alias
    from LastPass)
 
 #. Use the search box to find the alias. NB: enter only the username part of the
-   email address. That is, if you wish to delete joe.bloggs@okfn.org, just
-   search for “joe.bloggs”.
+   email address. That is, if you wish to delete info@okfn.org, just
+   search for "info".
 
-#. Click the “Del” button on the right hand side of the row containing the alias
+#. Click the "Del" button on the right hand side of the row containing the alias
    you wish to delete. You will see a confirmation similar to that shown above
    for alias creation.
 
-How to modify an email alias
-----------------------------
+How to remove or add a user to an email alias
+---------------------------------------------
 
 #. Visit the `FastMail Virtual Domains configuration page <fm-config_>`_ (log in
    from LastPass)
 
 #. Use the search box to find the alias. NB: enter only the username part of the
-   email address. That is, if you wish to modify joe.bloggs@okfn.org, just
-   search for “joe.bloggs”.
+   email address. That is, if you wish to modify info@okfn.org, just
+   search for "info".
 
-#. Make any desired modifications to the email alias, and click the “Save
-   Changes” button at the bottom of the table. You will see a confirmation
-   similar to that shown above for alias creation.
+#. Add a user's email or remove a user's email on on the second column, and
+   click the "Save Changes" button at the bottom of the table. You will see
+   a confirmation similar to that shown above for alias creation.

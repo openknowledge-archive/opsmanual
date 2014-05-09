@@ -10,26 +10,19 @@ or ask for the necessary DNS/bitbucket/... credentials** (see section
 experimental instance, please mark it clearly as such and notify
 sysadmin-coord.**
 
---------------
-
-Remark: This page has been moved here from
-http://trac.okfn.org/wiki/HostingService as per #992
-
---------------
 
 How to spin up a new cloud instance
 ===================================
 
 -  **Preparation:** Decide which hoster & datacenter the new server
    shall live in. Find the next free server number and set the new
-   server's hostname according to [wiki:ServerNames].
+   server's hostname.
 -  **Deployment (Rackspace):** Spin up a new instance using Rackspace's
    management console (see remark below):
 
    -  Go to https://manage.rackspacecloud.com/
    -  Depending on whether you want to create a managed or unmanaged
-      instance, log in either as user "okfn" or as "okfnmanaged"
-      (request password at Rufus or Nils)
+      instance, log in either as user "okfn" or as "okfnmanaged".
    -  Go to "Hosting/Cloud Servers", tab "Server Instances". Press "Add
       Server".
    -  Select "Ubuntu 12.04 LTS" and enter hostname and amount of RAM.
@@ -47,21 +40,9 @@ How to spin up a new cloud instance
 | ``   ec2-create-tags --region eu-west-1 $INSTANCE --tag Name=eu17 ``
 | ``   ec2-modify-instance-attribute --region eu-west-1 --disable-api-termination true $INSTANCE``
 
--  **DNS**: Add an A record for hostname and IP address, see
-   `Sysadmin/DomainServices <Sysadmin/DomainServices>`__. You can check
-   whether the record was created correctly with "" )
--  **Book keeping**: add the server information into the "Hosts" tab of
-   our `Server/Service
-   matrix <https://docs.google.com/spreadsheet/ccc?key=0Aon3JiuouxLUdC1IZ2kwRDMtX2ZaM0ZELWVJQzBrZXc#gid=11>`__.
--  **Customise**: The new cloud server has been deployed. Now customize
-   it with our `fabric
-   script <https://bitbucket.org/okfn/sysadmin/src/default/bin/fabfile.py>`__
-   using its method "instance\_setup()". (On Amazon EC2, use user
-   *ubuntu* instead of *root* in case of a EC2 instance). Set
-   "``harden=False``\ " if you don't want to disable the root account
-   and password login:
+-  **DNS**: Add an A record for hostname and IP address.
 
-``   fab --host root@${HOST} instance_setup:hostname=${HOST},harden=True ``
+-  **Bootstrap**: Bootstrap with Ansible. TODO
 
 -  '''Reverse DNS (not for Amazon) ''': Set server hostname as reverse
    DNS for the server's main IP address.
@@ -79,79 +60,15 @@ How to spin up a new cloud instance
    -  Select e.g. daily backup 02:00-04:00 and weekly backup on Sundays
    -  Finish with "Save Schedule".
 
--  **Monitoring:** Add the server to Nagios. On eu1.okfn.org:
+-  **Monitoring:** Done with ansible now. Mention how to do it
 
-   -  Add it to /etc/nagios3/conf.d/hosts.cfg
-   -  In /etc/nagios3/conf.d/services\_nagios2.cfg add it to (and maybe
-      )
-   -  sudo /etc/init.d/nagios3 reload
-   -  Check on http://status.okfn.org/cgi-bin/nagios3/status.cgi
-   -  Don't forget to commit & push.
-
-Remarks
--------
-
--  We now have "AWS Premium Support, Bronze." ~~As long as we do not
-   subscribe to their "AWS Premium Support" our only way to file a
-   technical issue report at Amazon is `this
-   form <http://www.amazon.com/gp/html-forms-controller/aws-report-issue1>`__\ ~~
--  We do not yet have re-written our `aws
-   scripts <https://bitbucket.org/okfn/sysadmin/src/tip/aws/>`__ to use
-   `Rackspace's
-   API <http://www.rackspace.com/cloud/cloud_hosting_products/servers/api/>`__
-   (e.g. using `libcloud <http://incubator.apache.org/libcloud/>`__, see
-   #345). Hence we use Rackspace's webinterface.
--  Rackspace has managed ubuntu servers only in their US cloud. That is
-   about to change.
--  We can't file a set of standard changes to be applied to any new
-   server; But we probably can declare one server to be the image master
-   for new ones. See
-   `RS#113872 <https://manage.rackspacecloud.com/Tickets/ViewTicket.do?ticketId=113872>`__
--  Rackspace does not have a concept similar to Amazon's EBS. On the
-   other side it doesn't need it so badly because the images have
-   reasonable size and are always persistant.
--  Rackspace does have an equivalent to S3 called
-   "`Cloudfiles <http://www.rackspace.com/cloud/cloud_hosting_products/files/api/>`__\ ".
-   They seem to be easy to use and would be the way to go if the
-   persistent root block device is not large enough. Our Rackspace
-   accounts are not yet activated to use Cloudfiles.
--  It doesn't look like there would be an equivalent to EC's "security
-   groups", the Could Servers have to do their firewalling themselves.
-   Exception: if we happen to use the services from Rackspace's
-   "Dedicated Group", in which case there was a managed firewall in
-   front of our cloud servers.
--  These are all virtualized boxes so you can't run VMs within them! See
-   http://serverfault.com/questions/128145/linux-virtualization-options-on-ec2
-   (comment from Nils: there should be ways to make OpenVZ/LXC/qemu
-   work, but it's probably not worth the effort)
 
 Access credentials
 ==================
 
--  Rackspace: Get username/password for their `management
-   interface <https://manage.rackspacecloud.com/>`__ from Rufus
--  Amazon: There is a master password for the `AWS
-   console <https://console.aws.amazon.com/ec2/home>`__. For `scripting
-   AWS <http://docs.amazonwebservices.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html>`__,
-   you need:
-
-   -  For Amazon's REST API, e.g. our boto based
-      **`aws/manage.py <https://bitbucket.org/okfn/sysadmin/src/default/aws/manage.py>`__**:
-      Get the "AWS access key id" and the "AWS secret access key" from
-      Rufus or from our AWS account. Create a ~/.boto file like this:
-
-``  [Credentials]aws_access_key_id = ...aws_secret_access_key = ...``
-
--
-
-   -  For Amazon's SOAP API, e.g. **ec2-tools** and scripts based on
-      them: Get our AWS certificate and key PEM files from Rufus (SHA1
-      Fingerprint=CC:8A:97:1A:10:BF:76:91:6C:A0:EF:D3:C1:F9:EC:C9:5D:1D:E3:AE).
-      Store them on your local machine and export their locations before
-      running the scripts:
-
-| `` export EC2_CERT=${PATH_OF_AWS_CERTIFICATE_PEM_FILE}``
-| `` export EC2_PRIVATE_KEY=${PATH_OF_AWS_KEY_PEM_FILE}``
+Credentials for the web interface should be in LastPass. Private keys and
+other shared files should be in the `okfn/credetials
+<https://github.com/okfn/credentials>` repo.
 
 Appendix: Hosting costs
 =======================

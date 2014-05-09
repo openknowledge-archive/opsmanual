@@ -76,22 +76,7 @@ Appendix: Hosting costs
 Rackspace hosting costs
 -----------------------
 
-Rackspace has several datacenters for cloud servers. At least one dc is
-in UK (London). The US and the UK prices differ.
-
--  Linux VMs are paid by memory per time: 6ct (4p) per GB\*h = $43.83
-   (£29.22) per GB\*month
--  Windows (2008) VMs are : 8ct (5.2p) per GB\*h = $58.40 (£37.96) per
-   GB\*month
--  managed VMs cost a premium: 12ct (10p) per h = $87.66 ($73.05) per
-   month per VM
--  There is a fixed monthly account fee if there is at least one managed
-   VM: $100 (£65) per month
--  There is no charge for incoming traffic
--  There is a charge for ourgoing traffic: 18ct (12p) per GB = $180
-   (£120) per TB
-
-So the formula for the monthly fee is:
+The formula for the monthly fee is:
 
 -  US cloud servers:
 
@@ -100,13 +85,6 @@ So the formula for the monthly fee is:
 -  UK cloud servers:
 
 ``   £29.22/GB  *  total memory of all Linux VMs +   £37.96/GB  *  total memory of all Windows VMs +   £73.05     *  total number of managed VMs +   £65.00        (if there is at least 1 managed VM) +  £120.00/TB  *  total outgoing traffic``
-
-Remarks:
-
--  New features are first rolled out in the US cloud.
--  Managed and unmanaged cloud servers can only be adminstered with
-   separate Rackspace accounts. :-(
--  For my customers, traffic costs have been neglectable so far.
 
 Sources
 -------
@@ -135,15 +113,6 @@ Sources
 
 Appendix: Standard changes to managed Rackspace servers
 =======================================================
-
-Should go into our Fabric script (see #601):
-
--  Disable too strict fail2ban rule which blocks ssh login from IPs with
-   broken reverse DNS:
-
-| ``   sudo cp -a /etc/fail2ban/filter.d/sshd.conf /etc/fail2ban/filter.d/sshd.conf.ORIG``
-| ``   sudo sed '/POSSIBLE BREAK-IN ATTEMPT/d' -i /etc/fail2ban/filter.d/sshd.conf``
-| ``   sudo /etc/init.d/fail2ban restart    ``
 
 -  If you disabled ssh password login, add an exception for the
    Rackspace management IPs:

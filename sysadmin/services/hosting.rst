@@ -1,16 +1,6 @@
 Server hosting
 ##############
 
-''' IMPORTANT NOTE: PLEASE DO \*NOT\* CREATE A PERMANENT INSTANCE IF YOU
-ARE NOT WILLING/ABLE TO PERFORM ALL THESE STEPS! '''
-
-**In this case, please ask someone else to create the instance for you,
-or ask for the necessary DNS/bitbucket/... credentials** (see section
-*Access credentials* below). **If you intent to spin up a temporary
-experimental instance, please mark it clearly as such and notify
-sysadmin-coord.**
-
-
 How to spin up a new cloud instance
 ===================================
 

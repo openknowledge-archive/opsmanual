@@ -42,7 +42,11 @@ How to spin up a new cloud instance
 
 -  **DNS**: Add an A record for hostname and IP address.
 
--  **Bootstrap**: Bootstrap with Ansible. TODO
+-  **Bootstrap**: To bootstrap the machine, use bootstrap.yml in the `infra`
+  repository::
+
+    ./play bootstrap.yml --extra-vars="hostip=<newip> host=<newhostname>
+    user=ubuntu" -v -s
 
 -  '''Reverse DNS (not for Amazon) ''': Set server hostname as reverse
    DNS for the server's main IP address.
@@ -60,7 +64,8 @@ How to spin up a new cloud instance
    -  Select e.g. daily backup 02:00-04:00 and weekly backup on Sundays
    -  Finish with "Save Schedule".
 
--  **Monitoring:** Done with ansible now. Mention how to do it
+-  **Monitoring:** Adding the machine to the respective host group for
+   monitoring.
 
 
 Access credentials

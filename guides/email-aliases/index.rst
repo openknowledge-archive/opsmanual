@@ -45,6 +45,21 @@ How to remove an email alias
    you wish to delete. You will see a confirmation similar to that shown above
    for alias creation.
 
+How to search for an email address across all aliases
+-----------------------------------------------------
+
+#. The Fastmail web interface search, does not let you search for email addresses that may be part of an alias, 
+
+#. An optional method to look for email addresses across all aliases is,
+   to set the 'Aliases to display' to its maximum value.
+
+   .. image:: aliases-display.png 
+
+#. The 'Aliases to display' option is located at the bottom of the 'Virtual Aliases' list.
+
+#. Once all the Aliases are displayed use CTRL+F, the browser search to find an email address or alias.
+
+
 How to remove or add a user to an email alias
 ---------------------------------------------
 

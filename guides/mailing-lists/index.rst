@@ -81,6 +81,15 @@ If you still can't find the password and think you can have it, please contact
 the system administrators: :doc:`/sysadmin/getting-help`.
 
 
+Moderating mailing list spam mail
+---------------------------------
+
+ If the list you are moderating recieves spam, you can forward these spam mails from
+the moderation interface to our bayes based spam learning address - ``learn-spam@lists.okfn.org``
+
+This will help our mailman spam filter to 'learn' and classify spam mails correctly.
+
+
 Mailing list actions that require sysadmin help
 ------------------------------------------------
 

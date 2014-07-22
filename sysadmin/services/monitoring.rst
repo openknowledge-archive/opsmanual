@@ -48,15 +48,15 @@ The next step is to update the check\_mk config, by running:
 Other monitoring related Ansible flags
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
- We have a bunch of flags in Ansible to simplify managing checks for
-each host, they are documented here in the `OKF infra
-repo <https://github.com/okfn/infra/tree/master/ansible/inventory>`__
+We have a bunch of flags in Ansible to simplify managing checks for each host,
+they are documented here in the `OKF infra repo
+<https://github.com/okfn/infra/tree/master/ansible/inventory>`__
 
 Stats collection and graphs in Graphite
 ---------------------------------------
 
- Graphite is used to aggregate and display stats as graphs, stats are
-gathered with with collectd.
+Graphite is used to aggregate and display stats as graphs, stats are gathered
+with with collectd.
 
 -  Resource graphs for OKF servers are at `graphite.okfn.org`_.
 -  The OKF infra ansible ``monitoring`` role is used to add servers into

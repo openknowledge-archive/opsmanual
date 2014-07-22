@@ -6,15 +6,13 @@ and advice on how the Open Knowledge Foundation (OKF) operates. While primarily
 intended to be used by our staff, the content here may also be useful for those
 affiliated with our Working and Local Groups, as well as our broader community.
 
-.. note::
-
-   The Operations Manual is new, and content is still being migrated from its
-   various previous homes (Google Drive, the wiki, peoples' heads). Please bear
-   with us while we get the manual up to scratch.
+If you need help from the team, please read the :doc:`Getting Help
+</getting-help>` documentation.
 
 .. toctree::
    :maxdepth: 2
 
+   getting-help
    guides/index
    sysadmin/index
 

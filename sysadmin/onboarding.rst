@@ -17,6 +17,7 @@ Joiners
 #. Add contact information to Contact spreadsheet
 
 As needed
+
 #. Highrise invitation.
 #. Github owners team access.
 

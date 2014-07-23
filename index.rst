@@ -6,7 +6,7 @@ and advice on how the Open Knowledge Foundation (OKF) operates. While primarily
 intended to be used by our staff, the content here may also be useful for those
 affiliated with our Working and Local Groups, as well as our broader community.
 
-If you need help from the team, please read the :doc:`Getting Help
+If you need help from the sysadmin team, please read the :doc:`Getting Help
 </getting-help>` documentation.
 
 .. toctree::

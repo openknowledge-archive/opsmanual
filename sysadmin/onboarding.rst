@@ -3,7 +3,6 @@ Onboarding staff
 
 Things that need doing when a new member of staff joins or leaves:
 
-
 Joiners
 -------
 
@@ -14,8 +13,12 @@ Joiners
 #. Send a Xero invitation
 #. Add a LastPass account and add to relevant LastPass group
 #. Send a Slack invitation
-#. If needed, send a Highrise invitation
+#. Setup Google Drive with the right folders.
+#. Add contact information to Contact spreadsheet
 
+As needed
+#. Highrise invitation.
+#. Github owners team access.
 
 Leavers
 -------
@@ -27,3 +30,4 @@ Leavers
 #. Remove any account from Toggl
 #. Remove from any email aliases in FastMail
 #. Remove Google Apps account
+#. Remove from Github owners team.

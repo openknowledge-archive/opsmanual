@@ -9,7 +9,6 @@ contact one of the sysadmin team: :ref:`who_are_we`
    :glob:
    :maxdepth: 2
 
-   getting-help
    emergencies
 
 Documentation and notes

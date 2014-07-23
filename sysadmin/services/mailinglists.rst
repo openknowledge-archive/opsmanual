@@ -14,19 +14,9 @@ How to add a new mailing list domain
    created.
 
 -  The current default is @lists.okfn.org
--  To add more domains, append the domain name into the below set of
-   files
+-  To add more domains, append the domain name into ``ansible/inventory/host_vars/s116.okserver.org.yml``
+   in the relevant parts of the file
 
-| ``/etc/exim4/conf.d/main/01_exim4-config_listmacrosdefs``
-| ``domainlist local_domains = @:localhost:lists.okfn.org:lists.knowledgeforge.net:lists.dataexpeditions.org:partial-lsearch;/etc/mailconfig/mail_domains``
-
-| ``/conf.d/main/04_exim4-config_mailman``
-| ``domainlist mm_domains=lists.okfn.org:lists.knowledgeforge.net:lists.dataexpeditions.org``
-
--  Ensure that the new domain has been added into the MTA as mentioned
-   `here <http://wiki.okfn.org/Sysadmin/EmailService#How_to_add_a_new_email_domain>`__
--  If the domain was just added into exim's config files, you may need
-   to reload exim.
 
 How to Rebuild list archives
 ============================

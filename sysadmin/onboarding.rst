@@ -20,6 +20,7 @@ As needed
 
 #. Highrise invitation.
 #. Github owners team access.
+#. Tenderapp invitation.
 
 Leavers
 -------
@@ -32,3 +33,4 @@ Leavers
 #. Remove from any email aliases in FastMail
 #. Remove Google Apps account
 #. Remove from Github owners team.
+#. Remove from Tenderapp.

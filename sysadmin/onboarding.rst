@@ -21,6 +21,7 @@ As needed
 #. Highrise invitation.
 #. Github owners team access.
 #. Tenderapp invitation.
+#. Access to blogfarm.
 
 Leavers
 -------
@@ -34,3 +35,5 @@ Leavers
 #. Remove Google Apps account
 #. Remove from Github owners team.
 #. Remove from Tenderapp.
+#. Remove access to all blogfarm sites. Don't delete user. Downgrade to
+   contributor on all sites.

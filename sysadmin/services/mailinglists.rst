@@ -117,11 +117,9 @@ queues. Therefore you should follow this procedure:
 If there are no more queued messages, you can upgrade mailman now.
 Otherwise proceed:
 
-**TODO**: Is the below section relevant anymore?
-
--  Prevent the MTA (exim in our case) from passing new postings to
+-  Prevent the MTA (postfix in our case) from passing new postings to
    mailman, but make sure it still accepts mails \*from\* mailman. I am
-   not sure whether stopping the exim service would work, so instead i
+   not sure whether stopping the postfix service would work, so instead i
    block port 25 temporarily::
 
     sudo iptables -A INPUT -m state --state NEW -p tcp --dport 25 -i ! lo -j REJECT
@@ -130,8 +128,8 @@ Otherwise proceed:
 
     sudo watch 'find /var/lib/mailman/qfiles/ -type f | wc -l'
 
--  Stop mailman. Revert the above step that stopped exim from passing
-   messages to mailman, e.g. start exim, or remove any block::
+-  Stop mailman. Revert the above step that stopped postfix from passing
+   messages to mailman, e.g. start postfix, or remove any block::
 
     sudo iptables -D INPUT -m state --state NEW -p tcp --dport 25 -i ! lo -j REJECT
 

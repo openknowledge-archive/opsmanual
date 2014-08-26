@@ -20,33 +20,26 @@ Joiners
 +-------------------------------------------------------+----------+--------+
 | Send a Xero invitation                                | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Add a LastPass account and add to relevant LastPass   | HR or    | Yes    |
-| group                                                 | sysadmin |        |
+| Add a LastPass account and add to relevant LastPass   | HR       | Yes    |
+| group                                                 |          |        |
 +-------------------------------------------------------+----------+--------+
-| Send Slack invitation                                 | HR or    | Yes    |
-|                                                       | sysadmin |        |
+| Send Slack invitation                                 | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Setup Google Drive with the right folders             | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Add contact information to Contact spreadsheet        | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Github owners team access                             | ?        | No     |
+| Github owners team access                             | manager  | No     |
 +-------------------------------------------------------+----------+--------+
-| Tenderapp invitation                                  | ?        | No     |
+| Tenderapp invitation                                  | manager  | No     |
 +-------------------------------------------------------+----------+--------+
 | Access to blogfarm                                    | sysadmin | No     |
 |                                                       | or       |        |
-|                                                       | existing |        |
-|                                                       | team     |        |
+|                                                       | manager  |        |
 +-------------------------------------------------------+----------+--------+
 | Add keys to infra repo and grant access to servers    | sysadmin | No     |
 +-------------------------------------------------------+----------+--------+
-| Access to github                                      | sysadmin | No     |
-|                                                       | or       |        |
-|                                                       | existing |        |
-|                                                       | team     |        |
-+-------------------------------------------------------+----------+--------+
-| Access to Highrise                                    | ?        | No     |
+| Access to Highrise                                    | HR       | No     |
 +-------------------------------------------------------+----------+--------+
 
 
@@ -56,27 +49,24 @@ Leavers
 +-------------------------------------------------------+----------+
 | Action                                                | Team     |
 +=======================================================+==========+
-| Suspend Google Apps account and transfer docs         | HR or    |
-|                                                       | sysadmin |
+| Suspend Google Apps account and transfer docs         | HR       |
 +-------------------------------------------------------+----------+
-| Remove from any aliases on FastMail                   | HR or    |
-|                                                       | sysadmin |
+| Remove from any aliases on FastMail                   | sysadmin |
 +-------------------------------------------------------+----------+
 | Remove from Toggl                                     | HR       |
 +-------------------------------------------------------+----------+
 | Remove from Xero                                      | HR       |
 +-------------------------------------------------------+----------+
-| Remove from LastPass                                  | HR or    |
-|                                                       | sysadmin |
+| Remove from LastPass                                  | sysadmin |
 +-------------------------------------------------------+----------+
 | Remove from Slack                                     | HR or    |
 |                                                       | sysadmin |
 +-------------------------------------------------------+----------+
-| Remove contact information from Contact spreadsheet   | ?        |
+| Remove contact information from Contact spreadsheet   | HR       |
 +-------------------------------------------------------+----------+
 | Remove from Github owners team                        | sysadmin |
 +-------------------------------------------------------+----------+
-| Remove from Tenderapp                                 | ?        |
+| Remove from Tenderapp                                 | manager  |
 +-------------------------------------------------------+----------+
 | Remove access to all blogfarm sites. Do not delete    | sysadmin |
 | user. Downgrade to contributor on all sites           |          |

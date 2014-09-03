@@ -51,27 +51,27 @@ Leavers
 +=======================================================+==========+
 | Suspend Google Apps account and transfer docs         | HR       |
 +-------------------------------------------------------+----------+
-| Remove from any aliases on FastMail                   | sysadmin |
-+-------------------------------------------------------+----------+
 | Remove from Toggl                                     | HR       |
 +-------------------------------------------------------+----------+
 | Remove from Xero                                      | HR       |
 +-------------------------------------------------------+----------+
-| Remove from LastPass                                  | sysadmin |
+| Remove contact information from Contact spreadsheet   | HR       |
++-------------------------------------------------------+----------+
+| Remove account from Highrise                          | HR       |
++-------------------------------------------------------+----------+
+| Remove from Tenderapp                                 | manager  |
 +-------------------------------------------------------+----------+
 | Remove from Slack                                     | HR or    |
 |                                                       | sysadmin |
 +-------------------------------------------------------+----------+
-| Remove contact information from Contact spreadsheet   | HR       |
+| Remove from LastPass                                  | sysadmin |
++-------------------------------------------------------+----------+
+| Remove from any aliases on FastMail                   | sysadmin |
 +-------------------------------------------------------+----------+
 | Remove from Github owners team                        | sysadmin |
-+-------------------------------------------------------+----------+
-| Remove from Tenderapp                                 | manager  |
 +-------------------------------------------------------+----------+
 | Remove access to all blogfarm sites. Do not delete    | sysadmin |
 | user. Downgrade to contributor on all sites           |          |
 +-------------------------------------------------------+----------+
 | Remove keys from infra repo and access to servers     | sysadmin |
-+-------------------------------------------------------+----------+
-| Remove account from Highrise                          | HR       |
 +-------------------------------------------------------+----------+

@@ -25,6 +25,8 @@ Joiners
 +-------------------------------------------------------+----------+--------+
 | Send Slack invitation                                 | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
+| Send TurbineHQ invitation                             | HR       | Yes    |
++-------------------------------------------------------+----------+--------+
 | Setup Google Drive with the right folders             | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Add contact information to Contact spreadsheet        | employee | Yes    |

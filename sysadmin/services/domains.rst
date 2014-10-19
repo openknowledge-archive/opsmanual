@@ -87,20 +87,17 @@ For the OKF domain admin:
 1b: How to *register* a *new* domain for OKF
 ============================================
 
-This procedure will secure a *formely non-existing* domain for OKF. And
+This procedure will secure a *formerly non-existing* domain for OKF. And
 it will prepare the next step (setting DNS records) by telling the
-register what DNS will be used for To register a new domain, log in as
-OS1535-GANDI (ask Rufus or Nils for the password). Domain registration
-is straightforward [Note to self: test this procedure!!]
+register what DNS will be used for To register a new domain, log in to the Gandi account, details are in lastpass. Domain registration
+is straightforward.
 
 -  Enter the domain name you want to register and click on Search for a
    domain name. This should bring up the results.
 -  Make sure the automatically selected domain name has the right
    address (.org or .com etc) and add to cart.
 -  Choose 1yr duration and make sure it has the correct contact details
--  Pay using paypal account and click continue. Enter OKF paypal
-   details. This should bring up the checkout page and should indicate
-   that the transaction has been completed successfully.
+-  Pay using the pre-paid accound.
 -  Now set the DNS servers to be the DME name servers:
 
    -  In the "Domains" dashbord, click on the new domain name

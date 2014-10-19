@@ -31,8 +31,9 @@ Documentation and notes
 Who are we?
 -----------
 
--  Joel Rebello: Full-time sysadmin
--  Nigel Babu: Part-time sysadmin
+-  Nigel Babu: Senior sysadmin
+-  Matthew Moore: Sysadmin
+
 
 At various times, the following people have provided advice and support to the
 sysadmin team:

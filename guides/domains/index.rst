@@ -6,8 +6,10 @@ To request a new domain from the sysadmin team, please send an email into sysadm
 -  Name(s) of domain(s) required
 -  How long you want to register the domain for (default, 1 year)
 -  Does the domain need to be set to auto-renew
--  Who is the owner of the domain (so we know who to ask about renewal)
+-  What role is the owner of the domain (so we know who to ask about renewal)
 -  If this is for a specific project
+
+When we say role, an example of a role would be say 'Network Team Lead' or similar.  This is so we don't end up with a number of domains 'owned' by Alice which are then orphaned if Alice were to leave the organisation.
 
 Auto-renew means that the domain will be automatically renewed when it comes up for renewal for a year.  If you want to keep the domain, say yes.  Otherwise we'll assume you don't want it to auto-renew.
 

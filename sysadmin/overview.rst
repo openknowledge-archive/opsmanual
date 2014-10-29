@@ -71,7 +71,7 @@ as "groupware") is currently provided by `Google Apps for Business`_.
 
 .. _Google Apps for Business: http://www.google.com/enterprise/apps/business/
 
-We also now have Google Vault_.  Which can be used to 'save' emails from email accounts which aren't in use.  
+We also now have `Google Vault`_.  Which can be used to 'save' emails from email accounts which aren't in use.  
 
 .. _Google Vault: https://support.google.com/vault/answer/2462365?hl=en&ref_topic=2739742
 

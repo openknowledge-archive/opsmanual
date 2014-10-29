@@ -39,6 +39,7 @@ At various times, the following people have provided advice and support to the
 sysadmin team:
 
 -  Neal Bastek
+-  Joel Rebello
 -  James Casbon
 -  Michelle Heydon
 -  Rufus Pollock

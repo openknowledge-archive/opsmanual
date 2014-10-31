@@ -1,5 +1,5 @@
-Server hosting
-##############
+Server hosting and building new server
+######################################
 
 How to spin up a new cloud instance
 ===================================

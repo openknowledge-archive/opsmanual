@@ -35,8 +35,8 @@ How to spin up a new cloud instance
 -  **Bootstrap**: To bootstrap the machine, use bootstrap.yml in the `infra`
   repository::
 
-    ./play bootstrap.yml --extra-vars="hostip=<newip> host=<newhostname>
-    user=ubuntu" -v -s
+    ansible-playbook bootstrap.yml --extra-vars="hostip=<newip> host=<newhostname>
+    user=ubuntu" --verbose -s
 
 -  '''Reverse DNS (not for Amazon) ''': Set server hostname as reverse
    DNS for the server's main IP address.

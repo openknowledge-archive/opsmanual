@@ -14,7 +14,7 @@ Guides
  dashboards.html
   *
 
-:doc:`dashboards`
+
 
    .. _dashboards:
    

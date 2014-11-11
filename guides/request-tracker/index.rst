@@ -12,7 +12,7 @@ Guides
 
 .. _dashboards: dashboards.html
 
-`How to Log a ticket <logging-tickets>`_
+`How to Log a ticket <logging-tickets.html>`_
 
 .. _logging-tickets: logging-tickets.html
 

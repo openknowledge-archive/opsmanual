@@ -1,4 +1,4 @@
-Request Tracker Guide
+Request Tracker 
 =====================
 
 Request Tracker or RT as it is more commonly known is request tracking software.  Open Knowledge uses it to track requests for work from internal and external users of our IT systems.

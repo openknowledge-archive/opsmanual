@@ -5,9 +5,14 @@ Request Tracker or RT as it is more commonly known is request tracking software.
 
 RT can be found at http://rt.okfn.org.  Even if you don't have an account with RT you can email requests into RT and these will be logged as tickets which the relevant team can act upon.
 
+Guides
+------
+
 .. toctree::
    :glob:
-   :maxdepth: 2
+   :maxdepth: 1
+
+   */index
 
 Current RT email addresses
 -----------------------------

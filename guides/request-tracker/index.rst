@@ -14,7 +14,7 @@ Guides
  dashboards.html
   *
 
-:doc: `dashboards`
+:doc:`dashboards`
 
 Current RT email addresses
 -----------------------------

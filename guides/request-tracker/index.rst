@@ -8,26 +8,26 @@ RT can be found at http://rt.okfn.org.  Even if you don't have an account with R
 Guides
 ------
 
-.. toctree::
-
- dashboards*
- dashboards.html
-  *
-
-
-
-   
-
-
 `Dashboards <dashboards.html>`_
 
 .. _dashboards: dashboards.html
 
+`How to Log a ticket <logging-tickets>`_
 
-.. toctree::
-   :glob:
+.. _logging-tickets: logging-tickets.html
 
-   */*
+`How to modify a ticket <modify-a-ticket.html>`_
+
+.. _modify-a-ticket: modify-a-ticket.html
+
+`Searching for tickets <searching.html>`_
+
+.. _searching: searching.html
+
+`Replying and Commenting on tickets <replying-and-commenting.html>`_
+
+.. _replying-and-commenting: replying-and-commenting.html
+
 
 Current RT email addresses
 -----------------------------

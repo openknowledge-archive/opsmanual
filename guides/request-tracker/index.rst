@@ -16,7 +16,7 @@ Guides
 
 .. _logging-tickets: logging-tickets.html
 
-`How to modify a ticket <modify-a-ticket.html>`_
+`How to modify a ticket <modifying-a-ticket.html>`_
 
 .. _modify-a-ticket: modify-a-ticket.html
 

@@ -10,7 +10,7 @@ Guides
 
 .. toctree::
 
-   *
+  *
 
 Current RT email addresses
 -----------------------------

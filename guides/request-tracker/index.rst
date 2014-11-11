@@ -16,9 +16,8 @@ Guides
 
 
 
-   .. _dashboards:
    
-.. _dashboards::
+.. _dashboards: dashboards.html
 
 `dashboards_`
 

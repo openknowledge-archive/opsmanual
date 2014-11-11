@@ -16,6 +16,10 @@ Guides
 
 :doc:`dashboards`
 
+   .. _dashboards:
+   
+.. _dashboards::
+
 Current RT email addresses
 -----------------------------
 

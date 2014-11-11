@@ -17,9 +17,11 @@ Guides
 
 
    
-.. _dashboards: dashboards.html
+
 
 `Dashboards <dashboards_>`_
+
+.. _dashboards: dashboards.html
 
 Current RT email addresses
 -----------------------------

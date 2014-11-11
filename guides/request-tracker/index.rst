@@ -11,7 +11,10 @@ Guides
 .. toctree::
 
  dashboards*
+ dashboards.html
   *
+
+:doc: `dashboards`
 
 Current RT email addresses
 -----------------------------

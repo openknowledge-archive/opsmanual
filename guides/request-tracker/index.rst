@@ -19,7 +19,7 @@ Guides
    
 
 
-`Dashboards <dashboards_>`_
+`Dashboards <dashboards.html>`_
 
 .. _dashboards: dashboards.html
 

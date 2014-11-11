@@ -10,9 +10,9 @@ Guides
 
 .. toctree::
    :glob:
-   :maxdepth: 1
+   :maxdepth: 2
 
-   */index
+   *
 
 Current RT email addresses
 -----------------------------

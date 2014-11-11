@@ -23,6 +23,13 @@ Guides
 
 .. _dashboards: dashboards.html
 
+
+.. toctree::
+   :glob:
+   :maxdepth: 1
+
+   */*
+
 Current RT email addresses
 -----------------------------
 

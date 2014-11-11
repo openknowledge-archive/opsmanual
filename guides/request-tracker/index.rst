@@ -10,6 +10,7 @@ Guides
 
 .. toctree::
 
+ dashboards*
   *
 
 Current RT email addresses

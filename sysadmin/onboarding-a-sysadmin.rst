@@ -8,6 +8,10 @@ Things that need doing when a new sysadmin comes on board:
 - WPEngine:
   - my.wpengine.com account
   - superadmin privileges on the blogfarm
-- add to sysadmin-team in Google Groups
+- Add to sysadmin-team in Google Groups
 - Google analytics
 - Lastpass
+- Google Apps admin
+- Instruct to subscribe to sysadmin-coord@, outages@, and sysadmin-announce@
+- Pagerduty invite
+- AWS IAM account

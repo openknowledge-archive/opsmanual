@@ -12,6 +12,10 @@ Guides
 
 .. _dashboards: dashboards.html
 
+`Quick Bookmarklet <quick-bookmarklet.html>`_
+
+.. _quick-bookmarklet: quick-bookmarklet.html
+
 `How to Log a ticket <logging-tickets.html>`_
 
 .. _logging-tickets: logging-tickets.html

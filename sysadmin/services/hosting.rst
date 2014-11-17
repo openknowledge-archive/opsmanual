@@ -38,13 +38,18 @@ How to spin up a new cloud instance
     ./play bootstrap.yml --extra-vars="hostip=<newip> host=<newhostname>
     user=ubuntu" -v -s
 
--  '''Reverse DNS (not for Amazon) ''': Set server hostname as reverse
+-  '''Reverse DNS (rDNS) (not for Amazon) ''': Set server hostname as reverse
    DNS for the server's main IP address.
 
    -  RackSpace: In the Rackspace management interface's overview for
       this server, click on the tab "DNS". In section "Reverse DNS
       Management", set the hostname as reverse DNS record for the IP
       address.
+   -  Linode: In the Linode 'server' panel, under each machine, use 
+      Remote Access. Hackable URI:
+      https://manager.linode.com/linodes/rdns/sNNN. Set the hostname
+      (there's no need to add a terminal period ''foo.example.org.'')
+      or, in the case of an SSL cert address, the CN for the cert.
 
 -  **Backup:** (optional, Rackspace only) If the new host shall be
    automatically snapshot: Within Rackspace's management interface's
@@ -62,7 +67,7 @@ Access credentials
 ==================
 
 Credentials for the web interface should be in LastPass. Private keys and
-other shared files should be in the `okfn/credetials
+other shared files should be in the `okfn/credentials
 <https://github.com/okfn/credentials>` repo.
 
 Appendix: Hosting costs

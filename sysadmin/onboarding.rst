@@ -94,7 +94,7 @@ Leavers
 | Remove keys from infra repo and access to servers     | sysadmin |
 +-------------------------------------------------------+----------+
 | Remove from Mailman lists                             | sysadmin |
-| (`remove_member --from-all`)                          |          |
+| (`remove_members --fromall`)                          |          |
 +-------------------------------------------------------+----------+
 | Know Your Company                                     | Laura or |
 |                                                       | Rufus    |

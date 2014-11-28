@@ -1,7 +1,13 @@
-Onboarding staff
-================
+Onboarding staff and managing leavers
+=====================================
 
-Things that need doing when a new member of staff joins or leaves:
+* Managers should email HR with details. For new joinees, it will involve
+  sending an email with their full name and start date. For leavers, mention
+  the name, email and final date. Also specify if emails need to be forwarded
+  after the employee has left.
+* HR will open a ticket with sysadmin about the new joinee. Sysadmins will
+  create accounts and log actions to the ticket and close it out when
+  everything is ready.
 
 Joiners
 -------
@@ -9,21 +15,21 @@ Joiners
 +-------------------------------------------------------+----------+--------+
 | Action                                                | Team     | Req?   |
 +=======================================================+==========+========+
-| Create Google Apps account                            | HR       | Yes    |
+| Create Google Apps account                            | sysadmin | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Add to relevant Google Groups                         | HR       | Yes    |
+| Add to relevant Google Groups                         | sysadmin | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Add email alias to FastMail, and wait 15m for alias   | HR       | Yes    |
+| Add email alias to FastMail, and wait 15m for alias   | sysadmin | Yes    |
 | become live                                           |          |        |
++-------------------------------------------------------+----------+--------+
+| Add a LastPass account and add to relevant LastPass   | sysadmin | Yes    |
+| group                                                 |          |        |
++-------------------------------------------------------+----------+--------+
+| Send Slack invitation                                 | sysadmin | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Send a Toggl invitation                               | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Send a Xero invitation                                | HR       | Yes    |
-+-------------------------------------------------------+----------+--------+
-| Add a LastPass account and add to relevant LastPass   | HR       | Yes    |
-| group                                                 |          |        |
-+-------------------------------------------------------+----------+--------+
-| Send Slack invitation                                 | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Send TurbineHQ invitation                             | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
@@ -31,8 +37,10 @@ Joiners
 +-------------------------------------------------------+----------+--------+
 | Add contact information to Contact spreadsheet        | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Know Your Company                                     | Laura or | Yes    |
-|                                                       | Rufus    |        |
+| Email Laura, Rufus, or Fiona for adding into Know     | sysadmin | Yes    |
+| Your Company                                          |          |        |
++-------------------------------------------------------+----------+--------+
+| Send introuction email to all-staff@                  | manager  | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Add to relevant Mailman lists                         | manager  | No     |
 +-------------------------------------------------------+----------+--------+
@@ -60,8 +68,7 @@ Leavers
 +-------------------------------------------------------+----------+
 | Action                                                | Team     |
 +=======================================================+==========+
-+-------------------------------------------------------+----------+
-| Suspend Google Apps account and transfer docs         | HR       |
+| Suspend Google Apps account and transfer docs         | sysadmin |
 +-------------------------------------------------------+----------+
 | Remove from Toggl                                     | HR       |
 +-------------------------------------------------------+----------+
@@ -77,10 +84,9 @@ Leavers
 +-------------------------------------------------------+----------+
 | Remove from TurbineHQ                                 | HR       |
 +-------------------------------------------------------+----------+
-| Remove from Tenderapp                                 | manager  |
+| Remove from Team page on website                      | manager  |
 +-------------------------------------------------------+----------+
-| Remove from Slack                                     | HR or    |
-|                                                       | sysadmin |
+| Remove from Slack                                     | sysadmin |
 +-------------------------------------------------------+----------+
 | Remove from LastPass                                  | sysadmin |
 +-------------------------------------------------------+----------+
@@ -96,8 +102,8 @@ Leavers
 | Remove from Mailman lists                             | sysadmin |
 | (`remove_members --fromall`)                          |          |
 +-------------------------------------------------------+----------+
-| Know Your Company                                     | Laura or |
-|                                                       | Rufus    |
+| Remove from RT                                        | sysadmin |
 +-------------------------------------------------------+----------+
-| Remove from Team page on website                      | manager  |
+| Email Laura, Rufus, or Fiona for removing from Know   | sysadmin |
+| Your Company                                          |          |
 +-------------------------------------------------------+----------+

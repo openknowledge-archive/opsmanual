@@ -32,7 +32,7 @@ Joiners
 | Add contact information to Contact spreadsheet        | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Know Your Company                                     | Laura, Fiona or | Yes    |
-|                                                       | Rufus           |        |
+|                                                       | Rufus    |        |
 +-------------------------------------------------------+----------+--------+
 | Add to relevant Mailman lists                         | manager  | No     |
 +-------------------------------------------------------+----------+--------+

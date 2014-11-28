@@ -1,7 +1,13 @@
-Onboarding staff
-================
+Onboarding staff and managing leavers
+=====================================
 
-Things that need doing when a new member of staff joins or leaves:
+* Managers should email HR with details. For new joinees, it will involve
+  sending an email with their full name and start date. For leavers, mention
+  the name, email and final date. Also specify if emails need to be forwarded
+  after the employee has left.
+* HR will open a ticket with sysadmin about the new joinee. Sysadmins will
+  create accounts and log actions to the ticket and close it out when
+  everything is ready.
 
 Joiners
 -------
@@ -80,8 +86,9 @@ Leavers
 +-------------------------------------------------------+----------+
 | Remove from Tenderapp                                 | manager  |
 +-------------------------------------------------------+----------+
-| Remove from Slack                                     | HR or    |
-|                                                       | sysadmin |
+| Remove from Team page on website                      | manager  |
++-------------------------------------------------------+----------+
+| Remove from Slack                                     | sysadmin |
 +-------------------------------------------------------+----------+
 | Remove from LastPass                                  | sysadmin |
 +-------------------------------------------------------+----------+
@@ -99,6 +106,4 @@ Leavers
 +-------------------------------------------------------+----------+
 | Know Your Company                                     | Laura or |
 |                                                       | Rufus    |
-+-------------------------------------------------------+----------+
-| Remove from Team page on website                      | manager  |
 +-------------------------------------------------------+----------+

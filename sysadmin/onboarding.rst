@@ -37,8 +37,8 @@ Joiners
 +-------------------------------------------------------+----------+--------+
 | Add contact information to Contact spreadsheet        | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Know Your Company                                     | Laura or | Yes    |
-|                                                       | Rufus    |        |
+| Email Laura, Rufus, or Fiona for adding into Know     | sysadmin | Yes    |
+| Your Company                                          |          |        |
 +-------------------------------------------------------+----------+--------+
 | Send introuction email to all-staff@                  | manager  | Yes    |
 +-------------------------------------------------------+----------+--------+
@@ -84,8 +84,6 @@ Leavers
 +-------------------------------------------------------+----------+
 | Remove from TurbineHQ                                 | HR       |
 +-------------------------------------------------------+----------+
-| Remove from Tenderapp                                 | manager  |
-+-------------------------------------------------------+----------+
 | Remove from Team page on website                      | manager  |
 +-------------------------------------------------------+----------+
 | Remove from Slack                                     | sysadmin |
@@ -104,6 +102,8 @@ Leavers
 | Remove from Mailman lists                             | sysadmin |
 | (`remove_members --fromall`)                          |          |
 +-------------------------------------------------------+----------+
-| Know Your Company                                     | Laura or |
-|                                                       | Rufus    |
+| Remove from RT                                        | sysadmin |
++-------------------------------------------------------+----------+
+| Email Laura, Rufus, or Fiona for removing from Know   | sysadmin |
+| Your Company                                          |          |
 +-------------------------------------------------------+----------+

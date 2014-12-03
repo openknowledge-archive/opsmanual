@@ -15,3 +15,4 @@ Auto-renew means that the domain will be automatically renewed when it comes up 
 
 If we don't know who to ask about a domain and it's not set to auto-renew the domain will normally be allowed to expire, so if you don't want that to happen, please tell us.  A reasonable number of the domains that are registered are never actually used, so if a domain hasn't been used in a year and we've not been asked to auto-renew it, we won't.
 
+Unless you want the DNS to be setup immediately, we will put a OKFN holding page on the domain.  This is the holding page - http://okfnlabs.org/holding-page/

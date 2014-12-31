@@ -15,7 +15,11 @@ Auto-renew means that the domain will be automatically renewed when it comes up 
 
 If we don't know who to ask about a domain and it's not set to auto-renew the domain will normally be allowed to expire, so if you don't want that to happen, please tell us.  A reasonable number of the domains that are registered are never actually used, so if a domain hasn't been used in a year and we've not been asked to auto-renew it, we won't.
 
+<<<<<<< HEAD
 Renewing Domains
 ================
 
 As an organisation we have a reasonable number of domains, while an individual domain might be cheap to renew, we have enough that it costs us a fairly large sum of money each year.  Some of these domains are bought for projects and then not used.  If a domain isn't in use and hasn't been used for a year, unless you've requested it to be auto-renewed, we will allow the domain to be dropped.  So if you want to keep a domain, please make sure you follow the above process when requesting them.
+=======
+Unless you want the DNS to be setup immediately, we will put a OKFN holding page on the domain.  This is the holding page - http://okfnlabs.org/holding-page/
+>>>>>>> ops/master

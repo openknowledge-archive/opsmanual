@@ -12,12 +12,16 @@ Onboarding staff and managing leavers
 Joiners
 -------
 
+
+
 +-------------------------------------------------------+----------+--------+
 | Action                                                | Team     | Req?   |
 +=======================================================+==========+========+
 | Create Google Apps account                            | sysadmin | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Add to relevant Google Groups                         | sysadmin | Yes    |
++-------------------------------------------------------+----------+--------+
+| Collect all new starter info, inc copy of Passport    | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Add email alias to FastMail, and wait 15m for alias   | sysadmin | Yes    |
 | become live                                           |          |        |
@@ -32,6 +36,10 @@ Joiners
 | Send a Xero invitation                                | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Send TurbineHQ invitation                             | HR       | Yes    |
++-------------------------------------------------------+----------+--------+
+| Create new employee for Payroll                       | HR       | Yes    |
++-------------------------------------------------------+----------+--------+
+| Create Omnislip login ID for Payroll User             | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Setup Google Drive with the right folders             | employee | Yes    |
 +-------------------------------------------------------+----------+--------+

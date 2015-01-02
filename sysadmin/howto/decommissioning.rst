@@ -50,10 +50,11 @@ not raised and that important data is saved.
 #.  Remove the machine from the Ansible inventory.
 
 #.  Run Ansible on the monitoring machine(s) to remove any monitoring for that
-    host. In the ``infra`` repository::
+    host. It's quickest to just run the check-mk-server play, so use -t to do that.  
+    In the ``infra`` repository::
 
         cd ansible/
-        ./play -l monitoring main.yml
+        ansible-playbook -i inventory/hosts -t check-mk-server -l monitoring main.yml
 
     This will force ``check_mk`` to regenerate its inventory and update Nagios.
 

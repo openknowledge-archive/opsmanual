@@ -115,3 +115,12 @@ Leavers
 | Email Laura, Rufus, or Fiona for removing from Know   | sysadmin |
 | Your Company                                          |          |
 +-------------------------------------------------------+----------+
+
+Managing Leavers Emails
+-----------------------
+
+There are three main ways we can deal with emails once someone has left.  We default to option 1, which is to disable the account.  We normally just disable the account initially and after a couple of months, the account is removed totally.  Once the account is removed, the emails are gone forever.  If you want either of the two other options, please ask.
+
+- Option 1: We just disable the account and then when it's removed the email will bounce
+- Option 2: We can setup a auto-response.  Please send the sysadmin team the full text of the auto-response.
+- Option 3: We can redirect all emails from the user to another OK Staffer.  Please inform the staffer that you've requested this for them.

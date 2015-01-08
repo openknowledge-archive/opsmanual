@@ -118,9 +118,17 @@ Leavers
 
 Managing Leavers Emails
 -----------------------
-
+Email Redirects and Auto-Responders
+-----------------------------------
 There are three main ways we can deal with emails once someone has left.  We default to option 1, which is to disable the account.  We normally just disable the account initially and after a couple of months, the account is removed totally.  Once the account is removed, the emails are gone forever.  If you want either of the two other options, please ask.
 
 - Option 1: We just disable the account and then when it's removed the email will bounce
 - Option 2: We can setup a auto-response.  Please send the sysadmin team the full text of the auto-response.
 - Option 3: We can redirect all emails from the user to another OK Staffer.  Please inform the staffer that you've requested this for them.
+
+Access to leavers emails
+------------------------
+We have Google Vault which gives us extensive access to search through the emails of users.  We can either leave a users account on the system so we can use google vault to search their emails.  Or we can export their emails to an mbox email file which can be searched through for emails manually.  We default to exporting and storing the users emails for one year.  After a year, we delete the emails.  So options are:
+
+ - Option 1 (default) - Emails are exported into a mbox file and stored on Google Drive.  
+ - Option 2 - The user is suspended and you can use Google Vault.  This costs money and you'll need to tell us when to remove the user from the system (and what you want done with their email then).

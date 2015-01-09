@@ -76,6 +76,9 @@ Leavers
 +-------------------------------------------------------+----------+
 | Action                                                | Team     |
 +=======================================================+==========+
+| Inform Employee that their access to accounts will be | Manager  |    
+| suspended                                             |          |    
++-------------------------------------------------------+----------+
 | Suspend Google Apps account and transfer docs         | sysadmin |
 +-------------------------------------------------------+----------+
 | Remove from Toggl                                     | HR       |

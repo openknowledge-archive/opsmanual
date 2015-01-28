@@ -65,15 +65,21 @@ land in master, be pushed to staging, and then merged into the prod branch.
 Deploying changes is as simple as pushing your commits back to the
 staging or production. So something like the following. It's advised that
 you do this via a terminal window so that you can see descriptive
-deployment progress output, along with any custom errors::
+deployment progress output, along with any custom errors. When you push to
+staging, it's recommended that you push to origin at the same time so we keep
+our github repo up-to-date::
 
+    $ git commit
     $ git push staging master
+    $ git push origin master
+
+To push to production, switch to the prod branch, merge master into it, and
+push to prod::
+
+    $ git checkout prod
+    $ git merge master
     $ git push prod prod
-
-As always, be sure to retrieve changes made by other users before
-pushing back to WPE::
-
-    $ git pull --rebase
+    $ git push origin prod
 
 Sub Modules
 -----------
@@ -251,7 +257,7 @@ Basic install:
    -  Google Analytics (see Google Analytics in Settings)
 
 #. Go go the `domain admin page
-   <http://okblogfarm.org/wp-admin/network/settings.php?page=dm_domains_admin>__`.
+   <http://okblogfarm.org/wp-admin/network/settings.php?page=dm_domains_admin>`__.
    Add the site ID of your new site and the domain name if it needs to be
    `http://{name}.okfn.org/`, tick the `Primary` checkbox and submit the form.
 #. Log into the `WPEngine control panel <https://my.wpengine.com/>`__

@@ -81,6 +81,18 @@ push to prod::
     $ git push prod prod
     $ git push origin prod
 
+Sometimes, we've noticed that pushes to WPEngine didn't work as expected. At
+that point, make a small change, push to staging or prod (wherever you find an
+inconsitency) and check again. If it worked, revert that commit and push
+again. This is the only time when `git push -f` is the right thing to do. Any
+other time you think you need to do a `git push -f`, please check with the
+sysadmin team first::
+
+    $ git commit
+    $ git push staging master
+    $ git reset HEAD~
+    $ git push -f staging master
+
 Sub Modules
 -----------
 

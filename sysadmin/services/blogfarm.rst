@@ -127,6 +127,14 @@ good practice to do the following::
     $ git pull origin master
     $ git submodule foreach git pull origin master
 
+Staging
+=======
+
+The canonical URL for staging is http://okf.staging.wpengine.com. It is
+recommended you login to the staging site and look at the `sites
+<http://okf.staging.wpengine.com/wp-admin/network/sites.php>`_ on the network
+admin panel.  This should give you the right URL for other staging sites.
+
 Contact
 =======
 

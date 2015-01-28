@@ -218,20 +218,20 @@ Caching
 One can check whether a page was delivered from a cache by looking at
 the headers (e.g. using ``curl -I`` or the Firefox Add-on `Live HTTP
 Headers <https://addons.mozilla.org/en-US/firefox/addon/live-http-headers/>`__).
-Example of a cached page:
+Example of a cached page::
 
-| ``$ curl -sI ``\ ```http://okfn.org/`` <http://okfn.org/>`__\ `` | grep ^X-Cache``
-| ``X-Cacheable: SHORT``
-| ``X-Cache: HIT: 3``
-| ``X-Cache-Group: normal``
+    $ curl -sI http://okblogfarm.org/ | grep '^X-Cache'
+    X-Cacheable: SHORT
+    X-Cache: HIT: 3
+    X-Cache-Group: normal
 
 One can view any page bypassing the cache by appending a unique (e.g.
-random) query string. E.g.
+random) query string. E.g.::
 
-| ``$ curl -sI ``\ ```http://okfn.org/?nocache=00012`` <http://okfn.org/?nocache=00012>`__\ `` | grep ^X-Cache``
-| ``X-Cacheable: SHORT``
-| ``X-Cache: MISS``
-| ``X-Cache-Group: normal``
+    $ curl -sI http://okblogfarm.org/?nocache=00012 | grep '^X-Cache'
+    X-Cacheable: SHORT
+    X-Cache: MISS
+    X-Cache-Group: normal
 
 WPEngine uses Varnish, which caches aggressively. If this cache needs to be
 busted, it needs to be ticketed with them.

@@ -1,7 +1,7 @@
 Blogfarm
 ########
 
-OKF has a blog farm at specialized Wordpress hoster `WPEngine
+OKF has a blogfarm at specialized Wordpress hoster `WPEngine
 <http://wpengine.com>`__. It is a wordpress multisite installation that serves
 numerous properties from a single codebase. It can provide sites at
 **{name}.okblogfarm.org** as well as at any domain name (via Wordpress' domain
@@ -15,8 +15,8 @@ Review <http://publicdomainreview.org/>`__, `CKAN <http://ckan.org/>`__, the
 <http://openglam.org/>`__, `Digitised Manuscripts to Europeana
 <http://dm2e.eu/>`__ and many others.
 
-Deploy changes to the blogfarm
-==============================
+WPEngine Overview
+=================
 
 Some basic instructions outlining the code deployment procedures for our
 blog farm hoster WPE (WPEngine - http://wpengine.com/).
@@ -41,30 +41,34 @@ to. At a minimum these should be::
 Consider these as two separate git remotes containing the code for the
 production web dir and staging web dir respectively.
 
-The first thing you want to do is sync with the production remote,
-depending on how you have your local code setup you can add this remote
-to an existing repo, or create a new working directory and run the
-following::
+Git Workflow
+============
 
-    $ git clone git@git.wpengine.com:production/okf.git wordpress-production
-    $ cd wordpress-production
+We maintain the code on our github repository. ::
+
+    $ git clone git@github.com:okfn/wordpress.git wordpress
+    $ cd wordpress
 
 This repository uses submodules for the various plugins and themes. So
-before doing anything else you should initialize and update these::
+you should initialize and update these::
 
-    $ git submodule init
-    $ git submodule update
+    $ git submodule update --init
+
+The recommended workflow is to add remotes for production and staging::
+
+    $ git remote add staging git@git.wpengine.com:staging/okf.git
+    $ git remote add prod git@git.wpengine.com:production/okf.git
+
+The wordpress repository has two branches, master and prod. Changes need to
+land in master, be pushed to staging, and then merged into the prod branch.
 
 Deploying changes is as simple as pushing your commits back to the
-production remote. So something like the following. It's advised that
+staging or production. So something like the following. It's advised that
 you do this via a terminal window so that you can see descriptive
 deployment progress output, along with any custom errors::
 
-    $ git push origin master
-
-Or run git remote -v to list the remotes of your local repo. If you
-cloned from the production repo then that is most like the "origin"
-remote.
+    $ git push staging master
+    $ git push prod prod
 
 As always, be sure to retrieve changes made by other users before
 pushing back to WPE::
@@ -114,8 +118,8 @@ Contact
 -  For **technical problems** with the OKFN blog farm, notify either the owner
    of a specific blog site, or <sysadmin@okfn.org>.
 
-There is also a mailing list <sysadmin-coord@lists.okfn.rg> for general technical
-discussions.
+There is also a mailing list <sysadmin-coord@lists.okfn.rg> for general
+technical discussions.
 
 Tickets (general)
 -----------------
@@ -123,9 +127,12 @@ Tickets (general)
 -  To raise a ticket in RT tracker, simply send a mail to <sysadmin@okfn.org>
 -  If our blogfarm hoster WPEngine has to look into an issue, we raise a
    ticket in their support platform (see below)
--  There is also "`Issue tracker for http://okfn.org/ and other OKFN
-   websites <https://github.com/okfn/okfn.org/issues>`__\ " which tracks
-   non-sysadmin issues e.g. with layout and design.
+-  There is `Issue tracker for http://okfn.org/
+  <https://github.com/okfn/foundation/issues>`_ which tracks non-sysadmin
+  issues with okfn.org, powered by Django CMS.
+-  There is `Issue tracker for OKFN
+  sites`<https://github.com/okfn/okfn.org/issues>`_, which tracks non-sysadmin
+  issues on other OKFN sites.
 -  Themes and plugins might have their own repo trackers, e.g. the
    "`Wordpress OKFN general-purpose theme (v2). Based on Bootstrap and
    Buddypress <https://github.com/okfn/wordpress-theme-okfn/issues>`__\ "
@@ -141,8 +148,7 @@ How to file a ticket at WPEngine:
 -  Log into `WPEngine's Zendesk
    platform <https://wpengine.zendesk.com/>`__. You should see
    "OKFN.org" organisation.
--  Click on "*SUBMIT A REQUEST*\ ". Joel, Nick, and Nigel should be
-   automatically CCed onto the ticket.
+-  Click on "*SUBMIT A REQUEST*\ ".
 
 Their core support times are 9:00-18:00 US Central Time (WPE sits in
 Austin, Texas. CST=UTC-6, CDT=UTC-5). That is usually 15:00-24:00 UK

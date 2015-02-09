@@ -18,13 +18,16 @@ load on the nagios server. The check\_mk agent is installed on each
 host, which adds passive checks for host services.
 
 All nagios config is managed using Ansible from within the
-`check\_mk-server`_ and `nagios-server`_ roles.
+`check-mk-server`_ and `nagios-server`_ roles.
 
 Add a host into Nagios
 ^^^^^^^^^^^^^^^^^^^^^^
 
 To add a host for monitoring, the host just needs to be listed under the
-right group in the Ansible Inventory.
+right group in the Ansible Inventory.  Which is either ckan, openspending 
+or sysadmin-server.  Normally add the server in to it's own relevant group 
+and then add that group into the sysadmin-server, ckan or openspending, 
+depending as to what's needed.
 
 ``https://github.com/okfn/infra/blob/master/ansible/inventory/hosts``
 

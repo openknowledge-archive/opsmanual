@@ -52,7 +52,7 @@ Joiners
 +-------------------------------------------------------+----------+--------+
 | Add to relevant Mailman lists                         | manager  | No     |
 +-------------------------------------------------------+----------+--------+
-| Github owners team access                             | manager  | No     |
+| Github owners team access (only if needed)            | manager  | No     |
 +-------------------------------------------------------+----------+--------+
 | Add to RT                                             | sysadmin | No     |
 +-------------------------------------------------------+----------+--------+
@@ -66,7 +66,7 @@ Joiners
 +-------------------------------------------------------+----------+--------+
 | Calliflower                                           | HR       | No     |
 +-------------------------------------------------------+----------+--------+
-| Add to Team page on website                           | employee | No     |
+| Email Neal to add to Team page on website             | manager  | No     |
 +-------------------------------------------------------+----------+--------+
 
 
@@ -76,8 +76,8 @@ Leavers
 +-------------------------------------------------------+----------+
 | Action                                                | Team     |
 +=======================================================+==========+
-| Inform Employee that their access to accounts will be | Manager  |    
-| suspended                                             |          |    
+| Inform Employee that their access to accounts will be | Manager  |
+| suspended                                             |          |
 +-------------------------------------------------------+----------+
 | Suspend Google Apps account and transfer docs         | sysadmin |
 +-------------------------------------------------------+----------+
@@ -95,7 +95,7 @@ Leavers
 +-------------------------------------------------------+----------+
 | Remove from TurbineHQ                                 | HR       |
 +-------------------------------------------------------+----------+
-| Remove from Team page on website                      | manager  |
+| Email Neal to remove from Team page on website        | manager  |
 +-------------------------------------------------------+----------+
 | Remove from Slack                                     | sysadmin |
 +-------------------------------------------------------+----------+
@@ -115,8 +115,8 @@ Leavers
 +-------------------------------------------------------+----------+
 | Remove from RT                                        | sysadmin |
 +-------------------------------------------------------+----------+
-| Email Laura, Rufus, or Fiona for removing from Know   | sysadmin |
-| Your Company                                          |          |
+| Email Rufus, or Fiona for removing from Know Your     | sysadmin |
+| Company                                               |          |
 +-------------------------------------------------------+----------+
 
 Managing Leavers Emails
@@ -133,5 +133,5 @@ Access to leavers emails
 ------------------------
 We have Google Vault which gives us extensive access to search through the emails of users.  We can either leave a users account on the system so we can use google vault to search their emails.  Or we can export their emails to an mbox email file which can be searched through for emails manually.  We default to exporting and storing the users emails for one year.  After a year, we delete the emails.  So options are:
 
- - Option 1 (default) - Emails are exported into a mbox file and stored on Google Drive.  
+ - Option 1 (default) - Emails are exported into a mbox file and stored on Google Drive.
  - Option 2 - The user is suspended and you can use Google Vault.  This costs money and you'll need to tell us when to remove the user from the system (and what you want done with their email then).

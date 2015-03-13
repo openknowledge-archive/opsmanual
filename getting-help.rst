@@ -35,10 +35,6 @@ administrators tend to attend to support emails in short bursts between
 actually processing requests, this could dramatically extend the amount of time
 required to process your request.
 
-That said, if you give us your entire life history, current emotional state, and
-the details of your pet's dietary requirements, we may find it difficult to
-parse your request for the relevant information.
-
 In particular, **it's important that you make the following clear** in your
 request:
 
@@ -48,7 +44,8 @@ request:
 
 If you are requesting something which has non-trivial costs associated with it,
 please ensure you include the name of someone authorized to sign off on such
-requests, such as a Unit Head.
+requests, such as a Unit Head.  Please not that we don't normally have any spare 
+server/website capacity as we try to run as lean as possible
 
 If you are reporting an outage or a technical problem, please also make clear:
 

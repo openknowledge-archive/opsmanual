@@ -107,6 +107,8 @@ Leavers
 +-------------------------------------------------------+----------+
 | Remove from Github owners team                        | sysadmin |
 +-------------------------------------------------------+----------+
+| Remove from Dropbox                                   | sysadmin |
++-------------------------------------------------------+----------+
 | Remove access to all blogfarm sites. Do not delete    | sysadmin |
 | user. Downgrade to contributor on all sites           |          |
 +-------------------------------------------------------+----------+

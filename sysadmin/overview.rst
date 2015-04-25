@@ -26,7 +26,7 @@ by our Ansible configuration management system.
 Please refer to the `Ansible inventory`_ for the canonical list of managed
 hosts and their whereabouts.
 
-.. _Ansible inventory: https://github.com/okfn/infra/blob/master/inventory/hosts
+.. _Ansible inventory: https://github.com/okfn/infra/blob/master/ansible/inventory/hosts
 
 Mailing lists
 ~~~~~~~~~~~~~

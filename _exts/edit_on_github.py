@@ -4,7 +4,7 @@ This extension makes it easy to edit documentation on GitHub. It is heavily
 inspired by the Sphinx extension of exactly the same name in the Astropy
 repository:
 
-  https://github.com/astropy/astropy/blob/master/astropy/sphinx/ext/edit_on_github.py
+  https://github.com/astropy/astropy-helpers/blob/master/astropy_helpers/sphinx/ext/edit_on_github.py
 
 It adds a field to the page template context called ``edit_on_github`` which
 can be used to link to the GitHub edit page.

@@ -78,8 +78,8 @@ Our current Dashboards
 .. _graphite: http://graphite.wikidot.com/
 .. _collectd: http://collectd.org
 .. _OKF infra repo: https://github.com/okfn/infra/tree/master/ansible/roles
-.. _check\_mk-server: https://github.com/okfn/infra/tree/master/ansible/roles/check_mk-server
-.. _nagios-server: https://github.com/okfn/infra/tree/master/ansible/roles/check_mk-server
+.. _check-mk-server: https://github.com/okfn/infra/tree/master/ansible/roles/check-mk-server
+.. _nagios-server: https://github.com/okfn/infra/tree/master/ansible/roles/check-mk-server
 .. _inventory: https://github.com/okfn/infra/tree/master/ansible/inventory
 .. _vars: https://github.com/okfn/infra/tree/master/ansible/inventory/host_vars
 .. _graphite.okfn.org: http://graphite.okfn.org/

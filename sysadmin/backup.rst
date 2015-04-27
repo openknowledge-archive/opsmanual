@@ -87,7 +87,7 @@ Appendix: Backup issues
    Bytemark managed), or at least not at the same provider.
 -  Linode: snapshots might be too few. Linode's backup system does work
    on the fs layer, not on the block layer which makes it `pretty
-   limited <http://library.linode.com/linode-platform/backups/#limitations>`__.
+   limited <https://www.linode.com/docs/platform/backup-service#limitations>`__.
 -  Amazon EC2:
 
    -  Some EC2 servers are running off instance-store and have no
@@ -150,7 +150,7 @@ Appendix: Linode snapshots
 --------------------------
 
 Note: Beware of Linode's `backup
-restrictions <http://library.linode.com/linode-platform/backups/#limitations>`__.
+restrictions <https://www.linode.com/docs/platform/backup-service#limitations>`__.
 OK, this is how it works (as of 2011-03-25):
 
 -  Log into https://manager.linode.com/

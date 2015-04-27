@@ -112,5 +112,5 @@ building the site.
 The build artefacts (a static HTML website) are copied into the ``gh-pages``
 branch of the git repository and pushed to GitHub. The manual is then served at:
 
-    https://ops.okfn.org/
+    http://ops.okfn.org/
 

@@ -8,6 +8,7 @@ Onboarding staff and managing leavers
 * HR will open a ticket with sysadmin about the new joinee. Sysadmins will
   create accounts and log actions to the ticket and close it out when
   everything is ready.
+* Please tell sysadmin a contact email for the new starter so we can give them their initial password for Google Apps.  All other invites/account setups will be sent to the google account.
 
 Joiners
 -------
@@ -44,6 +45,8 @@ Joiners
 | Setup Google Drive with the right folders             | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Add contact information to Contact spreadsheet        | employee | Yes    |
++-------------------------------------------------------+----------+--------+
+| Install and configure Mumble (info on gdrive)         | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Email Rufus or Fiona for adding into Know Your        | sysadmin | Yes    |
 | Company                                               |          |        |

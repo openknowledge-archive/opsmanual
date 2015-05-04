@@ -10,8 +10,9 @@ Things that need doing when a new sysadmin comes on board:
   - superadmin privileges on the blogfarm
 - Add to sysadmin-team in Google Groups
 - Google analytics
-- Lastpass
+- Lastpass Superadmin
 - Google Apps admin
 - Instruct to subscribe to sysadmin-coord@, outages@, and sysadmin-announce@
 - Pagerduty invite
 - AWS IAM account
+- rtadmin on rt.okfn.org

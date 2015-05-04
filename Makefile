@@ -48,7 +48,9 @@ help:
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
 
 clean:
+ifdef BUILDDIR
 	rm -rf $(BUILDDIR)/*
+endif
 
 pages:
 	./tools/buildpages

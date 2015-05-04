@@ -8,12 +8,15 @@ Onboarding staff and managing leavers
 * HR will open a ticket with sysadmin about the new joinee. Sysadmins will
   create accounts and log actions to the ticket and close it out when
   everything is ready.
-* Please tell sysadmin a contact email for the new starter so we can give them their initial password for Google Apps.  All other invites/account setups will be sent to the google account.
+* Please give sysadmin a contact email for the new starter so we can give them
+  their initial password for Google Apps.  All other invites/account setups
+  will be sent to the google account.
+* New starter will need to login to their new Google Apps account, accept the
+  terms and conditions, and let sysadmin know so that invites can be sent to
+  that mailbox.
 
 Joiners
 -------
-
-
 
 +-------------------------------------------------------+----------+--------+
 | Action                                                | Team     | Req?   |
@@ -47,9 +50,6 @@ Joiners
 | Add contact information to Contact spreadsheet        | employee | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Install and configure Mumble (info on gdrive)         | employee | Yes    |
-+-------------------------------------------------------+----------+--------+
-| Email Rufus or Fiona for adding into Know Your        | sysadmin | Yes    |
-| Company                                               |          |        |
 +-------------------------------------------------------+----------+--------+
 | Send introuction email to all-staff@                  | manager  | Yes    |
 +-------------------------------------------------------+----------+--------+
@@ -121,9 +121,6 @@ Leavers
 | (`remove_members --fromall`)                          |          |
 +-------------------------------------------------------+----------+
 | Remove from RT                                        | sysadmin |
-+-------------------------------------------------------+----------+
-| Email Rufus, or Fiona for removing from Know Your     | sysadmin |
-| Company                                               |          |
 +-------------------------------------------------------+----------+
 
 Managing Leavers Emails

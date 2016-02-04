@@ -43,15 +43,15 @@ Joiners
 +-------------------------------------------------------+----------+--------+
 | Create new employee for Payroll                       | HR       | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Create omnislip login id for payroll user             | hr       | yes    |
+| Create omnislip login id for payroll user             | HR       | yes    |
 +-------------------------------------------------------+----------+--------+
-| Create Expensify account                              | hr       | yes    |
+| Create Expensify account                              | HR       | yes    |
 +-------------------------------------------------------+----------+--------+
-| Setup Google Drive with the right folders             | employee | Yes    |
+| Setup Google Drive with the right folders             | Employee | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Add contact information to Contact spreadsheet        | employee | Yes    |
+| Add contact information to Contact spreadsheet        | Employee | Yes    |
 +-------------------------------------------------------+----------+--------+
-| Install and configure Mumble (info on gdrive)         | employee | Yes    |
+| Install and configure Mumble (info on gdrive)         | Employee | Yes    |
 +-------------------------------------------------------+----------+--------+
 | Send introuction email to all-staff@                  | manager  | Yes    |
 +-------------------------------------------------------+----------+--------+
@@ -81,7 +81,7 @@ Leavers
 +-------------------------------------------------------+----------+
 | Action                                                | Team     |
 +=======================================================+==========+
-| Inform Employee that their access to accounts will be | Manager  |
+| Inform employee that their access to accounts will be | Manager  |
 | suspended                                             |          |
 +-------------------------------------------------------+----------+
 | Suspend Google Apps account and transfer docs         | sysadmin |
@@ -100,9 +100,9 @@ Leavers
 +-------------------------------------------------------+----------+
 | Calliflower                                           | HR       |
 +-------------------------------------------------------+----------+
-| Remove from turbinehq                                 | hr       |
+| Remove from turbinehq                                 | HR       |
 +-------------------------------------------------------+----------+
-| Remove from Expensify                                 | hr       |
+| Remove from Expensify                                 | HR       |
 +-------------------------------------------------------+----------+
 | Email Neal to remove from Team page on website        | manager  |
 +-------------------------------------------------------+----------+

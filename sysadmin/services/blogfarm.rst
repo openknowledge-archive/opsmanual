@@ -153,15 +153,12 @@ Tickets (general)
 -  To raise a ticket in RT tracker, simply send a mail to <sysadmin@okfn.org>
 -  If our blogfarm hoster WPEngine has to look into an issue, we raise a
    ticket in their support platform (see below)
--  There is `Issue tracker for http://okfn.org/
-  <https://github.com/okfn/foundation/issues>`_ which tracks non-sysadmin
-  issues with okfn.org, powered by Django CMS.
--  There is `Issue tracker for OKFN
-  sites`<https://github.com/okfn/okfn.org/issues>`_, which tracks non-sysadmin
-  issues on other OKFN sites.
+-  There is `Issue tracker for http://okfn.org/ <https://github.com/okfn/foundation/issues>`_
+   which tracks non-sysadmin issues with okfn.org, powered by Django CMS.
+-  There is `Issue tracker for OKFN sites <https://github.com/okfn/okfn.org/issues>`_,
+   which tracks non-sysadmin issues on other OKFN sites.
 -  Themes and plugins might have their own repo trackers, e.g. the
-   "`Wordpress OKFN general-purpose theme (v2). Based on Bootstrap and
-   Buddypress <https://github.com/okfn/wordpress-theme-okfn/issues>`__\ "
+   "`Wordpress OKFN general-purpose theme (v2). Based on Bootstrap and Buddypress <https://github.com/okfn/wordpress-theme-okfn/issues>`_ "
 
 Tickets at WPEngine
 -------------------

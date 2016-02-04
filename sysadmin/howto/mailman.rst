@@ -7,11 +7,11 @@ Renaming lists
 See this FAQ: http://wiki.list.org/pages/viewpage.action?pageId=4030617
 
 
-Regenerate list archive HTML 
+Regenerate list archive HTML
 ----------------------------
 
 In some cases, the [HTML archive](https://lists.okfn.org/pipermail/<list-name>/) because a post had to be removed from the list or,
-Mailman doesn't stops updating the HTML archive, 
+Mailman doesn't stops updating the HTML archive,
 
 To regenerate the HTML archive ::
 
@@ -42,7 +42,7 @@ Then this can be run with the `withlist` program::
 Common list moderator password
 ------------------------------
 
-We needed a better way to manage moderator passwords across lists, since mailman keeps one password - 
+We needed a better way to manage moderator passwords across lists, since mailman keeps one password -
 for multiple moderators on a list and this results in passwords being required to be reset and additional overhead.
 
 The solution we came up with, was to have a shared password for all list moderators, and have it reset once every six months.
@@ -55,7 +55,7 @@ The script used to reset the moderator password across all lists is [/usr/lib/ma
 
 - To update the moderator password for a single list::
 
-   /usr/lib/mailman/bin/change_pw -l <listname> -p <password> 
+   /usr/lib/mailman/bin/change_pw -l <listname> -p <password>
 
 
 Run with --help for other options, you may require -q if the moderators do not need to be informed.
@@ -90,33 +90,33 @@ Import a mailinglist into the OKF mailman server
 In some cases, a mailman list needs to be imported into the OKF mailman server,
 
 - To import a single list, from a remote host we require::
-  
+
   /var/lib/mailman/archives/private/<listname>.mbox
-  /var/lib/mailman/lists/<listname>/config.pck 
+  /var/lib/mailman/lists/<listname>/config.pck
 
 - Once the files are copied over to the OKF mailman server
 
   - We create a new list, the admin user doesn't matter as of now::
-     
-     /usr/sbin/newlist
+
+    /usr/sbin/newlist
 
   - Copy the mbox file::
-      
-    cp /tmp/<listname>.mbox /var/lib/mailman/archives/private/<listname>.mbox/<listname>.mbox
+
+      cp /tmp/<listname>.mbox /var/lib/mailman/archives/private/<listname>.mbox/<listname>.mbox
 
   - Generate HTML archives::
-     
-    /var/lib/mailman/bin/arch --wipe <listname> 
-    
+
+    /var/lib/mailman/bin/arch --wipe <listname>
+
   - Copy over the config.pck file which contains the users info and list config::
 
-     cp /tmp/config.pck /var/lib/mailman/lists/<listname>/config.pck
+      cp /tmp/config.pck /var/lib/mailman/lists/<listname>/config.pck
 
   - Update the list url in config.pck::
-     
-     /var/lib/mailman/bin/withlist -l -r fix_url <listname> https://lists.okfn.org/mailman/
+
+    /var/lib/mailman/bin/withlist -l -r fix_url <listname> https://lists.okfn.org/mailman/
 
 -  The admin interface, html archives should now be accessible with all its users::
 
-     https://lists.okfn.org/mailman/admin/<listname>
-     https://lists.okfn.org/pipermail/<listname>
+    https://lists.okfn.org/mailman/admin/<listname>
+    https://lists.okfn.org/pipermail/<listname>

@@ -3,7 +3,7 @@ Is this an emergency?
 
 In order to better serve our users, we prioritise our work, primarily on the
 basis of information that you provide us when :doc:`submitting your requests for
-help <getting-help>`. But this leads to a problem, which is that requestors
+help </getting-help>`. But this leads to a problem, which is that requestors
 develop a tendency to slightly overstate the urgency of their request, in the
 hope that it will be processed more quickly. Everyone does this, even us!
 

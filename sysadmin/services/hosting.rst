@@ -33,10 +33,9 @@ How to spin up a new cloud instance
 -  **DNS**: Add an A record for hostname and IP address.
 
 -  **Bootstrap**: To bootstrap the machine, use bootstrap.yml in the `infra`
-  repository::
+   repository::
 
-    ansible-playbook bootstrap.yml --extra-vars="hostip=<newip> host=<newhostname>
-    user=ubuntu" --verbose -s
+     ansible-playbook bootstrap.yml --extra-vars="hostip=<newip> host=<newhostname> user=ubuntu" --verbose -s
 
 -  '''Reverse DNS (rDNS) (not for Amazon) ''': Set server hostname as reverse
    DNS for the server's main IP address.
@@ -45,7 +44,7 @@ How to spin up a new cloud instance
       this server, click on the tab "DNS". In section "Reverse DNS
       Management", set the hostname as reverse DNS record for the IP
       address.
-   -  Linode: In the Linode 'server' panel, under each machine, use 
+   -  Linode: In the Linode 'server' panel, under each machine, use
       Remote Access. Hackable URI:
       https://manager.linode.com/linodes/rdns/sNNN. Set the hostname
       (there's no need to add a terminal period ''foo.example.org.'')

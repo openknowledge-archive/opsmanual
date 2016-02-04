@@ -1,4 +1,4 @@
-Request Tracker 
+Request Tracker
 =====================
 
 Request Tracker or RT as it is more commonly known is request tracking software.  Open Knowledge uses it to track requests for work from internal and external users of our IT systems.
@@ -8,29 +8,15 @@ RT can be found at http://rt.okfn.org.  Even if you don't have an account with R
 Guides
 ------
 
-`Dashboards <dashboards.html>`_
+.. toctree::
+   :maxdepth: 2
 
-.. _dashboards: dashboards.html
-
-`Quick Bookmarklet <quick-bookmarklet.html>`_
-
-.. _quick-bookmarklet: quick-bookmarklet.html
-
-`How to Log a ticket <logging-tickets.html>`_
-
-.. _logging-tickets: logging-tickets.html
-
-`How to modify a ticket <modifying-a-ticket.html>`_
-
-.. _modify-a-ticket: modify-a-ticket.html
-
-`Searching for tickets <searching.html>`_
-
-.. _searching: searching.html
-
-`Replying and Commenting on tickets <replying-and-commenting.html>`_
-
-.. _replying-and-commenting: replying-and-commenting.html
+   dashboards
+   quick-bookmarklet
+   logging-tickets
+   modifying-a-ticket
+   searching
+   replying-and-commenting
 
 
 Current RT email addresses

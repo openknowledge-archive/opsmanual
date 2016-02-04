@@ -41,7 +41,6 @@ Indices and tables
    toctree.
 
 .. toctree::
-   :hidden:
+   :includehidden:
 
    README
-   sitemap

@@ -9,8 +9,7 @@ alias feature).
 
 Amongst the sites it currently hosts are the `OKFN blog
 <http://blog.okfn.org/>`__, local OKFN chapters like `OKFN Belgium
-<http://okfn.be/>`__ or `OKFN Germany <http://okfn.de/>`__, the `Public Domain
-Review <http://publicdomainreview.org/>`__, `CKAN <http://ckan.org/>`__, the
+<http://okfn.be/>`__ or `OKFN Germany <http://okfn.de/>`__, `CKAN <http://ckan.org/>`__, the
 `Open Knowledge & Data Festival <http://okfestival.org/>`__, `OpenGLAM
 <http://openglam.org/>`__, `Digitised Manuscripts to Europeana
 <http://dm2e.eu/>`__ and many others.
@@ -334,13 +333,3 @@ installation at WPEngine:
 -  **Some PHP methods might be restricted or not available at all**.
    WPEngine might apply strict security policies and restrict what PHP
    can do. That could break plugins/themes.
-
-WPE accounts
-============
-
-**TO BE DOCUMENTED**
-
-How to: migrate an existing single-site WP instance into our blogfarm
-=====================================================================
-
-**TO BE DOCUMENTED**

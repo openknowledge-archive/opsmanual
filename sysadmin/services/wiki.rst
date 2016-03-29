@@ -25,16 +25,16 @@ New Wiki site configuration
 
 * On the wikifarm host, we create a new configuration file for the site.
 
-* You can use the existing LocalSettings-wiki.okfn.org.php config as a template. 
+* You can use the existing LocalSettings-wiki.okfn.org.php config as a template.
 
 * Ideally set the name of the config file as LocalSettings-<domain>.php.
 
 1. Update the db credentials we setup in the previous step.
 
-:: 
+::
 
  # vi /var/www/wiki/LocalSettings-<domain>.php
- 
+
  $wgDBtype           = "mysql";
  $wgDBserver         = "localhost";
  $wgDBname           = "wiki_dm2e_eu";
@@ -64,7 +64,7 @@ New Wiki site configuration
 4. Run the Mediawiki update script:
 
 ::
- 
+
  cd /var/www/wikifarm/wiki/maintenance
  php update.php --conf /var/www/wikifarm/wiki/LocalSettings-<domain>.php
 
@@ -73,13 +73,10 @@ If update.php fails, LocalSettings-<domain>.php might need fixing - some extensi
 Setup DNS records
 #################
 
-* Dns records for the domain will need to be updated to point to this host.
+Dns records for the domain will need to be updated to point to this host.
 
 
 Nginx config
 ###################
 
-* Once the wiki instance is setup, the nginx config which is maintained in ansible for the wiki host will need to be updated.
-
-
-
+Once the wiki instance is setup, the nginx config which is maintained in ansible for the wiki host will need to be updated.

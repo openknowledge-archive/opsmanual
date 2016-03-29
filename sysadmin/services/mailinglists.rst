@@ -37,9 +37,15 @@ user/group www-data, others by user/group "list".
 How to remove an individual post
 ================================
 
-We do not remove emails from Open Knowledge list archives as a matter of course.  As the email has already been sent to the list, so to all subscribers, it is already public.  Also constantly removing emails places a lot of extra work on the team.
+We do not remove emails from Open Knowledge list archives as a matter of
+course.  As the email has already been sent to the list, so to all subscribers,
+it is already public.  Also constantly removing emails places a lot of extra
+work on the team.
 
-It is possible to remove the email from the list archives, however this breaks all links in the list archive.  Sysadmins will remove messages only for serious privacy reasons; the current policy is that all requests are rejected (unless there is a court order or equivalent legal obligation, of course).
+It is possible to remove the email from the list archives, however this breaks
+all links in the list archive.  Sysadmins will remove messages only for serious
+privacy reasons; the current policy is that all requests are rejected (unless
+there is a court order or equivalent legal obligation, of course).
 
 This is quite painful. See also: `How can I remove a post from the list archive or remove an entire archive? <http://wiki.list.org/pages/viewpage.action?pageId=4030681>`_
 
